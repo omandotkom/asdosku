@@ -17,11 +17,10 @@
   <!-- Bootstrap CSS File -->
   
   <link href="{{ asset('asset/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <!-- Libraries CSS Files -->
   <link href="{{ asset('asset/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('asset/lib/animate/animate.min.css') }}" rel="stylesheet">
-
+  
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
 
@@ -66,13 +65,18 @@
     Hero Section
   ============================-->
   <section id="hero">
-    <div class="hero-container wow fadeInUp">
-    <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2" alt="Responsive image">
-      <h2>Siap menjadi bagian hidupmu (warga kampus)</h2>
+    <div class="hero-container">
+    <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
+      <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
       <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-outline-primary btn-lg rounded">Login</button>
-      <button type="button" class="btn btn-outline-warning ml-5 btn-lg rounded">Daftar</button>  
- 
+      <button type="button"  class="btn btn-outline-primary btn-lg rounded">Login</button>
+      <button type="button" onclick='gotoRegister();' class="btn btn-outline-warning ml-5 btn-lg rounded">Daftar</button>  
+      <script type="text/javascript">
+    function gotoRegister(){
+      window.location="{{ url('/register') }}";
+    }
+   
+</script>
 </div>
     </div>
   </section><!-- #hero -->
