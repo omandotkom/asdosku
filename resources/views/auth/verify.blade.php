@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">{{ __('Verifikasi Alamat Email Anda') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -14,12 +14,13 @@
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+                    {{ __('Sebelum melanjutkan, harap buka akun email anda terlebih dahulu kemudian klik pada link verifikasi. Jika anda tidak menemukan email dari Asdoksu periksa di folder spam.') }}
+                    <div class="text-center">
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn mt-5 btn-primary">{{ __('Verifikasi Email') }}</button>.
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function register(Request $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -74,5 +74,8 @@ class RegisterController extends Controller
             'wa' => $data['wa'],
             'nik' => $data['nik'],
         ]);
+        if ($user->exists){
+            return redirect('/dashboard');
+        }
     }
 }
