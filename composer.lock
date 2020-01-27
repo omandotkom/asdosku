@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b95c74ff49ff70afe89b78f0080258c",
+    "content-hash": "c753450476c6ab5a21db434f0b28026b",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -4342,6 +4342,34 @@
                 "panel"
             ],
             "time": "2019-12-23T21:54:04+00:00"
+        },
+        {
+            "name": "test-hook",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larapack/test-hook.git",
+                "reference": "v1.0.0"
+            },
+            "require": {
+                "larapack/hooks": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "hook": {
+                    "providers": [
+                        "TestHook\\TestHookServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TestHook\\": "src/"
+                }
+            },
+            "notification-url": "https://larapack.io/downloads",
+            "description": "This is my first hook.",
+            "time": "2020-01-27T07:01:53+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

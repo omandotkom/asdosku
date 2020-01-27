@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CheckRole;
+
 return [
 
     /*
@@ -29,6 +31,7 @@ return [
     'middleware' => [
         'web',
         'auth',
+        CheckRole::class,
     ],
 
     /*
@@ -76,7 +79,7 @@ return [
     */
 
     'mail' => [
-        'enabled' => env('CANVAS_MAIL_ENABLED', false),
+        'enabled' => env('CANVAS_MAIL_ENABLED', true),
     ],
 
 ];
