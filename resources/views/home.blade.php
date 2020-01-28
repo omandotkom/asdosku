@@ -72,18 +72,42 @@
       <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
       <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
       <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-        <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary btn-lg rounded">Login</button>
-        <button type="button" onclick='gotoRegister();' class="btn btn-outline-warning ml-5 btn-lg rounded">Daftar</button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLongTitle">Pendaftaran Akun</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Dosen</button>
+                <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Asdos</button>
+              </div>
+              <div class="modal-footer">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning btn-lg rounded">Daftar</button>
+        <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary ml-5 btn-lg rounded">Masuk</button>
+
         <script type="text/javascript">
-          function gotoRegister() {
+          function gotoRegisterDosen() {
             window.location = "{{ url('/register') }}";
           }
-
+          function gotoRegisterAsdos(){
+            window.location = "{{ url('/registerasdos') }}";
+          }
           function gotoLogin() {
             window.location = "{{ url('/login') }}";
           }
         </script>
       </div>
+
     </div>
   </section><!-- #hero -->
 

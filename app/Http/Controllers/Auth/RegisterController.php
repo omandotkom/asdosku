@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Detail;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+
         ]);
     }
 
@@ -63,18 +64,51 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    //ini untuk dosen dan pengurus
     protected function register(Request $data)
     {
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'campus' => $data['kampus'],
-            'wa' => $data['wa'],
-            'nik' => $data['nik'],
+            'status' => 'aktif',
+            'role' => 'dosen',
         ]);
-        if ($user->exists){
-            return redirect('/dashboard');
+        if ($user->exists) {
+            $details = Detail::create([
+                'kampus' => $data['kampus'],
+                'wa' => $data['wa'],
+                'nik' => $data['nik'],
+            ]);
+            $user->detail_id = $details->id;
+            $user =  $user->save();
+           if ($details->exists){
+               return redirect('/dashboard');
+           }
+        }
+    }
+    protected function registerasdos(Request $data){
+        $user =  User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'status' => 'belum_aktif',
+            'role' => 'asdos',
+        ]);
+        if ($user->exists) {
+            $details = Detail::create([
+                'kampus' => $data['kampus'],
+                'wa' => $data['wa'],
+                'semester' => $data['semester'],
+                'jurusan' => $data['jurusan'],
+                'alamat' => $data['alamat'],
+                'prefer' => $data['prefer'],
+            ]);
+            $user->detail_id = $details->id;
+            $user =  $user->save();
+           if ($details->exists){
+               return redirect('/dashboard');
+           }
         }
     }
 }
