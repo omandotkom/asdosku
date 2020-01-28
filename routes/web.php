@@ -10,10 +10,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+//Route::get('/', 'HomeController@index');
 
 Auth::routes(['verify' => true]);
-
+Route::get('/', function () {
+    return view('home');
+})->middleware('guest');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard','dashboard')->name('dashboard')->middleware('verified');
 
