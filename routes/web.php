@@ -33,4 +33,6 @@ Route::prefix('blog')->group(function () {
     Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });
 
-Route::get('/test','HomeController@detil');
+Route::get('/test',function(){
+    return view('maindashboard.index');
+});
