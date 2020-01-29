@@ -90,7 +90,7 @@
         <button type="button" onclick='gotoCariAsisten();' class="btn btn-outline-warning ml-5 btn-lg rounded">Cari Asisten</button>
         <script type="text/javascript">
           function gotoCariAsisten() {
-            window.location = "{{ url('/register') }}";
+            window.location = "{{ route('indexdosen') }}";
           }
 
         </script>

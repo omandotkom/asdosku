@@ -14,11 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('Sebelum melanjutkan, harap buka akun email anda terlebih dahulu kemudian klik pada link verifikasi. Jika anda tidak menemukan email dari Asdoksu periksa di folder spam.') }}
+                    {{ __('Sebelum melanjutkan, Anda harus melakukan verifikasi email dengan melakukan klik tombol di bawah. Jika anda tidak menemukan email dari Asdoksu di kotak masuk mohon periksa di folder spam.') }}
                     <div class="text-center">
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn mt-5 btn-primary">{{ __('Verifikasi Email') }}</button>.
+                        <button type="submit" class="btn mt-5 btn-primary">{{ __('Verifikasi Email Sekarang') }}</button>.
                     </form>
                     </div>
                 </div>

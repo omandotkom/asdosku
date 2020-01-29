@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->middleware('guest');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard','dashboard')->name('dashboard')->middleware('verified','checkactive');
-
+Route::view('/dashboard/index','maindashboard.index')->middleware('verified','checkactive')->name('indexdosen');
 Route::get('/registerasdos', function(){
     return view('backupmain.register2');
 });
