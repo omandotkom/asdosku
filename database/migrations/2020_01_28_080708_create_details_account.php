@@ -18,6 +18,7 @@ class CreateDetailsAccount extends Migration
             $table->string('nik')->nullable();
             $table->string('kampus')->nullable();
             $table->string('wa')->nullable();
+            $table->string('gender')->nullable();
             $table->string('semester')->nullable();
             $table->string('jurusan')->nullable();
             $table->text('alamat')->nullable();

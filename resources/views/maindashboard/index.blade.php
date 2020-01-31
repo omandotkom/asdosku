@@ -28,8 +28,8 @@
     <!-- Sidebar -->
     @if (Auth::user()->role == "dosen")
     @include('layouts.dosen.dashboardsidebar')
-    @elseif (Auth::user()->role == "operational")
-    @include('layouts.operational.dashboardsidebar')
+    @elseif (Auth::user()->role == "hrd")
+    @include('layouts.hrd.dashboardsidebar')
     @endif
     <!--Sidebar ada di sini -->
 
@@ -50,14 +50,20 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Layanan</h1>
+            <h1 id="judulHalaman" class="h3 mb-0 text-gray-800">Layanan</h1>
           </div>
 
           <!-- Content Row -->
           @if (Auth::user()->role == "dosen")
-          @include('layouts.dosen.row')
-          @elseif (Auth::user()->role == "operational")
-          @include('layouts.operational.row')
+            @include('layouts.dosen.row')
+          @elseif (Auth::user()->role == "hrd")
+            @switch($content ?? '')
+              @case('persetujuanlist')
+              @include('layouts.hrd.persetujuan')
+              @break
+            @default
+              @include('layouts.hrd.row')
+            @endswitch
           @endif
 
         </div>

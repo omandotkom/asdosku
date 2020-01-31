@@ -17,14 +17,16 @@ Route::get('/', function () {
     return view('home');
 })->middleware('guest');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('/dashboard','dashboard')->name('dashboard')->middleware('verified','checkactive','checkrole');
-Route::get('/dashboard/index/operational','DashboardIndexController@indexOperational')->name('indexoperational');
-Route::view('/dashboard/index','maindashboard.index')->middleware('verified','checkactive')->name('indexdosen');
-Route::get('/registerasdos', function(){
+Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('verified', 'checkactive', 'checkrole');
+Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd');
+Route::view('/dashboard/index', 'maindashboard.index')->middleware('verified', 'checkactive')->name('indexdosen');
+Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan');
+Route::get('/dashboard/indx/hrd/persetujuan/update/{id}','PersetujuanController@update')->name('updatepersetujuan');
+Route::get('/registerasdos', function () {
     return view('backupmain.register2');
 });
-Route::post('/registerasdos/kirim','Auth\RegisterController@registerasdos')->name('registerasdos');
-Route::get('/registerasdos/statusakun',function(){
+Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->name('registerasdos');
+Route::get('/registerasdos/statusakun', function () {
     return view('auth.notactive');
 })->name('notactive');
 Route::prefix('blog')->group(function () {
@@ -34,6 +36,6 @@ Route::prefix('blog')->group(function () {
     Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });
 
-Route::get('/test',function(){
+Route::get('/test', function () {
     return view('maindashboard.index');
 });

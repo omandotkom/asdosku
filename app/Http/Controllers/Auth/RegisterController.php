@@ -102,7 +102,8 @@ class RegisterController extends Controller
                 'semester' => $data['semester'],
                 'jurusan' => $data['jurusan'],
                 'alamat' => $data['alamat'],
-                'prefer' => $data['prefer'],
+                'prefer' => $data['preferensi'],
+                'gender' => $data['gender'],
             ]);
             $user->detail_id = $details->id;
             $user =  $user->save();

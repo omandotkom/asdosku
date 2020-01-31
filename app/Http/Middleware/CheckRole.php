@@ -15,9 +15,9 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role=="operational"){
+        if (Auth::user()->role=="hrd"){
 
-            return redirect()->route('indexoperational');
+            return redirect()->route('indexhrd');
         }
         return $next($request);
     }

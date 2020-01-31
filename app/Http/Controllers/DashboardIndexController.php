@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardIndexController extends Controller
 {
-    public function indexOperational(){
+    public function indexhrd(){
         $belum_aktif = User::where('status','belum_aktif')->count();
         return view('maindashboard.index', ['belum_aktif' => $belum_aktif]);
     }

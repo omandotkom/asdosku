@@ -15,7 +15,7 @@ class UsersPengurusSeeder extends Seeder
             'name' => Str::random(10),
             'email' => Str::random(2).'@gmail.com',
             'password' => bcrypt('system3298'),
-            'role' => 'operational',
+            'role' => 'hrd',
             'status' => 'aktif',
         ]);
         DB::table('Details')->insert([

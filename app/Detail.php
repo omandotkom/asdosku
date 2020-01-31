@@ -8,7 +8,7 @@ class Detail extends Model
 {
     //
     protected $fillable = [
-        'nik', 'kampus', 'wa', 'semester', 'jurusan','alamat','prefer'
+        'nik', 'kampus', 'wa', 'semester', 'jurusan','alamat','prefer','gender'
      ];
     protected $table = 'details';
 }

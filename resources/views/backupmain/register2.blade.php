@@ -25,6 +25,20 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="gender" id="gender">
+                                    <option>Pria</option>
+                                    <option>Wanita</option>
+                                    
+                                </select>
+                             
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="kampus" class="col-md-4 col-form-label text-md-right">{{ __('Asal Kampus') }}</label>
 
@@ -177,7 +191,7 @@
                                                             var isBimbel = true;
                                                             if ($("#bimbel").is(":checked")) {
                                                                 val = val.concat("bimbel,");
-                                                                
+
                                                             }
                                                             if ($("#makul").is(":checked")) {
                                                                 val = val.concat("makul,");
@@ -202,7 +216,7 @@
                                                             }
                                                             //show ke textfield
 
-                                                           val= val.slice(0, -1);
+                                                            val = val.slice(0, -1);
                                                             $('input[name=preferensi]').val(val);
                                                         }
                                                     </script>
