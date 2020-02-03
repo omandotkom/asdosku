@@ -20,8 +20,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd');
 Route::view('/dashboard/index', 'maindashboard.index')->middleware('verified', 'checkactive')->name('indexdosen');
+Route::get('/dashboard/index/view/asdos/bimbel/{gender}','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel');
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan');
-Route::get('/dashboard/indx/hrd/persetujuan/update/{id}','PersetujuanController@update')->name('updatepersetujuan');
+Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan');
 Route::get('/registerasdos', function () {
     return view('backupmain.register2');
 });
@@ -29,13 +30,9 @@ Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->na
 Route::get('/registerasdos/statusakun', function () {
     return view('auth.notactive');
 })->name('notactive');
-Route::prefix('blog')->group(function () {
-    Route::get('/', 'BlogController@getPosts')->name('blog.index');
-    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@findPostBySlug')->name('blog.post');
-    Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag');
-    Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
-});
 
 Route::get('/test', function () {
     return view('maindashboard.index');
 });
+
+

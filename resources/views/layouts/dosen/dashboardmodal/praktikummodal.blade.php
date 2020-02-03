@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="GET" action="/profile">
+                <form method="POST" action="/profile">
                     
                     <div class="form-group">
                         <label for="mapel" class="col-form-label float-left">Matakuliah</label>

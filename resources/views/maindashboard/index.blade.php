@@ -54,16 +54,24 @@
           </div>
 
           <!-- Content Row -->
+          
+
           @if (Auth::user()->role == "dosen")
-            @include('layouts.dosen.row')
+          @switch($content ?? '')
+          @case('viewAsdoswithFilter')
+          @include('layouts.dosen.rowasdos')
+          @break;
+          @default:
+          @include('layouts.dosen.row')
+          @endswitch
           @elseif (Auth::user()->role == "hrd")
-            @switch($content ?? '')
-              @case('persetujuanlist')
-              @include('layouts.hrd.persetujuan')
-              @break
-            @default
-              @include('layouts.hrd.row')
-            @endswitch
+          @switch($content ?? '')
+          @case('persetujuanlist')
+          @include('layouts.hrd.persetujuan')
+          @break
+          @default
+          @include('layouts.hrd.row')
+          @endswitch
           @endif
 
         </div>
