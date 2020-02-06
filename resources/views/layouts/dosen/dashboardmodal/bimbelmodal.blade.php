@@ -39,7 +39,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" onclick="document.bimbelForm.submit();" class="btn btn-primary">Lanjutkan</button>
-            
             </script>
             </div>
         </div>

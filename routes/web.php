@@ -23,9 +23,7 @@ Route::view('/dashboard/index', 'maindashboard.index')->middleware('verified', '
 Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel');
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan');
-Route::get('/registerasdos', function () {
-    return view('backupmain.register2');
-});
+Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow');
 Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->name('registerasdos');
 Route::get('/registerasdos/statusakun', function () {
     return view('auth.notactive');
@@ -34,5 +32,7 @@ Route::get('/registerasdos/statusakun', function () {
 Route::get('/test', function () {
     return view('maindashboard.index');
 });
+
+Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->name('profileAsdos');
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
@@ -15,10 +16,19 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role=="hrd"){
-
-            return redirect()->route('indexhrd');
+        switch (Auth::user()->role) {
+            case "hrd":
+                return redirect()->route('indexhrd');
+                break;
+            case "asdos":
+                //cek apabila sudah lengkapi profile
+                if (is_null(Auth::user()->second_register) || Auth::user()->second_register != true){
+                    return redirect()->route('profileAsdos');
+                }
+                break;
+            default:
+                return $next($request);
+            break;
         }
-        return $next($request);
     }
 }

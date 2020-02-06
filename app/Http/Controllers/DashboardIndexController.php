@@ -10,4 +10,7 @@ class DashboardIndexController extends Controller
         $belum_aktif = User::where('status','belum_aktif')->count();
         return view('maindashboard.index', ['belum_aktif' => $belum_aktif]);
     }
+    public function indexasdos(){
+    
+    }
 }

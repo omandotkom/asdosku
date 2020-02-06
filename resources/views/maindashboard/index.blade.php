@@ -50,7 +50,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 id="judulHalaman" class="h3 mb-0 text-gray-800">Layanan</h1>
+            <h1 id="judulHalaman" class="h3 mb-0 text-gray-800">{{$title}}</h1>
           </div>
 
           <!-- Content Row -->
@@ -71,6 +71,14 @@
           @break
           @default
           @include('layouts.hrd.row')
+          @endswitch
+          @elseif (Auth::user()->role == "asdos")
+          @switch($content ?? '')
+          @case('profile')
+          @include('layouts.asdos.profile2')
+          @break
+          @default
+          @include('layouts.asdos.row')
           @endswitch
           @endif
 

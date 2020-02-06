@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Detail;
 use App\Http\Controllers\Controller;
+use App\Service;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -82,13 +83,29 @@ class RegisterController extends Controller
             ]);
             $user->detail_id = $details->id;
             $user =  $user->save();
-           if ($details->exists){
-               return redirect('/dashboard');
-           }
+            if ($details->exists) {
+                return redirect('/dashboard');
+            }
         }
     }
-    protected function registerasdos(Request $data){
-        $user =  User::create([
+    protected function registerasdosShow()
+    {
+        $services = Service::with('activities')->get();
+        //return $services;
+        return view('backupmain.register2', ['services' => $services]);
+    }
+    protected function registerasdos(Request $data)
+    {
+        $services = Service::all();
+        $preferensi = "";
+        foreach ($services as $service) {
+            $name = $service->id . "check";
+            if (isset($data[$name])) {
+                $preferensi = $preferensi . $service->name . ",";
+            }
+        }
+        $preferensi = substr_replace($preferensi, "", -1);
+         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -102,7 +119,7 @@ class RegisterController extends Controller
                 'semester' => $data['semester'],
                 'jurusan' => $data['jurusan'],
                 'alamat' => $data['alamat'],
-                'prefer' => $data['preferensi'],
+                'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
             $user->detail_id = $details->id;
@@ -111,5 +128,6 @@ class RegisterController extends Controller
                return redirect('/dashboard');
            }
         }
+    
     }
 }

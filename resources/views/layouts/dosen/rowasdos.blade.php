@@ -8,18 +8,33 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-user fa-7x"></i>
-                    <p class="h3 mt-2">{{$asdos->name}}</p>
-                 
-                    <button type="button"  class="btn btn-outline-primary btn-block btn-lg mt-2">Pilih</button>
+                    <i class="fas fa-fw fa-user fa-5x"></i>
+                    <!--<p class="h3 mt-2">{{$asdos->name}}</p>-->
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <tr>
+                                <th>Nama</th>
+                                <td>{{$asdos->name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Rating</th>
+                                <td>Masih sample</td>
+                            </tr>
+                            <tr>
+                                <th>Kampus</th>
+                                <td>{{$asdos->detail->kampus}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Pilih</button>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-    </div>
+</div>
 
-    
+
 
 
 

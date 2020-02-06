@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -33,9 +34,9 @@
                                 <select class="form-control" name="gender" id="gender">
                                     <option>Pria</option>
                                     <option>Wanita</option>
-                                    
+
                                 </select>
-                             
+
                             </div>
                         </div>
 
@@ -116,115 +117,36 @@
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#prefermodal" type="button">Pilih</button>
-                                    </div>
-                                    <input type="text" readonly class="form-control" placeholder="" name="preferensi" aria-label="" required aria-describedby="basic-addon1">
-                                    <div class="modal fade" id="prefermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Pilih Preferensi yang Akan Anda Kerjakan</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body" aria-describedby="checkhelp">
 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="bimbel">
-                                                        <label class="form-check-label" for="bimbel">
-                                                            Asisten Bimbel
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="makul">
-                                                        <label class="form-check-label" for="makul">
-                                                            Asisten Matakuliah
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="praktikum">
-                                                        <label class="form-check-label" for="praktikum">
-                                                            Asisten Praktikum
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="penelitian">
-                                                        <label class="form-check-label" for="penelitian">
-                                                            Asisten Penelitian
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="proyek">
-                                                        <label class="form-check-label" for="proyek">
-                                                            Asisten Proyek
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="pengabdian">
-                                                        <label class="form-check-label" for="pengabdian">
-                                                            Asisten Pengabdian
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="karya">
-                                                        <label class="form-check-label" for="karya">
-                                                            Asisten Karya
-                                                        </label>
-                                                    </div>
+                                    @foreach($services as $service)
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="form-check">
 
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="designer">
-                                                        <label class="form-check-label" for="designer">
-                                                            Asisten Designer
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <small id="checkhelp" class="form-text text-center text-muted">
-                                                    Pilih lebih dari satu.
-                                                </small>
-                                                <div class="modal-footer"> <button type="button" onclick='savePreference();' class="btn btn-primary" data-dismiss="modal">Simpan</button>
-                                                    <script>
-                                                        function savePreference() {
-                                                            var val = "";
-                                                            var isBimbel = true;
-                                                            if ($("#bimbel").is(":checked")) {
-                                                                val = val.concat("bimbel,");
-
-                                                            }
-                                                            if ($("#makul").is(":checked")) {
-                                                                val = val.concat("makul,");
-                                                            }
-                                                            if ($("#praktikum").is(":checked")) {
-                                                                val = val.concat("praktikum,");
-                                                            }
-                                                            if ($("#penelitian").is(":checked")) {
-                                                                val = val.concat("penelitian,");
-                                                            }
-                                                            if ($("#proyek").is(":checked")) {
-                                                                val = val.concat("proyek,");
-                                                            }
-                                                            if ($("#pengabdian").is(":checked")) {
-                                                                val = val.concat("pengabdian,");
-                                                            }
-                                                            if ($("#karya").is(":checked")) {
-                                                                val = val.concat("karya,");
-                                                            }
-                                                            if ($("#designer").is(":checked")) {
-                                                                val = val.concat("designer,");
-                                                            }
-                                                            //show ke textfield
-
-                                                            val = val.slice(0, -1);
-                                                            $('input[name=preferensi]').val(val);
-                                                        }
-                                                    </script>
+                                                    <input class="form-check-input" name="{{$service->id}}check" type="checkbox" value="{{$service->name}}">
+                                                    <label class="form-check-label" for="{{$service->id}}check">
+                                                        {{$service->name}}
+                                                        <small>(
+                                                            Pilih :
+                                                            @foreach($service->activities as $activity)
+                                                            @if (!$loop->last)
+                                                            {{$activity->name}},
+                                                            @else
+                                                            {{$activity->name}}
+                                                            @endif
+                                                            @endforeach
+                                                            )</small>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    @endforeach
+
+
+                                  </div>
                             </div>
                         </div>
                         <div class="form-group row">

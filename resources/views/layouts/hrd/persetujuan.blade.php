@@ -63,7 +63,7 @@
   document.getElementById("judulHalaman").innerHTML = "Persetujuan";
     
   function updateStatus(id){
-    var url = "{{url('/dashboard/indx/hrd/persetujuan/update')}}";
+    var url = "{{url('/dashboard/index/hrd/persetujuan/update')}}";
     url = url.concat("/");
     url = url.concat(id);
     //console.log(url);
