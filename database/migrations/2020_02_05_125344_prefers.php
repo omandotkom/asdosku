@@ -14,12 +14,10 @@ class Prefers extends Migration
     public function up()
     {
         Schema::create('prefers', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('user_id');
-            $table->string('service_id');
             $table->integer('activity_id');
             $table->timestamps();
-            $table->softDeletes();   
+              
         });
     }
 

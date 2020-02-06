@@ -6,28 +6,45 @@
         <div class="card-body">
           <h5 class="card-title">Informasi Layanan</h5>
           <p class="card-text">Pilih satu atau beberapa pekerjaan dibawah dengan mencentang yang kamu inginkan. Hal ini digunakan agar ketika dosen sedang mencari asisten, akunmu ikut ditampilkan.</p>
-
-          <div class="container pl-auto">
-            @foreach($services as $service)
-            <div class="row">
-              <div class="font-weight-bold">
-                {{$service->name}}
+          @if (session('successprefer'))
+            <div class="alert alert-success">
+              {{ session('successprefer') }}
+            </div>
+            @endif
+          <form action="{{route('updatePreferAsdos')}}" method="post">
+            @csrf
+          
+            <div class="container pl-auto">
+              @foreach($services as $service)
+              <div class="row">
+                <div class="font-weight-bold">
+                  {{$service->name}}
+                </div>
               </div>
+              
+              @foreach($service->activities as $activity)
+              <div class="form-check">
+                <label class="form-check-label">
+                  @php
+                  $name = $activity->id."check";
+                
+                  @endphp
+                  <input type="checkbox" @if(in_array($name,$prefer)) checked @endif name="{{$activity->id}}check" class="form-check-input" value="{{$activity->id}}">{{$activity->name}}
+                </label>
+              </div>
+              @endforeach
+              @endforeach
             </div>
-            @foreach($service->activities as $activity)
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" name="{{$service->id}}check" class="form-check-input" value="{{$activity->id}}">{{$activity->name}}
-              </label>
-            </div>
-            @endforeach
-            @endforeach
-          </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-danger btn-sm">Upload</button>
+              </div>
+          
+          </form>
 
 
 
 
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          
         </div>
       </div>
     </div>
@@ -36,22 +53,26 @@
         <div class="card-body">
           <h5 class="card-title">Foto Profile</h5>
           <div class="text-center">
-            <img src="https://picsum.photos/200" class="rounded" alt="...">
+            @if (session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+            @endif
+            <img src="{{$imageurl}}" class="rounded" alt="...">
 
-            <form class="mt-3">
+            <form class="mt-3" id="profilePic" name="profilePic" method="post" action="{{route('uploadProfileAsdos')}}" enctype="multipart/form-data">
+              @csrf
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
+                <input type="file" class="custom-file-input" name="image" id="customFile">
                 <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+              <div class="form-group mt-3">
+                <button class="btn btn-danger btn-sm">Upload</button>
               </div>
             </form>
 
-            <script>
-              // Add the following code if you want the name of the file appear on select
-              $(".custom-file-input").on("change", function() {
-                var fileName = $(this).val().split("\\").pop();
-                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-              });
-            </script>
+
+            <!--<button type="button" class="btn mt-3 btn-success btn-sm btn-block">Unggah Foto</button> -->
           </div>
         </div>
       </div>

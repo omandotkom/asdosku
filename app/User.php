@@ -38,6 +38,9 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     public function detail(){
         return $this->hasOne('App\Detail', 'id', 'detail_id');
-        
+
+    }
+    public function archive(){
+        return $this->hasOne('App\Archive');
     }
 }

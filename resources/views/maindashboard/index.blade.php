@@ -30,7 +30,10 @@
     @include('layouts.dosen.dashboardsidebar')
     @elseif (Auth::user()->role == "hrd")
     @include('layouts.hrd.dashboardsidebar')
+    @elseif (Auth::user()->role = "asdos")
+    @include('layouts.asdos.dashboardsidebar')
     @endif
+    
     <!--Sidebar ada di sini -->
 
     <!-- End of Sidebar -->
