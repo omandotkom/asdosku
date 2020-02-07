@@ -62,7 +62,8 @@
 
                     <i class="fas fa-fw fa-university fa-7x"></i>
                     <p class="h3 mt-2">Asisten Penelitian</p>
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
+                    @include('layouts.dosen.dashboardmodal.penelitianModal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#penelitianModal">Cari</button>
                 </div>
             </div>
         </div>
@@ -82,8 +83,9 @@
 
                     <i class="fas fa-fw fa-people-carry fa-7x"></i>
                     <p class="h3 mt-2">Asisten Proyek</p>
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
-                </div>
+                    @include('layouts.dosen.dashboardmodal.proyekModal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#proyekModal">Cari</button>
+                 </div>
             </div>
         </div>
     </div>
@@ -98,7 +100,9 @@
 
                     <i class="fas fa-fw fa-person-booth fa-7x"></i>
                     <p class="h3 mt-2">Asisten Pengabdian</p>
-                    <button type="button" class="btn btn-outline-primary btn-lg btn-block mt-2">Cari</button>
+                    @include('layouts.dosen.dashboardmodal.pengabdianModal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#pengabdianModal">Cari</button>
+                
                 </div>
             </div>
         </div>
@@ -114,7 +118,8 @@
 
                     <i class="fas fa-fw fa-pencil-ruler fa-7x"></i>
                     <p class="h3 mt-2">Asisten Karya</p>
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
+                    @include('layouts.dosen.dashboardmodal.karyaModal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#karyaModal">Cari</button>
                 </div>
             </div>
         </div>
@@ -131,7 +136,8 @@
 
                     <i class="fas fa-fw fa-ruler fa-7x"></i>
                     <p class="h3 mt-2">Asisten Designer</p>
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
+                    @include('layouts.dosen.dashboardmodal.desainerModal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#desainerModal">Cari</button>
                 </div>
             </div>
         </div>

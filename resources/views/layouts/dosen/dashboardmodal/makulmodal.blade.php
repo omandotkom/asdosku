@@ -13,11 +13,14 @@
                     
                     <div class="form-group">
                         <label for="mapel" class="col-form-label float-left">Matakuliah</label>
-                        <select required class="custom-select custom-select-sm">
-                            <option selected value="Matematika">Matematika</option>
-                            <option value="Bahasa Inggris">Bahasa Inggris</option>
-                            <option value="Bahasa Arab">Bahasa Arab</option>
-                            <option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
+                        
+                        <select required class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
+                            @if($p->first)
+                            <option selected value="{{$p->id}}">{{$p->name}}</option>
+                            @else
+                            <option value="{{$p->id}}">{{$p->name}}</option>
+                            @endif    
+                        @endforeach
                         </select>
                     </div>
                     <div class="form-group">

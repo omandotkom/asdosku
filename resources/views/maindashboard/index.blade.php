@@ -63,8 +63,8 @@
           @switch($content ?? '')
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
-          @break;
-          @default:
+          @break
+          @default
           @include('layouts.dosen.row')
           @endswitch
           @elseif (Auth::user()->role == "hrd")
@@ -113,7 +113,7 @@
   </a>
 
   <!-- Logout Modal-->
-  @include('layouts.dashboardlogoutmodal');
+  @include('layouts.dashboardlogoutmodal')
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('sbadmin/vendor/jquery/jquery.min.js') }}"></script>
