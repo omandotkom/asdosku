@@ -78,7 +78,7 @@ class RegisterController extends Controller
         ]);
             $details = Detail::create([
                 'user_id' => $user->id,
-                'kampus' => $data['kampus'],
+                'kampus_dosen' => $data['kampus'],
                 'wa' => $data['wa'],
                 'nik' => $data['nik'],
             ]);
@@ -97,6 +97,7 @@ class RegisterController extends Controller
     }
     protected function registerasdos(Request $data)
     {
+        
         $services = Service::all();
         $preferensi = "";
         foreach ($services as $service) {
@@ -116,7 +117,7 @@ class RegisterController extends Controller
         if ($user->exists) {
             $details = Detail::create([
                 'user_id' => $user->id,
-                'kampus' => $data['kampus'],
+                'kampus_id' => $data->kampus,
                 'wa' => $data['wa'],
                 'semester' => $data['semester'],
                 'jurusan' => $data['jurusan'],
@@ -124,7 +125,7 @@ class RegisterController extends Controller
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
-            
+        
            if ($details->exists){
                return redirect('/dashboard');
            }

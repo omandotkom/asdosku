@@ -68,9 +68,9 @@ class AsdosController extends Controller
     }
     public function viewFilteredAsdos(Request $request, $type)
     {
-        
+
         switch ($type) {
-        
+
             case "bimbinganbelajar":
                 $gender = strtolower($request->bimbelgender);
                 if ($gender == "bebas") {
@@ -78,20 +78,53 @@ class AsdosController extends Controller
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
                         ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')->simplePaginate();
-                   
                 } else {
                     $asdosList = DB::table('prefers')->select("users.id", "users.name", "details.kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
                         ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')
                         ->where('details.gender', $request->bimbelgender)->simplePaginate();
-                   
                 }
                 break;
+            case "matakuliah":
+                //return $request;
+                $strSemester = "";
+                $strKampus = "";
+                if ($request->semester != "Bebas") {
                 
-            }
-            return view('maindashboard.index', ['asdoslist' => $asdosList,'title' =>'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+                    $strSemester ="details.semester=" .$request->semester;
+                } else {
+                    //bebas
+                    $strSemester = "details.semester != 0";
+                }
+                if ($request->kampus != "Bebas") {
+                    $strKampus = "details.kampus_id=" .$request->kampus;
+                } else {
+                    //bebas
+                    $strKampus = "details.kampus_id != 0";
+                }
+                $gender = strtolower($request->gender);
+                if ($gender == "bebas") {
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name","kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                        ->join('details', 'prefers.user_id', 'details.user_id')
+                        ->join('kampus','details.kampus_id','kampus.id')
+                        ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->where('prefers.activity_id', $request->matakuliahactivity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
+                    ->simplePaginate();
+                 } else {
 
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                        ->join('details', 'prefers.user_id', 'details.user_id')
+                        ->join('kampus','details.kampus_id','kampus.id')
+                        ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->where('prefers.activity_id', $request->matakuliahactivity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
+                        ->where('details.gender', $request->gender)->simplePaginate();
+                //return $request;
+                        
+                    }
+                break;
+        }
+        return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
     public function viewAsdosBimbel(Request $request)
     {

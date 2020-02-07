@@ -49,7 +49,7 @@
                                         @if($campus->first)
                                             <option selected value="{{$campus->id}}">{{$campus->name}}</option>
                                         @else
-                                        <option selected value="{{$campus->id}}">{{$campus->name}}</option>
+                                        <option value="{{$campus->id}}">{{$campus->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>

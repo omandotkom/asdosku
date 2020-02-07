@@ -9,12 +9,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/profile">
-                    
+                <form method="POST" name="makulform" action="{{route('filteredAsdos','matakuliah')}}">
+                    @csrf
                     <div class="form-group">
                         <label for="mapel" class="col-form-label float-left">Matakuliah</label>
                         
-                        <select required class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
+                        <select required name="matakuliahactivity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
                             @if($p->first)
                             <option selected value="{{$p->id}}">{{$p->name}}</option>
                             @else
@@ -49,8 +49,8 @@
                             </select>
                     </div>
                     <div class="form-group">
-                        <label for="gender" class="col-form-label float-left">Gender</label>
-                        <select required class="custom-select custom-select-sm">
+                        <label for="gender"  class="col-form-label float-left">Gender</label>
+                        <select required name="gender" class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
                             <option value="Pria">Pria</option>
                             <option value="Wanita">Wanita</option>
@@ -61,7 +61,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="document.makulform.submit();" class="btn btn-primary">Lanjutkan</button>
             </div>
         </div>
     </div>
