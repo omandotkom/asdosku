@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\User;
 class UsersPengurusSeeder extends Seeder
 {
     /**
@@ -11,7 +11,7 @@ class UsersPengurusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+       $user =  User::create([
             'name' => Str::random(10),
             'email' => Str::random(2).'@gmail.com',
             'password' => bcrypt('system3298'),
@@ -19,6 +19,7 @@ class UsersPengurusSeeder extends Seeder
             'status' => 'aktif',
         ]);
         DB::table('Details')->insert([
+            'user_id' => $user->id,
             'wa' => Str::random(10),
         ]);
     }

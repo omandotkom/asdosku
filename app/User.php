@@ -37,8 +37,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
     public function detail(){
-        return $this->hasOne('App\Detail', 'id', 'detail_id');
-
+      //  return $this->hasOne('App\Detail', 'id', 'detail_id');
+        return $this->hasOne('App\Detail');
     }
     public function archive(){
         return $this->hasOne('App\Archive');

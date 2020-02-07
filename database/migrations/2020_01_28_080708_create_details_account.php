@@ -15,6 +15,7 @@ class CreateDetailsAccount extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('nik')->nullable();
             $table->string('kampus')->nullable();
             $table->string('wa')->nullable();

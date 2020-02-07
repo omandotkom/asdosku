@@ -75,18 +75,17 @@ class RegisterController extends Controller
             'status' => 'aktif',
             'role' => 'dosen',
         ]);
-        if ($user->exists) {
             $details = Detail::create([
+                'user_id' => $user->id,
                 'kampus' => $data['kampus'],
                 'wa' => $data['wa'],
                 'nik' => $data['nik'],
             ]);
-            $user->detail_id = $details->id;
-            $user =  $user->save();
+            
             if ($details->exists) {
                 return redirect('/dashboard');
             }
-        }
+        
     }
     protected function registerasdosShow()
     {
@@ -114,6 +113,7 @@ class RegisterController extends Controller
         ]);
         if ($user->exists) {
             $details = Detail::create([
+                'user_id' => $user->id,
                 'kampus' => $data['kampus'],
                 'wa' => $data['wa'],
                 'semester' => $data['semester'],
@@ -122,8 +122,7 @@ class RegisterController extends Controller
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
-            $user->detail_id = $details->id;
-            $user =  $user->save();
+            
            if ($details->exists){
                return redirect('/dashboard');
            }
