@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Campus;
 use App\Detail;
 use App\Http\Controllers\Controller;
 use App\Service;
@@ -90,8 +91,9 @@ class RegisterController extends Controller
     protected function registerasdosShow()
     {
         $services = Service::with('activities')->get();
+        $campuses = Campus::all();
         //return $services;
-        return view('backupmain.register2', ['services' => $services]);
+        return view('backupmain.register2', ['services' => $services,'campuses'=>$campuses]);
     }
     protected function registerasdos(Request $data)
     {

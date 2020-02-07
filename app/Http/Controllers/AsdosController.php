@@ -12,60 +12,86 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+
 class AsdosController extends Controller
 {
     public function profileAsdos()
     {
         //nanti tambahin logicnya
         $services = Service::all();
-        $archive = Archive::where('user_id',Auth::user()->id)->orderBy('updated_at','desc')->first();
-        
+        $archive = Archive::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->first();
+
         $image_url = "";
-        if (!$archive == null){
+        if (!$archive == null) {
             $image_url = asset('storage/images/245');
             $image_url = $image_url . "/" . $archive->image_name;
-                
-        }else{
+        } else {
             //get random pic over the internet
             $image_url = "https://picsum.photos/200";
         }
-        $prefer1 = DB::table('prefers')->selectRaw('concat(activity_id,"check") as arr')->where('user_id',Auth::user()->id)->get();        
+        $prefer1 = DB::table('prefers')->selectRaw('concat(activity_id,"check") as arr')->where('user_id', Auth::user()->id)->get();
         $preferArr = array();
-        foreach($prefer1 as $pre){
-            array_push($preferArr,$pre->arr);
+        foreach ($prefer1 as $pre) {
+            array_push($preferArr, $pre->arr);
         }
-        return view('maindashboard.index', ['content' => 'profile', 'prefer' => $preferArr,'imageurl' =>$image_url, 'archive'=> $archive, 'services' => $services, 'title' => 'Daftar Ulang Lengkapi Profile']);
+        return view('maindashboard.index', ['content' => 'profile', 'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Daftar Ulang Lengkapi Profile']);
     }
-    
-    public function updatePreferAsdos(Request $request){
-        
+
+    public function updatePreferAsdos(Request $request)
+    {
+
         $services = Service::all();
-        $archive = Archive::where('user_id',Auth::user()->id)->orderBy('updated_at','desc')->first();
-        
+        $archive = Archive::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->first();
+
         $image_url = "";
-        if (!$archive == null){
+        if (!$archive == null) {
             $image_url = asset('storage/images/245');
             $image_url = $image_url . "/" . $archive->image_name;
-                
-        }else{
+        } else {
             //get random pic over the internet
             $image_url = "https://picsum.photos/200";
         }
         //hapus dulu semua data yang berkaitan dengan prefer akun ini
-        $willbedeleted = Prefer::where('user_id',Auth::user()->id)->delete();
+        $willbedeleted = Prefer::where('user_id', Auth::user()->id)->delete();
         $activities = Activity::all();
         $prefer = new Prefer;
-        foreach($activities as $activity){
-            $varName = $activity->id."check";
-            
-            if (isset($request->$varName)){
-                Prefer::create(['user_id' => Auth::user()->id,'activity_id' => $activity->id]);
+        foreach ($activities as $activity) {
+            $varName = $activity->id . "check";
 
+            if (isset($request->$varName)) {
+                Prefer::create(['user_id' => Auth::user()->id, 'activity_id' => $activity->id]);
             }
         }
-      //return $prefer;
+        //return $prefer;
         // return view('maindashboard.index', ['content' => 'profile', 'imageurl' =>$image_url, 'archive'=> $archive, 'services' => $services, 'title' => 'Daftar Ulang Lengkapi Profile']);
-    return redirect()->route('profileAsdos')->with('successprefer','Berhasil memperbarui preferensi.');
+        return redirect()->route('profileAsdos')->with('successprefer', 'Berhasil memperbarui preferensi.');
+    }
+    public function viewFilteredAsdos(Request $request, $type)
+    {
+        
+        switch ($type) {
+        
+            case "bimbinganbelajar":
+                $gender = strtolower($request->bimbelgender);
+                if ($gender == "bebas") {
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "details.kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                        ->join('details', 'prefers.user_id', 'details.user_id')
+                        ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')->simplePaginate();
+                   
+                } else {
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "details.kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                        ->join('details', 'prefers.user_id', 'details.user_id')
+                        ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')
+                        ->where('details.gender', $request->bimbelgender)->simplePaginate();
+                   
+                }
+                break;
+                
+            }
+            return view('maindashboard.index', ['asdoslist' => $asdosList,'title' =>'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+
     }
     public function viewAsdosBimbel(Request $request)
     {
@@ -95,5 +121,4 @@ class AsdosController extends Controller
 
         return view('maindashboard.index', ['asdoslist' => $asdos, 'content' => 'viewAsdoswithFilter']);
     }
-    
 }

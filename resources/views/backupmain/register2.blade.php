@@ -44,13 +44,15 @@
                             <label for="kampus" class="col-md-4 col-form-label text-md-right">{{ __('Asal Kampus') }}</label>
 
                             <div class="col-md-6">
-                                <input id="kampus" class="form-control @error('kampus') is-invalid @enderror" name="kampus" required>
-
-                                @error('kampus')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <select class="form-control" name="kampus" id="kampus">
+                                    @foreach($campuses as $campus)
+                                        @if($campus->first)
+                                            <option selected value="{{$campus->id}}">{{$campus->name}}</option>
+                                        @else
+                                        <option selected value="{{$campus->id}}">{{$campus->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

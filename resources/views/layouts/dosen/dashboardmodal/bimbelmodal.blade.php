@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="bimbelForm" action="{{route('viewAsdosBimbel')}}" name="bimbelForm">
+                <form method="POST" id="bimbelForm" action="{{route('filteredAsdos','bimbinganbelajar')}}" name="bimbelForm">
                     @csrf
                     <div class="form-group">
 

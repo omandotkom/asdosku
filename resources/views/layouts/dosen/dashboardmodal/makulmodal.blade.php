@@ -35,18 +35,10 @@
                         <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
                         <select name="kampus" required class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
-                            <option id='(UNSOED) Universitas Jendral Soederiman'>(UNSOED) Universitas Jendral Soederiman</option>
-                            <option id='(Poltekes) Poli Teknik Kesehatan Negri Semarang Kampus Purwokerto'>(Poltekes) Poli Teknik Kesehatan Negri Semarang Kampus Purwokerto</option>
-                            <option id='(IAIN) Institut Agama Islam Negri Purwokerto'>(IAIN) Institut Agama Islam Negri Purwokerto</option>
-                            <option id='(ITTP) Institut Teknologi Telkom Purwokerto'>(ITTP) Institut Teknologi Telkom Purwokerto</option>
-                            <option id='(UMP) Universitas Muhammadiyah Purwokerto'>(UMP) Universitas Muhammadiyah Purwokerto</option>
-                            <option id='(UNWIKU) Universitas Wijaya Kusuma Purwokerto'>(UNWIKU) Universitas Wijaya Kusuma Purwokerto</option>
-                            <option id='(SWU) Sekolah Tinggi Manajemen Informatika dan Komputer Widya Utama Purwokerto'>(SWU) Sekolah Tinggi Manajemen Informatika dan Komputer Widya Utama Purwokerto</option>
-                            <option id='Akademi Manajemen Informatika dan Komputer BSI Purwokerto'>Akademi Manajemen Informatika dan Komputer BSI Purwokerto</option>
-                            <option id='Sekolah Tinggi Teknik Wiworotomo Purwokerto'>Sekolah Tinggi Teknik Wiworotomo Purwokerto</option>
-                            <option id='Akademi Kebidanan YLPP Purwokerto'>Akademi Kebidanan YLPP Purwokerto</option>
-                            <option id='Sekolah Tinggi Manajemen Informatika dan Komputer Amikom Purwokerto'>Sekolah Tinggi Manajemen Informatika dan Komputer Amikom Purwokerto</option>
-                        </select>
+                            @foreach($campuses as $campus)
+                                <option value="{{$campus->id}}">{{$campus->name}}</option>
+                            @endforeach
+                         </select>
                     </div>
                     <div class="form-group">
                         <label for="jurusan" class="col-form-label float-left">Jurusan</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\User;
+use App\Campus;
 use Illuminate\Http\Request;
 
 class DashboardIndexController extends Controller
@@ -25,6 +26,7 @@ class DashboardIndexController extends Controller
         $pengabdianActivity = Activity::select('id','name')->where('service_id','aspengabdian')->get();
         $karyaActivity = Activity::select('id','name')->where('service_id','askarya')->get();
         $desainerActivity = Activity::select('id','name')->where('service_id','asdesainer')->get();
-        return view('maindashboard.index', ['title' => 'Layanan','matakuliahactivity' => $matakuliahActivity,'karyaactivity' => $karyaActivity,'desaineractivity' => $desainerActivity,'pengabdianactivity' => $pengabdianActivity,'proyekactivity'=>$proyekActivity,'bimbelactivity' => $bimbelActivity,'penelitianactivity' => $penelitianActivity]);
+        $campuses = Campus::all();
+        return view('maindashboard.index', ['campuses' => $campuses,'title' => 'Layanan','matakuliahactivity' => $matakuliahActivity,'karyaactivity' => $karyaActivity,'desaineractivity' => $desainerActivity,'pengabdianactivity' => $pengabdianActivity,'proyekactivity'=>$proyekActivity,'bimbelactivity' => $bimbelActivity,'penelitianactivity' => $penelitianActivity]);
     }
 }

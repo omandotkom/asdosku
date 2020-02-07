@@ -22,7 +22,11 @@
                             </tr>
                             <tr>
                                 <th>Kampus</th>
-                                <td>{{$asdos->detail->kampus}}</td>
+                                <td>{{$asdos->kampus}}</td>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td>{{$asdos->gender}}</td>
                             </tr>
                         </table>
                     </div>

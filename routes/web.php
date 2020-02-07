@@ -21,6 +21,8 @@ Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('verified'
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('verified', 'checkactive')->name('indexdosen');
 Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel');
+Route::post('/dashboard/index/view/asdos/{type}','AsdosController@viewFilteredAsdos')->name('filteredAsdos');
+
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan');
 Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow');
