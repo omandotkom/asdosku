@@ -1,3 +1,79 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function userDetil(url){
+        
+// Make a request for a user with a given ID
+axios.get(url)
+  .then(function (response) {
+    // handle success
+document.getElementById("detilNama").innerHTML = response.data.name;
+document.getElementById("detilKampus").innerHTML = response.data.kampus;
+document.getElementById("detilJurusan").innerHTML = response.data.jurusan;
+document.getElementById("detilSemester").innerHTML = response.data.semester;
+document.getElementById("detilGender").innerHTML = response.data.gender;
+document.getElementById("detilCreated").innerHTML = response.data.created_at;
+document.getElementById("detilFoto").src = response.data.image_name;    
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+    }
+</script>
+<div class="modal fade" id="detilDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Rincian Informasi Lengkap</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <img id="detilFoto" src="" class="shadow p-3 mb-5 bg-white rounded rounded img-thumbnail mx-auto d-block" alt="Foto Asdos">
+      <div class="table-responsive-sm mt-1">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Nama</th>
+                                <td id="detilNama"></td>
+                            </tr>
+                            <tr>
+                                <th>Rating</th>
+                                <td id="detilRating">Masih sample</td>
+                            </tr>
+                            <tr>
+                                <th>Kampus</th>
+                                <td id="detilKampus"></td>
+                            </tr>
+                            <tr>
+                                <th>Jurusan</th>
+                                <td id="detilJurusan"></td>
+                            </tr>
+                            <tr>
+                                <th>Semester</th>
+                                <td id="detilSemester"></td>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td id="detilGender"></td>
+                            </tr>
+                            <tr>
+                                <th>Bergabung Sejak</th>
+                                <td id="detilCreated"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 <div class="row">
     @foreach($asdoslist as $asdos)
     <div class="col-xl-3 col-lg-5">
@@ -30,7 +106,16 @@
                             </tr>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2">Pilih</button>
+                    <script>
+                        function generateURL(){
+                            var url= "{{url('api/profile/user')}}";
+                            url = url.concat("/{{$asdos->id}}");
+                            return url;
+                        }
+                    </script>
+                    <button type="button" onclick="userDetil(generateURL());" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Rincian</button>
+               
+                    <button type="button" onclick="userDetil(generateURL());" class="btn btn-outline-primary btn-block btn-sm mt-2">Pilih</button>
                 </div>
             </div>
         </div>

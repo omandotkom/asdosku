@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Archive;
 use App\Service;
 use App\Activity;
+use App\Campus;
 use App\Prefer;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -135,5 +136,22 @@ class AsdosController extends Controller
                 break;
         }
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+    }
+    public function profile($id){
+        $user = DB::table('users')->select('users.name','details.*','archives.image_name','kampus.name as kampus')
+        ->join('details','users.id','details.user_id')
+        ->join('kampus','details.kampus_id','kampus.id')
+        ->join('archives','users.id','archives.user_id')
+        ->first();
+        if (isset($user->image_name)){
+            $image_url = asset('storage/images/245');
+            $image_url = $image_url . "/" . $user->image_name;
+            $user->image_name = $image_url;
+        }else{
+            $image_url = "https://picsum.photos/200";
+            $user->setAttribute('image_name',$image_url);
+        }
+        
+        return response()->json($user);
     }
 }
