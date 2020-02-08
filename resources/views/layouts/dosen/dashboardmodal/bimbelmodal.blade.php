@@ -14,7 +14,7 @@
                     <div class="form-group">
 
                         <label for="bimbelactivity" class="col-form-label float-left">Jenis Kegiatan</label>
-                        <select name="bimbelactivity" id="bimbelactivity" required class="custom-select custom-select-sm">
+                        <select name="activity" id="bimbelactivity" required class="custom-select custom-select-sm">
                         @foreach($bimbelactivity as $b)
                             @if($b->first)
                             <option selected value="{{$b->id}}">{{$b->name}}</option>

@@ -79,13 +79,13 @@ class AsdosController extends Controller
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
-                        ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')->simplePaginate();
+                        ->where('prefers.activity_id', $request->activity)->where('users.status', 'aktif')->simplePaginate();
                 } else {
                     $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
-                        ->where('prefers.activity_id', $request->bimbelactivity)->where('users.status', 'aktif')
+                        ->where('prefers.activity_id', $request->activity)->where('users.status', 'aktif')
                         ->where('details.gender', $request->bimbelgender)->simplePaginate();
                 }
                 break;
@@ -112,7 +112,7 @@ class AsdosController extends Controller
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
-                        ->where('prefers.activity_id', $request->matakuliahactivity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
+                        ->where('prefers.activity_id', $request->activity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
                         ->simplePaginate();
                 } else {
 
@@ -120,7 +120,7 @@ class AsdosController extends Controller
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
-                        ->where('prefers.activity_id', $request->matakuliahactivity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
+                        ->where('prefers.activity_id', $request->activity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
                         ->where('details.gender', $request->gender)->simplePaginate();
                     //return $request;
 
@@ -135,13 +135,14 @@ class AsdosController extends Controller
                     ->simplePaginate();
                 break;
         }
-        return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+        return view('maindashboard.index', ['asdoslist' => $asdosList,'activity' =>$request->activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
     public function profile($id){
         $user = DB::table('users')->select('users.name','details.*','archives.image_name','kampus.name as kampus')
         ->join('details','users.id','details.user_id')
         ->join('kampus','details.kampus_id','kampus.id')
         ->join('archives','users.id','archives.user_id')
+        ->where('users.id',$id)
         ->first();
         if (isset($user->image_name)){
             $image_url = asset('storage/images/245');

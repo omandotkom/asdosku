@@ -58,11 +58,14 @@
 
           <!-- Content Row -->
           
-
+          
           @if (Auth::user()->role == "dosen")
           @switch($content ?? '')
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
+          @break
+          @case('order')
+          @include('layouts.dosen.transaction.order')
           @break
           @default
           @include('layouts.dosen.row')

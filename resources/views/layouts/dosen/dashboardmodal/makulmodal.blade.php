@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="mapel" class="col-form-label float-left">Matakuliah</label>
                         
-                        <select required name="matakuliahactivity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
+                        <select required name="activity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
                             @if($p->first)
                             <option selected value="{{$p->id}}">{{$p->name}}</option>
                             @else
