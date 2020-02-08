@@ -9,12 +9,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="desainerForm" action="{{route('viewAsdosBimbel')}}" name="desainerForm">
+                <form method="POST" id="desainerForm" action="{{route('filteredAsdos','desainer')}}" name="desainerForm">
                     @csrf
                     <div class="form-group">
 
                         <label for="desaineractivity" class="col-form-label float-left">Jenis Kegiatan</label>
-                        <select name="desaineractivity" id="desaineractivity" required class="custom-select custom-select-sm">
+                        <select name="activity" id="desaineractivity" required class="custom-select custom-select-sm">
                         @foreach($desaineractivity as $p)
                             @if($p->first)
                             <option selected value="{{$p->id}}">{{$p->name}}</option>
@@ -29,7 +29,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.bimbelForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="document.desainerForm.submit();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>
