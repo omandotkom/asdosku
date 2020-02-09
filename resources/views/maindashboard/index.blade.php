@@ -67,6 +67,9 @@
           @case('order')
           @include('layouts.dosen.transaction.order')
           @break
+          @case('orderlist')
+          @include('layouts.dosen.transaction.orderlist')
+          @break
           @default
           @include('layouts.dosen.row')
           @endswitch

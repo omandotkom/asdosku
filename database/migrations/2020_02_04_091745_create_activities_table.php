@@ -19,6 +19,7 @@ class CreateActivitiesTable extends Migration
             $table->string('name');
             $table->string('satuan');
             $table->integer('harga');
+           
             $table->text('keterangan');
             $table->decimal('asdosku',5,2);
             $table->decimal('asdos',5,2);

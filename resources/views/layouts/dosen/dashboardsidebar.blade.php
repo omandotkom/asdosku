@@ -12,12 +12,16 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('indexdosen')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Layanan</span></a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showUserOrder')}}">
+            <i class="fas fa-fw fa-ruler"></i>
+            <span>Pemesanan</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 

@@ -21,6 +21,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Les Privat SD',
             'satuan' => 'Orang',
             'harga' => 170000,
+            
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
             'asdosku' => 0.2, // artinya 20%
             'asdos' => 0.8 //artinya 80%
@@ -30,6 +31,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Les Privat SMP',
             'satuan' => 'Orang',
             'harga' => 240000,
+            
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
             'asdosku' => 0.2,
             'asdos' => 0.8
@@ -40,6 +42,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Les Privat SMA',
             'satuan' => 'Orang',
             'harga' => 310000,
+           
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
             'asdosku' => 0.2,
             'asdos' => 0.8
@@ -49,6 +52,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Les Privat Mahasiswa dan Umum',
             'satuan' => 'Orang',
             'harga' => 410000,
+            
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
             'asdosku' => 0.2,
             'asdos' => 0.8
@@ -59,6 +63,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Les Privat TK',
             'satuan' => 'Orang',
             'harga' => 170000,
+            
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
             'asdosku' => 0.2,
             'asdos' => 0.8
@@ -67,6 +72,7 @@ class ActivitiesTableSeeder extends Seeder
         	'service_id' => 'asbimbinganbelajar',
             'name' => 'Les Grup SD',
             'satuan' => 'Orang',
+           
             'harga' => 310000,
             'keterangan' => 'Maksimal 10 orang',
             'asdosku' => 0.2,
@@ -76,6 +82,7 @@ class ActivitiesTableSeeder extends Seeder
         	'service_id' => 'asbimbinganbelajar',
             'name' => 'Les Grup SMP',
             'satuan' => 'Orang',
+            
             'harga' => 410000,
             'keterangan' => 'Maksimal 10 orang',
             'asdosku' => 0.2,
@@ -97,6 +104,7 @@ class ActivitiesTableSeeder extends Seeder
             'name' => 'Pengawas Ujian',
             'satuan' => 'Orang',
             'harga' => 200000,
+            
             'keterangan' => 'Masa tugas 2 minggu di hari kerja',
             'asdosku' => 0.2,
             'asdos' => 0.8

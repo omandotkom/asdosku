@@ -64,17 +64,14 @@ class UploadProfileImageController extends Controller
         }
 
         //SIMPAN DATA IMAGE YANG TELAH DI-UPLOAD
-        $result = Archive::create([
-            'user_id' => Auth::user()->id,
-            'image_name' => $fileName,
-            //'dimensions' => implode('|', $this->dimensions),
-            'image_path' => $this->path
-        ]);
-        //return $result;
+        $result = Archive::where('user_id',Auth::user()->id)
+        ->update(['image_name' => $fileName,
+        'image_path' => $this->path,]);
+        $archive = Archive::where('user_id',Auth::user()->id)->first();
+
         $image_url = asset('storage/images/245');
-        $image_url = $image_url . "/" . $result->image_name;
+        $image_url = $image_url . "/" . $archive->image_name;
         //return $image_url;
-        //return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url]);
-        return redirect()->route('profileAsdos')->with('success','Foto profile berhasil diperbarui.');
+        return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url]);
     }
 }
