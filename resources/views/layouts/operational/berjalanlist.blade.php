@@ -51,7 +51,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-        <button type="button" onclick="update();" data-dismiss="modal" class="btn btn-success">Setujui Pesanan</button>
+        <button type="button" onclick="update();" data-dismiss="modal" class="btn btn-success">Tambah Biaya</button>
       </div>
     </div>
   </div>

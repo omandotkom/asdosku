@@ -182,9 +182,13 @@
                                 <th>Kode Transaksi</th>
                                 <td>{{$transaction->id}}</td>
                             </tr>
+                            @if($transaction->status == "Berjalan")
+                            <tr class="table-success">
+                            @else
                             <tr class="table-warning">
-                                <th>Status</th>
-                                <td>{{$transaction->status}}</td>
+                            @endif
+                            <th>Status</th>
+                            <td>{{$transaction->status}}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Pemesanan</th>

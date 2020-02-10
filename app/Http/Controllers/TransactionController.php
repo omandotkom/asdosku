@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
+    public function updatestatus($id,$status){
+        $transaction = Transaction::find($id);
+        $transaction->status = $status;
+        $transaction->save();
+        return $transaction;
+    }
     public function detil($id)
     {
         $transaction = DB::table('transactions')->select(
@@ -70,6 +76,20 @@ class TransactionController extends Controller
         }
         return redirect()->route('showUserOrder');
     }
+    public function currenttransaction(){
+        $transaction = Transaction::where('transactions.status','Berjalan')
+        ->select('transactions.*'
+        ,'users.name as dosen',
+        'details.wa as wa'
+        ,'activities.name as kegiatan')
+        ->join('users','transactions.dosen','users.id')
+        ->join('activities','transactions.activity_id','activities.id')
+        ->join('details','users.id','details.user_id')
+        ->orderBy('transactions.updated_at')->simplePaginate(10);
+   //return $transaction;
+         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Pesanan yang Berjalan','content'=>'berjalanlist']);
+   
+    }
     public function pendingtransaction(){
         
         $transaction = Transaction::where('transactions.status','Mencari Asdos')
@@ -82,7 +102,7 @@ class TransactionController extends Controller
         ->join('details','users.id','details.user_id')
         ->orderBy('transactions.updated_at')->simplePaginate(10);
    //return $transaction;
-         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Pesanan Asdos','content'=>'pesananasdoslist']);
+         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Pesanan Asdos Menunggu Persetujuan','content'=>'pesananasdoslist']);
    
     }
     public function show($activity, $asdos)

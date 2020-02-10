@@ -62,6 +62,9 @@
           @case('pesananasdoslist')
           @include('layouts.operational.pendinglist')
           @break
+          @case('berjalanlist')
+          @include('layouts.operational.berjalanlist')
+          @break
           @default
           @include('layouts.operational.row')
           @break
