@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\User;
 use App\Campus;
+use Illuminate\Support\Facades\Log;
+use App\Transaction;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DashboardIndexController extends Controller
 {
     public function indexhrd()
@@ -14,8 +16,12 @@ class DashboardIndexController extends Controller
         $belum_aktif = User::where('status', 'belum_aktif')->count();
         return view('maindashboard.index', ['belum_aktif' => $belum_aktif,'title' => "Dashboard"]);
     }
-    public function indexasdos()
-    {
+    
+    public function indexoperational(){
+        //return Auth::user();
+        $pending = Transaction::where('status','Mencari Asdos')->count();
+        return view('maindashboard.index', ['pending'=>$pending,'title' => "Dashboard"]);
+        
     }
     public function indexDosen()
     {

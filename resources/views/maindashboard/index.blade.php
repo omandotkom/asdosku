@@ -28,9 +28,11 @@
     <!-- Sidebar -->
     @if (Auth::user()->role == "dosen")
     @include('layouts.dosen.dashboardsidebar')
+    @elseif (Auth::user()->role == "operational")
+    @include('layouts.operational.dashboardsidebar')
     @elseif (Auth::user()->role == "hrd")
     @include('layouts.hrd.dashboardsidebar')
-    @elseif (Auth::user()->role = "asdos")
+    @elseif (Auth::user()->role == "asdos")
     @include('layouts.asdos.dashboardsidebar')
     @endif
     
@@ -55,11 +57,16 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 id="judulHalaman" class="h3 mb-0 text-gray-800">{{$title}}</h1>
           </div>
-
-          <!-- Content Row -->
-          
-          
-          @if (Auth::user()->role == "dosen")
+          @if(Auth::user()->role == "operational")
+          @switch ($content ?? '')
+          @case('pesananasdoslist')
+          @include('layouts.operational.pendinglist')
+          @break
+          @default
+          @include('layouts.operational.row')
+          @break
+          @endswitch
+          @elseif (Auth::user()->role == "dosen")
           @switch($content ?? '')
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
@@ -86,12 +93,12 @@
           @case('profile')
           @include('layouts.asdos.profile2')
           @break
-          @default
-          @include('layouts.asdos.row')
           @endswitch
           @endif
-
-        </div>
+        
+          <!-- Content Row -->
+          
+          </div>
       </div>
 
     </div>

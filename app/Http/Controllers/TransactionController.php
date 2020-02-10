@@ -10,23 +10,33 @@ use Illuminate\Support\Facades\Log;
 use App\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class TransactionController extends Controller
 {
-    public function detil($id){
-        $transaction = DB::table('transactions')->select('transactions.*','users.name'
-        ,'archives.image_name','kampus.name as kampus',
-        'activities.name as kegiatan',
-        'activities.keterangan as keterangankegiatan',
-        'activities.harga')
-        ->join('users','transactions.asdos','users.id')
-        ->join('details','transactions.asdos','details.user_id')
-        ->join('kampus','details.kampus_id','kampus.id')
-        ->join('activities','transactions.activity_id','activities.id')
-        ->join('archives','transactions.asdos','archives.user_id')
-        ->first();
-            if (isset($transaction->image_name)){
-                $transaction->image_name = asset('storage/images/245/' . $transaction->image_name);
-            }
+    public function detil($id)
+    {
+        $transaction = DB::table('transactions')->select(
+            'transactions.*',
+            'users.name',
+            'details.wa as waasdos',
+            'users.email as emailasdos',
+            'archives.image_name',
+            'kampus.name as kampus',
+            'activities.name as kegiatan',
+            'activities.keterangan as keterangankegiatan',
+            'activities.harga'
+        )
+            ->join('users', 'transactions.asdos', 'users.id')
+            ->join('details', 'transactions.asdos', 'details.user_id')
+            ->join('kampus', 'details.kampus_id', 'kampus.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('archives', 'transactions.asdos', 'archives.user_id')
+            ->where('transactions.id',$id)
+            ->first();
+
+        if (isset($transaction->image_name)) {
+            $transaction->image_name = asset('storage/images/245/' . $transaction->image_name);
+        }
 
         return response()->json($transaction);
     }
@@ -45,9 +55,35 @@ class TransactionController extends Controller
         $transaction->save();
         return redirect()->route('showUserOrder');
     }
-    public function showUserOrder(){
-        $transaction = Transaction::where('dosen',Auth::user()->id)->orderBy('updated_at','desc')->get();
-        return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Pemesanan Anda','content'=>'orderlist']);
+    public function showUserOrder()
+    {
+        $transaction = Transaction::where('dosen', Auth::user()->id)->orderBy('updated_at', 'desc')->withTrashed()->get();
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pemesanan Anda', 'content' => 'orderlist']);
+    }
+    public function delete($id)
+    {
+        $transaction = Transaction::find($id);
+        if (isset($transaction)) {
+            $transaction->status = "Dibatalkan";
+            $transaction->save();
+            $transaction->delete();
+        }
+        return redirect()->route('showUserOrder');
+    }
+    public function pendingtransaction(){
+        
+        $transaction = Transaction::where('transactions.status','Mencari Asdos')
+        ->select('transactions.*'
+        ,'users.name as dosen',
+        'details.wa as wa'
+        ,'activities.name as kegiatan')
+        ->join('users','transactions.dosen','users.id')
+        ->join('activities','transactions.activity_id','activities.id')
+        ->join('details','users.id','details.user_id')
+        ->orderBy('transactions.updated_at')->simplePaginate(10);
+   //return $transaction;
+         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Pesanan Asdos','content'=>'pesananasdoslist']);
+   
     }
     public function show($activity, $asdos)
     {

@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd');
+Route::get('/dashboard/index/operational','DashboardIndexController@indexoperational')->name('indexoperational');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('verified', 'checkactive')->name('indexdosen');
 Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel');
 Route::post('/dashboard/index/view/asdos/{type}','AsdosController@viewFilteredAsdos')->name('filteredAsdos');
@@ -44,3 +45,5 @@ Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updat
 Route::get('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@show')->name('showOrderPage');
 Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder');
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction');
+Route::get('/dashboard/index/dosen/order/list/delete/{id}','TransactionController@delete')->name('deleteTransaction');
+Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction');

@@ -22,5 +22,16 @@ class UsersPengurusSeeder extends Seeder
             'user_id' => $user->id,
             'wa' => Str::random(10),
         ]);
+        $user =  User::create([
+            'name' => Str::random(10),
+            'email' => Str::random(2).'@gmail.com',
+            'password' => bcrypt('system3298'),
+            'role' => 'operational',
+            'status' => 'aktif',
+        ]);
+        DB::table('Details')->insert([
+            'user_id' => $user->id,
+            'wa' => Str::random(10),
+        ]);
     }
 }

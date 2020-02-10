@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Support\Facades\Auth;
 use Closure;
-
+use Illuminate\Support\Facades\Log;
 class CheckRole
 {
     /**
@@ -26,6 +26,10 @@ class CheckRole
                     return redirect()->route('profileAsdos');
                 }
                 break;
+            case "operational":
+                return redirect()->route('indexoperational');
+            break;
+
             default:
                 return $next($request);
             break;

@@ -17,6 +17,9 @@
                 document.getElementById("sampai").innerHTML = response.data.sampai;
                 document.getElementById("biaya").innerHTML = response.data.biaya;
                 document.getElementById("asisten").innerHTML = response.data.name;
+                document.getElementById("waasisten").innerHTML = response.data.waasdos;
+                document.getElementById("emailasisten").innerHTML = response.data.emailasdos;
+                
                 document.getElementById("kampus").innerHTML = response.data.kampus;
                 document.getElementById("fotoasdos").src = response.data.image_name;
             })
@@ -123,8 +126,16 @@
                             <td id="biaya"></td>
                         </tr>
                         <tr>
-                            <th>Asisten</th>
+                            <th>Nama Asisten</th>
                             <td id="asisten"></td>
+                        </tr>
+                        <tr>
+                            <th>Email Asisten</th>
+                            <td id="emailasisten"></td>
+                        </tr>
+                        <tr>
+                            <th>WA Asisten</th>
+                            <td id="waasisten"></td>
                         </tr>
                         <tr>
                             <th>Asal Kampus</th>
@@ -132,35 +143,7 @@
                         </tr>
                     </table>
                 </div>
-                <h3 class="text-center">Penjelasan Status</h3>
-                <div class="list-group">
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Mencari Asdos</h5>
-
-                        </div>
-                        <p class="mb-1">Permintaan bapak/ibu sudah diketahui oleh team Asdosku. Team Asdosku sedang mengonfirmasikan permintaan asistensi ke calon Asdos terkait.</p>
-                    </div>
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Berjalan</h5>
-                        </div>
-                        <p class="mb-1">Asdos sedang menjadi asisten Bapak/Ibu dosen.</p>
-                    </div>
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Selesai</h5>
-                        </div>
-                        <p class="mb-1">Masa kerja Asdos terhadap Bapak/Ibu dosen telah selesai serta Bapak/Ibu sudah membayar tagihan.</p>
-                    </div>
-
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Dibatalkan</h5>
-                        </div>
-                        <p class="mb-1">Bapak/Ibu dosen melakukan pembatalan pemesanan ketika proses pencarian asdos karena ingin mengganti pesanan atau karena alasan lainnya.</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -182,23 +165,27 @@
                                 <th>Kode Transaksi</th>
                                 <td>{{$transaction->id}}</td>
                             </tr>
-                            <tr class="table-warning">
-                                <th>Status</th>
-                                <td>{{$transaction->status}}</td>
+                            <tr >
+                                <th>Nama Dosen</th>
+                                <td>{{$transaction->dosen}}</td>
+  </tr>
+                            <tr >
+                                <th>WA Dosen</th>
+                                <td>{{$transaction->wa}}</td>
                             </tr>
                             <tr>
-                                <th>Tanggal Pemesanan</th>
-                                <td>{{$transaction->created_at}}</td>
+                                <th>Kegiatan</th>
+                                <td>{{$transaction->kegiatan}}</td>
                             </tr>
                             <tr>
-                                <th>Terakhr Status Berubah</th>
-                                <td>{{$transaction->updated_at}}</td>
+                                <th>Periode</th>
+                                <td>{{$transaction->dari}} <b> sampai </b> {{$transaction->sampai}}</td>
                             </tr>
                         </table>
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @if($transaction->status == "Mencari Asdos")
-                    <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target ="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
+                    <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target ="#deleteModal" data-toggle="modal" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
                     @endif
                 </div>
             </div>
