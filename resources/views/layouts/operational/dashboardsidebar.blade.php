@@ -25,17 +25,17 @@
    
     <!-- Heading -->
     <div class="sidebar-heading">
-        Pembayaran
+        Layanan
     </div>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Tagihan</span></a>
+            <span>Pesanan Pending</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Konfirmasi Pembayaran</span></a>
+            <span>Pesanan Berjalan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">

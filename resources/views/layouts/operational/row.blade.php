@@ -36,7 +36,7 @@
         <div class="mt-4 text-center small">
           <i class="fas fa-fw fa-shopping-cart fa-7x"></i>
           <p class="h3 mt-2">Biaya Tambahan</p>
-          <button type="button" onclick='gotoPendingPesananView();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+          <button type="button" onclick='gotoPesananBerjalanView();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
         </div>
       </div>
 

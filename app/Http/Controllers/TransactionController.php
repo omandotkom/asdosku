@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Campus;
+use App\Cost;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Transaction;
+use CreateCostsTable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +20,12 @@ class TransactionController extends Controller
         $transaction->status = $status;
         $transaction->save();
         return $transaction;
+    }
+    public function showcosthistory($id){
+        $transaction = Transaction::with('activity')->where('id',$id)->first();
+        $cost = Cost::where('transaction_id',$id)->get();
+ 
+         return view('maindashboard.index',['title'=> "Historis Biaya",'transaction' => $transaction, 'costs' => $cost,'content' => 'historisbiaya']);
     }
     public function detil($id)
     {
@@ -30,8 +38,8 @@ class TransactionController extends Controller
             'kampus.name as kampus',
             'activities.name as kegiatan',
             'activities.keterangan as keterangankegiatan',
-            'activities.harga'
-        )
+            'activities.harga',
+            )
             ->join('users', 'transactions.asdos', 'users.id')
             ->join('details', 'transactions.asdos', 'details.user_id')
             ->join('kampus', 'details.kampus_id', 'kampus.id')
@@ -40,6 +48,7 @@ class TransactionController extends Controller
             ->where('transactions.id',$id)
             ->first();
 
+             
         if (isset($transaction->image_name)) {
             $transaction->image_name = asset('storage/images/245/' . $transaction->image_name);
         }
@@ -85,7 +94,7 @@ class TransactionController extends Controller
         ->join('users','transactions.dosen','users.id')
         ->join('activities','transactions.activity_id','activities.id')
         ->join('details','users.id','details.user_id')
-        ->orderBy('transactions.updated_at')->simplePaginate(10);
+        ->orderBy('transactions.updated_at','asc')->simplePaginate(10);
    //return $transaction;
          return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Pesanan yang Berjalan','content'=>'berjalanlist']);
    

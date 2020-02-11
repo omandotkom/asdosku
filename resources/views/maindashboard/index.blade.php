@@ -65,6 +65,9 @@
           @case('berjalanlist')
           @include('layouts.operational.berjalanlist')
           @break
+          @case('historisbiaya')
+          @include('layouts.operational.costhistory')
+          @break
           @default
           @include('layouts.operational.row')
           @break

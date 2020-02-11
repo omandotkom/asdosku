@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 Route::get('/transaction/update/{id}/{status}','TransactionController@updatestatus')->name('transactionstatusupdate');
 Route::get('/transaction/detil/{id}','TransactionController@detil')->name('transactiondetil');
 Route::get('/profile/user/{id}','AsdosController@profile')->name('completeProfile');
+Route::post('/transaction/cost/store/{id}','CostController@store')->name('addcost');
+Route::get('/transaction/cost/sum/{id}','CostController@sumcost');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
