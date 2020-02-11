@@ -32,19 +32,9 @@
         Pembayaran
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('showallpayout')}}">
             <i class="fas fa-fw fa-ruler"></i>
             <span>Tagihan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
-            <span>Konfirmasi Pembayaran</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
-            <span>Status Pembayaran</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

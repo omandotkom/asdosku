@@ -41,7 +41,8 @@ Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->na
 
 Route::post('/dashboard/index/asdos/profile/uploadprofilepic','UploadProfileImageController@upload')->name('uploadProfileAsdos');
 Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updatePreferAsdos')->name('updatePreferAsdos');
-
+Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts')->name('showallpayout');
+Route::get('/dashboard/index/dosen/payout/{transaction_id}/','PayoutController@viewpage')->name('showPayoutPage');
 Route::get('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@show')->name('showOrderPage');
 Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder');
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction');

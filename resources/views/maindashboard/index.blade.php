@@ -74,6 +74,12 @@
           @endswitch
           @elseif (Auth::user()->role == "dosen")
           @switch($content ?? '')
+          @case('viewpayouts')
+          @include('layouts.dosen.transaction.payment')
+          @break
+          @case('payment')
+          @include('layouts.dosen.transaction.payment')
+          @break
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
           @break

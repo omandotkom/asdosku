@@ -22,7 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->date('dari');
             $table->date('sampai');
             $table->double('biaya');
-            $table->enum('status', ['Mencari Asdos','Berjalan','Selesai','Dibatalkan']);
+            $table->enum('status', ['Mencari Asdos','Berjalan','Menunggu Pembayaran','Selesai','Dibatalkan']);
             $table->softDeletes();
             $table->timestamps();
         });
