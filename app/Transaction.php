@@ -13,6 +13,9 @@ class Transaction extends Model
     public function costs(){
         return $this->hasMany('App\Cost');
     }
+    public function payout(){
+        return $this->hasOne('App\Payout');
+    }
     public function activity(){
         return $this->hasOne('App\Activity','id','activity_id');
     }

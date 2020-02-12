@@ -1,5 +1,25 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<script>
+    $(document).ready(function() {
 
+        axios.post('{{route("basicnotification")}}', {
+                id: '{{Auth::user()->id}}',
+                type: 'tagihan'
+            })
+            .then(function(response) {
+                if (response.data > 0) {
+                    document.getElementById("tagihancount").innerHTML = response.data;
+                } else {
+                    var element = document.getElementById("tagihancount");
+                    element.parentNode.removeChild(element);
+                }
+
+            })
+            .catch(function(error) {});
+
+
+    });
+</script>
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -26,7 +46,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-   
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Pembayaran
@@ -34,7 +54,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('showallpayout')}}">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Tagihan</span></a>
+            <span>Tagihan <span id="tagihancount" class="badge badge-danger"></span></span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

@@ -1,5 +1,3 @@
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 <script>
     var deleteUrl;
 
@@ -197,7 +195,10 @@
                             <tr class="table-warning">
                                 @endif
                                 <th>Status</th>
-                                <td>{{$transaction->status}}</td>
+                                <td>@if(isset($transaction->payout))
+                                    {{$transaction->payout->status}}
+                                    @else
+                                    {{$transaction->status}} @endif</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Pemesanan</th>
@@ -205,7 +206,8 @@
                             </tr>
                             <tr>
                                 <th>Terakhr Status Berubah</th>
-                                <td>{{$transaction->updated_at}}</td>
+                                <td>@if (isset($transaction->payout))
+                                    {{$transaction->payout->updated_at}} @else {{$transaction->updated_at}} @endif</td>
                             </tr>
                         </table>
                     </div>
@@ -215,13 +217,15 @@
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @break
                     @case('Menunggu Pembayaran')
+                    @if(!isset($transaction->payout))
                     @php
                     $urlpayment = route('showPayoutPage',$transaction->id);
                     @endphp
                     <button type="button" onclick="window.location = '{{$urlpayment}}';" class="btn mx-auto btn-primary btn-block btn-sm">Bayar Pesanan</button>
+                    @endif
                     @break
                     @endswitch
-                   </div>
+                </div>
             </div>
         </div>
     </div>

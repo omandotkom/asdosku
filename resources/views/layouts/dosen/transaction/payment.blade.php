@@ -4,7 +4,7 @@ return number_format($val,2,',','.');
 }
 $totalbiaya = 0;
 @endphp
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 <div class="container">
   <div class="row">
@@ -65,24 +65,36 @@ $totalbiaya = 0;
           </table>
         </div>
 
-
+        <form name="paymentform" enctype="multipart/form-data" method="POST" action="{{route('storepayout',$transaction->id)}}">
+        <input type="hidden"  name="total" value="{{$totalbiaya}}">  
         <div class="form-group">
-          <label for="pembayaran">Bukti Pembayaran</label>
-          <input type="file" accept="image/*" class="form-control" placeholder="Bukti pembayaraan" id="pembayaran">
-        </div>
-        <h5 class="card-title text-center mt-3">Nilai Asdos Kami</h5>
-        
+            @csrf
+            <label for="pembayaran">Bukti Pembayaran</label>
+            <input required type="file" accept="image/*" name="pembayaran" class="form-control @error('pembayaran') is-invalid @enderror" placeholder="Bukti pembayaraan" id="pembayaran">
+            @error('pembayaran')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+          <h5 class="card-title text-center mt-3">Nilai Asdos Kami</h5>
+
           <div class="form-group">
             <label for="rating">Nilai untuk Asdos</label>
-            <input required type="number" min="1" max="5" class="form-control" id="rating" aria-describedby="ratingHelp" name="rating">
+            <input required type="number" min="1" max="5" class="form-control @error('rating') is-invalid @enderror" id="rating" aria-describedby="ratingHelp" name="rating">
             <small id="ratingHelp" class="form-text text-muted">Dalam skala 1 sampai 5</small>
+            @error('rating')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="komentar">Komentar untuk Asdos</label>
-            <textarea required aria-describedby="keteranganHelp" placeholder="mis : Asisten cukup responsif" name="keterangan" class="form-control" id="keterangan" rows="5"></textarea>
+            <textarea required placeholder="mis : Asisten cukup responsif" name="komentar" class="form-control @error('komentar') is-invalid @enderror" id="komentar" rows="5"></textarea>
+            @error('komentar')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
           </div>
           <input type="hidden" name="transaction_id">
-          <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary btn-lg btn-block">Unggah Bukti Pembayaran dan Penilaian</button>
+          <button onclick="document.paymentform.submit();" class="btn btn-primary btn-lg btn-block">Unggah Bukti Pembayaran dan Penilaian</button>
       </div>
       </form>
     </div>

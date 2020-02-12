@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePayoutsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePayoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payouts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
             $table->integer('transaction_id');
-            $table->string('buktipembayaran');
-            $table->double('total');
-            $table->enum('status', ['Menunggu Konfirmasi', 'Selesai']);
+            $table->integer('user_id');
+            $table->text('comment');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatePayoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payouts');
+        Schema::dropIfExists('comments');
     }
 }
