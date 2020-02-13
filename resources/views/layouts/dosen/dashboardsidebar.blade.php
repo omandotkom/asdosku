@@ -14,14 +14,14 @@
                 }
 
             })
-            .catch(function(error) {});
+        .catch(function(error) {});
 
 
     });
 </script>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('indexdosen')}}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -30,16 +30,21 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showUserOrder')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Layanan Kami</span></a>
+    </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('indexdosen')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Layanan</span></a>
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Order Layanan</span></a>
     </li>
+    
     <li class="nav-item">
         <a class="nav-link" href="{{route('showUserOrder')}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Pesanan Saya</span></a>
     </li>
     <!-- Divider -->
@@ -53,7 +58,7 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="{{route('showallpayout')}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Tagihan <span id="tagihancount" class="badge badge-danger"></span></span></a>
     </li>
     <!-- Divider -->

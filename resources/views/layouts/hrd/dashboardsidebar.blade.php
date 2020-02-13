@@ -14,7 +14,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{route('indexhrd')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Beranda</span></a>
     </li>
 
@@ -29,17 +29,17 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Tagihan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Konfirmasi Pembayaran</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Status Pembayaran</span></a>
     </li>
     <!-- Divider -->

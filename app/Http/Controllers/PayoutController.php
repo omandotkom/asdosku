@@ -48,7 +48,7 @@ class PayoutController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'pembayaran' => 'required|file|image|mimes:jpeg,png,jpg',
-            'rating' => 'required',
+            'rating' => 'required|numeric|min:1|max:5',
             'komentar' => 'required',
         ]);
 
@@ -66,13 +66,15 @@ class PayoutController extends Controller
         $comment->save();
 
 
-        $path = $request->file('pembayaran')->store('buktipembayaran', 'public');
+        //$path = $request->file('pembayaran')->store('buktipembayaran', 'public');
+        $path = $request->file('pembayaran')->store('buktipembayaran');
+        
         $payout = new Payout;
         $payout->user_id = Auth::user()->id;
         $payout->transaction_id = $transaction_id;
         $payout->buktipembayaran = $path;
         $payout->total = $request->total;
-        $payout->status  = 'Menunggu Konfirmasi';
+        $payout->status  = 'Menunggu Konfirmasi Pembayaran';
         $payout->save();
 
         $rating = Rate::where('user_id', Auth::user()->id)->first();
@@ -91,5 +93,25 @@ class PayoutController extends Controller
             $rating->save();
         }
         //   return asset("storage/".$path); 
+        //return Storage::download($path);
+       return redirect()->route('showUserOrder')->with(['success' => 'Pembayaran Anda berhasil masuk ke sistem dan sedang dalam antrian pemeriksaan oleh team Asdosku :)']);
+    }
+    function showconfirpayouts(){
+        $payouts = Payout::with('user','transaction','detail')->where('status','Menunggu Konfirmasi Pembayaran')->get();
+        return view('maindashboard.index', ['payouts' => $payouts, 'title' => 'Konfirmasi Pembayaran', 'content' => 'pendingpayout']);
+    }
+    public function downloadpayment($payout_id){
+        $payout = Payout::with('user')->where('id',$payout_id)->first();
+        return Storage::download($payout->buktipembayaran);
+    }
+    public function payoutconfirm(Request $request){
+        $payout = Payout::find($request->payout_id);
+        $payout->status = 'Selesai';
+        $payout->save();
+
+        $transaction = Transaction::find($payout->transaction_id);
+        $transaction->status = 'Selesai';
+        $transaction->save();
+        return response('Transaksi berhasil dikonfirmasi.',200);
     }
 }

@@ -19,7 +19,7 @@ class CreatePayoutsTable extends Migration
             $table->integer('transaction_id');
             $table->string('buktipembayaran');
             $table->double('total');
-            $table->enum('status', ['Menunggu Konfirmasi', 'Selesai']);
+            $table->enum('status', ['Menunggu Konfirmasi Pembayaran', 'Selesai']);
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\User;
 use App\Campus;
+use App\Payout;
 use Illuminate\Support\Facades\Log;
 use App\Transaction;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class DashboardIndexController extends Controller
         //return Auth::user();
         $pending = Transaction::where('status','Mencari Asdos')->count();
         $berjalan = Transaction::where('status','Berjalan')->count();
-        return view('maindashboard.index', ['pending'=>$pending,'berjalan' => $berjalan,'title' => "Dashboard"]);
+        $tagihan = Payout::where('status','Menunggu Konfirmasi Pembayaran')->count();
+        return view('maindashboard.index', ['pending'=>$pending,'berjalan' => $berjalan,'tagihan' => $tagihan,'title' => "Dashboard"]);
         
     }
     public function indexDosen()

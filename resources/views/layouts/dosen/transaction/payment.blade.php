@@ -66,8 +66,8 @@ $totalbiaya = 0;
         </div>
 
         <form name="paymentform" enctype="multipart/form-data" method="POST" action="{{route('storepayout',$transaction->id)}}">
-        <input type="hidden"  name="total" value="{{$totalbiaya}}">  
-        <div class="form-group">
+          <input type="hidden" name="total" value="{{$totalbiaya}}">
+          <div class="form-group">
             @csrf
             <label for="pembayaran">Bukti Pembayaran</label>
             <input required type="file" accept="image/*" name="pembayaran" class="form-control @error('pembayaran') is-invalid @enderror" placeholder="Bukti pembayaraan" id="pembayaran">
@@ -91,9 +91,48 @@ $totalbiaya = 0;
             @error('komentar')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-
           </div>
           <input type="hidden" name="transaction_id">
+
+          <h5 class="card-title text-center mt-1">Metode Pembayaran</h5>
+          <table class="table table-sm table-responsive-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 64px;">Via</th>
+                <th scope="col">Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/dana.PNG')}}" alt="DANA App"></td>
+                <td><b>081393558430</b> a.n <b>Khalid Abdurrahman</b></td>
+              </tr>
+              <tr>
+                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/bca.PNG')}}" alt="BCA"></td>
+                <td>a.n DNID 081393558430<br>Virtual Account : <b>3901081393558430</b></td>
+              </tr>
+              <tr>
+                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/bni.PNG')}}" alt="BNI"></td>
+                <td>a.n DNID 081393558430<br>Virtual Account : <b>8810081393558430</b></td>
+              </tr>
+              <tr>
+                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/mandiri.PNG')}}" alt="MANDIRI"></td>
+                <td>a.n DNID 081393558430<br>Virtual Account : <b>89508081393558430</b></td>
+              </tr>
+              <tr>
+                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/btn.PNG')}}" alt="BTN"></td>
+                <td>a.n DNID 081393558430<br>Virtual Account : <b>8528081393558430</b></td>
+              </tr>
+            </tbody>
+          </table>
+        <h5 class="card-title text-center mt-1">Cara Membayar</h5>
+          <ol>
+            <li>Pilih salah satu metode pembayaran yang tertera di atas.</li>
+            <li>Nominal yang harus di transfer adalah <b>Rp. {{$totalbiaya}}.</b></li>
+            <li>Pastikan nominal yang ditransfer tepat.</li>
+            <li>Screenshoot (jika dengan m-banking) atau foto bukti pembayaran (jika dari atm).</li>
+            <li>Unggah bukti pembayaran di kolom <b>Bukti Pembayaran</b>
+          </ol>
           <button onclick="document.paymentform.submit();" class="btn btn-primary btn-lg btn-block">Unggah Bukti Pembayaran dan Penilaian</button>
       </div>
       </form>

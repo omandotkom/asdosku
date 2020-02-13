@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\DB;
 class TransactionController extends Controller
 {
     public function updatestatus($id,$status){
+        if ($status == "MP"){
+            $status = "Menunggu Pembayaran";
+        }
         $transaction = Transaction::find($id);
         $transaction->status = $status;
         $transaction->save();

@@ -14,7 +14,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{route('indexoperational')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Beranda</span></a>
     </li>
 
@@ -28,19 +28,19 @@
         Layanan
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
+        <a class="nav-link" href="{{route('viewpendingtransaction')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Pesanan Pending</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
+        <a class="nav-link" href="{{route('viewpesananberjalan')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
             <span>Pesanan Berjalan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-ruler"></i>
-            <span>Status Pembayaran</span></a>
+        <a class="nav-link" href="{{route('viewpendingpayout')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Konfirmasi Pembayaran</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

@@ -173,6 +173,12 @@
     </div>
 </div>
 
+@if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+          <strong>{{ $message }}</strong>
+      </div>
+    @endif
 <div class="row">
     @foreach($transactions as $transaction)
     <div class="col-xl-3 col-lg-5">
@@ -191,6 +197,8 @@
                             </tr>
                             @if($transaction->status == "Berjalan")
                             <tr class="table-success">
+                            @elseif($transaction->status == 'Selesai')
+                            <tr class="table-success">
                                 @else
                             <tr class="table-warning">
                                 @endif
@@ -205,7 +213,7 @@
                                 <td>{{$transaction->created_at}}</td>
                             </tr>
                             <tr>
-                                <th>Terakhr Status Berubah</th>
+                                <th>Terakhir Status Berubah</th>
                                 <td>@if (isset($transaction->payout))
                                     {{$transaction->payout->updated_at}} @else {{$transaction->updated_at}} @endif</td>
                             </tr>

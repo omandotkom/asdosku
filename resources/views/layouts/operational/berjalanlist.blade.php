@@ -1,10 +1,10 @@
-
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
     var costURL;
     var selectedID;
     var sumURL;
+
     function addcost() {
         axios.post(costURL, {
                 nominalcost: $("#nominalcost").val(),
@@ -13,7 +13,7 @@
             .then(function(response) {
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
-                    
+
                     text: response.data,
 
                     duration: 3000
@@ -23,7 +23,7 @@
             .catch(function(error) {
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-                    text: "Gagal menambahkan data, kolom masih kosong atau format salah.",
+                    text: error,
 
                     duration: 3000
 
@@ -32,18 +32,51 @@
 
     }
 
+    function selesailayanan() {
+        axios.get(selesaiURL)
+            .then(function(response) {
+                // handle success
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
+
+                    text: "Berhasil merubah status transaksi menjadi ".concat(response.data.status),
+
+                    duration: 3000
+
+                }).showToast();
+                const myNode = document.getElementById(selectedID);
+                while (myNode.firstChild) {
+                    myNode.removeChild(myNode.firstChild);
+                }
+            })
+            .catch(function(error) {
+                // handle error
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                    text: error,
+
+                    duration: 3000
+
+                }).showToast();
+            })
+            .then(function() {
+                // always executed
+            });
+    }
+
     function generateCostUrl(id) {
         selectedID = id;
         costURL = "{{url('/api/transaction/cost/store')}}".concat("/").concat(id);
     }
-    function generatesumcosturl(id){
+
+    function generatesumcosturl(id) {
         selectedID = id;
         sumURL = "{{url('/api/transaction/cost/sum')}}".concat("/").concat(id);
         axios.get(sumURL)
             .then(function(response) {
                 // handle success
-               document.getElementById("biayatambahan").innerHTML = response.data;
-                })
+                document.getElementById("biayatambahan").innerHTML = response.data;
+            })
             .catch(function(error) {
                 // handle error
                 console.log(error);
@@ -53,6 +86,7 @@
             });
 
     }
+
     function userDetil(url) {
 
         // Make a request for a user with a given ID
@@ -70,7 +104,7 @@
                 document.getElementById("asisten").innerHTML = response.data.name;
                 document.getElementById("waasisten").innerHTML = response.data.waasdos;
                 document.getElementById("emailasisten").innerHTML = response.data.emailasdos;
-                
+
                 document.getElementById("kampus").innerHTML = response.data.kampus;
                 document.getElementById("fotoasdos").src = response.data.image_name;
             })
@@ -81,13 +115,14 @@
             .then(function() {
                 // always executed
             });
-            generatesumcosturl(selectedID);
+        generatesumcosturl(selectedID);
 
     }
-    
-    function gotoHistoris(url){
+
+    function gotoHistoris(url) {
         window.location = url;
     }
+
     function generateURL(id) {
         selectedID = id;
         var url = "{{url('api/transaction/detil')}}";
@@ -95,28 +130,34 @@
         console.log(url);
         return url;
     }
+    var selesaiURL;
+
+    function generateSelesaiURL(id) {
+        selectedID = id;
+        selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
+        console.log(url);
+    }
 </script>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+<div class="modal fade" id="selesaimodal" tabindex="-1" role="dialog" aria-labelledby="selesaimodaltitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalTitle">Konfirmasi Aktivasi Layanan</h5>
+                <h5 class="modal-title" id="selesaimodaltitle">Konfirmasi Penyelesaian Layanan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Aktivasi layanan dimungkinkan apabila :
                 <ul>
-                    <li>Bagian operasional sudah mengontak asdos.</li>
-                    <li>Asdos sudah menyetujui permintaan asistensi dosen.</li>
-
+                    <li>Layanan akan dianggap selesai oleh sistem.</li>
+                    <li>Pastikan sudah mengonfirmasi ke dosen bahwa layanan telah selesai.</li>
+                    <li>Setelah layanan di selesaikan, sistem akan memberikan tagihan pada dosen.</li>
                 </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="addcost();" data-dismiss="modal" class="btn btn-success">Tambah Biaya</button>
+                <button type="button" onclick="selesailayanan();" data-dismiss="modal" class="btn btn-success">Selesaikan Pesanan</button>
             </div>
         </div>
     </div>
@@ -205,7 +246,9 @@
                         </tr>
                         <tr>
                             <th>Biaya Tambahan</th>
-                            <td><div id="biayatambahan"></div><a href="#"><small class="text-muted">Rincian</small></a></td>
+                            <td>
+                                <div id="biayatambahan"></div><a href="#"><small class="text-muted">Rincian</small></a>
+                            </td>
                         </tr>
                         <tr>
                             <th>Nama Asisten</th>
@@ -270,9 +313,9 @@
                     @endphp
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     <button data-toggle="modal" data-target="#costDialog" onclick="generateCostUrl('{{$transaction->id}}');" type="button" class="btn mx-auto btn-primary btn-block btn-sm">Tambah Biaya</button>
-                    <button  type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
+                    <button type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
                     @if($transaction->status == "Berjalan")
-                    <button type="button"  data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Selesaikan Pesanan</button>
+                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Layanan Selesai</button>
                     @endif
                 </div>
             </div>

@@ -60,6 +60,9 @@
           </div>
           @if(Auth::user()->role == "operational")
           @switch ($content ?? '')
+          @case('pendingpayout')
+          @include('layouts.operational.pendingpayoutlist')
+          @break
           @case('pesananasdoslist')
           @include('layouts.operational.pendinglist')
           @break

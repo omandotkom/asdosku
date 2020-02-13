@@ -30,10 +30,11 @@
           <td>{{$cost->keterangan}}</td>
           <td>{{$cost->nominal}}</td>
           <td>{{$cost->updated_at}}</td>
-          
         </tr>
-
         @endforeach
+        <tr>
+          <td colspan="4"><a href="{{ URL::previous() }}" class="badge badge-secondary">Kembali</a></td>
+        </tr>
       </tbody>
     </table>
   </div>

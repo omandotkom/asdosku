@@ -41,7 +41,6 @@ class AsdosController extends Controller
     public function updatePreferAsdos(Request $request)
     {
 
-        $services = Service::all();
         $archive = Archive::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->first();
 
         $image_url = "";
