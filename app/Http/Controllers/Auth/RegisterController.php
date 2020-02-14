@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Archive;
 use App\Campus;
 use App\Detail;
 use App\Http\Controllers\Controller;
@@ -76,28 +77,27 @@ class RegisterController extends Controller
             'status' => 'aktif',
             'role' => 'dosen',
         ]);
-            $details = Detail::create([
-                'user_id' => $user->id,
-                'kampus_dosen' => $data['kampus'],
-                'wa' => $data['wa'],
-                'nik' => $data['nik'],
-            ]);
-            
-            if ($details->exists) {
-                return redirect('/dashboard');
-            }
-        
+        $details = Detail::create([
+            'user_id' => $user->id,
+            'kampus_dosen' => $data['kampus'],
+            'wa' => $data['wa'],
+            'nik' => $data['nik'],
+        ]);
+
+        if ($details->exists) {
+            return redirect('/dashboard');
+        }
     }
     protected function registerasdosShow()
     {
         $services = Service::with('activities')->get();
         $campuses = Campus::all();
         //return $services;
-        return view('backupmain.register2', ['services' => $services,'campuses'=>$campuses]);
+        return view('backupmain.register2', ['services' => $services, 'campuses' => $campuses]);
     }
     protected function registerasdos(Request $data)
     {
-        
+
         $services = Service::all();
         $preferensi = "";
         foreach ($services as $service) {
@@ -107,7 +107,7 @@ class RegisterController extends Controller
             }
         }
         $preferensi = substr_replace($preferensi, "", -1);
-         $user =  User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -125,11 +125,10 @@ class RegisterController extends Controller
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
-        
-           if ($details->exists){
-               return redirect('/dashboard');
-           }
+            Archive::create(['user_id' => $user->id,'image_name'=>'default.png']);
+            if ($details->exists) {
+                return redirect('/dashboard');
+            }
         }
-    
     }
 }
