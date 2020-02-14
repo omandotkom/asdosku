@@ -77,10 +77,11 @@ class PayoutController extends Controller
         $payout->status  = 'Menunggu Konfirmasi Pembayaran';
         $payout->save();
 
-        $rating = Rate::where('user_id', Auth::user()->id)->first();
+        $rating = Rate::where('user_id', $transaction->asdos)->first();
         if (isset($rating)) {
             $person = $rating->person;
-            $rating->person = $rating->person + 1;
+            ++$person;
+            $rating->person = $person;
             $oldrating = $rating->rating;
             $oldrating = ($oldrating + $request->rating) / $person;
             $rating->rating = $oldrating;
@@ -88,7 +89,7 @@ class PayoutController extends Controller
         } else {
             $rating = new Rate;
             $rating->person = 1;
-            $rating->user_id = Auth::user()->id;;
+            $rating->user_id = $transaction->asdos;
             $rating->rating = $request->rating;
             $rating->save();
         }

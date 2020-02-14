@@ -9,6 +9,7 @@
                 // handle success
                 document.getElementById("detilNama").innerHTML = response.data.name;
                 document.getElementById("detilKampus").innerHTML = response.data.kampus;
+                document.getElementById("detilRating").innerHTML = response.data.rating;
                 document.getElementById("detilJurusan").innerHTML = response.data.jurusan;
                 document.getElementById("detilSemester").innerHTML = response.data.semester;
                 document.getElementById("detilGender").innerHTML = response.data.gender;
@@ -59,7 +60,7 @@
                         </tr>
                         <tr>
                             <th>Rating</th>
-                            <td id="detilRating">Masih sample</td>
+                            <td id="detilRating">-</td>
                         </tr>
                         <tr>
                             <th>Kampus</th>
@@ -110,7 +111,7 @@
                             </tr>
                             <tr>
                                 <th>Rating</th>
-                                <td>Masih sample</td>
+                                <td>@if(isset($asdos->rating)) {{$asdos->rating}} / 5 @else - @endif</td>
                             </tr>
                             <tr>
                                 <th>Kampus</th>

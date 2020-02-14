@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-sm-6">
       <div class="card shadow p-3 mb-5 bg-white rounded">
 
@@ -36,7 +36,7 @@
               </tr>
               <tr>
                 <th>Rating</th>
-                <td id="detilRating">Masih Sample</td>
+                <td id="detilRating">@if(isset($rating)) {{$rating->rating}} @else - @endif</td>
               </tr>
               <tr>
                 <th>Gender</th>

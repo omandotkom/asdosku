@@ -74,15 +74,17 @@ class AsdosController extends Controller
             case "bimbinganbelajar":
                 $gender = strtolower($request->bimbelgender);
                 if ($gender == "bebas") {
-                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name", 'rates.rating',"kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
+                        ->leftJoin('rates','prefers.user_id','rates.user_id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
                         ->where('prefers.activity_id', $request->activity)->where('users.status', 'aktif')->simplePaginate();
                 } else {
-                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name",'rates.rating', "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
+                        ->leftJoin('rates','prefers.user_id','rates.user_id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
                         ->where('prefers.activity_id', $request->activity)->where('users.status', 'aktif')
                         ->where('details.gender', $request->bimbelgender)->simplePaginate();
@@ -107,18 +109,20 @@ class AsdosController extends Controller
                 }
                 $gender = strtolower($request->gender);
                 if ($gender == "bebas") {
-                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name",'rates.rating', "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->leftJoin('rates','prefers.user_id','rates.user_id')
                         ->where('prefers.activity_id', $request->activity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
                         ->simplePaginate();
                 } else {
 
-                    $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                    $asdosList = DB::table('prefers')->select("users.id", "users.name", 'rates.rating',"kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                         ->join('details', 'prefers.user_id', 'details.user_id')
                         ->join('kampus', 'details.kampus_id', 'kampus.id')
                         ->join('activities', 'prefers.activity_id', 'activities.id')
+                        ->leftJoin('rates','prefers.user_id','rates.user_id')
                         ->where('prefers.activity_id', $request->activity)->whereRaw($strSemester)->whereRaw($strKampus)->where('users.status', 'aktif')
                         ->where('details.gender', $request->gender)->simplePaginate();
                     //return $request;
@@ -126,10 +130,11 @@ class AsdosController extends Controller
                 }
                 break;
             default:
-                $asdosList = DB::table('prefers')->select("users.id", "users.name", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                $asdosList = DB::table('prefers')->select("users.id", "users.name","rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                     ->join('details', 'prefers.user_id', 'details.user_id')
                     ->join('kampus', 'details.kampus_id', 'kampus.id')
                     ->join('activities', 'prefers.activity_id', 'activities.id')
+                    ->leftJoin('rates','prefers.user_id','rates.user_id')
                     ->where('prefers.activity_id', $request->activity)->where('users.status', 'aktif')
                     ->simplePaginate();
                 break;
@@ -137,10 +142,11 @@ class AsdosController extends Controller
         return view('maindashboard.index', ['asdoslist' => $asdosList,'activity' =>$request->activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
     public function profile($id){
-        $user = DB::table('users')->select('users.name','details.*','archives.image_name','kampus.name as kampus')
+        $user = DB::table('users')->select('users.name','details.*','rates.rating','archives.image_name','kampus.name as kampus')
         ->join('details','users.id','details.user_id')
         ->join('kampus','details.kampus_id','kampus.id')
         ->join('archives','users.id','archives.user_id')
+        ->leftJoin('rates','users.id','rates.user_id')
         ->where('users.id',$id)
         ->first();
         if (isset($user->image_name)){
@@ -151,7 +157,12 @@ class AsdosController extends Controller
             $image_url = "https://picsum.photos/200";
             $user->setAttribute('image_name',$image_url);
         }
-        
+        //filter rating biar ga null
+        if (isset($user->rating)){
+            $user->rating = $user->rating." / 5";  
+        }else{
+            $user->rating = "-";
+        }
         return response()->json($user);
     }
 }

@@ -20,7 +20,7 @@
           <td>{{ $user->name}}</td>
           <td>{{ $user->email }}</td>
           <td>{{ $user->detail->gender}}</td>
-          <td>{{ $user->detail->kampus }}</td>
+          <td>{{ $user->detail->kampus->name }}</td>
           <td>{{ $user->detail->jurusan }}</td>
           <td>{{ $user->detail->semester }}</td>
           <td>{{ $user->detail->prefer }}</td>
@@ -58,7 +58,9 @@
         @endforeach
       </tbody>
     </table>
+    
   </div>
+  {{$belum_disetujui->links()}}
 <script>
   document.getElementById("judulHalaman").innerHTML = "Persetujuan";
     

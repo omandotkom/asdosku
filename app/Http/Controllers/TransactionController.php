@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Campus;
 use App\Cost;
+use App\Rate as USERRATE;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -125,11 +126,15 @@ class TransactionController extends Controller
         }
         $kampus = Campus::select('name as kampus')->where('id', $asdos->detail->kampus_id)->first();
         $activity = Activity::with('service')->where('id', $activity)->first();
-
+        $rating = USERRATE::where('user_id',$asdos->id)->first();
+        if (isset($rating)){
+            $rating->rating = $rating->rating." / 5";
+        }
         return view(
             'maindashboard.index',
             [
                 'title' => 'Pemesanan',
+                'rating' => $rating,
                 'asdos' => $asdos,
                 'kampus' => $kampus,
                 'activity' => $activity,
