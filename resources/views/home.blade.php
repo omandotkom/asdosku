@@ -131,20 +131,20 @@
 
             <div class="icon-box wow fadeInRight">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-            </div>
+              <h4 class="title"><a href="">Harga Hemat dan Bergaransi</a></h4>
+              <p class="description">Kami siap menyesuaikan budget yang dimiliki untuk mengerjakan tugas bapak/ibu dosen serta memberikan jaminan cashback jika tugas tidak selesai atau tidak sesuai harapan.</p>
+             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <h4 class="title"><a href="">Fleksibel</a></h4>
+              <p class="description">Waktu dan tempat mengikuti keubutuhan dan rencana bapak/ibu.</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <h4 class="title"><a href="">Nyaman</a></h4>
+              <p class="description">Dosen bisa memilih asdos sesuai dengan kebutuhan dan kriteria yang bapak/ibu inginkan sehingga akan memberikan kenyamanan dalam memberikan bantuan.</p>
             </div>
 
           </div>
