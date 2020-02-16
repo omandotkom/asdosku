@@ -1,4 +1,11 @@
 <!-- Modal -->
+<script>
+    function generateProyekURL(){
+        var proyekURL = "{{route('viewgeneral')}}";
+        proyekURL = proyekURL.concat("/").concat($("#proyekactivity").val());
+        window.location = proyekURL;
+    }
+    </script>
 <div class="modal fade" id="proyekModal" tabindex="-1" role="dialog" aria-labelledby="titleproyek" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,8 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="proyekForm" action="{{route('filteredAsdos','proyek')}}" name="proyekForm">
-                    @csrf
+
                     <div class="form-group">
 
                         <label for="proyekactivity" class="col-form-label float-left">Jenis Kegiatan</label>
@@ -25,11 +31,11 @@
                         </select>
                     </div>
                     
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.proyekForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateProyekURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>

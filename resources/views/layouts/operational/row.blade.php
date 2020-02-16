@@ -25,7 +25,7 @@
     <div class="card shadow mb-4">
 
       <div class="card-header" id="persetujuan">
-        <button type="button" onclick='gotoPersetujuanView();' class="btn float-right btn-sm btn-light">
+        <button type="button" onclick='gotoPesananBerjalanView();' class="btn float-right btn-sm btn-light">
           Pesanan Berjalan <span class="badge badge-primary">{{ $berjalan }}</span>
         </button>
       </div>
@@ -47,7 +47,7 @@
     <div class="card shadow mb-4">
 
       <div class="card-header" id="persetujuan">
-        <button type="button" onclick='gotoPersetujuanView();' class="btn float-right btn-sm btn-light">
+        <button type="button" onclick='gotoPendingPayoutView();' class="btn float-right btn-sm btn-light">
           Konfirmasi Pembayaran <span class="badge badge-danger">{{ $tagihan }}</span>
         </button>
       </div>

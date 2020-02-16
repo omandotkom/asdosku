@@ -1,3 +1,10 @@
+<script>
+    function generateKaryaURL(){
+        var karyaURL = "{{route('viewgeneral')}}";
+        karyaURL = karyaURL.concat("/").concat($("#karyaactivity").val());
+        window.location = karyaURL;
+    }
+    </script>
 <!-- Modal -->
 <div class="modal fade" id="karyaModal" tabindex="-1" role="dialog" aria-labelledby="titlekarya" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -9,8 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="karyaForm" action="{{route('filteredAsdos','karya')}}" name="karyaForm">
-                    @csrf
+                
                     <div class="form-group">
 
                         <label for="karyaactivity" class="col-form-label float-left">Jenis Kegiatan</label>
@@ -25,11 +31,11 @@
                         </select>
                     </div>
                     
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.karyaForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateKaryaURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>

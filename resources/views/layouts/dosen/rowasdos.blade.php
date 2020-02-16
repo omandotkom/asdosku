@@ -1,5 +1,3 @@
-
-
 <script>
     function userDetil(url) {
 
@@ -37,7 +35,7 @@
         var url = "{{url('/dashboard/index/dosen/order')}}";
         url = url.concat("/");
         url = url.concat(activity).concat("/").concat(user);
-        window.open(url,'_blank');
+        window.open(url, '_blank');
         console.log(url);
     }
 </script>
@@ -90,7 +88,6 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     @foreach($asdoslist as $asdos)
     <div class="col-xl-3 col-lg-5">
@@ -123,7 +120,7 @@
                             </tr>
                         </table>
                     </div>
-                    
+
                     <button type="button" onclick="userDetil(generateURL('{{$asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Rincian</button>
 
                     <button type="button" onclick="order('{{$activity}}','{{$asdos->id}}');" class="btn btn-outline-primary btn-block btn-sm mt-2">Pilih</button>
@@ -134,7 +131,7 @@
     @endforeach
 </div>
 
-
+{{$asdoslist->links()}}
 
 
 

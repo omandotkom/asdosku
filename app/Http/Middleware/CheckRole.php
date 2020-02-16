@@ -24,6 +24,8 @@ class CheckRole
                 //cek apabila sudah lengkapi profile
                 if (is_null(Auth::user()->second_register) || Auth::user()->second_register != true){
                     return redirect()->route('profileAsdos');
+                }else{
+                    return redirect()->route('indexasdos');
                 }
                 break;
             case "operational":

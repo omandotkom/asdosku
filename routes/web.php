@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('i
 Route::get('/dashboard/index/operational','DashboardIndexController@indexoperational')->name('indexoperational');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('verified', 'checkactive')->name('indexdosen');
 Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel');
-Route::post('/dashboard/index/view/asdos/{type}','AsdosController@viewFilteredAsdos')->name('filteredAsdos');
+Route::get('/dashboard/index/view/asdos/{type}/{activity?}/{gender?}/{semester?}/{kampus?}/','AsdosController@viewFilteredAsdos')->name('filteredAsdos');
 
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan');
@@ -31,13 +32,15 @@ Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->na
 Route::get('/registerasdos/statusakun', function () {
     return view('auth.notactive');
 })->name('notactive');
-
+Route::get('/dashboard/index/asdos','DashboardIndexController@indexasdos')->name('indexasdos');
 
 Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->name('profileAsdos');
 
 
 Route::post('/dashboard/index/asdos/profile/uploadprofilepic','UploadProfileImageController@upload')->name('uploadProfileAsdos');
 Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updatePreferAsdos')->name('updatePreferAsdos');
+Route::get('/dashboard/index/asdos/currentransaction/view','TransactionController@currenttransactionasdos')->name('viewpesananberjalanasdos');
+
 Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts')->name('showallpayout');
 Route::post('/dashboard/index/dosen/payout/store/{transaction_id}','PayoutController@store')->name('storepayout');
 Route::get('/dashboard/index/dosen/payout/download/{payout_id}','PayoutController@downloadpayment')->name('downloadpayout');
@@ -51,3 +54,6 @@ Route::get('/dashboard/index/operational/currentransaction/view','TransactionCon
 Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@showconfirpayouts')->name('viewpendingpayout');
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory');
 
+Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar');
+Route::get('/matakuliah/{activity?}/{kampus?}/{semester?}/{jurusan?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah');
+Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('viewgeneral');

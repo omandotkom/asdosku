@@ -9,12 +9,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="bimbelForm" action="{{route('filteredAsdos','bimbinganbelajar')}}" name="bimbelForm">
-                    @csrf
+                <script>
+                    function generateBimbelURL(){
+                        var url = "{{route('viewbimbinganbelajar')}}";
+                        url = url.concat("/").concat($("#activitybimbel").val()).concat("/").concat($("#bimbelgender").val())
+                        window.location = url;
+                    }
+                </script>
                     <div class="form-group">
-
+                    
                         <label for="bimbelactivity" class="col-form-label float-left">Jenis Kegiatan</label>
-                        <select name="activity" id="bimbelactivity" required class="custom-select custom-select-sm">
+                        <select name="activity" id="activitybimbel" required class="custom-select custom-select-sm">
                         @foreach($bimbelactivity as $b)
                             @if($b->first)
                             <option selected value="{{$b->id}}">{{$b->name}}</option>
@@ -33,11 +38,10 @@
                             <option value="Wanita">Wanita</option>
                         </select>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.bimbelForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateBimbelURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>

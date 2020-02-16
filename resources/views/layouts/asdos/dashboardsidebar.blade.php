@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('indexhrd')}}">
+        <a class="nav-link" href="{{route('indexasdos')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Beranda</span></a>
     </li>
@@ -22,20 +22,16 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-   
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Pembayaran
-    </div>
+  
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('profileAsdos')}}">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Tagihan</span></a>
+            <span>Profile</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Konfirmasi Pembayaran</span></a>
+            <span>Pesanan Berjalan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="charts.html">

@@ -109,6 +109,12 @@
           @case('profile')
           @include('layouts.asdos.profile2')
           @break
+          @case('berjalanlist')
+          @include('layouts.operational.berjalanlist')
+          @break
+          @default
+          @include('layouts.asdos.row')
+          @break
           @endswitch
           @endif
         

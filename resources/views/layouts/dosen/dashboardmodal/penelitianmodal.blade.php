@@ -1,4 +1,11 @@
 <!-- Modal -->
+<script>
+    function generatePenelitianURL(){
+        var penelitianURL = "{{route('viewgeneral')}}";
+        penelitianURL = penelitianURL.concat("/").concat($("#penelitianactivity").val());
+        window.location = penelitianURL;
+    }
+</script>
 <div class="modal fade" id="penelitianModal" tabindex="-1" role="dialog" aria-labelledby="titlePenelitian" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,7 +16,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="penelitianForm" action="{{route('filteredAsdos','penelitian')}}" name="penelitianForm">
                     @csrf
                     <div class="form-group">
 
@@ -25,11 +31,10 @@
                         </select>
                     </div>
                     
-                </form>
-            </div>
+              </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.penelitianForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generatePenelitianURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>

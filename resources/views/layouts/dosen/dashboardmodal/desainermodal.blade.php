@@ -1,4 +1,11 @@
 <!-- Modal -->
+<script>
+    function generateDesainerURL(){
+        var desainerURL = "{{route('viewgeneral')}}";
+        desainerURL = desainerURL.concat("/").concat($("#desaineractivity").val());
+        window.location = desainerURL;
+    }
+    </script>
 <div class="modal fade" id="desainerModal" tabindex="-1" role="dialog" aria-labelledby="titledesainer" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,8 +16,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="desainerForm" action="{{route('filteredAsdos','desainer')}}" name="desainerForm">
-                    @csrf
                     <div class="form-group">
 
                         <label for="desaineractivity" class="col-form-label float-left">Jenis Kegiatan</label>
@@ -25,11 +30,10 @@
                         </select>
                     </div>
                     
-                </form>
-            </div>
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.desainerForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateDesainerURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>

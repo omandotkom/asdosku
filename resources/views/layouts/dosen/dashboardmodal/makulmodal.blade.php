@@ -1,4 +1,13 @@
 <!-- Modal -->
+<script>
+    function generateMatakuliahURL(){
+        var matakuliahURL = "{{route('viewmatakuliah')}}";
+        matakuliahURL = matakuliahURL.concat("/").concat($("#activitymatakuliah").val()).concat("/")
+        .concat($("#kampusmatakuliah").val()).concat("/").concat($("#jurusanmatakuliah").val()).concat("/")
+        .concat($("#semestermatakuliah").val()).concat("/").concat($("#gendermatakuliah").val());
+        window.location = matakuliahURL;
+    }
+</script>
 <div class="modal fade" id="makulModal" tabindex="-1" role="dialog" aria-labelledby="titleMakul" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,12 +18,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" name="makulform" action="{{route('filteredAsdos','matakuliah')}}">
-                    @csrf
                     <div class="form-group">
                         <label for="mapel" class="col-form-label float-left">Matakuliah</label>
                         
-                        <select required name="activity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
+                        <select required id="activitymatakuliah" name="activity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
                             @if($p->first)
                             <option selected value="{{$p->id}}">{{$p->name}}</option>
                             @else
@@ -25,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label for="semester" class="col-form-label float-left">Semester</label>
-                        <select name="semester" required class="custom-select custom-select-sm">
+                        <select name="semester" id="semestermatakuliah" required class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
                             @for ($i = 1; $i < 10; $i++)<option value="{{$i}}"> {{$i}} </option>
                                 @endfor
@@ -33,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
-                        <select name="kampus" required class="custom-select custom-select-sm">
+                        <select name="kampus" id="kampusmatakuliah" required class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
                             @foreach($campuses as $campus)
                                 <option value="{{$campus->id}}">{{$campus->name}}</option>
@@ -42,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="jurusan" class="col-form-label float-left">Jurusan</label>
-                        <select name="jurusan" required class="custom-select custom-select-sm">
+                        <select name="jurusan" id="jurusanmatakuliah" required class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
                             <option id='Teknik Informatika'>Teknik Informatika</option>
                             <option id='Teknik Telekomunikasi'>Teknik Telekomunikasi</option>
@@ -50,18 +57,17 @@
                     </div>
                     <div class="form-group">
                         <label for="gender"  class="col-form-label float-left">Gender</label>
-                        <select required name="gender" class="custom-select custom-select-sm">
+                        <select required name="gender" id="gendermatakuliah" class="custom-select custom-select-sm">
                             <option selected value="Bebas">Bebas</option>
                             <option value="Pria">Pria</option>
                             <option value="Wanita">Wanita</option>
                         </select>
                     </div>
 
-                </form>
-            </div>
+             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.makulform.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateMatakuliahURL();" class="btn btn-primary">Lanjutkan</button>
             </div>
         </div>
     </div>

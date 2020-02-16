@@ -1,4 +1,11 @@
 <!-- Modal -->
+<script>
+    function generatePengabdianURL(){
+        var pengabdianURL = "{{route('viewgeneral')}}";
+        pengabdianURL = pengabdianURL.concat("/").concat($("#pengabdianactivity").val());
+        window.location = pengabdianURL;
+    }
+    </script>
 <div class="modal fade" id="pengabdianModal" tabindex="-1" role="dialog" aria-labelledby="titlepengabdian" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,8 +16,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" id="pengabdianForm" action="{{route('filteredAsdos','pengabdian')}}" name="pengabdianForm">
-                    @csrf
+               
                     <div class="form-group">
 
                         <label for="pengabdianactivity" class="col-form-label float-left">Jenis Kegiatan</label>
@@ -25,11 +31,11 @@
                         </select>
                     </div>
                     
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="document.pengabdianForm.submit();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generatePengabdianURL();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>
