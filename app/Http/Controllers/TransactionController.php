@@ -107,13 +107,13 @@ class TransactionController extends Controller
         ->select('transactions.*'
         ,'users.name as dosen',
         'details.wa as wa'
-        ,'activities.name as kegiatan')
+        ,'activities.name as kegiatan',DB::raw('(activities.harga * activities.asdos) as basicpendapatan'))
         ->join('users','transactions.dosen','users.id')
         ->join('activities','transactions.activity_id','activities.id')
         ->join('details','users.id','details.user_id')
         
         ->orderBy('transactions.updated_at','asc')->simplePaginate(10);
-   //return $transaction;
+    
          return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Asistensi Berjalan','content'=>'berjalanlist']);
     }
     public function pendingtransaction(){

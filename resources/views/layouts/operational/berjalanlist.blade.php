@@ -240,10 +240,15 @@
                             <th>Sampai</th>
                             <td id="sampai"></td>
                         </tr>
+                        @if(Auth::user()->role == 'operational')
                         <tr>
                             <th>Biaya Kegiatan</th>
                             <td id="biaya"></td>
                         </tr>
+                        @else
+                        <div id="biaya"></div>
+                        @endif
+
                         <tr>
                             <th>Biaya Tambahan</th>
                             <td>
@@ -302,6 +307,13 @@
                                 <th>Kegiatan</th>
                                 <td>{{$transaction->kegiatan}}</td>
                             </tr>
+                            @if(isset($transaction->basicpendapatan))
+                            <tr>
+                                <th>Pendapatan</th>
+                                <td>Rp. {{$transaction->basicpendapatan}} <small>belum termasuk biaya tambahan (jika ada)</small></td>
+                            </tr>
+                            
+                            @endif
                             <tr>
                                 <th>Periode</th>
                                 <td>{{$transaction->dari}} <b> sampai </b> {{$transaction->sampai}}</td>
@@ -312,9 +324,9 @@
                     $historisurl = route('showcosthistory',$transaction->id);
                     @endphp
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
-                    <button data-toggle="modal" data-target="#costDialog" onclick="generateCostUrl('{{$transaction->id}}');" type="button" class="btn mx-auto btn-primary btn-block btn-sm">Tambah Biaya</button>
+                    @if(Auth::user()->role == "operational") <button data-toggle="modal" data-target="#costDialog" onclick="generateCostUrl('{{$transaction->id}}');" type="button" class="btn mx-auto btn-primary btn-block btn-sm">Tambah Biaya</button>@endif
                     <button type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
-                    @if($transaction->status == "Berjalan")
+                    @if($transaction->status == "Berjalan" and Auth::user()->role == "operational")
                     <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Layanan Selesai</button>
                     @endif
                 </div>
