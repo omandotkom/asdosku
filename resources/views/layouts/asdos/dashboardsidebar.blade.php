@@ -29,15 +29,21 @@
             <span>Profile</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('viewpesananberjalanasdos')}}">
+        <a class="nav-link" href="{{route('viewcommentratingbyuser',Auth::user()->id)}}">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Pesanan Berjalan</span></a>
+            <span>Rating & Komentar</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('viewpesananasdosbystatus','Berjalan')}}">
             <i class="fas fa-fw fa-ruler"></i>
-            <span>Status Pembayaran</span></a>
+            <span>Asistensi Berjalan</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('viewpesananasdosbystatus','Selesai')}}">
+            <i class="fas fa-fw fa-ruler"></i>
+            <span>Asistensi Selesai</span></a>
+    </li>
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

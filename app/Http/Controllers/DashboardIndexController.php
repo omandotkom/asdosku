@@ -42,6 +42,7 @@ class DashboardIndexController extends Controller
     public function indexAsdos()
     {
         $berjalan = Transaction::where('status', 'Berjalan')->where('asdos', Auth::user()->id)->count();
-        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan]);
+        $selesai = Transaction::where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
+        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan,'selesai' => $selesai]);
     }
 }

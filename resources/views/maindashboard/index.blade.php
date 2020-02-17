@@ -84,6 +84,9 @@
           @case('payment')
           @include('layouts.dosen.transaction.payment')
           @break
+          @case('viewcomments')
+          @include('layouts.asdos.commentrating')
+          @break
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
           @break
@@ -111,6 +114,9 @@
           @break
           @case('berjalanlist')
           @include('layouts.operational.berjalanlist')
+          @break
+          @case('viewcomments')
+          @include('layouts.asdos.commentrating')
           @break
           @default
           @include('layouts.asdos.row')

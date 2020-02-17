@@ -10,6 +10,8 @@
                 document.getElementById("detilRating").innerHTML = response.data.rating;
                 document.getElementById("detilJurusan").innerHTML = response.data.jurusan;
                 document.getElementById("detilSemester").innerHTML = response.data.semester;
+                document.getElementById("detilKomentar").innerHTML = response.data.commentcount;
+                $("#detilKomentar").attr("href", response.data.commentlink);
                 document.getElementById("detilGender").innerHTML = response.data.gender;
                 document.getElementById("detilCreated").innerHTML = response.data.created_at;
                 document.getElementById("detilFoto").src = response.data.image_name;
@@ -59,6 +61,10 @@
                         <tr>
                             <th>Rating</th>
                             <td id="detilRating">-</td>
+                        </tr>
+                        <tr>
+                            <th>Komentar</th>
+                            <td><a href="#" id="detilKomentar" class="badge badge-info">0 Komentar</a></td>
                         </tr>
                         <tr>
                             <th>Kampus</th>

@@ -6,6 +6,7 @@ use App\Archive;
 use App\Service;
 use App\Activity;
 use App\Campus;
+use App\Comment;
 use App\Prefer;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -22,7 +23,7 @@ class AsdosController extends Controller
         $services = Service::all();
         $image_url = "";
         if (!$archive == null) {
-            $image_url = asset('storage/images/245');
+            $image_url = asset('storage/images/300');
             $image_url = $image_url . "/" . $archive->image_name;
         } else {
             //get random pic over the internet
@@ -94,6 +95,8 @@ class AsdosController extends Controller
     }
     public function profile($id){
         $user = DB::table('users')->select('users.name','details.*','rates.rating','archives.image_name','kampus.name as kampus')
+        ->selectRaw('now() as commentcount')
+        ->selectRaw("null as commentlink")
         ->join('details','users.id','details.user_id')
         ->join('kampus','details.kampus_id','kampus.id')
         ->join('archives','users.id','archives.user_id')
@@ -101,7 +104,7 @@ class AsdosController extends Controller
         ->where('users.id',$id)
         ->first();
         if (isset($user->image_name)){
-            $image_url = asset('storage/images/245');
+            $image_url = asset('storage/images/300');
             $image_url = $image_url . "/" . $user->image_name;
             $user->image_name = $image_url;
         }else{
@@ -114,6 +117,8 @@ class AsdosController extends Controller
         }else{
             $user->rating = "-";
         }
+        $user->commentcount = Comment::where('user_id',$id)->count()." Komentar";
+        $user->commentlink = route('viewcommentratingbyuser',$id);
         return response()->json($user);
     }
 }

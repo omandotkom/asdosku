@@ -39,7 +39,8 @@ Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->na
 
 Route::post('/dashboard/index/asdos/profile/uploadprofilepic','UploadProfileImageController@upload')->name('uploadProfileAsdos');
 Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updatePreferAsdos')->name('updatePreferAsdos');
-Route::get('/dashboard/index/asdos/currentransaction/view','TransactionController@currenttransactionasdos')->name('viewpesananberjalanasdos');
+Route::get('/dashboard/index/asdos/currentransaction/view/{status}','TransactionController@viewtransactionasdosbystatus')->name('viewpesananasdosbystatus');
+Route::get('/dashboard/index/asdos/commentrating/{user_id?}','CommentController@viewasdoscomments')->name('viewcommentratingbyuser');
 
 Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts')->name('showallpayout');
 Route::post('/dashboard/index/dosen/payout/store/{transaction_id}','PayoutController@store')->name('storepayout');

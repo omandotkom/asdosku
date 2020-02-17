@@ -19,7 +19,7 @@ class UploadProfileImageController extends Controller
         //DEFINISIKAN PATH
         $this->path = storage_path('app/public/images');
         //DEFINISIKAN DIMENSI
-        $this->dimensions = ['245', '300', '500'];
+        $this->dimensions = ['75','245', '300'];
     }
     public function upload(Request $request)
     {
@@ -69,7 +69,7 @@ class UploadProfileImageController extends Controller
         'image_path' => $this->path,]);
         $archive = Archive::where('user_id',Auth::user()->id)->first();
 
-        $image_url = asset('storage/images/245');
+        $image_url = asset('storage/images/75');
         $image_url = $image_url . "/" . $archive->image_name;
         //return $image_url;
         return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url]);

@@ -102,8 +102,8 @@ class TransactionController extends Controller
    //return $transaction;
          return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Pesanan yang Berjalan','content'=>'berjalanlist']);
     }
-    public function currenttransactionasdos(){
-        $transaction = Transaction::where('transactions.status','Berjalan')->where('transactions.asdos',Auth::user()->id)
+    public function viewtransactionasdosbystatus($status){
+        $transaction = Transaction::where('transactions.status',$status)->where('transactions.asdos',Auth::user()->id)
         ->select('transactions.*'
         ,'users.name as dosen',
         'details.wa as wa'
@@ -113,7 +113,6 @@ class TransactionController extends Controller
         ->join('details','users.id','details.user_id')
         
         ->orderBy('transactions.updated_at','asc')->simplePaginate(10);
-    
          return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Asistensi Berjalan','content'=>'berjalanlist']);
     }
     public function pendingtransaction(){
