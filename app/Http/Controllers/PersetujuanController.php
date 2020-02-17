@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Events\UserWasActivated;
 Use App\User;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,7 @@ class PersetujuanController extends Controller
         $user->status = "aktif";
         $user->save();
         
+        event(new UserWasActivated($user));
         $belum_disetujui = User::where('status','belum_aktif')->simplePaginate(10);
         return view('maindashboard.index', ['belum_disetujui' => $belum_disetujui,'title' => 'Persetujuan Pendaftaran','content'=>'persetujuanlist']);
     }
