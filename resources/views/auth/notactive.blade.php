@@ -14,6 +14,8 @@
                 Halo {{ Auth::user()->name }} 
                 <br>
                 Terimakasih sudah mendaftar :). Saat ini status akun kamu <b>belum aktif</b> dan sedang menunggu aktivasi oleh Asdosku. Silahkan tunggu 2x24 jam yaa, jika dalam waktu 2x24 jam akunmu belum aktif silahkan hubungi admin untuk menanyakan lebih lanjut.  
+                <br>
+                Sistem akan mengirimkan pemberitahuan ke email Anda <b>({{Auth::user()->email}})</b> apabila akun sudah diaktifasi.
                 <div class="text-center">
                 <a href="https://wa.me/087719357776" target="_blank"><button type="submit" class="btn mt-5 btn-success">Tanya Admin (WhatsApp)</button>.
                 </a> 

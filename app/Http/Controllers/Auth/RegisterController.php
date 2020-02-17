@@ -8,10 +8,12 @@ use App\Detail;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Events\UserVerified;
 
 class RegisterController extends Controller
 {
@@ -131,4 +133,5 @@ class RegisterController extends Controller
             }
         }
     }
+    
 }

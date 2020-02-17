@@ -29,9 +29,7 @@ Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view'
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan');
 Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow');
 Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->name('registerasdos');
-Route::get('/registerasdos/statusakun', function () {
-    return view('auth.notactive');
-})->name('notactive');
+Route::get('/registerasdos/statusakun','UserActivationController@show')->name('notactive');
 Route::get('/dashboard/index/asdos','DashboardIndexController@indexasdos')->name('indexasdos');
 
 Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->name('profileAsdos');
