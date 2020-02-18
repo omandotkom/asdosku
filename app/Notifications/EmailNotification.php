@@ -6,9 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\User;
-use Illuminate\Support\Facades\Log;
-class UserActivation extends Notification implements ShouldQueue
+use App\Notifications\MailContent;
+class EmailNotification extends Notification
 {
     use Queueable;
 
@@ -17,10 +16,10 @@ class UserActivation extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public $asdos;
-    public function __construct(User $asdos)
+    public $emailContent;
+    public function __construct(MailContent $emailContent)
     {
-        $this->asdos = $asdos;
+        $this->emailContent = $emailContent;
     }
 
     /**
@@ -29,7 +28,6 @@ class UserActivation extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-
     public function via($notifiable)
     {
         return ['mail'];
@@ -43,12 +41,12 @@ class UserActivation extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        Log::info("sending to ".$this->asdos->email);
         return (new MailMessage)
-        ->line('Kak,'.$this->asdos->name.' Selamat bergabung dengan keluarga asdosku. Akun kakak sudah diaktivasi oleh team Asdosku nih :) Langkah selanjutnya daftar ulang yaa dengan mencentang pekerjaan dan unggah foto profile.')
-        ->action("Daftar Ulang", route('login'))
-        ->line('Makasih kakk, jangan lupa login buat daftar ulang :)');
-}
+                    ->subject($this->emailContent->subject)
+                    ->line($this->emailContent->judul)
+                    ->action($this->emailContent->isi, $this->emailContent->url);
+                    
+    }
 
     /**
      * Get the array representation of the notification.

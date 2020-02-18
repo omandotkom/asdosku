@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Campus;
 use App\Cost;
+use App\Events\OrderWasApproved;
+use App\Events\OrderWasCreated;
 use App\Rate as USERRATE;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,6 +25,8 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         $transaction->status = $status;
         $transaction->save();
+        $dosen = User::find($transaction->dosen);
+        event( new OrderWasApproved($dosen,$transaction));
         return $transaction;
     }
     public function showcosthistory($id){
@@ -72,6 +76,7 @@ class TransactionController extends Controller
         $transaction->biaya = $request->biaya;
         $transaction->status = 'Mencari Asdos';
         $transaction->save();
+        event(new OrderWasCreated(Auth::user()));
         return redirect()->route('showUserOrder');
     }
     public function showUserOrder()
