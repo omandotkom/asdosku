@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +57,4 @@ Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionCont
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar');
 Route::get('/matakuliah/{activity?}/{kampus?}/{semester?}/{jurusan?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah');
 Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('viewgeneral');
+

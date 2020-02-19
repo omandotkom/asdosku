@@ -3,6 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserWasActivated;
+use App\Jobs\EmailJob;
+use App\Notifications\EmailNotification;
+use App\Notifications\MailContent;
 use App\Notifications\UserActivation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -30,7 +33,9 @@ class UserActivatedListener
     public function handle(UserWasActivated $event)
     {
         $asdos = $event->user;
+        $Notification = new EmailNotification(new MailContent("Notifikasi Asdosku","Kak,".$event->user->name." Selamat bergabung dengan keluarga asdosku. Akun kakak sudah diaktivasi oleh team Asdosku nih :) Langkah selanjutnya daftar ulang yaa dengan mencentang pekerjaan dan unggah foto profile.","Daftar Ulang Sekarang",route('login')));
         Log::info("Mengirin notifikasi email berhasil aktivasi");
-        Notification::send($asdos,new UserActivation($asdos));
+        EmailJob::dispatch($asdos, $Notification);
+        
     }
 }

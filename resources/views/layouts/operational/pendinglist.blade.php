@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
     var updateUrl;
     var selectedID;
@@ -47,13 +49,27 @@
             .then(function(response) {
                 // handle success
                 const myNode = document.getElementById(selectedID);
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
+
+                    text: "Berhasil merubah status transaksi.",
+
+                    duration: 3000
+
+                }).showToast();
                 while (myNode.firstChild) {
                     myNode.removeChild(myNode.firstChild);
                 }
             })
             .catch(function(error) {
                 // handle error
-                console.log(error);
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                    text: "Gagal merubah status transaksi",
+
+                    duration: 3000
+
+                }).showToast();
             })
             .then(function() {
                 // always executed

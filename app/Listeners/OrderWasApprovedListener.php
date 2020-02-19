@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\EmailNotification;
+use App\Jobs\EmailJob;
 class OrderWasApprovedListener
 {
     /**
@@ -29,7 +30,9 @@ class OrderWasApprovedListener
     public function handle(OrderWasApproved $event)
     {
      $mailDosen = new MailContent("Notifikasi Asdosku","Selamat, permintaan asistensi dengan kode pemesanan ".$event->transaction->id ." sudah berjalan.","Cek Status Asistensi",route('login'));
-     Notification::send($event->dosen,new EmailNotification($mailDosen));
+     EmailJob::dispatch($event->dosen, new EmailNotification($mailDosen));
+        
+   //  Notification::send($event->dosen,new EmailNotification($mailDosen));
         
     }
 }

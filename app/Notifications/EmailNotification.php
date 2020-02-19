@@ -7,7 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Notifications\MailContent;
-class EmailNotification extends Notification
+use Illuminate\Support\Facades\Log;
+class EmailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -41,6 +42,7 @@ class EmailNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        Log::debug("Sending email...");
         return (new MailMessage)
                     ->subject($this->emailContent->subject)
                     ->line($this->emailContent->judul)

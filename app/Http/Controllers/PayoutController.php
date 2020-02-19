@@ -12,6 +12,8 @@ use App\Activity;
 use App\Comment;
 use Illuminate\Support\Facades\Log;
 use App\Cost;
+use App\Events\OrderWaitingPaymentConfirmation;
+use App\Events\PaymentWaitingConfirmation;
 use App\Rate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -93,9 +95,11 @@ class PayoutController extends Controller
             $rating->rating = $request->rating;
             $rating->save();
         }
+        
         //   return asset("storage/".$path); 
         //return Storage::download($path);
-       return redirect()->route('showUserOrder')->with(['success' => 'Pembayaran Anda berhasil masuk ke sistem dan sedang dalam antrian pemeriksaan oleh team Asdosku :)']);
+        event(new OrderWaitingPaymentConfirmation(Auth::user(),$payout));
+        return redirect()->route('showUserOrder')->with(['success' => 'Pembayaran Anda berhasil masuk ke sistem dan sedang dalam antrian pemeriksaan oleh team Asdosku :)']);
     }
     function showconfirpayouts(){
         $payouts = Payout::with('user','transaction','detail')->where('status','Menunggu Konfirmasi Pembayaran')->get();
@@ -113,6 +117,7 @@ class PayoutController extends Controller
         $transaction = Transaction::find($payout->transaction_id);
         $transaction->status = 'Selesai';
         $transaction->save();
+        event(new PaymentWaitingConfirmation($payout));
         return response('Transaksi berhasil dikonfirmasi.',200);
     }
 }

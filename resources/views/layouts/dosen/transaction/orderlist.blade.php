@@ -1,6 +1,43 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
     var deleteUrl;
+    var selectedID;
+    function generateSelesaiURL(id) {
+        selectedID = id;
+        selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
+        
+    }
+    function selesailayanan() {
+        axios.get(selesaiURL)
+            .then(function(response) {
+                // handle success
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
+                    text: "Berhasil merubah status transaksi menjadi ".concat(response.data.status),
+
+                    duration: 3000
+
+                }).showToast();
+                                    location.reload(true);
+                
+                
+            })
+            .catch(function(error) {
+                // handle error
+                Toastify({
+                    backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                    text: error,
+
+                    duration: 3000
+
+                }).showToast();
+            })
+            .then(function() {
+                // always executed
+            });
+    }
     function userDetil(url) {
 
         // Make a request for a user with a given ID
@@ -32,7 +69,7 @@
     function generateURL(id) {
         var url = "{{url('api/transaction/detil')}}";
         url = url.concat("/").concat(id);
-        console.log(url);
+        
         return url;
     }
 
@@ -44,10 +81,32 @@
     }
 
     function deleteTransaction() {
+       //console.log(deleteUrl);
         window.location = deleteUrl;
     }
 </script>
-
+<div class="modal fade" id="selesaimodal" tabindex="-1" role="dialog" aria-labelledby="selesaimodaltitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selesaimodaltitle">Konfirmasi Penyelesaian Layanan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Layanan akan dianggap selesai oleh sistem.</li>
+                    <li>Setelah layanan di selesaikan, sistem akan memberikan tagihan.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" onclick="selesailayanan();" data-dismiss="modal" class="btn btn-success">Selesaikan Pesanan</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -231,6 +290,9 @@
                     @endphp
                     <button type="button" onclick="window.location = '{{$urlpayment}}';" class="btn mx-auto btn-primary btn-block btn-sm">Bayar Pesanan</button>
                     @endif
+                    @break
+                    @case('Berjalan')
+                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Selesaikan Layanan</button>
                     @break
                     @endswitch
                 </div>

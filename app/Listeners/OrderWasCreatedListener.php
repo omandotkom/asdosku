@@ -3,12 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\OrderWasCreated;
+use App\Jobs\EmailJob;
 use App\Notifications\EmailNotification;
 use App\Notifications\MailContent;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use App\User;
-use Illuminate\Support\Facades\Notification;
+
 class OrderWasCreatedListener
 {
     /**
@@ -27,13 +26,18 @@ class OrderWasCreatedListener
      * @param  object  $event
      * @return void
      */
+
     public function handle(OrderWasCreated $event)
     {
-        //ambil data akun operasional
-        $operational = User::where('role','operational')->get();
-        $mailOperational = new MailContent("Notifikasi Asdosku","Untuk bagian operasional : Ada satu pesanan baru oleh ".$event->dosen->name.", mohon login ke sistem untuk acc",
-        "Lihat Pesanan Pending",route('login'));
-        Notification::send($operational,new EmailNotification($mailOperational));
-        
+        $mailContent = new MailContent(
+            "Notifikasi Asdosku",
+            "Untuk bagian operasional : Ada satu pesanan baru oleh " . $event->dosen->name . ", mohon login ke sistem untuk acc",
+            "Lihat Pesanan Pending",
+            route('login')
+        );
+        $to = User::where('role', "operational")->get();
+        foreach ($to as $t) {
+            EmailJob::dispatch($t, new EmailNotification($mailContent));
+        }
     }
 }

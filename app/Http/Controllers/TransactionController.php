@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Campus;
 use App\Cost;
+use App\Events\OrderWaitingPayment;
 use App\Events\OrderWasApproved;
 use App\Events\OrderWasCreated;
+use App\Events\OrderWasDeleted;
+use App\Jobs\EmailJob;
+use App\Notifications\EmailNotification;
 use App\Rate as USERRATE;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,25 +19,32 @@ use App\Transaction;
 use CreateCostsTable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PharIo\Manifest\Email;
 
 class TransactionController extends Controller
 {
-    public function updatestatus($id,$status){
-        if ($status == "MP"){
+    public function updatestatus($id, $status)
+    {   
+        if ($status == "MP") {
             $status = "Menunggu Pembayaran";
         }
         $transaction = Transaction::find($id);
         $transaction->status = $status;
         $transaction->save();
         $dosen = User::find($transaction->dosen);
-        event( new OrderWasApproved($dosen,$transaction));
+        if ($status == "Menunggu Pembayaran") {
+            event(new OrderWaitingPayment($dosen,$transaction));
+        } else {
+            event(new OrderWasApproved($dosen, $transaction));
+        }
         return $transaction;
     }
-    public function showcosthistory($id){
-        $transaction = Transaction::with('activity')->where('id',$id)->first();
-        $cost = Cost::where('transaction_id',$id)->get();
- 
-         return view('maindashboard.index',['title'=> "Historis Biaya",'transaction' => $transaction, 'costs' => $cost,'content' => 'historisbiaya']);
+    public function showcosthistory($id)
+    {
+        $transaction = Transaction::with('activity')->where('id', $id)->first();
+        $cost = Cost::where('transaction_id', $id)->get();
+
+        return view('maindashboard.index', ['title' => "Historis Biaya", 'transaction' => $transaction, 'costs' => $cost, 'content' => 'historisbiaya']);
     }
     public function detil($id)
     {
@@ -47,16 +58,16 @@ class TransactionController extends Controller
             'activities.name as kegiatan',
             'activities.keterangan as keterangankegiatan',
             'activities.harga',
-            )
+        )
             ->join('users', 'transactions.asdos', 'users.id')
             ->join('details', 'transactions.asdos', 'details.user_id')
             ->join('kampus', 'details.kampus_id', 'kampus.id')
             ->join('activities', 'transactions.activity_id', 'activities.id')
             ->join('archives', 'transactions.asdos', 'archives.user_id')
-            ->where('transactions.id',$id)
+            ->where('transactions.id', $id)
             ->first();
 
-             
+
         if (isset($transaction->image_name)) {
             $transaction->image_name = asset('storage/images/245/' . $transaction->image_name);
         }
@@ -76,64 +87,75 @@ class TransactionController extends Controller
         $transaction->biaya = $request->biaya;
         $transaction->status = 'Mencari Asdos';
         $transaction->save();
+    
         event(new OrderWasCreated(Auth::user()));
         return redirect()->route('showUserOrder');
     }
     public function showUserOrder()
     {
-        $transaction = Transaction::where('dosen', Auth::user()->id)->orderBy('updated_at', 'desc')->withTrashed()->get();
+        $transaction = Transaction::where('dosen', Auth::user()->id)->orderBy('created_at', 'desc')->withTrashed()->get();
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pemesanan Anda', 'content' => 'orderlist']);
     }
     public function delete($id)
     {
-        $transaction = Transaction::find($id);
+      $transaction = Transaction::where('id',$id)->first();
         if (isset($transaction)) {
             $transaction->status = "Dibatalkan";
             $transaction->save();
             $transaction->delete();
+            event(new OrderWasDeleted(Auth::user(), $transaction));
         }
         return redirect()->route('showUserOrder');
     }
-    public function currenttransaction(){
-        $transaction = Transaction::where('transactions.status','Berjalan')
-        ->select('transactions.*'
-        ,'users.name as dosen',
-        'details.wa as wa'
-        ,'activities.name as kegiatan')
-        ->join('users','transactions.dosen','users.id')
-        ->join('activities','transactions.activity_id','activities.id')
-        ->join('details','users.id','details.user_id')
-        ->orderBy('transactions.updated_at','asc')->simplePaginate(10);
-   //return $transaction;
-         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Pesanan yang Berjalan','content'=>'berjalanlist']);
+    public function currenttransaction()
+    {
+        $transaction = Transaction::where('transactions.status', 'Berjalan')
+            ->select(
+                'transactions.*',
+                'users.name as dosen',
+                'details.wa as wa',
+                'activities.name as kegiatan'
+            )
+            ->join('users', 'transactions.dosen', 'users.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('details', 'users.id', 'details.user_id')
+            ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
+        //return $transaction;
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pesanan yang Berjalan', 'content' => 'berjalanlist']);
     }
-    public function viewtransactionasdosbystatus($status){
-        $transaction = Transaction::where('transactions.status',$status)->where('transactions.asdos',Auth::user()->id)
-        ->select('transactions.*'
-        ,'users.name as dosen',
-        'details.wa as wa'
-        ,'activities.name as kegiatan',DB::raw('(activities.harga * activities.asdos) as basicpendapatan'))
-        ->join('users','transactions.dosen','users.id')
-        ->join('activities','transactions.activity_id','activities.id')
-        ->join('details','users.id','details.user_id')
-        
-        ->orderBy('transactions.updated_at','asc')->simplePaginate(10);
-         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Daftar Asistensi Berjalan','content'=>'berjalanlist']);
+    public function viewtransactionasdosbystatus($status)
+    {
+        $transaction = Transaction::where('transactions.status', $status)->where('transactions.asdos', Auth::user()->id)
+            ->select(
+                'transactions.*',
+                'users.name as dosen',
+                'details.wa as wa',
+                'activities.name as kegiatan',
+                DB::raw('(activities.harga * activities.asdos) as basicpendapatan')
+            )
+            ->join('users', 'transactions.dosen', 'users.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('details', 'users.id', 'details.user_id')
+
+            ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Asistensi Berjalan', 'content' => 'berjalanlist']);
     }
-    public function pendingtransaction(){
-        
-        $transaction = Transaction::where('transactions.status','Mencari Asdos')
-        ->select('transactions.*'
-        ,'users.name as dosen',
-        'details.wa as wa'
-        ,'activities.name as kegiatan')
-        ->join('users','transactions.dosen','users.id')
-        ->join('activities','transactions.activity_id','activities.id')
-        ->join('details','users.id','details.user_id')
-        ->orderBy('transactions.updated_at')->simplePaginate(10);
-   //return $transaction;
-         return view('maindashboard.index', ['transactions' => $transaction,'title' => 'Pesanan Asdos Menunggu Persetujuan','content'=>'pesananasdoslist']);
-   
+    public function pendingtransaction()
+    {
+
+        $transaction = Transaction::where('transactions.status', 'Mencari Asdos')
+            ->select(
+                'transactions.*',
+                'users.name as dosen',
+                'details.wa as wa',
+                'activities.name as kegiatan'
+            )
+            ->join('users', 'transactions.dosen', 'users.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('details', 'users.id', 'details.user_id')
+            ->orderBy('transactions.updated_at')->simplePaginate(10);
+        //return $transaction;
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }
     public function show($activity, $asdos)
     {
@@ -143,9 +165,9 @@ class TransactionController extends Controller
         }
         $kampus = Campus::select('name as kampus')->where('id', $asdos->detail->kampus_id)->first();
         $activity = Activity::with('service')->where('id', $activity)->first();
-        $rating = USERRATE::where('user_id',$asdos->id)->first();
-        if (isset($rating)){
-            $rating->rating = $rating->rating." / 5";
+        $rating = USERRATE::where('user_id', $asdos->id)->first();
+        if (isset($rating)) {
+            $rating->rating = $rating->rating . " / 5";
         }
         return view(
             'maindashboard.index',
