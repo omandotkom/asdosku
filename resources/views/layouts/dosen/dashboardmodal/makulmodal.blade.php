@@ -1,11 +1,11 @@
 <!-- Modal -->
 <script>
-    function generateMatakuliahURL(){
+    function generateMatakuliahURL() {
         var matakuliahURL = "{{route('viewmatakuliah')}}";
         matakuliahURL = matakuliahURL.concat("/").concat($("#activitymatakuliah").val()).concat("/")
-        .concat($("#kampusmatakuliah").val()).concat("/").concat($("#jurusanmatakuliah").val()).concat("/")
-        .concat($("#semestermatakuliah").val()).concat("/").concat($("#gendermatakuliah").val());
-        window.location = matakuliahURL;
+            .concat($("#kampusmatakuliah").val()).concat("/").concat($("#jurusanmatakuliah").val()).concat("/")
+            .concat($("#semestermatakuliah").val()).concat("/").concat($("#gendermatakuliah").val());
+       window.location = matakuliahURL;
     }
 </script>
 <div class="modal fade" id="makulModal" tabindex="-1" role="dialog" aria-labelledby="titleMakul" aria-hidden="true">
@@ -18,53 +18,54 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <div class="form-group">
-                        <label for="mapel" class="col-form-label float-left">Matakuliah</label>
-                        
-                        <select required id="activitymatakuliah" name="activity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
-                            @if($p->first)
-                            <option selected value="{{$p->id}}">{{$p->name}}</option>
-                            @else
-                            <option value="{{$p->id}}">{{$p->name}}</option>
-                            @endif    
-                        @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="semester" class="col-form-label float-left">Semester</label>
-                        <select name="semester" id="semestermatakuliah" required class="custom-select custom-select-sm">
-                            <option selected value="Bebas">Bebas</option>
-                            @for ($i = 1; $i < 10; $i++)<option value="{{$i}}"> {{$i}} </option>
-                                @endfor
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
-                        <select name="kampus" id="kampusmatakuliah" required class="custom-select custom-select-sm">
-                            <option selected value="Bebas">Bebas</option>
-                            @foreach($campuses as $campus)
-                                <option value="{{$campus->id}}">{{$campus->name}}</option>
-                            @endforeach
-                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="jurusan" class="col-form-label float-left">Jurusan</label>
-                        <select name="jurusan" id="jurusanmatakuliah" required class="custom-select custom-select-sm">
-                            <option selected value="Bebas">Bebas</option>
-                            <option id='Teknik Informatika'>Teknik Informatika</option>
-                            <option id='Teknik Telekomunikasi'>Teknik Telekomunikasi</option>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender"  class="col-form-label float-left">Gender</label>
-                        <select required name="gender" id="gendermatakuliah" class="custom-select custom-select-sm">
-                            <option selected value="Bebas">Bebas</option>
-                            <option value="Pria">Pria</option>
-                            <option value="Wanita">Wanita</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="mapel" class="col-form-label float-left">Matakuliah</label>
 
-             </div>
+                    <select required id="activitymatakuliah" name="activity" class="custom-select custom-select-sm"> @foreach($matakuliahactivity as $p)
+                        @if($p->first)
+                        <option selected value="{{$p->id}}">{{$p->name}}</option>
+                        @else
+                        <option value="{{$p->id}}">{{$p->name}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="semester" class="col-form-label float-left">Semester</label>
+                    <select name="semester" id="semestermatakuliah" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @for ($i = 1; $i < 10; $i++)<option value="{{$i}}"> {{$i}} </option>
+                            @endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
+                    <select name="kampus" id="kampusmatakuliah" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan" class="col-form-label float-left">Jurusan</label>
+                    <select name="jurusan" id="jurusanmatakuliah" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($jurusans as $jurusan)
+                        <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="col-form-label float-left">Gender</label>
+                    <select required name="gender" id="gendermatakuliah" class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        <option value="Pria">Pria</option>
+                        <option value="Wanita">Wanita</option>
+                    </select>
+                </div>
+
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" onclick="generateMatakuliahURL();" class="btn btn-primary">Lanjutkan</button>

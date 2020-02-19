@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
          KampusTableSeeder::class,
          UsersPengurusSeeder::class,
          DosenSeeder::class,
+         JurusanTableSeeder::class,
          SampleUserDetailTableSeeder::class]);
     }
 }

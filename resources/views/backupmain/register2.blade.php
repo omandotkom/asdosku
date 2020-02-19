@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -46,11 +45,11 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="kampus" id="kampus">
                                     @foreach($campuses as $campus)
-                                        @if($campus->first)
-                                            <option selected value="{{$campus->id}}">{{$campus->name}}</option>
-                                        @else
-                                        <option value="{{$campus->id}}">{{$campus->name}}</option>
-                                        @endif
+                                    @if($campus->first)
+                                    <option selected value="{{$campus->id}}">{{$campus->name}}</option>
+                                    @else
+                                    <option value="{{$campus->id}}">{{$campus->name}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -91,15 +90,18 @@
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">{{ __('Jurusan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="jurusan" aria-describedby="jurusanhelp" class="form-control @error('jurusan') is-invalid @enderror" name="jurusan" required>
-                                <small id="jurusanhelp" class="form-text text-muted text-left">
-                                    Misal S1 Teknik Informatika
-                                </small>
-                                @error('jurusan')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <select class="form-control" name="jurusan" id="jurusan">
+                                    @foreach($jurusans as $jurusan)
+                                    @if($jurusan->first)
+                                    <option selected value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                                    @else
+                                    <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                                    @endif
+                                    @endforeach
+                                    <option value="newjurusan" data-toggle="modal" data-target="#newjurusanmodal" onclick="console.log('diklik');"><b>Tambahkan Jurusan ...</b></option>
+
+                                </select>
+
                             </div>
                         </div>
                         <div class="form-group row">
@@ -148,15 +150,17 @@
                                     @endforeach
 
 
-                                  </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                <input id="email" aria-describedby="emailhelp" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <small id="emailhelp" class="form-text text-muted text-left">
+                                    Double check email yang didaftarkan karena setiap notifikasi akan dikirimkan ke Email.
+                                </small>                               
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

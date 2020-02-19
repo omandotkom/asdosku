@@ -22,7 +22,7 @@ class CreateDetailsAccount extends Migration
             $table->string('wa')->nullable();
             $table->string('gender')->nullable();
             $table->string('semester')->nullable();
-            $table->string('jurusan')->nullable();
+            $table->integer('jurusan_id')->nullable();
             $table->text('alamat')->nullable();
             $table->text('prefer')->nullable();
             $table->timestamps();

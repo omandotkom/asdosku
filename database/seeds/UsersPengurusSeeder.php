@@ -24,7 +24,14 @@ class UsersPengurusSeeder extends Seeder
         ]);
         $user =  User::create([
             'name' => Str::random(10),
-            'email' => Str::random(2).'@gmail.com',
+            'email' => "opr".Str::random(2).'@gmail.com',
+            'password' => bcrypt('system3298'),
+            'role' => 'operational',
+            'status' => 'aktif',
+        ]);
+        $user =  User::create([
+            'name' => Str::random(10),
+            'email' => "opr".Str::random(2).'@gmail.com',
             'password' => bcrypt('system3298'),
             'role' => 'operational',
             'status' => 'aktif',

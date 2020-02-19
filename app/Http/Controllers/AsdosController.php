@@ -94,12 +94,13 @@ class AsdosController extends Controller
         return view('maindashboard.index', ['asdoslist' => $asdosList,'activity' =>$activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
     public function profile($id){
-        $user = DB::table('users')->select('users.name','details.*','rates.rating','archives.image_name','kampus.name as kampus')
+        $user = DB::table('users')->select('users.name','details.*','rates.rating','archives.image_name','jurusans.name as jurusan','kampus.name as kampus')
         ->selectRaw('now() as commentcount')
         ->selectRaw("null as commentlink")
         ->join('details','users.id','details.user_id')
         ->join('kampus','details.kampus_id','kampus.id')
         ->join('archives','users.id','archives.user_id')
+        ->join('jurusans','details.jurusan_id','jurusans.id')
         ->leftJoin('rates','users.id','rates.user_id')
         ->where('users.id',$id)
         ->first();

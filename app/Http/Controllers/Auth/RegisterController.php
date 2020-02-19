@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserVerified;
+use App\Jurusans;
 
 class RegisterController extends Controller
 {
@@ -94,8 +95,9 @@ class RegisterController extends Controller
     {
         $services = Service::with('activities')->get();
         $campuses = Campus::all();
+        $jurusans = Jurusans::orderBy('name', 'asc')->get();
         //return $services;
-        return view('backupmain.register2', ['services' => $services, 'campuses' => $campuses]);
+        return view('backupmain.register2', ['services' => $services, 'campuses' => $campuses, 'jurusans' => $jurusans]);
     }
     protected function registerasdos(Request $data)
     {
@@ -127,11 +129,29 @@ class RegisterController extends Controller
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
-            Archive::create(['user_id' => $user->id,'image_name'=>'default.png']);
+            Archive::create(['user_id' => $user->id, 'image_name' => 'default.png']);
             if ($details->exists) {
                 return redirect('/dashboard');
             }
         }
     }
-    
+    public function addnewjurusan(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'namajurusanbaru' => 'bail|required||',
+
+        ]);
+        if ($validator->fails()) {
+            //  return response('Gagal menambahkan jurusan, nama jurusan harus di isi.',400);
+            return response("Gagal menambahkan ".$request->namajurusanbaru." sebagai jurusan. Mohon hubungi kontak admin",400);
+         
+            //      return redirect()->route('registerasdosShow')->with(["error" => "Gagal menambahkan jurusan karna kolom nama jurusan kosong."]);
+        }
+        
+        $jurusan = Jurusans::firstOrCreate(['name' => $request->namajurusanbaru]);
+        if ($jurusan) {
+           return response("Berhasil menambahkan ".$jurusan->name." sebagai jurusan",200);
+            // return back()->with(["success" => "Berhasil menambahkan " . $request->name . " sebagai jurusan baru di Asdosu."]);
+        }
+    }
 }

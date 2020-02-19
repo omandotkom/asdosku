@@ -55,6 +55,6 @@ Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory');
 
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar');
-Route::get('/matakuliah/{activity?}/{kampus?}/{semester?}/{jurusan?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah');
+Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah');
 Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('viewgeneral');
 

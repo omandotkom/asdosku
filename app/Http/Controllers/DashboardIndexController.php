@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\User;
 use App\Campus;
+use App\Jurusans;
 use App\Payout;
 use Illuminate\Support\Facades\Log;
 use App\Transaction;
@@ -37,7 +38,8 @@ class DashboardIndexController extends Controller
         $karyaActivity = Activity::select('id', 'name')->where('service_id', 'askarya')->get();
         $desainerActivity = Activity::select('id', 'name')->where('service_id', 'asdesainer')->get();
         $campuses = Campus::all();
-        return view('maindashboard.index', ['campuses' => $campuses, 'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity, 'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity, 'pengabdianactivity' => $pengabdianActivity, 'proyekactivity' => $proyekActivity, 'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
+        $jurusans = Jurusans::all();
+        return view('maindashboard.index', ['campuses' => $campuses, 'jurusans' => $jurusans,'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity, 'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity, 'pengabdianactivity' => $pengabdianActivity, 'proyekactivity' => $proyekActivity, 'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
     }
     public function indexAsdos()
     {

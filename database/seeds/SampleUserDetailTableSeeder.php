@@ -27,7 +27,7 @@ class SampleUserDetailTableSeeder extends Seeder
                 'wa' => $faker->phoneNumber,
                 'gender' => $faker->randomElement($array = array('Pria', 'Wanita')),
                 'semester' => $faker->numberBetween($min = 1, $max = 8),
-                'jurusan' => $faker->text($maxNbChars = 20),
+                'jurusan_id' => $faker->numberBetween($min = 1, $max = 6),
                 'alamat' => $faker->address,
             ]);
             for ($u = 1; $u < 40; $u++) {

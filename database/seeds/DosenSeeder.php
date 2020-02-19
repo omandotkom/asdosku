@@ -22,7 +22,7 @@ class DosenSeeder extends Seeder
         DB::table('Details')->insert([
             'nik' => '12243223423123',
             'user_id' => $user->id,
-            'wa' => Str::random(10),
+            'wa' => "872368762372813",
             'kampus_dosen' => 'IT Telkom Purwokrto'
         ]);
     }

@@ -24,11 +24,15 @@ class FilterAsdosController extends Controller
             ->whereRaw($strWhere)->simplePaginate();
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
-    public function matakuliahview($activity, $kampus, $semester, $jurusan = "Bebas", $gender)
+    public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender)
     {
-
+    
+        if ($jurusan != "Bebas"){
+            $strJurusan = "details.jurusan_id=".$jurusan;
+        }else{
+            $strJurusan = "details.jurusan_id != 0";
+        }
         if ($semester != "Bebas") {
-
             $strSemester = "details.semester=" . $semester;
         } else {
             //bebas
@@ -50,7 +54,9 @@ class FilterAsdosController extends Controller
             ->join('kampus', 'details.kampus_id', 'kampus.id')
             ->join('activities', 'prefers.activity_id', 'activities.id')
             ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
-            ->where('prefers.activity_id', $activity)->whereRaw($strSemester)->whereRaw($strKampus)->whereRaw($strGender)->where('users.status', 'aktif')
+            ->where('prefers.activity_id', $activity)->whereRaw($strSemester)->whereRaw($strKampus)
+            ->whereRaw($strJurusan)
+            ->whereRaw($strGender)->where('users.status', 'aktif')
             ->simplePaginate();
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
