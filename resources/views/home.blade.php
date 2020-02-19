@@ -127,7 +127,8 @@
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan & kemudahan bagi dosen & pejabat kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai Asdos</b>.
             </p>
-
+          
+            <h2 class="title text-center">Mengapa menggunakan ASDOSKU ?</h2>
 
             <div class="icon-box wow fadeInRight">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
@@ -154,11 +155,11 @@
 
       </div>
     </section><!-- #about -->
-
+    
     <!--==========================
       Facts Section
     ============================-->
-    <section id="facts">
+    {{-- <section id="facts">
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Facts</h3>
@@ -189,7 +190,7 @@
         </div>
 
       </div>
-    </section><!-- #facts -->
+    </section><!-- #facts --> --}}
 
     <!--==========================
       Services Section
@@ -197,51 +198,65 @@
     <section id="services">
       <div class="container wow fadeIn">
         <div class="section-header">
-          <h3 class="section-title">Services</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <h3 class="section-title">Layanan ASDOSKU</h3>
+          <p class="section-description">Kami menawarkan beberapa layanan untuk Ibu dan Bapak Dosenyang praktis, hemat dan nyaman</p>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4 class="title"><a href="">Asisten Bimbel</a></h4>
+              <p class="description">Layanan yang menyediakan tutor baik privat ataupun grup untuk bimbingan belajar SD/SMP/SMA</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <h4 class="title"><a href="">Asisten Mata Kuliah</a></h4>
+              <p class="description">Layanan menjadi asisten dosen dalam membantu dosen di mata kuliah tertentu</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-paper-plane"></i></a></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <h4 class="title"><a href="">Asisten Penelitian</a></h4>
+              <p class="description">Layanan untuk membantu melakukan survey/mencari data untuk penelitian</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+            <div class="box">
+              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
+              <h4 class="title"><a href="">Asisten Proyek</a></h4>
+              <p class="description">Layanan yang membantu dosen dalam pembuatan laporan keuangan bisnis, LPJ, SPT, dsb</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-photo"></i></a></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <h4 class="title"><a href="">Asisten Pengabdian</a></h4>
+              <p class="description">Layanan yang membantu kegiatan seperti pengabdian masyarakat, internship, dsb</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <h4 class="title"><a href="">Asisten Karya</a></h4>
+              <p class="description">Layanan untuk membantu input dan / repost data, reviu jurnal, transliterasi, dsb</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-shopping-bag"></i></a></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <h4 class="title"><a href="">Asisten Desainer</a></h4>
+              <p class="description">Layanan untuk membantu membuat desain pamflet, banner, kartu nama, dsb</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+            <div class="box">
+              <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
+              <h4 class="title"><a href="">Kostum</a></h4>
+              <p class="description">Ajukan layanan sesuai kebutuhan dan keinginan yang belum tercantum di menu layanan kami</p>
             </div>
           </div>
         </div>
@@ -256,12 +271,12 @@
       <div class="container wow fadeIn">
         <div class="row">
           <div class="col-lg-9 text-center text-lg-left">
-            <h3 class="cta-title">Call To Action</h3>
+            <h3 class="cta-title">Testimoni</h3>
             <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-          <div class="col-lg-3 cta-btn-container text-center">
+          {{-- <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="#">Call To Action</a>
-          </div>
+          </div> --}}
         </div>
 
       </div>
@@ -270,7 +285,7 @@
     <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio">
+    {{-- <section id="portfolio">
       <div class="container wow fadeInUp">
         <div class="section-header">
           <h3 class="section-title">Portfolio</h3>
@@ -413,12 +428,12 @@
         </div>
 
       </div>
-    </section><!-- #portfolio -->
+    </section><!-- #portfolio --> --}}
 
     <!--==========================
       Team Section
     ============================-->
-    <section id="team">
+    {{-- <section id="team">
       <div class="container wow fadeInUp">
         <div class="section-header">
           <h3 class="section-title">Team</h3>
@@ -483,7 +498,7 @@
         </div>
 
       </div>
-    </section><!-- #team -->
+    </section><!-- #team --> --}}
 
     <!--==========================
       Contact Section
@@ -491,13 +506,14 @@
     <section id="contact">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title">Contact</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <h3 class="section-title">Kontak</h3>
+          <p class="section-description">Untuk Pelayanan yang lebih friendly kami juga siap menerima pertanyaan, keluhan dan curhatan melalui kontak kami
+          </p>
         </div>
       </div>
 
       <!-- Uncomment below if you wan to use dynamic maps -->
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5583905937965!2d109.24486981433112!3d-7.40327519465839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f531de7b945%3A0x71d438121dd2a8e4!2sLab%20Terpadu%20FEB%20Unsoed!5e0!3m2!1sid!2sid!4v1582127993938!5m2!1sid!2sid" width="100%" height="380" frameborder="0" style="border:0;" allowfullscreen></iframe>
 
       <div class="container wow fadeInUp mt-5">
         <div class="row justify-content-center">
@@ -507,52 +523,58 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <p>Innovation Center, Lab. Terpadu lt. 5 FEB, UNSOED<br>Purwokerto</p>
               </div>
 
               <div>
                 <i class="fa fa-envelope"></i>
-                <p>info@example.com</p>
+                <p>cs@asdosku.com </p>
               </div>
 
               <div>
+                <a href="https://www.instagram.com/asdosku_com/?hl=id">
+                <i class="fa fa-instagram"></i></a>
+                <p>@asdosku_com </p>
+              </div>
+
+              {{-- <div>
                 <i class="fa fa-phone"></i>
                 <p>+1 5589 55488 55s</p>
-              </div>
-            </div>
+              </div> --}}
+            </div> 
 
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
+            {{-- <div class="social-links"> --}}
+              {{-- <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> --}}
+              {{-- <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> --}}
+              {{-- <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> --}}
+              {{-- <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a> --}}
+            {{-- </div>  --}}
 
           </div>
 
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="sendmessage">Pesanmu berhasil dikirim. Terimakasih!</div>
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" data-rule="minlen:4" data-msg="Masukkan nama anda dengan benar" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" data-rule="email" data-msg="Masukkan email yang valid" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek" data-rule="minlen:4" data-msg="Masukkan setidaknya 8 huruf" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Tulis sesuatu untuk kami" placeholder="Pesan"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center"><button type="submit">Kirim</button></div>
               </form>
             </div>
           </div>
@@ -576,7 +598,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+        &copy; Copyright <strong>ASDOSKU</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
