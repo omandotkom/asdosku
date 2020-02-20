@@ -21,8 +21,8 @@ class EmailJob implements ShouldQueue
      *
      * @return void
      */
-    public EmailNotification $emailNotification;
-    public User $to;
+    protected EmailNotification $emailNotification;
+    protected User $user;
     public function __construct(User $user, EmailNotification $emailNotification)
     {
         $this->to = $user;
