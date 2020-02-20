@@ -43,7 +43,7 @@
           <td><ul><li>{{$user->email}}</li><li>{{$user->detail->wa}}</li></ul></td>
           <td>{{ $user->detail->gender}}</td>
           <td>{{ $user->detail->kampus->name }}</td>
-          <td>{{ $user->detail->jurusan }}</td>
+          <td>{{ $user->detail->jurusan->name }}</td>
           <td>{{ $user->detail->semester }}</td>
           <td>{{ $user->detail->prefer }}</td>
 

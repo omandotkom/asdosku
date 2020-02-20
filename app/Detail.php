@@ -14,4 +14,7 @@ class Detail extends Model
     function kampus(){
         return $this->hasOne('App\Campus','id','kampus_id');
     }
+    function jurusan(){
+        return $this->hasOne('App\Jurusans','id','jurusan_id');
+    }
 }
