@@ -26,7 +26,7 @@
 
                     <i class="fas fa-fw fa-chalkboard-teacher fa-7x"></i>
                     <p class="h3 mt-2">Asisten Matakuliah</p>
-                    @include('layouts.dosen.dashboardmodal.makulModal') 
+                    @include('layouts.dosen.dashboardmodal.makulmodal') 
                     <button type="button" data-toggle="modal" data-target="#makulModal" class="btn btn-outline-primary btn-lg btn-block mt-2">Cari</button>
                 </div>
             </div>
