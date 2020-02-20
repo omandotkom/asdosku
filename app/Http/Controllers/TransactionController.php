@@ -57,7 +57,7 @@ class TransactionController extends Controller
             'kampus.name as kampus',
             'activities.name as kegiatan',
             'activities.keterangan as keterangankegiatan',
-            'activities.harga',
+            'activities.harga'
         )
             ->join('users', 'transactions.asdos', 'users.id')
             ->join('details', 'transactions.asdos', 'details.user_id')
