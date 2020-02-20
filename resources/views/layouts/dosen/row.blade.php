@@ -43,7 +43,7 @@
 
                     <i class="fas fa-fw fa-atom fa-7x"></i>
                     <p class="h3 mt-2">Asisten Praktikum</p>
-                    @include('layouts.dosen.dashboardmodal.praktikumModal') 
+                    @include('layouts.dosen.dashboardmodal.praktikummodal') 
 
                     <button type="button" data-toggle="modal" data-target="#praktikumModal" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
                 </div>

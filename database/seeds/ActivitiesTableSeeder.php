@@ -59,9 +59,19 @@ class ActivitiesTableSeeder extends Seeder
 
         ],
         [
+            'service_id' => 'aspraktikum',
+            'name' => 'Asisten Praktikum',
+            'satuan' => 'Orang',
+            'harga' => 200000,
+            
+            'keterangan' => '4x pertemuan, 1 matakuliah praktikum',
+            'asdosku' => 0.2,
+            'asdos' => 0.8
+        ],
+        [
         	'service_id' => 'asbimbinganbelajar',
             'name' => 'Les Privat TK',
-            'satuan' => 'Orang',
+            'satuan' => 'Orang',''
             'harga' => 170000,
             
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
