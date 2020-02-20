@@ -10,7 +10,7 @@ class PersetujuanController extends Controller
 {
     public function view()
     {
-        $belum_disetujui = User::where('status', 'belum_aktif')->orderBy('created_at','asc')->simplePaginate(10);
+        $belum_disetujui = User::where('status', 'belum_aktif')->simplePaginate(20);
         return view('maindashboard.index', ['belum_disetujui' => $belum_disetujui, 'content' => 'persetujuanlist', 'title' => 'Persetujuan Pendaftaran']);
     }
 
