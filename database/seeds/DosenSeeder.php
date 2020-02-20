@@ -19,7 +19,7 @@ class DosenSeeder extends Seeder
             'role' => 'dosen',
             'status' => 'aktif',
         ]);
-        DB::table('Details')->insert([
+        DB::table('details')->insert([
             'nik' => '12243223423123',
             'user_id' => $user->id,
             'wa' => "872368762372813",
