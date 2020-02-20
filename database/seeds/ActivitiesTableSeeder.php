@@ -71,7 +71,7 @@ class ActivitiesTableSeeder extends Seeder
         [
         	'service_id' => 'asbimbinganbelajar',
             'name' => 'Les Privat TK',
-            'satuan' => 'Orang',''
+            'satuan' => 'Orang',
             'harga' => 170000,
             
             'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
