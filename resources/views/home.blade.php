@@ -255,8 +255,8 @@
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
-              <h4 class="title"><a href="">Kostum</a></h4>
-              <p class="description">Ajukan layanan sesuai kebutuhan dan keinginan yang belum tercantum di menu layanan kami</p>
+              <h4 class="title"><a href="">Asisten Praktikum</a></h4>
+              <p class="description">Layanan menjadi asisten praktikum dalam membantu dosen pada mata kuliah praktikum tertentu</p>
             </div>
           </div>
         </div>
