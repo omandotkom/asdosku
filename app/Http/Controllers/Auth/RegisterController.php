@@ -124,7 +124,7 @@ class RegisterController extends Controller
                 'kampus_id' => $data->kampus,
                 'wa' => $data['wa'],
                 'semester' => $data['semester'],
-                'jurusan' => $data['jurusan'],
+                'jurusan_id' => $data['jurusan'],
                 'alamat' => $data['alamat'],
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],

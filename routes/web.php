@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('home');
-})->middleware('guest');
+})->middleware('guest')->name('rumah');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'dashboard')->name('dashboard')->middleware('verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd');
@@ -57,4 +57,6 @@ Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionCont
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah');
 Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('viewgeneral');
+
+
 

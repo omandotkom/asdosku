@@ -18,7 +18,7 @@ class UsersPengurusSeeder extends Seeder
             'role' => 'hrd',
             'status' => 'aktif',
         ]);
-        DB::table('Details')->insert([
+        DB::table('details')->insert([
             'user_id' => $user->id,
             'wa' => Str::random(10),
         ]);
@@ -36,7 +36,7 @@ class UsersPengurusSeeder extends Seeder
             'role' => 'operational',
             'status' => 'aktif',
         ]);
-        DB::table('Details')->insert([
+        DB::table('details')->insert([
             'user_id' => $user->id,
             'wa' => Str::random(10),
         ]);

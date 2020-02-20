@@ -32,6 +32,7 @@ class DashboardIndexController extends Controller
     {
         $bimbelActivity = Activity::select('id', 'name')->where('service_id', 'asbimbinganbelajar')->get();
         $matakuliahActivity = Activity::select('id', 'name')->where('service_id', 'asmatakuliah')->get();
+        $praktikumActivity = Activity::select('id','name')->where('service_id','aspraktikum')->get();
         $penelitianActivity = Activity::select('id', 'name')->where('service_id', 'aspenelitian')->get();
         $proyekActivity = Activity::select('id', 'name')->where('service_id', 'asproyek')->get();
         $pengabdianActivity = Activity::select('id', 'name')->where('service_id', 'aspengabdian')->get();
@@ -39,7 +40,12 @@ class DashboardIndexController extends Controller
         $desainerActivity = Activity::select('id', 'name')->where('service_id', 'asdesainer')->get();
         $campuses = Campus::all();
         $jurusans = Jurusans::all();
-        return view('maindashboard.index', ['campuses' => $campuses, 'jurusans' => $jurusans,'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity, 'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity, 'pengabdianactivity' => $pengabdianActivity, 'proyekactivity' => $proyekActivity, 'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
+        return view('maindashboard.index', ['campuses' => $campuses,
+         'jurusans' => $jurusans,'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity,
+         'praktikumactivity' => $praktikumActivity,
+          'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity,
+           'pengabdianactivity' => $pengabdianActivity, 'proyekactivity' => $proyekActivity,
+            'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
     }
     public function indexAsdos()
     {
