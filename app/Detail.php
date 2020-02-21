@@ -8,7 +8,7 @@ class Detail extends Model
 {
     //
     protected $fillable = [
-        'nik', 'kampus','user_id', 'wa', 'kampus_dosen','kampus_id','semester', 'jurusan','alamat','prefer','gender'
+        'nik', 'kampus','user_id', 'wa', 'kampus_dosen','kampus_id','semester','jurusan_id','alamat','prefer','gender'
      ];
     protected $table = 'details';
     function kampus(){
