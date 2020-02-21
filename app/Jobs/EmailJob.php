@@ -35,7 +35,7 @@ class EmailJob implements ShouldQueue
      * @return void
      */
     public function handle()
-    {   
+    {   Log:info("Dari Queue pengiriman email ke ".$this->to);
         Notification::send($this->to, $this->emailNotification);
     }
 }
