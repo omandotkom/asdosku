@@ -48,7 +48,7 @@
               </tr>
               <tr>
                 <th>Jurusan</th>
-                <td id="detilJurusan">{{$asdos->detail->jurusan->nama}}</td>
+                <td id="detilJurusan">{{$asdos->detail->jurusan->name}}</td>
               </tr>
               <tr>
                 <th>Semester</th>
