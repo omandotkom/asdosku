@@ -34,6 +34,6 @@ class PaymentWaitingConfirmationListener
     {
         $dosen = User::find($event->payout->transaction->dosen);
         $emailToDosen = new MailContent("Pembayaran Terkonfirmasi","Selamat, pembayaran anda untuk pesanan dengan nomor transaksi ".$event->payout->transaction_id." dan total pembayaran sebanyak Rp. ".$event->payout->total." sudah berhasil dikonfirmasi dan sudah lunas.","Lihat Status Tagihan",route('login'));
-        EmailJob::dispatch($dosen,new EmailNotification($emailToDosen));
+        EmailJob::dispatchNow($dosen,new EmailNotification($emailToDosen));
     }
 }

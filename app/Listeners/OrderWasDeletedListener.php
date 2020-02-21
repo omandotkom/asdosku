@@ -36,9 +36,9 @@ class OrderWasDeletedListener
         
         //ke operasinal
         foreach ($operational as $ops) {
-            EmailJob::dispatch($ops, new EmailNotification($mailtoOperational));
+            EmailJob::dispatchNow($ops, new EmailNotification($mailtoOperational));
         }
         //ke dosen
-        EmailJob::dispatch($event->dosen, new EmailNotification($mailToDosen));
+        EmailJob::dispatchNow($event->dosen, new EmailNotification($mailToDosen));
     }
 }

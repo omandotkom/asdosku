@@ -37,8 +37,8 @@ class SendToLog
         $user = $event->user;
         $hrds = User::where('role','hrd')->get();
         foreach($hrds as $tohrd){
-            EmailJob::dispatch($tohrd,new EmailNotification(new MailContent("Notifikasi Asdosku",$user->name." menunggu persetujuan Anda untuk bergabung dengan Asdosku. Silahkan di seleksi atau di interview sebelum acc","Masuk ke Asdosku",route('login'))));
-            EmailJob::dispatch($user,new EmailNotification(new MailContent("Notifikasi Asodsku","Permintaan bergabung Anda sedang menunggu persetujuan","Masuk ke Asdosku",route('login'))));
+            EmailJob::dispatchNow($tohrd,new EmailNotification(new MailContent("Notifikasi Asdosku",$user->name." menunggu persetujuan Anda untuk bergabung dengan Asdosku. Silahkan di seleksi atau di interview sebelum acc","Masuk ke Asdosku",route('login'))));
+            EmailJob::dispatchNow($user,new EmailNotification(new MailContent("Notifikasi Asodsku","Permintaan bergabung Anda sedang menunggu persetujuan","Masuk ke Asdosku",route('login'))));
         }
     }
 }

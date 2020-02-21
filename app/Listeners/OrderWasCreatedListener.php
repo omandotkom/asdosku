@@ -37,7 +37,7 @@ class OrderWasCreatedListener
         );
         $to = User::where('role', "operational")->get();
         foreach ($to as $t) {
-            EmailJob::dispatch($t, new EmailNotification($mailContent));
+            EmailJob::dispatchNow($t, new EmailNotification($mailContent));
         }
     }
 }

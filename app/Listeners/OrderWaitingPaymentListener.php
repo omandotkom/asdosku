@@ -30,6 +30,6 @@ class OrderWaitingPaymentListener
     public function handle(OrderWaitingPayment $event)
     {
         $mailDosen = new MailContent("Notifikasi Asdosku","Layanan dengan kode transaksi ".$event->transaction->id." telah selesai. Anda memiliki tagihan yang harus dibayar, silahkan login ke Asdosku untuk mengunggah bukti pembayaran","Masuk ke Asdosku",route('login'));
-        EmailJob::dispatch($event->dosen,new EmailNotification($mailDosen));
+        EmailJob::dispatchNow($event->dosen,new EmailNotification($mailDosen));
     }
 }

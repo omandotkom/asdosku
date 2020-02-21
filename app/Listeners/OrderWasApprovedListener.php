@@ -30,7 +30,7 @@ class OrderWasApprovedListener
     public function handle(OrderWasApproved $event)
     {
      $mailDosen = new MailContent("Notifikasi Asdosku","Selamat, permintaan asistensi dengan kode pemesanan ".$event->transaction->id ." sudah berjalan.","Cek Status Asistensi",route('login'));
-     EmailJob::dispatch($event->dosen, new EmailNotification($mailDosen));
+     EmailJob::dispatchNow($event->dosen, new EmailNotification($mailDosen));
         
    //  Notification::send($event->dosen,new EmailNotification($mailDosen));
         

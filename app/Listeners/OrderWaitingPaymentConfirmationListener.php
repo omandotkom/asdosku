@@ -32,7 +32,7 @@ class OrderWaitingPaymentConfirmationListener
         $operational = User::where('role',"operational")->get();
         $mailContent = new MailContent("Notifikasi Asdosku",$event->dosen->name." baru saja melakukan pembayaran dengan kode pembayaran ".$event->payout->id ." sebesar Rp, ".$event->payout->total.". Mohon segera konfirmasi pembayaran pada dashboard","Periksa Pembayaran", route('login'));
         foreach($operational as $op){
-            EmailJob::dispatch($op,new EmailNotification($mailContent));
+            EmailJob::dispatchNow($op,new EmailNotification($mailContent));
     
         }
         }
