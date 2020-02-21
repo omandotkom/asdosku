@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
          UsersPengurusSeeder::class,
          DosenSeeder::class,
          JurusanTableSeeder::class,
-         SampleUserDetailTableSeeder::class]);
+         //SampleUserDetailTableSeeder::class]
+
+         ]);
     }
 }
