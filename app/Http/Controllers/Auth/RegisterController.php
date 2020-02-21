@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserVerified;
 use App\Jurusans;
-
+use Illuminate\Support\Facades\Response;
 class RegisterController extends Controller
 {
     /*
@@ -101,7 +101,6 @@ class RegisterController extends Controller
     }
     protected function registerasdos(Request $data)
     {
-
         $services = Service::all();
         $preferensi = "";
         foreach ($services as $service) {

@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('Email verifikasi berhasil di kirim. Tunggu hingga maksimal 10 menit jika email tidak sampai klik verifikasi kembali.') }}
+                            {{ __('Email verifikasi berhasil di kirim. Tunggu hingga maksimal 10 menit jika email tidak sampai, klik verifikasi kembali.') }}
                         </div>
                     @endif
 
