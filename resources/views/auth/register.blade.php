@@ -52,16 +52,7 @@
       </div>
 
       <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero">Home</a></li>
-          <li><a href="hero">Tentang</a></li>
-          <li><a href="#event">Event</a></li>
-          <li><a href="#rekrutment">Rekrutment</a></li>
-          <li><a href="#kontak">Kontak</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
+        </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
 
@@ -70,138 +61,131 @@
   ============================-->
   <section id="hero">
     <div class="hero-container">
-      <div class="card w-50 animated slideInUp slow">
+      <div class="card mt-5 w-50 animated slideInUp slow">
         <div class="card-body">
-          <h5 class="card-title">Pendaftaran Member</h5>
-          <form method="POST" action="{{ route('register') }}">
-                        @csrf
+          <h5 class="card-title">Pendaftaran Member (Dosen)</h5>
+          <form method="POST" name="formregistrasi" action="{{ route('register') }}">
+            @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
+            <div class="form-group row">
+              <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="nama" autofocus>
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="nama" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="kampus" class="col-md-4 col-form-label text-md-right">{{ __('Kampus') }}</label>
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
 
-                            <div class="col-md-6">
-                                <input id="kampus" class="form-control @error('kampus') is-invalid @enderror" name="kampus" required>
+            <div class="form-group row">
+              <label for="kampus" class="col-md-4 col-form-label text-md-right">{{ __('Kampus') }}</label>
 
-                                @error('kampus')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="wa" class="col-md-4 col-form-label text-md-right">{{ __('WhatsApp') }}</label>
+              <div class="col-md-6">
+                <input id="kampus" class="form-control @error('kampus') is-invalid @enderror" name="kampus" required>
 
-                            <div class="col-md-6">
-                                <input id="wa" type="tel" class="form-control @error('wa') is-invalid @enderror" name="wa" value="{{ old('wa') }}" required >
+                @error('kampus')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
 
-                                @error('wa')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="nik" class="col-md-4 col-form-label text-md-right">{{ __('NIK') }}</label>
+            <div class="form-group row">
+              <label for="wa" class="col-md-4 col-form-label text-md-right">{{ __('WhatsApp') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="nik" class="form-control @error('nik') is-invalid @enderror" name="nik" required>
+              <div class="col-md-6">
+                <input id="wa" type="tel" class="form-control @error('wa') is-invalid @enderror" name="wa" value="{{ old('wa') }}" required>
 
-                                @error('nik')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                @error('wa')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nik" class="col-md-4 col-form-label text-md-right">{{ __('NIK') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+              <div class="col-md-6">
+                <input id="nik" class="form-control @error('nik') is-invalid @enderror" name="nik" required>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                @error('nik')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+              <div class="col-md-6">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+              <div class="col-md-6">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-outline-primary">
-                                    {{ __('Daftar') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="form-group row">
+              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+              <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+              </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Syarat Layanan') }}</label>
+
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;" >
+                    </div>
+                  </div>
+                  <a href="{{asset('asset/etik/KODE_ETIK_PERUSAHAAN.pdf')}}" target="_blank" class="badge badge-light">Saya menyetujui SK Layanan Asdosku</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <div class="col-md-6 offset-md-4">
+                <button type="submit" disabled id="tombolregistrasi" class="btn btn-outline-primary">
+                  {{ __('Daftar') }}
+                </button>
+              </div>
+
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </section><!-- #hero -->
-  <!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Regna</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
-        -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 

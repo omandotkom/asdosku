@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Activated;
 use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkrole' => CheckRole::class,
         'checkactive' => CheckActive::class,
+        'active' => Activated::class,
     ];
 
     /**

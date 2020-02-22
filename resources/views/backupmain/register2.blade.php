@@ -190,9 +190,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Syarat Layanan') }}</label>
+
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;" >
+                    </div>
+                  </div>
+                  <a href="{{asset('asset/etik/KODE_ETIK_PERUSAHAAN.pdf')}}" target="_blank" class="badge badge-light">Saya menyetujui SK Layanan Asdosku</a>
+                </div>
+              </div>
+            </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-outline-primary">
+                                <button type="submit" id="tombolregistrasi" disabled class="btn btn-outline-primary">
                                     {{ __('Daftar') }}
                                 </button>
                             </div>
