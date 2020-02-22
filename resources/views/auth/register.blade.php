@@ -51,8 +51,16 @@
         <!--<h1><a href="#hero">Regna</a></h1>-->
       </div>
 
+
+
       <nav id="nav-menu-container">
-        </nav><!-- #nav-menu-container -->
+        <ul class="nav-menu">
+          <li><a href="{{url('/login')}}">Login</a></li>
+          <li class="menu-active"><a href="{{ url('/register') }}">Registrasi Dosen</a></li>
+          <li><a href="{{ url('/registerasdos') }}">Registrasi Asdos</a></li>
+
+        </ul>
+      </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
 
@@ -165,7 +173,7 @@
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;" >
+                      <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;">
                     </div>
                   </div>
                   <a href="{{asset('asset/etik/KODE_ETIK_PERUSAHAAN.pdf')}}" target="_blank" class="badge badge-light">Saya menyetujui SK Layanan Asdosku</a>
