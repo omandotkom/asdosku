@@ -123,6 +123,9 @@
           @case('viewcomments')
           @include('layouts.asdos.commentrating')
           @break
+          @case('historisbiaya')
+          @include('layouts.operational.costhistory')
+          @break
           @default
           @include('layouts.asdos.row')
           @break
