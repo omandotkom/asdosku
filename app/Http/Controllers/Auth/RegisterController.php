@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Events\UserVerified;
 use App\Jurusans;
 use Illuminate\Support\Facades\Response;
+
 class RegisterController extends Controller
 {
     /*
@@ -73,6 +74,17 @@ class RegisterController extends Controller
     //ini untuk dosen dan pengurus
     protected function register(Request $data)
     {
+        $validator = Validator::make($data->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'kampus' => ['required', 'string', 'min:3'],
+            'nik' => ['required', 'min:5']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -101,6 +113,20 @@ class RegisterController extends Controller
     }
     protected function registerasdos(Request $data)
     {
+        $validator = Validator::make($data->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'wa' => ['required','min:10'],
+            'semester' => ['required','numeric'],
+            'jurusan' => ['required'],
+            'alamat' => ['required','string','min:10']
+            
+            ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         $services = Service::all();
         $preferensi = "";
         foreach ($services as $service) {
@@ -142,14 +168,14 @@ class RegisterController extends Controller
         ]);
         if ($validator->fails()) {
             //  return response('Gagal menambahkan jurusan, nama jurusan harus di isi.',400);
-            return response("Gagal menambahkan ".$request->namajurusanbaru." sebagai jurusan. Mohon hubungi kontak admin",400);
-         
+            return response("Gagal menambahkan " . $request->namajurusanbaru . " sebagai jurusan. Mohon hubungi kontak admin", 400);
+
             //      return redirect()->route('registerasdosShow')->with(["error" => "Gagal menambahkan jurusan karna kolom nama jurusan kosong."]);
         }
-        
+
         $jurusan = Jurusans::firstOrCreate(['name' => $request->namajurusanbaru]);
         if ($jurusan) {
-           return response("Berhasil menambahkan ".$jurusan->name." sebagai jurusan",200);
+            return response("Berhasil menambahkan " . $jurusan->name . " sebagai jurusan", 200);
             // return back()->with(["success" => "Berhasil menambahkan " . $request->name . " sebagai jurusan baru di Asdosu."]);
         }
     }

@@ -8,7 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  
+  <!-- Favicons -->
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+  <!-- Favicons -->
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
   <title>@if(isset($title)) {{$title}} @else Asdosku @endif</title>
 
   <!-- Custom fonts for this template-->

@@ -4,7 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
+  <!-- Favicons -->
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+  <!-- Favicons -->
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

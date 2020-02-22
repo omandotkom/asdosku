@@ -9,10 +9,10 @@
   <meta content="No.1 di Indonesia Untuk Dosen" name="description">
 
   <!-- Favicons -->
-  <link href="{{ asset('asset/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
   <!-- Favicons -->
-  <link href="{{ asset('asset/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('asset/img/favicon.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+  <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
