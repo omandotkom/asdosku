@@ -47,8 +47,8 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Home</a></li>
-          <li><a href="hero">Tentang</a></li>
-          <li><a href="#event">Event</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#services">Layanan</a></li>
           <li><a href="#rekrutment">Rekrutment</a></li>
           <li><a href="#kontak">Kontak</a></li>
           <li><a href="#blog">Blog</a></li>
@@ -93,9 +93,11 @@
           function gotoRegisterDosen() {
             window.location = "{{ url('/register') }}";
           }
-          function gotoRegisterAsdos(){
+
+          function gotoRegisterAsdos() {
             window.location = "{{ url('/registerasdos') }}";
           }
+
           function gotoLogin() {
             window.location = "{{ url('/login') }}";
           }
@@ -121,14 +123,14 @@
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan & kemudahan bagi dosen & pejabat kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai Asdos</b>.
             </p>
-          
+
             <h2 class="title text-center">Mengapa menggunakan ASDOSKU ?</h2>
 
             <div class="icon-box wow fadeInRight">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
               <h4 class="title"><a href="">Harga Hemat dan Bergaransi</a></h4>
               <p class="description">Kami siap menyesuaikan budget yang dimiliki untuk mengerjakan tugas bapak/ibu dosen serta memberikan jaminan cashback jika tugas tidak selesai atau tidak sesuai harapan.</p>
-             </div>
+            </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-photo"></i></div>
@@ -149,7 +151,7 @@
 
       </div>
     </section><!-- #about -->
-    
+
     <!--==========================
       Facts Section
     ============================-->
@@ -527,7 +529,7 @@
 
               <div>
                 <a href="https://www.instagram.com/asdosku_com/?hl=id">
-                <i class="fa fa-instagram"></i></a>
+                  <i class="fa fa-instagram"></i></a>
                 <p>@asdosku_com </p>
               </div>
 
@@ -535,13 +537,13 @@
                 <i class="fa fa-phone"></i>
                 <p>+1 5589 55488 55s</p>
               </div> --}}
-            </div> 
+            </div>
 
             {{-- <div class="social-links"> --}}
-              {{-- <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> --}}
-              {{-- <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> --}}
-              {{-- <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> --}}
-              {{-- <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+            {{-- <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> --}}
+            {{-- <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> --}}
+            {{-- <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> --}}
+            {{-- <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
               <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a> --}}
             {{-- </div>  --}}
 
@@ -551,25 +553,23 @@
             <div class="form">
               <div id="sendmessage">Pesanmu berhasil dikirim. Terimakasih!</div>
               <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" data-rule="minlen:4" data-msg="Masukkan nama anda dengan benar" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" data-rule="email" data-msg="Masukkan email yang valid" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek" data-rule="minlen:4" data-msg="Masukkan setidaknya 8 huruf" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Tulis sesuatu untuk kami" placeholder="Pesan"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Kirim</button></div>
-              </form>
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" data-rule="minlen:4" data-msg="Masukkan nama anda dengan benar" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" data-rule="email" data-msg="Masukkan email yang valid" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek" data-rule="minlen:4" data-msg="Masukkan setidaknya 8 huruf" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="question" id="question" rows="5" data-rule="required" data-msg="Tulis sesuatu untuk kami" placeholder="Pesan"></textarea>
+                <div class="validation"></div>
+              </div>
+              <div class="text-center"><button type="submit" onclick="postquestion();" >Kirim</button></div>
             </div>
           </div>
 
@@ -618,8 +618,46 @@
   <script src="{{ asset('asset/lib/counterup/counterup.min.js') }}"></script>
   <script src="{{ asset('asset/lib/superfish/hoverIntent.js') }}"></script>
   <script src="{{ asset('asset/lib/superfish/superfish.min.js') }}"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    function postquestion() {
+      axios.post('{{route("guestquestion")}}', {
+          name: $("#name").val(),
+          email: $("#email").val(),
+          subject: $("#subject").val(),
+          question: $("#question").val()
+        })
+        .then(function(response) {
+          Toastify({
+            text: response.data,
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
+          }).showToast();
+
+        })
+        .catch(function(error) {
+          console.log(error);
+          Toastify({
+            text: "Gagal mengirim pesan, periksa semua kolom termasuk format email",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+
+          }).showToast();
+        });
+    }
+  </script>
   <!-- Template Main Javascript File -->
   <script src="{{ asset('asset/js/main.js') }}"></script>
 
