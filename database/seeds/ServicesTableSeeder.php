@@ -32,8 +32,8 @@ class ServicesTableSeeder extends Seeder
             'name' => 'Asisten Proyek'
         ],
         [
-            'id' => 'aspengabdian',
-            'name' => 'Asisten Pengabdian',
+            'id' => 'asadm',
+            'name' => 'Asisten Administrasi',
 
         ],
         [
