@@ -6,11 +6,11 @@
         window.location = pengabdianURL;
     }
     </script>
-<div class="modal fade" id="pengabdianModal" tabindex="-1" role="dialog" aria-labelledby="titlepengabdian" aria-hidden="true">
+<div class="modal fade" id="administrasiModal" tabindex="-1" role="dialog" aria-labelledby="titleadministrasi" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titlepengabdian">Filter Asisten Pengabdian</h5>
+                <h5 class="modal-title" id="titleadministrasi">Filter Asisten Administrasi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

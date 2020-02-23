@@ -72,7 +72,17 @@
                 }).showToast();
             })
             .then(function() {
+                axios.get("{{route('sendnotification')}}")
+            .then(function(response) {
+                // handle success
+            })
+            .catch(function(error) {
+                // handle error
+
+            })
+            .then(function() {
                 // always executed
+            });
             });
     }
 

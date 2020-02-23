@@ -99,9 +99,9 @@
                 <div class="mt-4 text-center small">
 
                     <i class="fas fa-fw fa-person-booth fa-7x"></i>
-                    <p class="h3 mt-2">Asisten Pengabdian</p>
-                    @include('layouts.dosen.dashboardmodal.pengabdianmodal')
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#pengabdianModal">Cari</button>
+                    <p class="h3 mt-2">Asisten Administrasi</p>
+                    @include('layouts.dosen.dashboardmodal.administrasimodal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#administrasiModal">Cari</button>
                 
                 </div>
             </div>
