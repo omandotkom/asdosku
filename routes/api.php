@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/notifications/send','NotificationController@check')->name('sendnotification');
 Route::post('/registerasdos/tambahjurusan','Auth\RegisterController@addnewjurusan')->name('addnewjurusan');
 Route::post('/payout/confirm','PayoutController@payoutconfirm')->name('confirmpayout');
 Route::get('/transaction/update/{id}/{status}','TransactionController@updatestatus')->name('transactionstatusupdate');

@@ -7,6 +7,7 @@ use App\Jobs\EmailJob;
 use App\Notifications\EmailNotification;
 use App\Notifications\MailContent;
 use App\User;
+use App\Pemberitahuan;
 
 class OrderWasCreatedListener
 {
@@ -29,15 +30,18 @@ class OrderWasCreatedListener
 
     public function handle(OrderWasCreated $event)
     {
-        $mailContent = new MailContent(
-            "Notifikasi Asdosku",
-            "Untuk bagian operasional : Ada satu pesanan baru oleh " . $event->dosen->name . ", mohon login ke sistem untuk acc",
-            "Lihat Pesanan Pending",
-            route('login')
-        );
+       
         $to = User::where('role', "operational")->get();
         foreach ($to as $t) {
-            EmailJob::dispatchNow($t, new EmailNotification($mailContent));
+            Pemberitahuan::create([
+                'to' => $t->email,
+                'subject' => 'Notifikasi Asdosku',
+                'judul' => "Untuk bagian operasional : Ada satu pesanan baru oleh " . $event->dosen->name . ", mohon login ke sistem untuk acc",
+                'isi' => "Lihat Pesanan Pending",
+                'url' => route('login'),
+                'status' => 'unsent'
+            ]);
+            //EmailJob::dispatchNow($t, new EmailNotification($mailContent));
         }
     }
 }

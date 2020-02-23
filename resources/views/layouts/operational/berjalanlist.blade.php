@@ -60,7 +60,17 @@
                 }).showToast();
             })
             .then(function() {
-                // always executed
+                axios.get("{{route('sendnotification')}}")
+                    .then(function(response) {
+                        // handle success
+                    })
+                    .catch(function(error) {
+                        // handle error
+
+                    })
+                    .then(function() {
+                        // always executed
+                    });
             });
     }
 
@@ -82,7 +92,17 @@
                 console.log(error);
             })
             .then(function() {
-                // always executed
+                axios.get("{{route('sendnotification')}}")
+                    .then(function(response) {
+                        // handle success
+                    })
+                    .catch(function(error) {
+                        // handle error
+
+                    })
+                    .then(function() {
+                        // always executed
+                    });
             });
 
     }
@@ -312,7 +332,7 @@
                                 <th>Pendapatan</th>
                                 <td>Rp. {{$transaction->basicpendapatan}} <small>belum termasuk biaya tambahan (jika ada)</small></td>
                             </tr>
-                            
+
                             @endif
                             <tr>
                                 <th>Periode</th>

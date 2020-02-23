@@ -31,6 +31,7 @@
                 while (myNode.firstChild) {
                     myNode.removeChild(myNode.firstChild);
                 }
+
             })
             .catch(function(error) {
                 Toastify({
@@ -40,6 +41,20 @@
                     duration: 3000
 
                 }).showToast();
+            }).then(function() {
+
+                axios.get("{{route('sendnotification')}}")
+                    .then(function(response) {
+                        // handle success
+                    })
+                    .catch(function(error) {
+                        // handle error
+
+                    })
+                    .then(function() {
+                        // always executed
+                    });
+
             });
     }
 </script>

@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-  <!-- Favicons -->
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
-  <!-- Favicons -->
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Favicons -->
+    <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+    <!-- Favicons -->
+    <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
+    <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -27,6 +27,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script>
+        axios.get("{{route('sendnotification')}}")
+            .then(function(response) {
+                // handle success
+            })
+            .catch(function(error) {
+                // handle error
+
+            })
+            .then(function() {
+                // always executed
+            });
+
         function addnewjurusan() {
             axios.post('{{route("addnewjurusan")}}', {
                     namajurusanbaru: $("#namajurusanbaru").val(),
@@ -90,7 +102,7 @@
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            
+
                         </li>
                         @endif
                         @else

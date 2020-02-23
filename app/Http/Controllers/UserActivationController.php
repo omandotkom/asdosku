@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class UserActivationController extends Controller
 {
     public function show(){
-        event(new UserWasVerified(Auth::user()));
+       event(new UserWasVerified(Auth::user()));
         return view('auth.notactive');
     }
 }

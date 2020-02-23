@@ -23,7 +23,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Custom styles for this template-->
   <link href="{{ asset('sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+<script>
+     axios.get("{{route('sendnotification')}}")
+            .then(function(response) {
+                // handle success
+            })
+            .catch(function(error) {
+                // handle error
 
+            })
+            .then(function() {
+                // always executed
+            });
+
+</script>
 </head>
 
 <body id="page-top">
