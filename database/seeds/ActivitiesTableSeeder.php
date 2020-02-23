@@ -16,7 +16,17 @@ class ActivitiesTableSeeder extends Seeder
         NAMA KEGIATAN yang LES PRIVAT SD, nah dia kan bagian dari bimbel jadi service_id nya di isi dengaan asbimbinganbelajar
         
         oh ya perhatikan huruf kapital di setiap awal kata di bagian name ya kaya contoh di bawah Les Privat SD*/
-        DB::table('activities')->insert([[
+        DB::table('activities')->insert([
+        [
+            'service_id' => 'asbimbinganbelajar',
+            'name' => 'Les Privat TK',
+            'satuan' => 'Orang',
+            'harga' => 170000,
+            'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
+            'asdosku' => 0.2,
+            'asdos' => 0.8
+        ], 
+        [
             'service_id' => 'asbimbinganbelajar', //1 adalah nomor as-makul pada file excel
             'name' => 'Les Privat SD',
             'satuan' => 'Orang',
@@ -59,26 +69,6 @@ class ActivitiesTableSeeder extends Seeder
 
         ],
         [
-            'service_id' => 'aspraktikum',
-            'name' => 'Asisten Praktikum',
-            'satuan' => 'Orang',
-            'harga' => 200000,
-            
-            'keterangan' => '4x pertemuan, 1 matakuliah praktikum',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'asbimbinganbelajar',
-            'name' => 'Les Privat TK',
-            'satuan' => 'Orang',
-            'harga' => 170000,
-            
-            'keterangan' => 'Maksimal 2 orang perbulan 4x pertemuan',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
         	'service_id' => 'asbimbinganbelajar',
             'name' => 'Les Grup SD',
             'satuan' => 'Orang',
@@ -107,7 +97,17 @@ class ActivitiesTableSeeder extends Seeder
             'asdosku' => 0.2,
             'asdos' => 0.8
         ],
-
+        [
+            'service_id' => 'aspraktikum',
+            'name' => 'Asisten Praktikum',
+            'satuan' => 'Orang',
+            'harga' => 200000,
+            
+            'keterangan' => '4x pertemuan, 1 matakuliah praktikum',
+            'asdosku' => 0.2,
+            'asdos' => 0.8
+        ],
+        
         // asmatakuliah //
         [
         	'service_id' => 'asmatakuliah',
@@ -185,7 +185,16 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.7
         ],
 
-        // asproyek //
+         // asproyek //
+        [
+            'service_id' => 'asproyek',
+            'name' => 'Asisten Pengabdian',
+            'satuan' => 'Per periode audit',
+            'harga' => 200000,
+            'keterangan' => 'Membuat keperluan administrasi dan penataan arsip',
+            'asdosku' => 0.2,
+            'asdos' => 0.8
+        ],   
         [
         	'service_id' => 'asproyek',
             'name' => 'Asisten Auditor',
@@ -196,54 +205,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.8
         ],
         [
-        	'service_id' => 'asproyek',
-            'name' => 'Laporan Keuangan Bisnis',
-            'satuan' => 'Laporan',
-            'harga' => 380000,
-            'keterangan' => 'Pembuatan laporan keuangan mulai dari pengumpulan bukti transaksi hingga penyusunan CALK',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'asproyek',
-            'name' => 'Pembuatan LPJ',
-            'satuan' => 'Laporan',
-            'harga' => 200000,
-            'keterangan' => 'Mengumpulkan bukti transaksi dan menyusun laporan. Sudah termasuk biaya cetak',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'asproyek',
-            'name' => 'Pembuatan Proposal',
-            'satuan' => 'Proposal',
-            'harga' => 210000,
-            'keterangan' => 'Menyusun dan mendesain proposal premium (konsep dari klien), maksimal 12 halaman, 2 kali revisi',
-            'asdosku' => 0.3,
-            'asdos' => 0.7
-        ],
-        [
-        	'service_id' => 'asproyek',
-            'name' => 'Pembuatan SPT',
-            'satuan' => 'Wajib pajak',
-            'harga' => 300000,
-            'keterangan' => 'Menyusun dan mengumpulkan berkas yang diperlukan, pembuatan hingga finishing',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-
-        // aspengabdian //
-        [
-        	'service_id' => 'aspengabdian',
-            'name' => 'Pengabdian Masyarakat',
-            'satuan' => 'Orang',
-            'harga' => 200000,
-            'keterangan' => 'Menyiapkan segala keperluan pra-pengabdian dan mendampingi saat melakukan pengabdian di lapangan',
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'asproyek',
             'name' => 'Internship on Workshop',
             'satuan' => 'Orang/bulan',
             'harga' => 450000,
@@ -252,7 +214,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.8
         ],
         [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'asproyek',
             'name' => 'Internship on Campus',
             'satuan' => 'Orang/bulan',
             'harga' => 350000,
@@ -261,7 +223,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.8
         ],
         [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'asproyek',
             'name' => 'Mengelola Website',
             'satuan' => 'Bulan',
             'harga' => 360000,
@@ -270,7 +232,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.75
         ],
         [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'asproyek',
             'name' => 'Manajamen Kost',
             'satuan' => 'Kostan',
             'harga' => 200000,
@@ -279,7 +241,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.75
         ],
         [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'aspoyek',
             'name' => 'Admin Instagram',
             'satuan' => 'Akun/bulan',
             'harga' => 450000,
@@ -288,7 +250,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.7
         ],
         [
-        	'service_id' => 'aspengabdian',
+            'service_id' => 'asproyek',
             'name' => 'Admin Whatsapp',
             'satuan' => 'Akun/bulan',
             'harga' => 300000,
@@ -297,96 +259,144 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.7
         ],
 
-        // askarya //
+            // askarya //
+            [
+                'service_id' => 'askarya',
+                'name' => 'Asisten Penulis',
+                'satuan' => 'Bulan',
+                'harga' => 700000,
+                'keterangan' => 'Menulis buku',
+                'asdosku' => 0.2,
+                'asdos' => 0.8
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Edit/ Upload Jurnal',
+                'satuan' => 'Jurnal',
+                'harga' => 25000,
+                'keterangan' => 'Melakukan edit sesuai format (tidak termasuk pengerjaan isi jurnal)',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Reviu Jurnal Internasional',
+                'satuan' => 'Jurnal',
+                'harga' => 40000,
+                'keterangan' => 'Melakukan translit jurnal serta reviu jurnal',
+                'asdosku' => 0.2,
+                'asdos' => 0.8
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Reviu Jurnal Nasional',
+                'satuan' => 'Jurnal',
+                'harga' => 20000,
+                'keterangan' => ' ', // blm ada ket.
+                'asdosku' => 0.2,
+                'asdos' => 0.8
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Repost Data',
+                'satuan' => 'Data',
+                'harga' => 100000,
+                'keterangan' => 'Maksimal 100 data',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Input Data Offline',
+                'satuan' => 'Lembar/ file',
+                'harga' => 2500,
+                'keterangan' => ' ', // blm ada ket.
+                'asdosku' => 0.2,
+                'asdos' => 0.8
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Input Data Online',
+                'satuan' => 'File',
+                'harga' => 5000,
+                'keterangan' => 'Sudah termasuk biaya internet',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Pembuatan Surat',
+                'satuan' => 'Surat',
+                'harga' => 80000,
+                'keterangan' => 'Surat formal, dilengkapi proses permintaan TTD pihakyang ada di surat. Belum termasuk biaya cetak',
+                'asdosku' => 0.2,
+                'asdos' => 0.8
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Jasa Trasnsliterasi Pro (Indonesia ke Inggris)',
+                'satuan' => 'Lembar',
+                'harga' => 12000,
+                'keterangan' => 'Ukuran maksimal F4. Revisi 2x',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Jasa Trasnsliterasi Reguler (Indonesia ke Inggris)',
+                'satuan' => 'Lembar',
+                'harga' => 1500,
+                'keterangan' => 'Ukuran maksimal A4. Menggunakan google  translate Disertai proses merapikan hasil',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+            [
+                'service_id' => 'askarya',
+                'name' => 'Jasa Pengetikan',
+                'satuan' => 'Lembar',
+                'harga' => 2500,
+                'keterangan' => 'Ukuran maksimal F4, spasi minimal 1,5. Hardfile ke softfile',
+                'asdosku' => 0.3,
+                'asdos' => 0.7
+            ],
+
+        ////////////// asadministrasi/////////////
+       
         [
-        	'service_id' => 'askarya',
-            'name' => 'Edit/ Upload Jurnal',
-            'satuan' => 'Jurnal',
-            'harga' => 25000,
-            'keterangan' => 'Melakukan edit sesuai format (tidak termasuk pengerjaan isi jurnal)',
-            'asdosku' => 0.3,
-            'asdos' => 0.7
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Reviu Jurnal Internasional',
-            'satuan' => 'Jurnal',
-            'harga' => 40000,
-            'keterangan' => 'Melakukan translit jurnal serta reviu jurnal',
+        	'service_id' => 'asadm',
+            'name' => 'Laporan Keuangan Bisnis',
+            'satuan' => 'Laporan',
+            'harga' => 380000,
+            'keterangan' => 'Pembuatan laporan keuangan mulai dari pengumpulan bukti transaksi hingga penyusunan CALK',
             'asdosku' => 0.2,
             'asdos' => 0.8
         ],
         [
-        	'service_id' => 'askarya',
-            'name' => 'Reviu Jurnal Nasional',
-            'satuan' => 'Jurnal',
-            'harga' => 20000,
-            'keterangan' => ' ', // blm ada ket.
+        	'service_id' => 'asadm',
+            'name' => 'Pembuatan LPJ',
+            'satuan' => 'Laporan',
+            'harga' => 200000,
+            'keterangan' => 'Mengumpulkan bukti transaksi dan menyusun laporan. Sudah termasuk biaya cetak',
             'asdosku' => 0.2,
             'asdos' => 0.8
         ],
         [
-        	'service_id' => 'askarya',
-            'name' => 'Repost Data',
-            'satuan' => 'Data',
-            'harga' => 100000,
-            'keterangan' => 'Maksimal 100 data', 
+        	'service_id' => 'asadm',
+            'name' => 'Pembuatan Proposal',
+            'satuan' => 'Proposal',
+            'harga' => 210000,
+            'keterangan' => 'Menyusun dan mendesain proposal premium (konsep dari klien), maksimal 12 halaman, 2 kali revisi',
             'asdosku' => 0.3,
             'asdos' => 0.7
         ],
         [
-        	'service_id' => 'askarya',
-            'name' => 'Input Data Offline',
-            'satuan' => 'Lembar/ file',
-            'harga' => 2500,
-            'keterangan' => ' ', // blm ada ket.
+        	'service_id' => 'asadm',
+            'name' => 'Pembuatan SPT',
+            'satuan' => 'Wajib pajak',
+            'harga' => 300000,
+            'keterangan' => 'Menyusun dan mengumpulkan berkas yang diperlukan, pembuatan hingga finishing',
             'asdosku' => 0.2,
             'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Input Data Online',
-            'satuan' => 'File',
-            'harga' => 5000,
-            'keterangan' => 'Sudah termasuk biaya internet', 
-            'asdosku' => 0.3,
-            'asdos' => 0.7
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Pembuatan Surat',
-            'satuan' => 'Surat',
-            'harga' => 80000,
-            'keterangan' => 'Surat formal, dilengkapi proses permintaan TTD pihakyang ada di surat. Belum termasuk biaya cetak', 
-            'asdosku' => 0.2,
-            'asdos' => 0.8
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Jasa Trasnsliterasi Pro (Indonesia ke Inggris)',
-            'satuan' => 'Lembar',
-            'harga' => 12000,
-            'keterangan' => 'Ukuran maksimal F4. Revisi 2x', 
-            'asdosku' => 0.3,
-            'asdos' => 0.7
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Jasa Trasnsliterasi Reguler (Indonesia ke Inggris)',
-            'satuan' => 'Lembar',
-            'harga' => 1500,
-            'keterangan' => 'Ukuran maksimal A4. Menggunakan google  translate Disertai proses merapikan hasil', 
-            'asdosku' => 0.3,
-            'asdos' => 0.7
-        ],
-        [
-        	'service_id' => 'askarya',
-            'name' => 'Jasa Pengetikan',
-            'satuan' => 'Lembar',
-            'harga' => 2500,
-            'keterangan' => 'Ukuran maksimal F4, spasi minimal 1,5. Hardfile ke softfile', 
-            'asdosku' => 0.3,
-            'asdos' => 0.7
         ],
 
          // asdesainer //
@@ -428,7 +438,7 @@ class ActivitiesTableSeeder extends Seeder
         ],
         [
         	'service_id' => 'asdesainer',
-            'name' => 'Desain Website Komplit',
+            'name' => 'Desain Website Lengkap',
             'satuan' => 'Website',
             'harga' => 1500000,
             'keterangan' => 'Sudah termasuk hosting dan domain, revisi 2x',
