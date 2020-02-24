@@ -120,7 +120,7 @@
             <p class="text-center wow fadeInUp">
               <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas penelitian, kuliah, pengabdian, bisnis maupun kepentingan pribadi sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya. 
             </p>
-            <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai Asdos</b>.
+            <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa dan freshgraduate yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai asisten</b>.
             </p>
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
         </div>
@@ -141,25 +141,19 @@
             <div class="col-lg-5 col-md-6 icon-box wow fadeInRight">
               <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">All in One</a></h4>
-              <p class="description">All in one untuk dosen, sehingga membantu mencapai kinerja yang optimal dan maksimal</p>
+              <p class="description">All in one untuk pengguna, berbagai bantuan dalam satu platform yang dapat membantu meningkatkan produktifitas dan mencapai kinerja yang optimal dan maksimal</p>
              </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Grab it fast</a></h4>
-              <p class="description">Hanya dengan satu menit, dosen sudah memiliki asdos sesuai kriteria dan kebutuhan</p>
-            </div>
-
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Profesional</a></h4>
-              <p class="description">Asdos diberi pelatihan dan evaluasi kinerjanya secara rutin</p>
+              <p class="description">Hanya dengan satu menit, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Hak terjamin</a></h4>
-              <p class="description">Setiap asdos terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
+              <p class="description">Setiap asisten terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
@@ -172,6 +166,13 @@
               <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Multi tasking order</a></h4>
               <p class="description">Pengguna dapat memilih banyak fitur tanpa harus melakukan kontrak ataupun perekrutan</p>
+            </div>
+
+            
+            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
+              <h4 class="title"><a href="">Profesional</a></h4>
+              <p class="description">Asisten melalui proses perekrutan yang ketat melalui seleksi administrasi, keahlian dan interview oleh tim ahli yang terdiri dari dosen dan tim HRD Asdosku. Selain itu, asisten menadaptkan pelatihan dan evaluasi kinerja secara rutin.</p>
             </div>
           </div>
 
@@ -231,7 +232,7 @@
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-child"></i></a></div>
               <h4 class="title"><a href="">Asisten Bimbel</a></h4>
-              <p class="description">Asistensi pengguna sebagai tutor yang membantu siswa SD, SMP ,SMA dan umum untuk memperdalam mata pelajaran yang dibutuhkan. Pengguna dapat memilih tutor Mahasiswa ataupun freshgraduate sesuai kriteria yang dibutuhkan</p>
+              <p class="description">Berikut adalah layanan Asdosku untuk pengguna khusus untuk dosen dan pengelola kampus (tersedia di website dan aplikasi android). Layanan untuk mahasiswa (hanya tersedia di aplikasi android)</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
@@ -298,7 +299,10 @@
           <div class="col-lg-9 text-center text-lg-left">
             <h3 class="cta-title">ASDOSKU menurut para dosen</h3>
             <p class="cta-text"><i class="fa fa-quote-left"></i> Saya sudah merasakan dua kali menggunakan ASDOSKU untuk les anak-anak saya: bahasa arab untuk SMA dan bahasa inggris untuk SMP. Yang saya amati tutornya baik dan profesional, programnya juga bagus. Anak-anak juga merasakan yang sama.</p>
-            <p class="cta-text"> -Ibu Herni Dosen ..... UMP-</p>
+            <p class="cta-text"> -Herni Justiana Astuti, SE., m.Si.,Ph.D-</p>
+            <br>
+            <p class="cta-text"><i class="fa fa-quote-left"></i> Alhamdulillah.. Terimakasih atas bantuan Asdosku saya bisa menyelesaikan amanah studi lanjut. Semoga ASDOSKU semakin berkembang dan bermanfaat buat ilmu pengetahuan..</p>
+            <p class="cta-text"> -Johan Haryanto, Kepala Biro SDM UMP-</p>
           </div>
           {{-- <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="#">Call To Action</a>
