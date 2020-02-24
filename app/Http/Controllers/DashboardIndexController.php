@@ -35,7 +35,7 @@ class DashboardIndexController extends Controller
         $praktikumActivity = Activity::select('id','name')->where('service_id','aspraktikum')->get();
         $penelitianActivity = Activity::select('id', 'name')->where('service_id', 'aspenelitian')->get();
         $proyekActivity = Activity::select('id', 'name')->where('service_id', 'asproyek')->get();
-        $pengabdianActivity = Activity::select('id', 'name')->where('service_id', 'aspengabdian')->get();
+    $admActivity = Activity::select('id', 'name')->where('service_id', 'asadm')->get();
         $karyaActivity = Activity::select('id', 'name')->where('service_id', 'askarya')->get();
         $desainerActivity = Activity::select('id', 'name')->where('service_id', 'asdesainer')->get();
         $campuses = Campus::all();
@@ -44,7 +44,7 @@ class DashboardIndexController extends Controller
          'jurusans' => $jurusans,'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity,
          'praktikumactivity' => $praktikumActivity,
           'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity,
-           'pengabdianactivity' => $pengabdianActivity, 'proyekactivity' => $proyekActivity,
+           'admactivity' => $admActivity, 'proyekactivity' => $proyekActivity,
             'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
     }
     public function indexAsdos()

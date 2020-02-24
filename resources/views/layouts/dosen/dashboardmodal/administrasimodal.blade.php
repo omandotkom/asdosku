@@ -21,7 +21,7 @@
 
                         <label for="pengabdianactivity" class="col-form-label float-left">Jenis Kegiatan</label>
                         <select name="activity" id="pengabdianactivity" required class="custom-select custom-select-sm">
-                        @foreach($pengabdianactivity as $p)
+                        @foreach($admactivity as $p)
                             @if($p->first)
                             <option selected value="{{$p->id}}">{{$p->name}}</option>
                             @else

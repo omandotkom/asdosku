@@ -241,7 +241,7 @@ class ActivitiesTableSeeder extends Seeder
             'asdos' => 0.75
         ],
         [
-            'service_id' => 'aspoyek',
+            'service_id' => 'asproyek',
             'name' => 'Admin Instagram',
             'satuan' => 'Akun/bulan',
             'harga' => 450000,

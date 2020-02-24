@@ -22,8 +22,8 @@
   <link href="{{ asset('asset/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <!-- Libraries CSS Files -->
-  <link href="{{ asset('asset/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
+  <!--<link href="{{ asset('asset/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
 
@@ -49,7 +49,6 @@
           <li class="menu-active"><a href="#hero">Home</a></li>
           <li><a href="#about">Tentang</a></li>
           <li><a href="#services">Layanan</a></li>
-          <li><a href="#rekrutment">Rekrutment</a></li>
           <li><a href="#contact">Kontak</a></li>
           <li><a href="#blog">Blog</a></li>
           
@@ -140,37 +139,37 @@
             <h2 class="title text-center">Mengapa menggunakan ASDOSKU ?</h2>
             <div class="row">
             <div class="col-lg-5 col-md-6 icon-box wow fadeInRight">
-              <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">All in One</a></h4>
               <p class="description">All in one untuk dosen, sehingga membantu mencapai kinerja yang optimal dan maksimal</p>
              </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="fa fa-photo"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Grab it fast</a></h4>
               <p class="description">Hanya dengan satu menit, dosen sudah memiliki asdos sesuai kriteria dan kebutuhan</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Profesional</a></h4>
               <p class="description">Asdos diberi pelatihan dan evaluasi kinerjanya secara rutin</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Hak terjamin</a></h4>
               <p class="description">Setiap asdos terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Support go green</a></h4>
               <p class="description">Mulai dari rekrutmen hingga administrasi hampir tidak menggunakan kertas (papperless)</p>
             </div>
 
             <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <div class="icon"><i class="fa fa-check-circle"></i></div>
               <h4 class="title"><a href="">Multi tasking order</a></h4>
               <p class="description">Pengguna dapat memilih banyak fitur tanpa harus melakukan kontrak ataupun perekrutan</p>
             </div>
@@ -230,28 +229,28 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-child"></i></a></div>
               <h4 class="title"><a href="">Asisten Bimbel</a></h4>
               <p class="description">Asistensi pengguna sebagai tutor yang membantu siswa SD, SMP ,SMA dan umum untuk memperdalam mata pelajaran yang dibutuhkan. Pengguna dapat memilih tutor Mahasiswa ataupun freshgraduate sesuai kriteria yang dibutuhkan</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-file-text"></i></a></div>
               <h4 class="title"><a href="">Asisten Mata Kuliah</a></h4>
               <p class="description">Asistensi untuk membantu melaksanakan tugas mengajar atau kegiatan mata kuliah tertentu. Dosen dapat memilih asisten sesuai dengan kualifikasi mata kuliah yang diampu dan kriteria khusus lainnya</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-paper-plane"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-book"></i></a></div>
               <h4 class="title"><a href="">Asisten Penelitian</a></h4>
               <p class="description">Asistensi yang dilakukan untuk membantu tugas/proyek penelitian pengguna. Asisten membantu segala keperluan penelitian baik penyusunan kerangka proposal, pencarian data ataupun penyusunan kerangka laporan hasil penelitian</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-leanpub"></i></a></div>
               <h4 class="title"><a href="">Asisten Proyek</a></h4>
               <p class="description">Asistensi yang dilakukan sesuai dengan proyek yang sedang atau akan dikerjakan oleh pengguna. Baik itu bersifat kepentingan kampus maupun kepentingan pribadi. Pengguna tinggal memilih asisten sesuai dengan kriteria dan kebutuhan proyek</p>
             </div>
@@ -259,28 +258,28 @@
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-photo"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-list-ol"></i></a></div>
               <h4 class="title"><a href="">Asisten Administrasi</a></h4>
-              <p class="description">Asistensi untuk membantu pembuatan berbagai macam administrasi yang diperlukan bauk keperluan kampus, pribadi ataupun bisnis</p>
+              <p class="description">Asistensi untuk membantu pembuatan berbagai macam administrasi yang diperlukan baik keperluan kampus, pribadi ataupun bisnis</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-pencil"></i></a></div>
               <h4 class="title"><a href="">Asisten Karya</a></h4>
               <p class="description">Asistensi yang membantu penulis, pengarang, pembuat karya tulis dan sebagainya untuk menyempurnakan karyanya. Pengguna hanya perlu memilih kebutuhan dan kriteria asisten yang sesuai</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-shopping-bag"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-paint-brush"></i></a></div>
               <h4 class="title"><a href="">Asisten Desainer</a></h4>
               <p class="description">Asistensi yang membantu pengguna (dosen atau pengelola Perguruan tinggi) untuk membuat desain grafis dan web desain yang dibutuhkan untuk keperluan kegiatan belajar mengajar, pemasaran, bisnis, legalitas, brand dan lain sebagainya</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
+              <div class="icon"><a href=""><i class="fa fa-flask"></i></a></div>
               <h4 class="title"><a href="">Asisten Praktikum</a></h4>
               <p class="description">Asistensi yang membantu dosen melaksanakan kegiatan belajar mengajar dengan metode praktik di laboratorium, di lapangan maupun dikelas</p>
             </div>
@@ -298,7 +297,7 @@
         <div class="row">
           <div class="col-lg-9 text-center text-lg-left">
             <h3 class="cta-title">ASDOSKU menurut para dosen</h3>
-            <p class="cta-text"> Saya sudah merasakan dua kali menggunakan ASDOSKU untuk les anak-anak saya: bahasa arab untuk SMA dan bahasa inggris untuk SMP. Yang saya amati tutornya baik dan profesional, programnya juga bagus. Anak-anak juga merasakan yang sama.</p>
+            <p class="cta-text"><i class="fa fa-quote-left"></i> Saya sudah merasakan dua kali menggunakan ASDOSKU untuk les anak-anak saya: bahasa arab untuk SMA dan bahasa inggris untuk SMP. Yang saya amati tutornya baik dan profesional, programnya juga bagus. Anak-anak juga merasakan yang sama.</p>
             <p class="cta-text"> -Ibu Herni Dosen ..... UMP-</p>
           </div>
           {{-- <div class="col-lg-3 cta-btn-container text-center">
