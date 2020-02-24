@@ -7,7 +7,7 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-chalkboard fa-7x"></i>
+                    <i class="fas fa-fw fa-child fa-7x"></i>
                     <p class="h3 mt-2">Asisten Bimbel</p>
                     @include('layouts.dosen.dashboardmodal.bimbelmodal')
                     <button type="button" data-toggle="modal" data-target="#bimbelModal" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
@@ -41,7 +41,7 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-atom fa-7x"></i>
+                    <i class="fas fa-fw fa-flask fa-7x"></i>
                     <p class="h3 mt-2">Asisten Praktikum</p>
                     @include('layouts.dosen.dashboardmodal.praktikummodal') 
 
@@ -60,7 +60,7 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-university fa-7x"></i>
+                    <i class="fas fa-fw fa-book fa-7x"></i>
                     <p class="h3 mt-2">Asisten Penelitian</p>
                     @include('layouts.dosen.dashboardmodal.penelitianmodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#penelitianModal">Cari</button>
@@ -81,8 +81,8 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-people-carry fa-7x"></i>
-                    <p class="h3 mt-2">Asisten Proyek</p>
+                <i class="fab fa-leanpub fa-7x"></i>
+                <p class="h3 mt-2">Asisten Proyek</p>
                     @include('layouts.dosen.dashboardmodal.proyekmodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#proyekModal">Cari</button>
                  </div>
@@ -98,7 +98,7 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-person-booth fa-7x"></i>
+                    <i class="fas fa-fw fa-list-ol fa-7x"></i>
                     <p class="h3 mt-2">Asisten Administrasi</p>
                     @include('layouts.dosen.dashboardmodal.administrasimodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#administrasiModal">Cari</button>
@@ -116,7 +116,7 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-pencil-ruler fa-7x"></i>
+                    <i class="fas fa-fw fa-pencil-alt fa-7x"></i>
                     <p class="h3 mt-2">Asisten Karya</p>
                     @include('layouts.dosen.dashboardmodal.karyamodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#karyaModal">Cari</button>
@@ -134,8 +134,8 @@
 
                 <div class="mt-4 text-center small">
 
-                    <i class="fas fa-fw fa-ruler fa-7x"></i>
-                    <p class="h3 mt-2">Asisten Designer</p>
+                <i class="fas fa-paint-brush fa-7x"></i>
+                <p class="h3 mt-2">Asisten Designer</p>
                     @include('layouts.dosen.dashboardmodal.desainermodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#desainerModal">Cari</button>
                 </div>

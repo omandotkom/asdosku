@@ -32,19 +32,19 @@
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
         <a class="nav-link" href="{{route('showUserOrder')}}">
-            <i class="fas fa-fw fa-dot-circle"></i>
+            <i class="fas fa-fw fa-hand-holding"></i>
             <span>Layanan Kami</span></a>
     </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('indexdosen')}}">
-            <i class="fas fa-fw fa-dot-circle"></i>
+            <i class="fas fa-fw fa-cart-plus"></i>
             <span>Order Layanan</span></a>
     </li>
     
     <li class="nav-item">
         <a class="nav-link" href="{{route('showUserOrder')}}">
-            <i class="fas fa-fw fa-dot-circle"></i>
+            <i class="fas fa-fw fa-shopping-bag"></i>
             <span>Pesanan Saya</span></a>
     </li>
     <!-- Divider -->
@@ -58,7 +58,7 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="{{route('showallpayout')}}">
-            <i class="fas fa-fw fa-dot-circle"></i>
+            <i class="fas fa-fw fa-money-bill"></i>
             <span>Tagihan <span id="tagihancount" class="badge badge-danger"></span></span></a>
     </li>
     <!-- Divider -->

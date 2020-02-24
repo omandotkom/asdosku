@@ -14,7 +14,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{route('indexasdos')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-home"></i>
             <span>Beranda</span></a>
     </li>
 
@@ -23,24 +23,24 @@
 
     <!-- Heading -->
   
-    <li class="nav-item">
+<li class="nav-item">
         <a class="nav-link" href="{{route('profileAsdos')}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('viewcommentratingbyuser',Auth::user()->id)}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-comments"></i>
             <span>Rating & Komentar</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('viewpesananasdosbystatus','Berjalan')}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-money-bill-wave"></i>
             <span>Asistensi Berjalan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('viewpesananasdosbystatus','Selesai')}}">
-            <i class="fas fa-fw fa-ruler"></i>
+            <i class="fas fa-fw fa-money-bill-alt"></i>
             <span>Asistensi Selesai</span></a>
     </li>
     

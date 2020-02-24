@@ -12,8 +12,8 @@
 </script>
 @endif
 @php
-  $path = basename($imageurl);
-  $picname = basename($path, ".png");
+$path = basename($imageurl);
+$picname = basename($path, ".png");
 @endphp
 @if($picname == "default")
 <script type="text/javascript">
@@ -89,9 +89,9 @@
 
             <form class="mt-3" id="profilePic" name="profilePic" method="post" action="{{route('uploadProfileAsdos')}}" enctype="multipart/form-data">
               @csrf
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" name="image" id="customFile">
-                <label class="custom-file-label" for="customFile">Choose file</label>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Foto Akun</label>
+                <input type="file" name="image" class="form-control-file" id="image">
               </div>
               <div class="form-group mt-3">
                 <button class="btn btn-danger btn-sm">Upload</button>
