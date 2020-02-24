@@ -10,6 +10,9 @@
   function gotoPesananSelesai() {
     window.location = "{{route('viewpesananasdosbystatus','Selesai')}}";
   }
+  function gotoratingkomentar(){
+    window.location = "{{route('viewcommentratingbyuser',Auth::user()->id)}}";
+  }
 </script>
 <div class="row">
 
@@ -41,7 +44,7 @@
       <div class="card-body">
 
         <div class="mt-4 text-center small">
-          <i class="fas fa-fw fa-shopping-cart fa-7x"></i>
+          <i class="fas fa-fw fa-money-bill-wave fa-7x"></i>
           <p class="h3 mt-2">Asistensi Berjalan</p>
           <button type="button" onclick='gotoPesananBerjalan();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
         </div>
@@ -62,9 +65,30 @@
       <div class="card-body">
 
         <div class="mt-4 text-center small">
-          <i class="fas fa-fw fa-shopping-cart fa-7x"></i>
+          <i class="fas fa-fw fa-money-bill-alt fa-7x"></i>
           <p class="h3 mt-2">Asistensi Selesai</p>
-          <button type="button" onclick='gotoPesananBerjalan();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+          <button type="button" onclick='gotoPesananSelesai();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-5">
+    <div class="card shadow mb-4">
+
+      <div class="card-header" id="persetujuan">
+        <button type="button" onclick='gotoratingkomentar();' class="btn float-right btn-sm btn-light">
+          Rating & Komentar
+        </button>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body">
+
+        <div class="mt-4 text-center small">
+          <i class="fas fa-fw fa-comments fa-7x"></i>
+          <p class="h3 mt-2">Rating & Komentar</p>
+          <button type="button" onclick='gotoratingkomentar();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
         </div>
       </div>
 

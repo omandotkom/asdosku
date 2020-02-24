@@ -45,7 +45,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left fadeInUp">
-        <a href="#hero"><img src="{{ asset('asset/img/logo.png') }}" alt="" title="" /></img></a>
+        <a href="{{route('rumah')}}"><img src="{{ asset('asset/img/logo.png') }}" alt="" title="" /></img></a>
         <p class="text-white">No. 1 di Indonesia Untuk Dosen Tercinta</p>
         <!-- Uncomment below if you prefer to use a text logo -->
         <!--<h1><a href="#hero">Regna</a></h1>-->
