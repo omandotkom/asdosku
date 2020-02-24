@@ -31,7 +31,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-        <a class="nav-link" href="{{route('showUserOrder')}}">
+        <a class="nav-link" href="{{route('viewservices')}}">
             <i class="fas fa-fw fa-hand-holding"></i>
             <span>Layanan Kami</span></a>
     </li>

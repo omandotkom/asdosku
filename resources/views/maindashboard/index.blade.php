@@ -96,6 +96,9 @@
           @endswitch
           @elseif (Auth::user()->role == "dosen")
           @switch($content ?? '')
+          @case('servicelist')
+          @include('layouts.dosen.semualayanan')
+          @break
           @case('viewpayouts')
           @include('layouts.dosen.transaction.payment')
           @break

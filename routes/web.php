@@ -47,6 +47,7 @@ Route::get('/dashboard/index/dosen/payout/download/{payout_id}','PayoutControlle
 Route::get('/dashboard/index/dosen/payout/{transaction_id}/','PayoutController@viewpage')->name('showPayoutPage');
 Route::get('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@show')->name('showOrderPage');
 Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder');
+Route::get('/dashboard/index/dosen/services/list','ServiceActivitiesController@show')->name('viewservices');
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction');
 Route::get('/dashboard/index/dosen/order/list/delete/{id}','TransactionController@delete')->name('deleteTransaction');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction');
