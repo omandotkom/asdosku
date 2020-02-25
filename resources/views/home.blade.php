@@ -26,7 +26,13 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
-
+  @auth
+  <script type="text/javascript">
+    function gotoCariAsisten() {
+      window.location = "{{ route('indexdosen') }}";
+    }
+  </script>
+  @endauth
 </head>
 
 <body>
@@ -51,7 +57,24 @@
           <li><a href="#services">Layanan</a></li>
           <li><a href="#contact">Kontak</a></li>
           <li><a href="#blog">Blog</a></li>
-          
+          @auth
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+            </div>
+          </li>
+          @endauth
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -65,6 +88,10 @@
       <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
       <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
       <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        @auth
+        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn btn-outline-warning btn-lg rounded animated jackInTheBox slow">Pesan Layanan Kami</button>
+        @endauth
+        @guest
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -85,6 +112,7 @@
             </div>
           </div>
         </div>
+
         <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning btn-lg rounded">Daftar</button>
         <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary ml-5 btn-lg rounded">Masuk</button>
 
@@ -101,6 +129,7 @@
             window.location = "{{ url('/login') }}";
           }
         </script>
+        @endguest
       </div>
 
     </div>
@@ -118,17 +147,17 @@
           <div class="content order-lg-1 order-2">
             <h2 class="title text-center">APA ITU ASDOSKU ?</h2>
             <p class="text-center wow fadeInUp">
-              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas penelitian, kuliah, pengabdian, bisnis maupun kepentingan pribadi sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya. 
+              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas penelitian, kuliah, pengabdian, bisnis maupun kepentingan pribadi sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya.
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa dan freshgraduate yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai asisten</b>.
             </p>
-          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
-        </div>
+            <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
+          </div>
 
-      </div>
+        </div>
     </section><!-- #about -->
 
-  <!--==========================
+    <!--==========================
       Benefit Section
     ============================-->
     <section id="benefit">
@@ -138,50 +167,50 @@
           <div class="content order-lg-1 order-2">
             <h2 class="title text-center">Mengapa menggunakan ASDOSKU ?</h2>
             <div class="row">
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInRight">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">All in One</a></h4>
-              <p class="description">All in one untuk pengguna, berbagai bantuan dalam satu platform yang dapat membantu meningkatkan produktifitas dan mencapai kinerja yang optimal dan maksimal</p>
-             </div>
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInRight">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">All in One</a></h4>
+                <p class="description">All in one untuk pengguna, berbagai bantuan dalam satu platform yang dapat membantu meningkatkan produktifitas dan mencapai kinerja yang optimal dan maksimal</p>
+              </div>
 
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Grab it fast</a></h4>
-              <p class="description">Hanya dengan satu menit, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.2s">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">Grab it fast</a></h4>
+                <p class="description">Hanya dengan satu menit, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
+              </div>
+
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">Hak terjamin</a></h4>
+                <p class="description">Setiap asisten terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
+              </div>
+
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">Support go green</a></h4>
+                <p class="description">Mulai dari rekrutmen hingga administrasi hampir tidak menggunakan kertas (papperless)</p>
+              </div>
+
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">Multi tasking order</a></h4>
+                <p class="description">Pengguna dapat memilih banyak fitur tanpa harus melakukan kontrak ataupun perekrutan</p>
+              </div>
+
+
+              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
+                <div class="icon"><i class="fa fa-check-circle"></i></div>
+                <h4 class="title"><a href="">Profesional</a></h4>
+                <p class="description">Asisten melalui proses perekrutan yang ketat melalui seleksi administrasi, keahlian dan interview oleh tim ahli yang terdiri dari dosen dan tim HRD Asdosku. Selain itu, asisten menadaptkan pelatihan dan evaluasi kinerja secara rutin.</p>
+              </div>
             </div>
 
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Hak terjamin</a></h4>
-              <p class="description">Setiap asisten terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
-            </div>
-
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Support go green</a></h4>
-              <p class="description">Mulai dari rekrutmen hingga administrasi hampir tidak menggunakan kertas (papperless)</p>
-            </div>
-
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Multi tasking order</a></h4>
-              <p class="description">Pengguna dapat memilih banyak fitur tanpa harus melakukan kontrak ataupun perekrutan</p>
-            </div>
-
-            
-            <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-check-circle"></i></div>
-              <h4 class="title"><a href="">Profesional</a></h4>
-              <p class="description">Asisten melalui proses perekrutan yang ketat melalui seleksi administrasi, keahlian dan interview oleh tim ahli yang terdiri dari dosen dan tim HRD Asdosku. Selain itu, asisten menadaptkan pelatihan dan evaluasi kinerja secara rutin.</p>
-            </div>
+            <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
           </div>
 
-          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
         </div>
-
-      </div>
     </section><!-- #benefit -->
-    
+
     <!--==========================
       Facts Section
     ============================-->
@@ -603,7 +632,7 @@
                 <textarea class="form-control" name="question" id="question" rows="5" data-rule="required" data-msg="Tulis sesuatu untuk kami" placeholder="Pesan"></textarea>
                 <div class="validation"></div>
               </div>
-              <div class="text-center"><button type="submit" onclick="postquestion();" >Kirim</button></div>
+              <div class="text-center"><button type="submit" onclick="postquestion();">Kirim</button></div>
             </div>
           </div>
 

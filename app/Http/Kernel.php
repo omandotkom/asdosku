@@ -3,8 +3,12 @@
 namespace App\Http;
 
 use App\Http\Middleware\Activated;
+use App\Http\Middleware\Asdos;
 use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\Dosen;
+use App\Http\Middleware\HRD;
+use App\Http\Middleware\Operational;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,6 +71,10 @@ class Kernel extends HttpKernel
         'checkrole' => CheckRole::class,
         'checkactive' => CheckActive::class,
         'active' => Activated::class,
+        'dosen' => Dosen::class,
+        'operational' => Operational::class,
+        'asdos' => Asdos::class,
+        'hrd' => HRD::class
     ];
 
     /**
