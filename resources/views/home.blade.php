@@ -103,7 +103,7 @@
               </div>
               <div class="modal-body">
 
-                <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Dosen</button>
+                <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Dosen atau Pengelola</button>
                 <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Asdos</button>
               </div>
               <div class="modal-footer">

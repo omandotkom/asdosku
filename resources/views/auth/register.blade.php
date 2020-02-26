@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="nik" class="col-md-4 col-form-label text-md-right">{{ __('NIK') }}</label>
+              <label for="nik" class="col-md-4 col-form-label text-md-right">{{ __('NIK / NIDN') }}</label>
 
               <div class="col-md-6">
                 <input id="nik" class="form-control @error('nik') is-invalid @enderror" name="nik" required>
