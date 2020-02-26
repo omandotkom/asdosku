@@ -85,7 +85,7 @@ class TransactionController extends Controller
         $transaction->sampai = $request->dateSampai;
         $transaction->keterangan = $request->keterangan;
         $transaction->biaya = $request->biaya;
-        $transaction->status = 'Mencari Asdos';
+        $transaction->status = 'Menunggu Konfirmasi Asdos';
         $transaction->save();
     
         event(new OrderWasCreated(Auth::user()));
@@ -143,7 +143,7 @@ class TransactionController extends Controller
     public function pendingtransaction()
     {
 
-        $transaction = Transaction::where('transactions.status', 'Mencari Asdos')
+        $transaction = Transaction::where('transactions.status', 'Menunggu Konfirmasi Asdos')
             ->select(
                 'transactions.*',
                 'users.name as dosen',

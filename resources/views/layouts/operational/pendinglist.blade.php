@@ -227,7 +227,7 @@
                         </table>
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
-                    @if($transaction->status == "Mencari Asdos")
+                    @if($transaction->status == "Menunggu Konfirmasi Asdos")
                     <button type="button" onclick="console.log(generateURLUpdate('{{$transaction->id}}'));" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
                     @endif
                 </div>

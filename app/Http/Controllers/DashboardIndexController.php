@@ -23,7 +23,7 @@ class DashboardIndexController extends Controller
     public function indexoperational()
     {
         //return Auth::user();
-        $pending = Transaction::where('status', 'Mencari Asdos')->count();
+        $pending = Transaction::where('status', 'Menunggu Konfirmasi Asdos')->count();
         $berjalan = Transaction::where('status', 'Berjalan')->count();
         $tagihan = Payout::where('status', 'Menunggu Konfirmasi Pembayaran')->count();
         return view('maindashboard.index', ['pending' => $pending, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);

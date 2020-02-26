@@ -196,7 +196,7 @@
                 <div class="list-group">
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Mencari Asdos</h5>
+                            <h5 class="mb-1">Menunggu Konfirmasi Asdos</h5>
 
                         </div>
                         <p class="mb-1">Permintaan bapak/ibu sudah diketahui oleh team Asdosku. Team Asdosku sedang mengonfirmasikan permintaan asistensi ke calon Asdos terkait.</p>
@@ -280,7 +280,7 @@
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @switch($transaction->status)
-                    @case('Mencari Asdos')
+                    @case('Menunggu Konfirmasi Asdos')
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @break
                     @case('Menunggu Pembayaran')
