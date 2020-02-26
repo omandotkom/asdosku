@@ -90,7 +90,7 @@
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">{{ __('Jurusan') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="jurusan" id="jurusan">
+                                <select class="form-control" aria-describedby="jurusanhelp" name="jurusan" id="jurusan">
                                     @foreach($jurusans as $jurusan)
                                     @if($jurusan->first)
                                     <option selected value="{{$jurusan->id}}">{{$jurusan->name}}</option>
@@ -98,10 +98,14 @@
                                     <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
                                     @endif
                                     @endforeach
-                                    <option value="newjurusan" data-toggle="modal" data-target="#newjurusanmodal" onclick="console.log('diklik');"><b>Tambahkan Jurusan ...</b></option>
 
                                 </select>
-
+                                <small id="jurusanhelp" class="form-text text-muted text-left">
+                                    Apabila jurusan tidak ditemukan, tambahkan dengan menekan tombol +
+                                </small>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newjurusanmodal">
+                                    +
+                                </button>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -160,7 +164,7 @@
                                 <input id="email" aria-describedby="emailhelp" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 <small id="emailhelp" class="form-text text-muted text-left">
                                     Double check email yang didaftarkan karena setiap notifikasi akan dikirimkan ke Email.
-                                </small>                               
+                                </small>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -191,19 +195,19 @@
                         </div>
 
                         <div class="form-group row">
-              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Syarat Layanan') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Syarat Layanan') }}</label>
 
-              <div class="col-md-6">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;" >
-                    </div>
-                  </div>
-                  <a href="{{asset('asset/etik/KODE_ETIK_PERUSAHAAN.pdf')}}" target="_blank" class="badge badge-light">Saya menyetujui SK Layanan Asdosku</a>
-                </div>
-              </div>
-            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" aria-label="Checkbox for following text input" onchange="document.getElementById('tombolregistrasi').disabled = !this.checked;">
+                                        </div>
+                                    </div>
+                                    <a href="{{asset('asset/etik/KODE_ETIK_PERUSAHAAN.pdf')}}" target="_blank" class="badge badge-light">Saya menyetujui SK Layanan Asdosku</a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" id="tombolregistrasi" disabled class="btn btn-outline-primary">
