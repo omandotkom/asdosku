@@ -102,15 +102,9 @@
                 </button>
               </div>
               <div class="modal-body">
-<<<<<<< HEAD
-
-                <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Dosen atau Pengelola</button>
-                <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-lg btn-block">Daftar Sebagai Asdos</button>
-=======
                 Bergabung Sebagai
                 <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary mt-1 btn-sm btn-block">Dosen / Pengelola</button>
                 <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-sm btn-block">Asdos</button>
->>>>>>> develop
               </div>
               <div class="modal-footer">
 
