@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card animated slideInUp slow">
+            <div class="card animated slideInLeft slow">
                 <div class="card-header">{{ __('Register Dosen / Pengelola') }}</div>
 
                 <div class="card-body">
