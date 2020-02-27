@@ -92,43 +92,10 @@
         <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn btn-outline-warning btn-lg rounded animated jackInTheBox slow">Pesan Layanan Kami</button>
         @endauth
         @guest
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLongTitle">Pendaftaran Akun</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Bergabung Sebagai
-                <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary mt-1 btn-sm btn-block">Dosen / Pengelola</button>
-                <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-sm btn-block">Asdos</button>
-              </div>
-              <div class="modal-footer">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning btn-lg rounded">Daftar</button>
+        @include('auth.modal.authmodal')
+        <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-outline-warning btn-lg rounded">Daftar</button>
         <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary ml-5 btn-lg rounded">Masuk</button>
 
-        <script type="text/javascript">
-          function gotoRegisterDosen() {
-            window.location = "{{ url('/register') }}";
-          }
-
-          function gotoRegisterAsdos() {
-            window.location = "{{ url('/registerasdos') }}";
-          }
-
-          function gotoLogin() {
-            window.location = "{{ url('/login') }}";
-          }
-        </script>
         @endguest
       </div>
 
@@ -664,7 +631,7 @@
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
         -->
-       </div>
+      </div>
     </div>
   </footer><!-- #footer -->
 

@@ -1,78 +1,14 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-  <meta charset="utf-8">
-  <title>Asdosku</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="asdosku assiten dosen" name="keywords">
-  <meta content="No.1 di Indonesia Untuk Dosen" name="description">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card animated slideInUp slow">
+                <div class="card-header">{{ __('Register Dosen / Pengelola') }}</div>
 
-  <!-- Favicons -->
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
-  <!-- Favicons -->
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="icon">
-  <link href="{{ asset('asset/img/site-icon.png') }}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-
-  <link href="{{ asset('asset/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <!-- Libraries CSS Files -->
-  <link href="{{ asset('asset/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
-  <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: Regna
-    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-</head>
-
-
-<body>
-
-  <!--==========================
-  Header
-  ============================-->
-  <header id="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left fadeInUp">
-        <a href="#hero"><img src="{{ asset('asset/img/logo.png') }}" alt="" title="" /></img></a>
-        <p class="text-white">No. 1 di Indonesia Untuk Dosen Tercinta</p>
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!--<h1><a href="#hero">Regna</a></h1>-->
-      </div>
-
-
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li><a href="{{url('/login')}}">Login</a></li>
-          <li class="menu-active"><a href="{{ url('/register') }}">Registrasi Dosen</a></li>
-          <li><a href="{{ url('/registerasdos') }}">Registrasi Asdos</a></li>
-
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
-
-  <!--==========================
-    Hero Section
-  ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <div class="card mt-5 w-50 animated slideInUp slow">
-        <div class="card-body">
-          <h5 class="card-title">Pendaftaran Member (Dosen)</h5>
-          <form method="POST" name="formregistrasi" action="{{ route('register') }}">
+                <div class="card-body">
+                <form method="POST" name="formregistrasi" action="{{ route('register') }}">
             @csrf
 
             <div class="form-group row">
@@ -190,28 +126,9 @@
 
             </div>
           </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section><!-- #hero -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="{{ asset('asset/lib/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/jquery/jquery-migrate.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/easing/easing.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/wow/wow.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/waypoints/waypoints.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/counterup/counterup.min.js') }}"></script>
-  <script src="{{ asset('asset/lib/superfish/hoverIntent.js') }}"></script>
-  <script src="{{ asset('asset/lib/superfish/superfish.min.js') }}"></script>
-
-
-  <!-- Template Main Javascript File -->
-  <script src="{{ asset('asset/js/main.js') }}"></script>
-
-</body>
-
-</html>
+</div>
+@endsection
