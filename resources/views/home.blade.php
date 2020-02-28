@@ -114,7 +114,7 @@
           <div class="content order-lg-1 order-2">
             <h2 class="title text-center">APA ITU ASDOSKU ?</h2>
             <p class="text-center wow fadeInUp">
-              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas penelitian, kuliah, pengabdian, bisnis maupun kepentingan pribadi sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya.
+              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas Tri Dharma Perguruan Tinggi dan bisnis sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya.
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa dan freshgraduate yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai asisten</b>.
             </p>
@@ -143,7 +143,7 @@
               <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.2s">
                 <div class="icon"><i class="fa fa-check-circle"></i></div>
                 <h4 class="title"><a href="">Grab it fast</a></h4>
-                <p class="description">Hanya dengan satu menit, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
+                <p class="description">Tidak membutuhkan waktu lama, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
               </div>
 
               <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
