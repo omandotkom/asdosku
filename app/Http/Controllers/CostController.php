@@ -10,10 +10,9 @@ class CostController extends Controller
 {
     public function store(Request $request, $id)
     {
-    
         $validator = Validator::make($request->all(), [
             'nominalcost' => 'required|numeric|',
-            'keterangancost' => 'required',
+            'keterangancost' => 'required|string',
         ]);
         if ($validator->fails()) {
             return response('Gagal, belum lengkap atau format salah.',400);

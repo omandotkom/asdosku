@@ -8,6 +8,9 @@
         selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
         
     }
+    function gotoHistoris(url) {
+        window.location = url;
+    }
     function selesailayanan() {
         axios.get(selesaiURL)
             .then(function(response) {
@@ -55,6 +58,15 @@
                 document.getElementById("asisten").innerHTML = response.data.name;
                 document.getElementById("kampus").innerHTML = response.data.kampus;
                 document.getElementById("fotoasdos").src = response.data.image_name;
+                if (response.data.total_discount != 0){
+                    $("#vcrrow").removeAttr("hidden");
+                    $("#vcr").text(response.data.total_discount);
+                }else{
+                    
+                    if (!document.getElementById("vcrrow").hasAttribute("hidden")){
+                        $("#vcrrow").attr('hidden','true');
+                    }
+                }
             })
             .catch(function(error) {
                 // handle error
@@ -179,8 +191,12 @@
                             <td id="sampai"></td>
                         </tr>
                         <tr>
-                            <th>Biaya</th>
+                            <th>Biaya Dasar</th>
                             <td id="biaya"></td>
+                        </tr>
+                        <tr hidden id="vcrrow">
+                            <th>Voucher</th>
+                            <td id="vcr"></td>
                         </tr>
                         <tr>
                             <th>Asisten</th>
@@ -278,7 +294,12 @@
                             </tr>
                         </table>
                     </div>
+                    @php
+                    $historisurl = route('showcosthistory',$transaction->id);
+                    @endphp
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
+                    <button type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
+                   
                     @switch($transaction->status)
                     @case('Menunggu Konfirmasi Asdos')
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>

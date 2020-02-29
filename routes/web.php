@@ -61,3 +61,5 @@ Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('vi
 
 
 
+
+

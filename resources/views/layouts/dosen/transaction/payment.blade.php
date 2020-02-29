@@ -50,10 +50,20 @@ $totalbiaya = 0;
                 <td>{{$cost->keterangan}}</td>
                 <td>@php echo convertRupiah($cost->nominal); @endphp</td>
                 <td>{{$cost->updated_at}}</td>
-
               </tr>
 
               @endforeach
+              @if($transaction->total_discount != 0)
+              @php
+              $totalbiaya = $totalbiaya - $transaction->total_discount;
+              @endphp
+              <tr>
+                <td>{{++$num}}</td>
+                <td>Voucher</td>
+                <td> - @php echo convertRupiah($transaction->total_discount); @endphp</td>
+                <td>{{$transaction->updated_at}}</td>
+              </tr>
+              @endif
               <tr>
                 <td colspan="2"><b>Total Biaya</b></td>
 

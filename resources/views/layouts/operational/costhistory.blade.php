@@ -19,8 +19,16 @@
           <td>(Layanan) {{$transaction->activity->name}}</td>
           <td>{{$transaction->biaya}}
           <td>{{$transaction->created_at}}</td>
-          
         </tr>
+        @if($transaction->total_discount != 0)
+        <tr>
+          <td>{{++$num}}</td>
+          <td>Voucher</td>
+          <td>- {{$transaction->total_discount}}</td>
+          <td>{{$transaction->created_at}}</td>
+        </tr>
+
+        @endif
         @foreach($costs as $cost)
         @php
         $num++;

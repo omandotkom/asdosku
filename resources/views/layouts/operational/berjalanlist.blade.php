@@ -11,6 +11,7 @@
                 keterangancost: $("#keterangancost").val(),
             })
             .then(function(response) {
+                
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
@@ -21,6 +22,7 @@
                 }).showToast();
             })
             .catch(function(error) {
+            
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
                     text: error,
@@ -198,11 +200,11 @@
 
                     <div class="form-group">
                         <label for="nominalcost">Nominal</label>
-                        <input required type="text" class="form-control" id="nominalcost" aria-describedby="costhelp" placeholder="Misal : 67500">
+                        <input required type="text" name="nominalcost" class="form-control" id="nominalcost" aria-describedby="costhelp" placeholder="Misal : 67500">
                         <small id="costhelp" class="form-text text-muted">Di isi dengan format seperti 67500 (tanpa titik dan simbol rupiah).</small>
                     </div>
                     <div class="form-group">
-                        <label for="keterangancost">Nominal</label>
+                        <label for="keterangancost">Keterangan</label>
                         <textarea required class="form-control" aria-describedby="keteranganhelp" id="keterangancost" placeholder="Pengeluaran untuk fotocopy sebesar 6500" aria-label="With textarea"></textarea>
                         <small id="keteranganhelp" class="form-text text-muted">Di isi dengan lengkap karena akan dilihat client untuk tagihan.</small>
                     </div>

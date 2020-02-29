@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6156f65dc2bfa690d66510f3ecfc517",
+    "content-hash": "f11c3f8c2c5b30289982939b424e02b2",
     "packages": [
         {
             "name": "cnvs/canvas",
@@ -4173,58 +4173,6 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
-        },
-        {
-            "name": "writingink/wink",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/writingink/wink.git",
-                "reference": "dbfcc4147ab8556a19f45ec6d7ba2e0b5ec272ed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/writingink/wink/zipball/dbfcc4147ab8556a19f45ec6d7ba2e0b5ec272ed",
-                "reference": "dbfcc4147ab8556a19f45ec6d7ba2e0b5ec272ed",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "~5.7|~6.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "nunomaduro/larastan": "^0.3.8"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Wink\\WinkServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wink\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Said",
-                    "email": "mohamed@laravel.com"
-                }
-            ],
-            "description": "Wink Publishing Framework.",
-            "keywords": [
-                "blog",
-                "framework",
-                "laravel"
-            ],
-            "time": "2019-09-05T17:56:26+00:00"
         }
     ],
     "packages-dev": [

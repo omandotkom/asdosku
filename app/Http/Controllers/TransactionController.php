@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Campus;
+use Illuminate\Support\Facades\Validator;
 use App\Cost;
+use App\Discount;
 use App\Events\OrderWaitingPayment;
 use App\Events\OrderWasApproved;
 use App\Events\OrderWasCreated;
@@ -24,7 +26,7 @@ use PharIo\Manifest\Email;
 class TransactionController extends Controller
 {
     public function updatestatus($id, $status)
-    {   
+    {
         if ($status == "MP") {
             $status = "Menunggu Pembayaran";
         }
@@ -33,7 +35,7 @@ class TransactionController extends Controller
         $transaction->save();
         $dosen = User::find($transaction->dosen);
         if ($status == "Menunggu Pembayaran") {
-            event(new OrderWaitingPayment($dosen,$transaction));
+            event(new OrderWaitingPayment($dosen, $transaction));
         } else {
             event(new OrderWasApproved($dosen, $transaction));
         }
@@ -76,7 +78,16 @@ class TransactionController extends Controller
     }
     public function store(Request $request, $activity, $asdos)
     {
+        $validator = Validator::make($request->all(), [
+            'dateDari' => ['required', 'date', 'max:255'],
+            'dateSampai' => ['required', 'date', 'max:255'],
+            'keterangan' => ['required', 'string', 'min:10'],
+        ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        
         $transaction = new Transaction;
         $transaction->asdos = $asdos;
         $transaction->dosen = Auth::user()->id;
@@ -84,10 +95,27 @@ class TransactionController extends Controller
         $transaction->dari = $request->dateDari;
         $transaction->sampai = $request->dateSampai;
         $transaction->keterangan = $request->keterangan;
-        $transaction->biaya = $request->biaya;
+      //  $transaction->biaya = $request->biaya;
         $transaction->status = 'Menunggu Konfirmasi Asdos';
+       
+        $totalBiaya = Activity::where("id",$activity)->first();
+        $totalBiaya = $totalBiaya->harga; 
+        
+        if (isset($request->orderqty)){
+            $totalBiaya = $totalBiaya * $request->orderqty;
+        }
+        if ($request->discountcode != "0"){
+            //jika ada kode diskon
+            $transaction->discount_id = $request->discountcode;
+            $d = Discount::where('id',$request->discountcode)->first();
+            $d = $d->discount;
+            
+            $transaction->total_discount = $totalBiaya * $d; 
+            //$totalBiaya = $totalBiaya - $d;
+        }
+        $transaction->biaya = $totalBiaya;
         $transaction->save();
-    
+
         event(new OrderWasCreated(Auth::user()));
         return redirect()->route('showUserOrder');
     }
@@ -98,7 +126,7 @@ class TransactionController extends Controller
     }
     public function delete($id)
     {
-      $transaction = Transaction::where('id',$id)->first();
+        $transaction = Transaction::where('id', $id)->first();
         if (isset($transaction)) {
             $transaction->status = "Dibatalkan";
             $transaction->save();
