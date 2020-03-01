@@ -136,7 +136,7 @@
                                                     <label class="form-check-label" for="{{$service->id}}check">
                                                         {{$service->name}}
                                                         <small>(
-                                                            Pilih :
+                                                            Pilihan Pekerjaan :
                                                             @foreach($service->activities as $activity)
                                                             @if (!$loop->last)
                                                             {{$activity->name}},
