@@ -21,7 +21,7 @@
                 <div class="dropdown">
                     <a href="#" class="nav-link px-0 py-0 text-secondary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{ $data['avatar'] }}"
-                             class="rounded-circle my-0 shadow-sm" style="width: 31px" alt="{{ auth()->user()->name }}">
+                             class="rounded-circle img-fluid my-0 shadow-sm" style="width: 31px" alt="{{ auth()->user()->name }}">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <h6 class="dropdown-header font-sans">

@@ -131,7 +131,7 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img id="fotoasdos" src="" class="img-thumbnail shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
+                    <img id="fotoasdos" src="" class="img-thumbnail img-fluid shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
                 </div>
 
                 <div class="table-responsive-sm mt-1">

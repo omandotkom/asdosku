@@ -51,7 +51,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img id="detilFoto" src="" class="shadow p-3 mb-5 bg-white rounded rounded img-thumbnail mx-auto d-block" alt="Foto Asdos">
+                <img id="detilFoto" src="" class="shadow p-3 mb-5 img-fluid bg-white rounded rounded img-thumbnail mx-auto d-block" alt="Foto Asdos">
                 <div class="table-responsive-sm mt-1">
                     <table class="table table-sm">
                         <tr>

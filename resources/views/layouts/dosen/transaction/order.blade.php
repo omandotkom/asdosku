@@ -10,7 +10,7 @@
           <h5 class="card-title text-center">Rincian Kegiatan dan Asdos</h5>
 
           <div class="text-center">
-            <img src="{{$asdos->archive->image_name}}" class="img-thumbnail shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
+            <img src="{{$asdos->archive->image_name}}" class="img-thumbnail img-fluid shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
           </div>
           <div class="table-responsive-sm mt-1">
             <table class="table table-sm">

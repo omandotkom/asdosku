@@ -114,23 +114,23 @@ $totalbiaya = 0;
             </thead>
             <tbody>
               <tr>
-                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/dana.png')}}" alt="DANA App"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/dana.png')}}" alt="DANA App"></td>
                 <td><b>081393558430</b> a.n <b>Khalid Abdurrahman</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
                 <td>a.n DNID 081393558430<br>Virtual Account : <b>3901081393558430</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/bni.png')}}" alt="BNI"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bni.png')}}" alt="BNI"></td>
                 <td>a.n DNID 081393558430<br>Virtual Account : <b>8810081393558430</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/mandiri.png')}}" alt="MANDIRI"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/mandiri.png')}}" alt="MANDIRI"></td>
                 <td>a.n DNID 081393558430<br>Virtual Account : <b>89508081393558430</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail" src="{{asset('asset/img/payment/btn.png')}}" alt="BTN"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/btn.png')}}" alt="BTN"></td>
                 <td>a.n DNID 081393558430<br>Virtual Account : <b>8528081393558430</b></td>
               </tr>
             </tbody>
