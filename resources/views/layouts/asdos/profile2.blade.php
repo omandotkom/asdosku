@@ -85,7 +85,7 @@ $picname = basename($path, ".png");
               {{ session('success') }}
             </div>
             @endif
-            <img src="{{$imageurl}}" class="rounded" alt="...">
+            <img src="{{$imageurl}}" class="rounded img-fluid" alt="Foto Pengguna">
 
             <form class="mt-3" id="profilePic" name="profilePic" method="post" action="{{route('uploadProfileAsdos')}}" enctype="multipart/form-data">
               @csrf
