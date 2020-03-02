@@ -60,14 +60,28 @@ class FilterAsdosController extends Controller
             ->simplePaginate();
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
-    public function generalView($activity)
+    public function generalView($activity,$kampus,$jurusan)
     {
+        if ($jurusan != "Bebas"){
+            $strJurusan = "details.jurusan_id=".$jurusan;
+        }else{
+            $strJurusan = "details.jurusan_id != 0";
+        }
+        if ($kampus != "Bebas") {
+            $strKampus = "details.kampus_id=" . $kampus;
+        } else {
+            //bebas
+            $strKampus = "details.kampus_id != 0";
+        }
+
         $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
             ->join('details', 'prefers.user_id', 'details.user_id')
             ->join('kampus', 'details.kampus_id', 'kampus.id')
             ->join('activities', 'prefers.activity_id', 'activities.id')
             ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
-            ->where('prefers.activity_id', $activity)->where('users.status', 'aktif')
+            ->where('prefers.activity_id', $activity)
+            ->whereRaw($strKampus)
+            ->whereRaw($strJurusan)->where('users.status', 'aktif')
             ->simplePaginate();
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }

@@ -3,6 +3,7 @@
     function generatePenelitianURL(){
         var penelitianURL = "{{route('viewgeneral')}}";
         penelitianURL = penelitianURL.concat("/").concat($("#penelitianactivity").val());
+        penelitianURL = penelitianURL.concat("/").concat($("#kampuspenelitian").val()).concat("/").concat($("#jurusanpenelitian").val());
         window.location = penelitianURL;
     }
 </script>
@@ -30,7 +31,24 @@
                         @endforeach
                         </select>
                     </div>
-                    
+                    <div class="form-group">
+                    <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
+                    <select name="kampus" id="kampuspenelitian" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan" class="col-form-label float-left">Jurusan</label>
+                    <select name="jurusan" id="jurusanpenelitian" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($jurusans as $jurusan)
+                        <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
               </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

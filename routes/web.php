@@ -57,7 +57,7 @@ Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionCont
 
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth','dosen');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth','dosen');
-Route::get('/general/{activity?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth','dosen');
+Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth','dosen');
 
 
 

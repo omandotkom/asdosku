@@ -3,8 +3,8 @@
     function generatePraktikumURL() {
         var matakuliahURL = "{{route('viewmatakuliah')}}";
         matakuliahURL = matakuliahURL.concat("/").concat($("#activitymatakuliah").val()).concat("/")
-            .concat($("#kampusmatakuliah").val()).concat("/").concat($("#jurusanmatakuliah").val()).concat("/")
-            .concat($("#semestermatakuliah").val()).concat("/").concat($("#gendermatakuliah").val());
+            .concat($("#kampuspraktikum").val()).concat("/").concat($("#jurusanpraktikum").val()).concat("/")
+            .concat($("#semesterpraktikum").val()).concat("/").concat($("#genderpraktikum").val());
         window.location = matakuliahURL;
     }
 </script>
@@ -19,7 +19,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="mapel" class="col-form-label float-left">Matakuliah</label>
+                    <label for="mapel" class="col-form-label float-left">Praktikum</label>
 
                     <select required id="activitypraktikum" name="activity" class="custom-select custom-select-sm"> @foreach($praktikumactivity as $p)
                         @if($p->first)

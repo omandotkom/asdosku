@@ -3,6 +3,8 @@
     function generatePengabdianURL(){
         var pengabdianURL = "{{route('viewgeneral')}}";
         pengabdianURL = pengabdianURL.concat("/").concat($("#pengabdianactivity").val());
+        pengabdianURL = pengabdianURL.concat("/").concat($("#kampusadministrasi").val()).concat("/").concat($("#jurusanadministrasi").val());
+        
         window.location = pengabdianURL;
     }
     </script>
@@ -31,7 +33,24 @@
                         </select>
                     </div>
                     
-                
+                    <div class="form-group">
+                    <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
+                    <select name="kampus" id="kampusadministrasi" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan" class="col-form-label float-left">Jurusan</label>
+                    <select name="jurusan" id="jurusanadministrasi" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($jurusans as $jurusan)
+                        <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -3,6 +3,8 @@
     function generateDesainerURL(){
         var desainerURL = "{{route('viewgeneral')}}";
         desainerURL = desainerURL.concat("/").concat($("#desaineractivity").val());
+        desainerURL = desainerURL.concat("/").concat($("#kampusdesainer").val()).concat("/").concat($("#jurusandesainer").val());
+        
         window.location = desainerURL;
     }
     </script>
@@ -30,6 +32,24 @@
                         </select>
                     </div>
                     
+                    <div class="form-group">
+                    <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
+                    <select name="kampus" id="kampusdesainer" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan" class="col-form-label float-left">Jurusan</label>
+                    <select name="jurusan" id="jurusandesainer" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($jurusans as $jurusan)
+                        <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

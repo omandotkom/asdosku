@@ -3,6 +3,7 @@
     function generateProyekURL(){
         var proyekURL = "{{route('viewgeneral')}}";
         proyekURL = proyekURL.concat("/").concat($("#proyekactivity").val());
+        proyekURL = proyekURL.concat("/").concat($("#kampusproyek").val()).concat("/").concat($("#jurusanproyek").val());
         window.location = proyekURL;
     }
     </script>
@@ -31,7 +32,24 @@
                         </select>
                     </div>
                     
-                
+                    <div class="form-group">
+                    <label for="kampus" class="col-form-label float-left">Asal Kampus</label>
+                    <select name="kampus" id="kampusproyek" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jurusan" class="col-form-label float-left">Jurusan</label>
+                    <select name="jurusan" id="jurusanproyek" required class="custom-select custom-select-sm">
+                        <option selected value="Bebas">Bebas</option>
+                        @foreach($jurusans as $jurusan)
+                        <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
