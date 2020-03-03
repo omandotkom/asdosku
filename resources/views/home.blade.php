@@ -295,7 +295,7 @@
           <div class="col-lg-9 text-center text-lg-left">
             <h3 class="cta-title">ASDOSKU menurut warga kampus</h3>
             <p class="cta-text"><i class="fa fa-quote-left"></i> Saya sudah merasakan dua kali menggunakan ASDOSKU untuk les anak-anak saya: bahasa arab untuk SMA dan bahasa inggris untuk SMP. Yang saya amati tutornya baik dan profesional, programnya juga bagus. Anak-anak juga merasakan yang sama.</p>
-            <p class="cta-text"> -Herni Justiana Astuti, SE., m.Si.,Ph.D-</p>
+            <p class="cta-text"> -Herni Justiana Astuti, SE., M.Si.,Ph.D-</p>
             <br>
             <p class="cta-text"><i class="fa fa-quote-left"></i> Alhamdulillah.. Terimakasih atas bantuan Asdosku saya bisa menyelesaikan amanah studi lanjut. Semoga ASDOSKU semakin berkembang dan bermanfaat buat ilmu pengetahuan..</p>
             <p class="cta-text"> -Johan Haryanto, Kepala Biro SDM UMP-</p>
