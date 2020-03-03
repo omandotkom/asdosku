@@ -13,9 +13,10 @@
                 <span class="sr-only">Loading...</span>
                 Halo {{ Auth::user()->name }} 
                 <br>
-                Terimakasih sudah mendaftar :). Saat ini status akun kamu <b>belum aktif</b> dan sedang menunggu aktivasi oleh Asdosku. Silahkan tunggu 2x24 jam yaa, jika dalam waktu 2x24 jam akunmu belum aktif silahkan hubungi admin untuk menanyakan lebih lanjut.  
+                Terimakasih sudah mendaftar :). Saat ini status akun kamu <b>belum aktif</b> dan sedang menunggu aktivasi oleh Asdosku. Silahkan tunggu beberapa hari yaa, karena akun kamu sedang dalam antrian review HRD. Jika kamu kebingungan tentang sistem silahkan hubungi admin (ada di akhir halaman) untuk menanyakan lebih lanjut.  
                 <br>
                 Sistem akan mengirimkan pemberitahuan ke email Anda <b>({{Auth::user()->email}})</b> apabila akun sudah diaktifasi.
+                <br><br>@include('auth.modal.faq')
                 <div class="text-center">
                 <a href="https://wa.me/087719357776" target="_blank"><button type="submit" class="btn mt-5 btn-success">Tanya Admin (WhatsApp)</button>.
                 </a> 

@@ -92,34 +92,45 @@
         updateUrl = url;
         selectedID = id;
     }
+    function generateURLDelete(id) {
+        var url = "{{url('/dashboard/index/dosen/order/list/delete')}}";
+        url = url.concat('/').concat(id);
+        deleteUrl = url;
+        return url;
+    }
+    function deleteTransaction() {
+       //console.log(deleteUrl);
+        window.location = deleteUrl;
+    }
 </script>
+
+
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalTitle">Konfirmasi Aktivasi Layanan</h5>
+                <h5 class="modal-title" id="deleteModalTitle">Konfirmasi Pembatalan Layanan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Aktivasi layanan dimungkinkan apabila :
+                Pembatalan layanan dimungkinkan apabila :
                 <ul>
-                    <li>Bagian operasional sudah mengontak asdos.</li>
-                    <li>Asdos sudah menyetujui permintaan asistensi dosen.</li>
-
-                </ul>
+                    <li>Terdapat ketidakcocokan atau kesalahan pemesanan.</li>
+                    <li>Asdos yang dipilih sedang berhalangan.</li>
+                    <li>Masa pencarian Asdos dirasa terlalu lama.</li>
+                    <li>Pastikan sudah konfirmasi ke dosennya terlebih dahulu sebelum membatalkan.</li>
+                </ul>  
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="update();" data-dismiss="modal" class="btn btn-success">Setujui Pesanan</button>
+                <button type="button" onclick="deleteTransaction();" class="btn btn-danger">Batalkan Pemesanan</button>
             </div>
         </div>
     </div>
 </div>
-
-
 <div class="modal fade" id="detilDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -229,6 +240,7 @@
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @if($transaction->status == "Menunggu Konfirmasi Asdos")
                     <button type="button" onclick="console.log(generateURLUpdate('{{$transaction->id}}'));" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
+                    <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @endif
                 </div>
             </div>
