@@ -33,7 +33,7 @@ class FilterAsdosController extends Controller
             $strJurusan = "details.jurusan_id != 0";
         }
         if ($semester != "Bebas") {
-            $strSemester = "details.semester=" . $semester;
+            $strSemester = "details.semester='" . $semester."'";
         } else {
             //bebas
             $strSemester = "details.semester != 0";

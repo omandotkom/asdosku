@@ -34,8 +34,18 @@
                     <label for="semester" class="col-form-label float-left">Semester</label>
                     <select name="semester" id="semestermatakuliah" required class="custom-select custom-select-sm">
                         <option selected value="Bebas">Bebas</option>
-                        @for ($i = 1; $i < 10; $i++)<option value="{{$i}}"> {{$i}} </option>
-                            @endfor
+                        @for ($i = 1; $i < 9; $i++)
+                                <option value="DiplomaSemester{{$i}}">Diploma Semester {{$i}}</option>
+                                @endfor
+                                @for ($i = 1; $i < 11; $i++)
+                                <option value="SarjanaSemester{{$i}}">Sarjana Semester {{$i}}</option>
+                                @endfor
+                                Fresh
+                                @for ($i = 1; $i < 7; $i++)
+                                <option value="PascasarjanaSemester{{$i}}">Pascasarjana Semester {{$i}}</option>
+                                @endfor
+                                <option value="Freshgraduate">Freshgraduate</option>
+                               
                     </select>
                 </div>
                 <div class="form-group">

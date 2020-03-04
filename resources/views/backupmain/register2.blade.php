@@ -74,9 +74,25 @@
                             <label for="semester" class="col-md-4 col-form-label text-md-right">{{ __('Semester') }}</label>
 
                             <div class="col-md-6">
-                                <input id="semester" aria-describedby="semesterhelp" type="numeric" min="0" class="form-control @error('semester') is-invalid @enderror" name="semester" required>
+                                
+                                <!--<input id="semester" aria-describedby="semesterhelp" type="numeric" min="0" class="form-control @error('semester') is-invalid @enderror" name="semester" required> -->
+                                <select aria-describedby="semesterhelp" class="form-control" name="semester" id="semester">
+                                @for ($i = 1; $i < 9; $i++)
+                                <option value="DiplomaSemester{{$i}}">Diploma Semester {{$i}}</option>
+                                @endfor
+                                @for ($i = 1; $i < 11; $i++)
+                                <option value="SarjanaSemester{{$i}}">Sarjana Semester {{$i}}</option>
+                                @endfor
+                                Fresh
+                                @for ($i = 1; $i < 7; $i++)
+                                <option value="PascasarjanaSemester{{$i}}">Pascasarjana Semester {{$i}}</option>
+                                @endfor
+                                <option value="Freshgraduate">Freshgraduate</option>
+                               
+                                </select>
+
                                 <small id="semesterhelp" class="form-text text-muted text-left">
-                                    Isi dengan angka, misal 6.
+                                    Pilih sesuai posisi semester pendidikan Anda saat ini.
                                 </small>
                                 @error('semester')
                                 <span class="invalid-feedback" role="alert">

@@ -60,10 +60,12 @@ class AsdosController extends Controller
 
             if (isset($request->$varName)) {
                 Prefer::create(['user_id' => Auth::user()->id, 'activity_id' => $activity->id]);
-                if (!$isInserted) {$isInserted = true;}
+                if (!$isInserted) {
+                    $isInserted = true;
+                }
             }
         }
-        if ($isInserted){
+        if ($isInserted) {
             $user = User::find(Auth::user()->id);
             $user->second_register = true;
             $user->save();
@@ -72,54 +74,61 @@ class AsdosController extends Controller
         // return view('maindashboard.index', ['content' => 'profile', 'imageurl' =>$image_url, 'archive'=> $archive, 'services' => $services, 'title' => 'Daftar Ulang Lengkapi Profile']);
         return redirect()->route('profileAsdos')->with('successprefer', 'Berhasil memperbarui preferensi.');
     }
-    public function viewFilteredAsdos($type,$activity, $gender="Bebas",$semester = "Bebas",$kampus="Bebas")
+    public function viewFilteredAsdos($type, $activity, $gender = "Bebas", $semester = "Bebas", $kampus = "Bebas")
     {
 
         switch ($type) {
 
             case "bimbinganbelajar":
-     
+
             case "matakuliah":
                 break;
             default:
-                $asdosList = DB::table('prefers')->select("users.id", "users.name","rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+                $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
                     ->join('details', 'prefers.user_id', 'details.user_id')
                     ->join('kampus', 'details.kampus_id', 'kampus.id')
                     ->join('activities', 'prefers.activity_id', 'activities.id')
-                    ->leftJoin('rates','prefers.user_id','rates.user_id')
+                    ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
                     ->where('prefers.activity_id', $activity)->where('users.status', 'aktif')
                     ->simplePaginate();
                 break;
         }
-        return view('maindashboard.index', ['asdoslist' => $asdosList,'activity' =>$activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
     }
-    public function profile($id){
-        $user = DB::table('users')->select('users.name','details.*','rates.rating','archives.image_name','jurusans.name as jurusan','kampus.name as kampus')
-        ->selectRaw('now() as commentcount')
-        ->selectRaw("null as commentlink")
-        ->join('details','users.id','details.user_id')
-        ->join('kampus','details.kampus_id','kampus.id')
-        ->join('archives','users.id','archives.user_id')
-        ->join('jurusans','details.jurusan_id','jurusans.id')
-        ->leftJoin('rates','users.id','rates.user_id')
-        ->where('users.id',$id)
-        ->first();
-        if (isset($user->image_name)){
+    public function profile($id)
+    {
+        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'jurusans.name as jurusan', 'kampus.name as kampus')
+            ->selectRaw('now() as commentcount')
+            ->selectRaw("null as commentlink")
+            ->join('details', 'users.id', 'details.user_id')
+            ->join('kampus', 'details.kampus_id', 'kampus.id')
+            ->join('archives', 'users.id', 'archives.user_id')
+            ->join('jurusans', 'details.jurusan_id', 'jurusans.id')
+            ->leftJoin('rates', 'users.id', 'rates.user_id')
+            ->where('users.id', $id)
+            ->first();
+        if (isset($user->image_name)) {
             $image_url = asset('storage/images/300');
             $image_url = $image_url . "/" . $user->image_name;
             $user->image_name = $image_url;
-        }else{
+        } else {
             $image_url = "https://picsum.photos/200";
-            $user->setAttribute('image_name',$image_url);
+            $user->setAttribute('image_name', $image_url);
         }
         //filter rating biar ga null
-        if (isset($user->rating)){
-            $user->rating = $user->rating." / 5";  
-        }else{
+        if (isset($user->rating)) {
+            $user->rating = $user->rating . " / 5";
+        } else {
             $user->rating = "-";
         }
-        $user->commentcount = Comment::where('user_id',$id)->count()." Komentar";
-        $user->commentlink = route('viewcommentratingbyuser',$id);
+        $user->commentcount = Comment::where('user_id', $id)->count() . " Komentar";
+        $user->commentlink = route('viewcommentratingbyuser', $id);
+        if ($user->semester != "Freshgraduate") {
+            $user->semester = preg_replace('/(?<!\ )[A-Z]/', ' $0',  $user->semester);
+            $smt = " " . substr($user->semester, -1);
+
+            $user->semester = substr_replace($user->semester, "", -1) . $smt;
+        }
         return response()->json($user);
     }
 }
