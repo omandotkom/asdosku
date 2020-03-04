@@ -22,8 +22,8 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-  
-<li class="nav-item">
+
+    <li class="nav-item">
         <a class="nav-link" href="{{route('profileAsdos')}}">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
@@ -43,7 +43,12 @@
             <i class="fas fa-fw fa-money-bill-alt"></i>
             <span>Asistensi Selesai</span></a>
     </li>
-    
+    <li class="nav-item" onclick="$('#questionmodal').modal('show');" >
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-question-circle"></i>
+            <span>Pertanyaan</span></a>
+    </li>
+    @include('auth.modal.questionmodal')
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
