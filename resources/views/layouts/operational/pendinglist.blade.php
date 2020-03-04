@@ -90,6 +90,7 @@
         url = url.concat("/").concat(id).concat("/").concat("Berjalan");
         updateUrl = url;
         selectedID = id;
+        update();
     }
     function generateURLDelete(id) {
         var url = "{{url('/dashboard/index/dosen/order/list/delete')}}";
@@ -238,7 +239,7 @@
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @if($transaction->status == "Menunggu Konfirmasi Asdos")
-                    <button type="button" onclick="console.log(generateURLUpdate('{{$transaction->id}}'));"  class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
+                    <button type="button" onclick="generateURLUpdate('{{$transaction->id}}');"  class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @endif
                 </div>
