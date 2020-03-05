@@ -36,7 +36,7 @@ class FilterAsdosController extends Controller
             $strSemester = "details.semester='" . $semester."'";
         } else {
             //bebas
-            $strSemester = "details.semester != 0";
+            $strSemester = "details.semester != 'FREE'";
         }
         if ($kampus != "Bebas") {
             $strKampus = "details.kampus_id=" . $kampus;
