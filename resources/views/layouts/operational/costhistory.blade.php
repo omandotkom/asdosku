@@ -12,17 +12,25 @@
       </thead>
       <tbody>
         @php
-        $num =1;
+        $num =0;
         @endphp
+        @if(Auth::user()->role != "asdos")
         <tr>
+          @php
+          $num = $num + 1;
+          @endphp
           <td>{{$num}}</td>
           <td>(Layanan) {{$transaction->activity->name}}</td>
           <td>{{$transaction->biaya}}
           <td>{{$transaction->created_at}}</td>
         </tr>
+        @endif
         @if($transaction->total_discount != 0)
         <tr>
-          <td>{{++$num}}</td>
+          @php
+          $num = $num + 1;
+          @endphp
+          <td>{{$num}}</td>
           <td>Voucher</td>
           <td>- {{$transaction->total_discount}}</td>
           <td>{{$transaction->created_at}}</td>
@@ -33,6 +41,7 @@
         @php
         $num++;
         @endphp
+        
         <tr>
           <td>{{$num}}</td>
           <td>{{$cost->keterangan}}</td>
@@ -46,16 +55,6 @@
       </tbody>
     </table>
   </div>
-  <script>
-    document.getElementById("judulHalaman").innerHTML = "Persetujuan";
 
-    function updateStatus(id) {
-      var url = "{{url('/dashboard/index/hrd/persetujuan/update')}}";
-      url = url.concat("/");
-      url = url.concat(id);
-      //console.log(url);
-      window.location = url;
-    }
-  </script>
 </div>
 </div>

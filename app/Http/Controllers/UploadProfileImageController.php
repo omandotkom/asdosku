@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\File;
 use App\Archive;
+use App\Bank;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
@@ -23,6 +24,15 @@ class UploadProfileImageController extends Controller
     }
     public function upload(Request $request)
     {
+        $bank = Bank::where('user_id',Auth::user()->id)->first();
+        if ($bank != null){
+        $bank->delete();}
+        $bank = new Bank();
+        $bank->user_id = Auth::user()->id;
+        $bank->nama = $request->nama;
+        $bank->nomor = $request->nomor;
+        $bank->payment = $request->payment;
+        $bank->save();
         $this->validate($request, [
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
@@ -32,6 +42,7 @@ class UploadProfileImageController extends Controller
             //MAKA FOLDER TERSEBUT AKAN DIBUAT
             File::makeDirectory($this->path);
         }
+
 
         //MENGAMBIL FILE IMAGE DARI FORM
         $file = $request->file('image');
@@ -72,6 +83,9 @@ class UploadProfileImageController extends Controller
         $image_url = asset('storage/images/75');
         $image_url = $image_url . "/" . $archive->image_name;
         //return $image_url;
-        return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url]);
+
+        //update data bank
+        
+        return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url,'bank' => $bank]);
     }
 }

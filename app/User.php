@@ -43,5 +43,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function archive(){
         return $this->hasOne('App\Archive');
     }
+    public function bank(){
+        return $this->hasOne('App\Bank');
+    }
    
 }

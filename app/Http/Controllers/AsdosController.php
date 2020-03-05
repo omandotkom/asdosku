@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Archive;
 use App\Service;
 use App\Activity;
+use App\Bank;
 use App\Campus;
 use App\Comment;
 use App\Prefer;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-
+use App\Jurusans;
 class AsdosController extends Controller
 {
     public function profileAsdos()
@@ -34,8 +35,12 @@ class AsdosController extends Controller
         foreach ($prefer1 as $pre) {
             array_push($preferArr, $pre->arr);
         }
-
-        return view('maindashboard.index', ['content' => 'profile', 'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Kegiatan dan Foto Profile']);
+        //$services = Service::with('activities')->get();
+        //$campuses = Campus::all();
+        //$jurusans = Jurusans::orderBy('name', 'asc')->get();
+        $bank = Bank::where('user_id',Auth::user()->id)->first();
+        
+        return view('maindashboard.index', ['content' => 'profile', 'bank' => $bank ,'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Kegiatan dan Foto Profile']);
     }
 
     public function updatePreferAsdos(Request $request)
