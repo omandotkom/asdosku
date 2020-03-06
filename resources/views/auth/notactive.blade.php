@@ -18,7 +18,7 @@
                 Sistem akan mengirimkan pemberitahuan ke email Anda <b>({{Auth::user()->email}})</b> apabila akun sudah diaktifasi.
                 <br><br>@include('auth.modal.faq')
                 <div class="text-center">
-                <a href="https://wa.me/6287719357776" target="_blank"><button type="submit" class="btn mt-5 btn-success">Tanya Admin (WhatsApp)</button>.
+                <a href="https://wa.me/6287719357776" target="_blank"><button type="submit" class="btn mt-5 btn-success">Tanya Admin (WhatsApp)</button>
                 </a> 
                     </div>
                 </div>
