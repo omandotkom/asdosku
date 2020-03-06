@@ -267,9 +267,8 @@
                             <td id="biaya"></td>
                         </tr>
                         @else
-                        <div id="biaya"></div>
+                        <div id="biaya" hidden></div>
                         @endif
-
                         <tr>
                             <th>Biaya Tambahan</th>
                             <td>

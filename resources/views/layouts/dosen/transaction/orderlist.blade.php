@@ -1,15 +1,17 @@
-
 <script>
     var deleteUrl;
     var selectedID;
+
     function generateSelesaiURL(id) {
         selectedID = id;
         selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
-        
+
     }
+
     function gotoHistoris(url) {
         window.location = url;
     }
+
     function selesailayanan() {
         axios.get(selesaiURL)
             .then(function(response) {
@@ -22,9 +24,9 @@
                     duration: 3000
 
                 }).showToast();
-                                    location.reload(true);
-                
-                
+                location.reload(true);
+
+
             })
             .catch(function(error) {
                 // handle error
@@ -40,6 +42,7 @@
                 // always executed
             });
     }
+
     function userDetil(url) {
 
         // Make a request for a user with a given ID
@@ -57,13 +60,13 @@
                 document.getElementById("asisten").innerHTML = response.data.name;
                 document.getElementById("kampus").innerHTML = response.data.kampus;
                 document.getElementById("fotoasdos").src = response.data.image_name;
-                if (response.data.total_discount != 0){
+                if (response.data.total_discount != 0) {
                     $("#vcrrow").removeAttr("hidden");
                     $("#vcr").text(response.data.total_discount);
-                }else{
-                    
-                    if (!document.getElementById("vcrrow").hasAttribute("hidden")){
-                        $("#vcrrow").attr('hidden','true');
+                } else {
+
+                    if (!document.getElementById("vcrrow").hasAttribute("hidden")) {
+                        $("#vcrrow").attr('hidden', 'true');
                     }
                 }
             })
@@ -80,7 +83,7 @@
     function generateURL(id) {
         var url = "{{url('api/transaction/detil')}}";
         url = url.concat("/").concat(id);
-        
+
         return url;
     }
 
@@ -92,7 +95,7 @@
     }
 
     function deleteTransaction() {
-       //console.log(deleteUrl);
+        //console.log(deleteUrl);
         window.location = deleteUrl;
     }
 </script>
@@ -193,7 +196,7 @@
                             <th>Biaya Dasar</th>
                             <td id="biaya"></td>
                         </tr>
-                        <tr hidden id="vcrrow">
+                        <tr class="table-success" hidden id="vcrrow">
                             <th>Voucher</th>
                             <td id="vcr"></td>
                         </tr>
@@ -248,11 +251,11 @@
 </div>
 
 @if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button> 
-          <strong>{{ $message }}</strong>
-      </div>
-    @endif
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>{{ $message }}</strong>
+</div>
+@endif
 <div class="row">
     @foreach($transactions as $transaction)
     <div class="col-xl-3 col-lg-5">
@@ -271,7 +274,7 @@
                             </tr>
                             @if($transaction->status == "Berjalan")
                             <tr class="table-success">
-                            @elseif($transaction->status == 'Selesai')
+                                @elseif($transaction->status == 'Selesai')
                             <tr class="table-success">
                                 @else
                             <tr class="table-warning">
@@ -291,6 +294,10 @@
                                 <td>@if (isset($transaction->payout))
                                     {{$transaction->payout->updated_at}} @else {{$transaction->updated_at}} @endif</td>
                             </tr>
+                            <tr>
+                                <th>Biaya Layanan</th>
+                                <td>Rp.{{$transaction->biaya}} @if ($transaction->total_discount > 0) <div class="text-success">VCR {{$transaction->total_discount}} </div> = Rp. @php echo $transaction->biaya - $transaction->total_discount; @endphp @endif</td>
+                            </tr>
                         </table>
                     </div>
                     @php
@@ -298,7 +305,7 @@
                     @endphp
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     <button type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
-                   
+
                     @switch($transaction->status)
                     @case('Menunggu Konfirmasi Asdos')
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>

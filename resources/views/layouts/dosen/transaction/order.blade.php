@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
@@ -108,11 +107,23 @@
                   $("#biayacontent").text(result);
                 }
 
+                function isNormalInteger(str) {
+                  var n = Math.floor(Number(str));
+                  return n !== Infinity && String(n) === str && n >= 0;
+                }
+
                 $("#orderqty").val("1");
                 calculateTotal($("#orderqty").val());
                 $("#orderqty").change(function() {
                   //alert($(this).val());
                   calculateTotal($(this).val());
+                });
+                $("#orderqty").keyup(function() {
+                  //alert($(this).val());
+                  if(isNormalInteger($(this).val())){
+                    calculateTotal($(this).val());
+                  }
+                  
                 });
               });
             </script>
@@ -157,9 +168,9 @@
 
             <div class="form-group">
               <div hidden id="discountsuccess" class="alert alert-success" role="alert">
-                </div>
-                <input type="hidden" id="discountcode" name="discountcode" value="0">
-              
+              </div>
+              <input type="hidden" id="discountcode" name="discountcode" value="0">
+
               <button type="button" id="discountbtnbasic" data-toggle="modal" data-target="#discountdialog" class="btn btn-sm btn-success">Punya Kode Diskon ?</button>
               <small id="discounthelp" class="form-text text-muted">Klik tombol di atas apabila Punya kode diskon.</small>
             </div>

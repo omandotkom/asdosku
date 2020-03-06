@@ -99,10 +99,12 @@ class TransactionController extends Controller
         $transaction->status = 'Menunggu Konfirmasi Asdos';
        
         $totalBiaya = Activity::where("id",$activity)->first();
+        $satuan = $totalBiaya->satuan;
         $totalBiaya = $totalBiaya->harga; 
         
         if (isset($request->orderqty)){
             $totalBiaya = $totalBiaya * $request->orderqty;
+            $transaction->keterangan = $transaction->keterangan + " (" + $request->orderqty + " " + $satuan + ")";
         }
         if ($request->discountcode != "0"){
             //jika ada kode diskon
@@ -159,7 +161,7 @@ class TransactionController extends Controller
                 'users.name as dosen',
                 'details.wa as wa',
                 'activities.name as kegiatan',
-                DB::raw('(activities.harga * activities.asdos) as basicpendapatan')
+                DB::raw('(transactions.biaya * activities.asdos) as basicpendapatan')
             )
             ->join('users', 'transactions.dosen', 'users.id')
             ->join('activities', 'transactions.activity_id', 'activities.id')
