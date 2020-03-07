@@ -1,16 +1,21 @@
-
 <script>
     var costURL;
     var selectedID;
     var sumURL;
 
     function addcost() {
-        axios.post(costURL, {
-                nominalcost: $("#nominalcost").val(),
-                keterangancost: $("#keterangancost").val(),
-            })
-            .then(function(response) {
-                
+        let data = new FormData();
+        let buktipembelian = document.getElementById("buktipembelian").files[0];
+        data.append('buktipembelian', buktipembelian);
+        data.append('nominalcost', $("#nominalcost").val());
+        data.append('keterangancost', $("#keterangancost").val());
+        let settings = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        axios.post(costURL, data, settings)
+            .then(response => {
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
@@ -19,39 +24,8 @@
                     duration: 3000
 
                 }).showToast();
-            })
-            .catch(function(error) {
-            
-                Toastify({
-                    backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-                    text: error,
+            }).catch(response => {
 
-                    duration: 3000
-
-                }).showToast();
-            });
-
-    }
-
-    function selesailayanan() {
-        axios.get(selesaiURL)
-            .then(function(response) {
-                // handle success
-                Toastify({
-                    backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
-
-                    text: "Berhasil merubah status transaksi menjadi ".concat(response.data.status),
-
-                    duration: 3000
-
-                }).showToast();
-                const myNode = document.getElementById(selectedID);
-                while (myNode.firstChild) {
-                    myNode.removeChild(myNode.firstChild);
-                }
-            })
-            .catch(function(error) {
-                // handle error
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
                     text: error,
@@ -60,104 +34,133 @@
 
                 }).showToast();
             })
-            .then(function() {
-                axios.get("{{route('sendnotification')}}")
-                    .then(function(response) {
-                        // handle success
-                    })
-                    .catch(function(error) {
-                        // handle error
-
-                    })
-                    .then(function() {
-                        // always executed
-                    });
-            });
     }
 
-    function generateCostUrl(id) {
-        selectedID = id;
-        costURL = "{{url('/api/transaction/cost/store')}}".concat("/").concat(id);
-    }
+        function selesailayanan() {
+            axios.get(selesaiURL)
+                .then(function(response) {
+                    // handle success
+                    Toastify({
+                        backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
-    function generatesumcosturl(id) {
-        selectedID = id;
-        sumURL = "{{url('/api/transaction/cost/sum')}}".concat("/").concat(id);
-        axios.get(sumURL)
-            .then(function(response) {
-                // handle success
-                document.getElementById("biayatambahan").innerHTML = response.data;
-            })
-            .catch(function(error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function() {
-                axios.get("{{route('sendnotification')}}")
-                    .then(function(response) {
-                        // handle success
-                    })
-                    .catch(function(error) {
-                        // handle error
+                        text: "Berhasil merubah status transaksi menjadi ".concat(response.data.status),
 
-                    })
-                    .then(function() {
-                        // always executed
-                    });
-            });
+                        duration: 3000
 
-    }
+                    }).showToast();
+                    const myNode = document.getElementById(selectedID);
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
+                })
+                .catch(function(error) {
+                    // handle error
+                    Toastify({
+                        backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                        text: error,
 
-    function userDetil(url) {
+                        duration: 3000
 
-        // Make a request for a user with a given ID
-        axios.get(url)
-            .then(function(response) {
-                // handle success
-                document.getElementById("kodePemesanan").innerHTML = response.data.id;
-                document.getElementById("rincianpemesanan").innerHTML = response.data.keterangan;
-                document.getElementById("statuspemesanan").innerHTML = response.data.status;
-                document.getElementById("kegiatan").innerHTML = response.data.kegiatan;
-                document.getElementById("keterangankegiatan").innerHTML = response.data.keterangankegiatan;
-                document.getElementById("dari").innerHTML = response.data.dari;
-                document.getElementById("sampai").innerHTML = response.data.sampai;
-                document.getElementById("biaya").innerHTML = response.data.biaya;
-                document.getElementById("asisten").innerHTML = response.data.name;
-                document.getElementById("waasisten").innerHTML = response.data.waasdos;
-                document.getElementById("emailasisten").innerHTML = response.data.emailasdos;
+                    }).showToast();
+                })
+                .then(function() {
+                    axios.get("{{route('sendnotification')}}")
+                        .then(function(response) {
+                            // handle success
+                        })
+                        .catch(function(error) {
+                            // handle error
 
-                document.getElementById("kampus").innerHTML = response.data.kampus;
-                document.getElementById("fotoasdos").src = response.data.image_name;
-            })
-            .catch(function(error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function() {
-                // always executed
-            });
-        generatesumcosturl(selectedID);
+                        })
+                        .then(function() {
+                            // always executed
+                        });
+                });
+        }
 
-    }
+        function generateCostUrl(id) {
+            selectedID = id;
+            costURL = "{{url('/api/transaction/cost/store')}}".concat("/").concat(id);
+        }
 
-    function gotoHistoris(url) {
-        window.location = url;
-    }
+        function generatesumcosturl(id) {
+            selectedID = id;
+            sumURL = "{{url('/api/transaction/cost/sum')}}".concat("/").concat(id);
+            axios.get(sumURL)
+                .then(function(response) {
+                    // handle success
+                    document.getElementById("biayatambahan").innerHTML = response.data;
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function() {
+                    axios.get("{{route('sendnotification')}}")
+                        .then(function(response) {
+                            // handle success
+                        })
+                        .catch(function(error) {
+                            // handle error
 
-    function generateURL(id) {
-        selectedID = id;
-        var url = "{{url('api/transaction/detil')}}";
-        url = url.concat("/").concat(id);
-        console.log(url);
-        return url;
-    }
-    var selesaiURL;
+                        })
+                        .then(function() {
+                            // always executed
+                        });
+                });
 
-    function generateSelesaiURL(id) {
-        selectedID = id;
-        selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
-        console.log(url);
-    }
+        }
+
+        function userDetil(url) {
+
+            // Make a request for a user with a given ID
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    document.getElementById("kodePemesanan").innerHTML = response.data.id;
+                    document.getElementById("rincianpemesanan").innerHTML = response.data.keterangan;
+                    document.getElementById("statuspemesanan").innerHTML = response.data.status;
+                    document.getElementById("kegiatan").innerHTML = response.data.kegiatan;
+                    document.getElementById("keterangankegiatan").innerHTML = response.data.keterangankegiatan;
+                    document.getElementById("dari").innerHTML = response.data.dari;
+                    document.getElementById("sampai").innerHTML = response.data.sampai;
+                    document.getElementById("biaya").innerHTML = response.data.biaya;
+                    document.getElementById("asisten").innerHTML = response.data.name;
+                    document.getElementById("waasisten").innerHTML = response.data.waasdos;
+                    document.getElementById("emailasisten").innerHTML = response.data.emailasdos;
+
+                    document.getElementById("kampus").innerHTML = response.data.kampus;
+                    document.getElementById("fotoasdos").src = response.data.image_name;
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function() {
+                    // always executed
+                });
+            generatesumcosturl(selectedID);
+
+        }
+
+        function gotoHistoris(url) {
+            window.location = url;
+        }
+
+        function generateURL(id) {
+            selectedID = id;
+            var url = "{{url('api/transaction/detil')}}";
+            url = url.concat("/").concat(id);
+            console.log(url);
+            return url;
+        }
+        var selesaiURL;
+
+        function generateSelesaiURL(id) {
+            selectedID = id;
+            selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
+            console.log(url);
+        }
 </script>
 
 <div class="modal fade" id="selesaimodal" tabindex="-1" role="dialog" aria-labelledby="selesaimodaltitle" aria-hidden="true">
@@ -207,12 +210,17 @@
                         <textarea required class="form-control" aria-describedby="keteranganhelp" id="keterangancost" placeholder="Pengeluaran untuk fotocopy sebesar 6500" aria-label="With textarea"></textarea>
                         <small id="keteranganhelp" class="form-text text-muted">Di isi dengan lengkap karena akan dilihat client untuk tagihan.</small>
                     </div>
+                    <div class="form-group">
+                        <label for="keterangancost">Bukti Pembayaran</label><br>
+                        <input required type="file" name="buktipembelian" id="buktipembelian">
+
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" onclick="addcost();" data-dismiss="modal" class="btn btn-success">Tambah Biaya</button>
-            </div>
+                 </div>
         </div>
     </div>
 </div>

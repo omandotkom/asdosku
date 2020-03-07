@@ -7,6 +7,7 @@
           <th scope="col">No</th>
           <th scope="col">Keterangan</th>
           <th scope="col">Biaya</th>
+          <th scope="col">Bukti</th>
           <th scope="col">Tanggal</th>
         </tr>
       </thead>
@@ -21,7 +22,8 @@
           @endphp
           <td>{{$num}}</td>
           <td>(Layanan) {{$transaction->activity->name}}</td>
-          <td>{{$transaction->biaya}}
+          <td>{{$transaction->biaya}}</td>
+          <td>-</td>
           <td>{{$transaction->created_at}}</td>
         </tr>
         @endif
@@ -33,6 +35,7 @@
           <td>{{$num}}</td>
           <td>Voucher</td>
           <td>- {{$transaction->total_discount}}</td>
+          <td>-</td>
           <td>{{$transaction->created_at}}</td>
         </tr>
 
@@ -46,6 +49,7 @@
           <td>{{$num}}</td>
           <td>{{$cost->keterangan}}</td>
           <td>{{$cost->nominal}}</td>
+          <td><a href="{{asset('storage/'.$cost->filepath)}}" class="badge badge-primary">Lihat</a></td>
           <td>{{$cost->updated_at}}</td>
         </tr>
         @endforeach

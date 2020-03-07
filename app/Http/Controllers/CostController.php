@@ -6,6 +6,8 @@ use App\Cost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 class CostController extends Controller
 {
     public function store(Request $request, $id)
@@ -17,11 +19,19 @@ class CostController extends Controller
         if ($validator->fails()) {
             return response('Gagal, belum lengkap atau format salah.',400);
         }
+        
+        
    // return $request;    
         $cost = new Cost;
         $cost->nominal = $request->nominalcost;
         $cost->keterangan = $request->keterangancost;
         $cost->transaction_id = $id;
+        if ($request->hasFile('buktipembelian')){
+            $path = $request->file('buktipembelian')->store('bukticost/ts'.$id, 'public');
+        
+            //$path = $request->buktipembelian->store('images/costhistory/transaction'.$id);
+            $cost->filepath = $path;
+        }
         $cost->save();
         if ($cost){
             return response('Berhasil menambahkan biaya tambahan.',200);
