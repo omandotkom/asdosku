@@ -104,7 +104,7 @@ class TransactionController extends Controller
         
         if (isset($request->orderqty)){
             $totalBiaya = $totalBiaya * $request->orderqty;
-            $transaction->keterangan = $transaction->keterangan + " (" + $request->orderqty + " " + $satuan + ")";
+            $transaction->keterangan = $transaction->keterangan . " (" . $request->orderqty . " " . $satuan . ")";
         }
         if ($request->discountcode != "0"){
             //jika ada kode diskon
