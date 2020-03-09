@@ -228,7 +228,7 @@
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-child"></i></a></div>
               <h4 class="title"><a href="">Asisten Bimbel</a></h4>
-              <p class="description">Berikut adalah layanan Asdosku untuk pengguna khusus untuk dosen dan pengelola kampus (tersedia di website dan aplikasi android). Layanan untuk mahasiswa (hanya tersedia di aplikasi android)</p>
+              <p class="description">Asistensi untuk membantu belajar siswa/i untuk belajar tambahan secara private bagi putra dan putri dari dosen atau pejabat perguruan tinggi.</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
