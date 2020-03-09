@@ -31,6 +31,9 @@ class CheckRole
             case "operational":
                 return redirect()->route('indexoperational');
             break;
+            case "marketing":
+                return redirect()->route('indexmarketing');
+            break;
 
             default:
                 return $next($request);

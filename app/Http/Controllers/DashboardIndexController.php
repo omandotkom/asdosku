@@ -53,4 +53,10 @@ class DashboardIndexController extends Controller
         $selesai = Transaction::where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
         return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan,'selesai' => $selesai]);
     }
+    public function indexmarketing(){
+        $campuses = Campus::all();
+  
+        return view('maindashboard.index', ['title' => 'List Asdos', 'campuses' => $campuses]);
+        
+    }
 }

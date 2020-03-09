@@ -23,6 +23,7 @@ Route::view('/dashboard', 'home')->name('dashboard')->middleware('auth','verifie
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd')->middleware('auth','hrd');
 Route::get('/dashboard/index/operational','DashboardIndexController@indexoperational')->middleware('auth','verified','operational')->name('indexoperational');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('auth','verified', 'checkactive','dosen')->name('indexdosen');
+Route::get('/dashboard/index/marketing','DashboardIndexController@indexmarketing')->name('indexmarketing')->middleware('auth','verified','marketing');
 Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbel')->name('viewAsdosBimbel')->middleware('auth','dosen');
 Route::get('/dashboard/index/view/asdos/{type}/{activity?}/{gender?}/{semester?}/{kampus?}/','AsdosController@viewFilteredAsdos')->name('filteredAsdos')->middleware('auth','dosen');
 
@@ -58,7 +59,7 @@ Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionCont
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth','dosen');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth','dosen');
 Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth','dosen');
-
+Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
 
 

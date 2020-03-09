@@ -57,6 +57,8 @@
     @include('layouts.hrd.dashboardsidebar')
     @elseif (Auth::user()->role == "asdos")
     @include('layouts.asdos.dashboardsidebar')
+    @elseif (Auth::user()->role == "marketing")
+    @include('layouts.marketing.dashboardsidebar')
     @endif
     
     <!--Sidebar ada di sini -->
@@ -152,6 +154,14 @@
           @default
           @include('layouts.asdos.row')
           @break
+          @endswitch
+          @elseif (Auth::user()->role == "marketing")
+          @switch($content ?? '')
+          @case('viewAsdoswithFilter')
+          @include('layouts.marketing.rowasdos')
+          @break
+          @default
+          @include('layouts.marketing.row')
           @endswitch
           @endif
         

@@ -8,6 +8,7 @@ use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\Dosen;
 use App\Http\Middleware\HRD;
+use App\Http\Middleware\Marketing;
 use App\Http\Middleware\Operational;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -74,7 +75,8 @@ class Kernel extends HttpKernel
         'dosen' => Dosen::class,
         'operational' => Operational::class,
         'asdos' => Asdos::class,
-        'hrd' => HRD::class
+        'hrd' => HRD::class,
+        'marketing' => Marketing::class
     ];
 
     /**
