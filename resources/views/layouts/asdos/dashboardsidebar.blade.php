@@ -43,6 +43,12 @@
             <i class="fas fa-fw fa-money-bill-alt"></i>
             <span>Asistensi Selesai</span></a>
     </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('viewservices')}}">
+            <i class="fas fa-fw fa-hand-holding"></i>
+            <span>List Asistensi</span></a>
+    </li>
     <li class="nav-item" onclick="$('#questionmodal').modal('show');" >
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-question-circle"></i>

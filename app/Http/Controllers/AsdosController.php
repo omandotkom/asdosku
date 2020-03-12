@@ -102,7 +102,7 @@ class AsdosController extends Controller
     }
     public function profile($id)
     {
-        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'jurusans.name as jurusan', 'kampus.name as kampus')
+        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'archives.cv_path','jurusans.name as jurusan', 'kampus.name as kampus')
             ->selectRaw('now() as commentcount')
             ->selectRaw("null as commentlink")
             ->join('details', 'users.id', 'details.user_id')
@@ -119,6 +119,11 @@ class AsdosController extends Controller
         } else {
             $image_url = "https://picsum.photos/200";
             $user->setAttribute('image_name', $image_url);
+        }
+        if (isset($user->cv_path)){
+            $user->cv_path = asset('storage/'.$user->cv_path);
+        }else{
+        $user->cv_path = "#";
         }
         //filter rating biar ga null
         if (isset($user->rating)) {

@@ -36,6 +36,12 @@ $picname = basename($path, ".png");
             {{ session('success') }}
           </div>
           @endif
+          @if ($message = Session::get('error'))
+          <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+          </div>
+          @endif
           <img src="{{$imageurl}}" class="rounded img-fluid" alt="Foto Pengguna">
           <form class="mt-3" id="profilePic" name="profilePic" method="post" action="{{route('uploadProfileAsdos')}}" enctype="multipart/form-data">
             @csrf
@@ -64,13 +70,21 @@ $picname = basename($path, ".png");
           </div>
           <div class="form-group">
             <label for="nomor">Nomor Rekening</label>
-            <input required type="text" name="nomor"  aria-describedby="nomorhelp" class="form-control" id="nomor" placeholder="89829653123" value="@if(isset($bank->nomor)) {{$bank->nomor}} @endif">
-
-         
-         <small id="nomorhelp" class="form-text text-muted text-left">
+            <input required type="text" name="nomor" aria-describedby="nomorhelp" class="form-control" id="nomor" placeholder="89829653123" value="@if(isset($bank->nomor)) {{$bank->nomor}} @endif">
+            <small id="nomorhelp" class="form-text text-muted text-left">
               Isi dengan nomor rekening, untuk e-money isi dengan nomor akun.
             </small>
           </div>
+
+          <div id="cvfrm" class="form-group">
+            <label for="cv">CV </label>
+            
+            <input type="file" name="cv" accept="application/pdf" class="form-control-file" id="cv">
+
+          </div>
+          <label for="cvfrm">@if(isset($archive->cv_path)) <a href="{{asset('storage/'.$archive->cv_path)}}" class="badge badge-primary">Lihat CV</a> @else <div class="alert alert-warning" role="alert">
+  Anda belum mengunggah CV
+</div> @endif</label>
         </div>
         <div class="form-group mt-3">
           <button class="btn btn-success btn-sm">Perbarui</button>

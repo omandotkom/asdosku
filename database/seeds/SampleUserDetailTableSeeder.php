@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-
+use Illuminate\Support\Str;
 class SampleUserDetailTableSeeder extends Seeder
 {
     /**
@@ -13,13 +13,14 @@ class SampleUserDetailTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i = 1; $i < 101; $i++) {
+        for ($i = 1; $i < 6; $i++) {
             $user =  App\User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => Hash::make('system3298'),
                 'status' => 'belum_aktif',
-                'role' => 'asdos'
+                'role' => 'asdos',
+                'api_token' => Str::random(150)
             ]);
             DB::table('details')->insert([
                 'user_id' => $user->id,

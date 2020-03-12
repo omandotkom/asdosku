@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class UploadProfileImageController extends Controller
 {
@@ -20,13 +22,28 @@ class UploadProfileImageController extends Controller
         //DEFINISIKAN PATH
         $this->path = storage_path('app/public/images');
         //DEFINISIKAN DIMENSI
-        $this->dimensions = ['75','245', '300'];
+        $this->dimensions = ['75', '245', '300'];
     }
     public function upload(Request $request)
     {
-        $bank = Bank::where('user_id',Auth::user()->id)->first();
-        if ($bank != null){
-        $bank->delete();}
+        $bank = Bank::where('user_id', Auth::user()->id)->first();
+        $archive = Archive::where('user_id', Auth::user()->id)->first();
+        if ($request->hasFile('cv')) {
+            $validator = Validator::make($request->all(), [
+                'cv' => 'file|mimes:pdf|max:5000',
+            ]);
+            if ($validator->fails()) {
+
+                $error = $validator->errors()->first();
+                return redirect()->back()->with(['error' => $error]);
+            }
+            $cv_path = $request->file('cv')->store('cv/' . Auth::user()->id, 'public');
+            Archive::where('user_id',Auth::user()->id)->update(['cv_path' => $cv_path]);
+            //$archive->cv_path = $cv_path;
+        }
+        if ($bank != null) {
+            $bank->delete();
+        }
         $bank = new Bank();
         $bank->user_id = Auth::user()->id;
         $bank->nama = $request->nama;
@@ -75,17 +92,17 @@ class UploadProfileImageController extends Controller
         }
 
         //SIMPAN DATA IMAGE YANG TELAH DI-UPLOAD
-        $result = Archive::where('user_id',Auth::user()->id)
-        ->update(['image_name' => $fileName,
-        'image_path' => $this->path,]);
-        $archive = Archive::where('user_id',Auth::user()->id)->first();
+        $archive->image_name = $fileName;
+        $archive->image_path = $this->path;
+
+        $archive->save();
 
         $image_url = asset('storage/images/75');
         $image_url = $image_url . "/" . $archive->image_name;
+
         //return $image_url;
 
         //update data bank
-        
-        return redirect()->back()->with(['success' => 'Gambar Telah Di-upload','imgurl' => $image_url,'bank' => $bank]);
+        return redirect()->back()->with(['success' => 'Berhasil memperbarui biodata.', 'imgurl' => $image_url, 'bank' => $bank,'archive' => $archive]);
     }
 }

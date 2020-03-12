@@ -47,8 +47,8 @@ Route::post('/dashboard/index/dosen/payout/store/{transaction_id}','PayoutContro
 Route::get('/dashboard/index/dosen/payout/download/{payout_id}','PayoutController@downloadpayment')->name('downloadpayout');
 Route::get('/dashboard/index/dosen/payout/{transaction_id}/','PayoutController@viewpage')->name('showPayoutPage')->middleware('auth');
 Route::get('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@show')->name('showOrderPage')->middleware('auth','dosen');
-Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder')->middleware('auth','dosen');
-Route::get('/dashboard/index/dosen/services/list','ServiceActivitiesController@show')->name('viewservices')->middleware('auth','dosen');
+Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder')->middleware('auth');
+Route::get('/dashboard/index/dosen/services/list','ServiceActivitiesController@show')->name('viewservices')->middleware('auth');
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/order/list/delete/{id}','TransactionController@delete')->name('deleteTransaction')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction')->middleware('auth','operational');

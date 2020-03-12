@@ -12,9 +12,17 @@
                 document.getElementById("detilSemester").innerHTML = response.data.semester;
                 document.getElementById("detilKomentar").innerHTML = response.data.commentcount;
                 $("#detilKomentar").attr("href", response.data.commentlink);
+                if (response.data.cv_path != "#"){
+                    $("#detilCV").attr("href", response.data.cv_path);
+                    $("#rowcv").show();
+                }else{
+                    $("#rowcv").hide();
+                }
+                
                 document.getElementById("detilGender").innerHTML = response.data.gender;
                 document.getElementById("detilCreated").innerHTML = response.data.created_at;
                 document.getElementById("detilFoto").src = response.data.image_name;
+                
             })
             .catch(function(error) {
                 // handle error
@@ -78,6 +86,11 @@
                             <th>Semester</th>
                             <td id="detilSemester"></td>
                         </tr>
+                        <tr id="rowcv">
+                            <th>CV</th>
+                            <td><a href="#" id="detilCV" class="badge badge-info">Lihat CV</a></td>
+                        </tr>
+                        
                         <tr>
                             <th>Gender</th>
                             <td id="detilGender"></td>
@@ -127,7 +140,7 @@
                         </table>
                     </div>
 
-                    <button type="button" onclick="userDetil(generateURL('{{$asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Rincian</button>
+                    <button type="button" onclick="userDetil(generateURL('{{$asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Lihat Rincian</button>
 
                     <button type="button" onclick="order('{{$activity}}','{{$asdos->id}}');" class="btn btn-outline-primary btn-block btn-sm mt-2">Pilih</button>
                 </div>

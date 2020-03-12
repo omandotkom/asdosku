@@ -139,6 +139,9 @@
           @endswitch
           @elseif (Auth::user()->role == "asdos")
           @switch($content ?? '')
+          @case('servicelist')
+          @include('layouts.dosen.semualayanan')
+          @break
           @case('profile')
           @include('layouts.asdos.profile2')
           @break
