@@ -42,7 +42,7 @@ class UsersPengurusSeeder extends Seeder
         ]);
         */
         //marketing
-        $user =  User::create([
+       /* $user =  User::create([
             'name' => 'Caca',
             'email' => 'cacalovas@gmail.com',
             'password' => bcrypt('asdoskugrowbetter'),
@@ -56,7 +56,7 @@ class UsersPengurusSeeder extends Seeder
             'password' => bcrypt('asdoskugrowbetter'),
             'role' => 'marketing',
             'status' => 'aktif',
-        ]);
+        ]);*/
         
         $user =  User::create([
             'name' => 'Riska',
