@@ -41,6 +41,19 @@ class UploadProfileImageController extends Controller
             Archive::where('user_id',Auth::user()->id)->update(['cv_path' => $cv_path]);
             //$archive->cv_path = $cv_path;
         }
+        if ($request->hasFile('nilai')) {
+            $validator = Validator::make($request->all(), [
+                'nilai' => 'file|mimes:pdf|max:10000',
+            ]);
+            if ($validator->fails()) {
+
+                $error = $validator->errors()->first();
+                return redirect()->back()->with(['error' => $error]);
+            }
+            $cv_path = $request->file('nilai')->store('nilai/' . Auth::user()->id, 'public');
+            Archive::where('user_id',Auth::user()->id)->update(['another_file_path' => $cv_path]);
+            //$archive->cv_path = $cv_path;
+        }
         if ($bank != null) {
             $bank->delete();
         }

@@ -18,6 +18,12 @@
                 }else{
                     $("#rowcv").hide();
                 }
+                if (response.data.another_file_path != "#"){
+                    $("#detilNilai").attr("href", response.data.cv_path);
+                    $("#rownilai").show();
+                }else{
+                    $("#rownilai").hide();
+                }
                 
                 document.getElementById("detilGender").innerHTML = response.data.gender;
                 document.getElementById("detilCreated").innerHTML = response.data.created_at;
@@ -86,14 +92,17 @@
                             <th>Semester</th>
                             <td id="detilSemester"></td>
                         </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td id="detilGender"></td>
+                        </tr>
                         <tr id="rowcv">
                             <th>CV</th>
                             <td><a href="#" id="detilCV" class="badge badge-info">Lihat CV</a></td>
                         </tr>
-                        
-                        <tr>
-                            <th>Gender</th>
-                            <td id="detilGender"></td>
+                        <tr id="rownilai">
+                            <th>Nilai</th>
+                            <td><a href="#" id="detilNilai" class="badge badge-info">Lihat Nilai</a></td>
                         </tr>
                         <tr>
                             <th>Bergabung Sejak</th>

@@ -77,14 +77,25 @@ $picname = basename($path, ".png");
           </div>
 
           <div id="cvfrm" class="form-group">
-            <label for="cv">CV </label>
-            
+            <label for="cv">CV (wajib berformat pdf)</label>
+
             <input type="file" name="cv" accept="application/pdf" class="form-control-file" id="cv">
 
           </div>
           <label for="cvfrm">@if(isset($archive->cv_path)) <a href="{{asset('storage/'.$archive->cv_path)}}" class="badge badge-primary">Lihat CV</a> @else <div class="alert alert-warning" role="alert">
-  Anda belum mengunggah CV
-</div> @endif</label>
+              Anda belum mengunggah CV
+          </div> @endif</label>
+
+          <div id="nilaifrm" class="form-group">
+            <label for="nilai">Nilai (wajib berformat pdf)</label>
+
+            <input type="file" name="nilai" accept="application/pdf" class="form-control-file" id="nilai">
+
+          </div>
+          <label for="cvfrm">@if(isset($archive->another_file_path)) <a href="{{asset('storage/'.$archive->another_file_path)}}" class="badge badge-primary">Lihat Nilai</a> @else <div class="alert alert-warning" role="alert">
+              Anda belum mengunggah Nilai
+          </div> @endif</label>
+          
         </div>
         <div class="form-group mt-3">
           <button class="btn btn-success btn-sm">Perbarui</button>

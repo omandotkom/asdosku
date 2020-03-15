@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Jurusans;
+
 class AsdosController extends Controller
 {
     public function profileAsdos()
@@ -38,9 +39,9 @@ class AsdosController extends Controller
         //$services = Service::with('activities')->get();
         //$campuses = Campus::all();
         //$jurusans = Jurusans::orderBy('name', 'asc')->get();
-        $bank = Bank::where('user_id',Auth::user()->id)->first();
-        
-        return view('maindashboard.index', ['content' => 'profile', 'bank' => $bank ,'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Kegiatan dan Foto Profile']);
+        $bank = Bank::where('user_id', Auth::user()->id)->first();
+
+        return view('maindashboard.index', ['content' => 'profile', 'bank' => $bank, 'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Kegiatan dan Foto Profile']);
     }
 
     public function updatePreferAsdos(Request $request)
@@ -102,7 +103,7 @@ class AsdosController extends Controller
     }
     public function profile($id)
     {
-        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'archives.cv_path','jurusans.name as jurusan', 'kampus.name as kampus')
+        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'archives.cv_path','archives.another_file_path', 'jurusans.name as jurusan', 'kampus.name as kampus')
             ->selectRaw('now() as commentcount')
             ->selectRaw("null as commentlink")
             ->join('details', 'users.id', 'details.user_id')
@@ -120,10 +121,16 @@ class AsdosController extends Controller
             $image_url = "https://picsum.photos/200";
             $user->setAttribute('image_name', $image_url);
         }
-        if (isset($user->cv_path)){
-            $user->cv_path = asset('storage/'.$user->cv_path);
+        if (isset($user->cv_path)) {
+            $user->cv_path = asset('storage/' . $user->cv_path);
+        } else {
+            $user->cv_path = "#";
+        }
+
+        if (isset($user->another_file_path)){
+            $user->another_file_path = asset('storage/'.$user->another_file_path);
         }else{
-        $user->cv_path = "#";
+            $user->another_file_path = "#";
         }
         //filter rating biar ga null
         if (isset($user->rating)) {
