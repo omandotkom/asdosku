@@ -14,7 +14,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -28,6 +28,19 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script type="text/javascript">
+        function gotoRegisterDosen() {
+            window.location = "{{ url('/register') }}";
+        }
+
+        function gotoRegisterAsdos() {
+            window.location = "{{ url('/registerasdos') }}";
+        }
+
+        function gotoLogin() {
+            window.location = "{{ url('/login') }}";
+        }
+    </script>
     <script>
         axios.get("{{route('sendnotification')}}")
             .then(function(response) {
@@ -77,6 +90,21 @@
         }
     </script>
 </head>
+
+@if(Route::currentRouteName()=="registerasdosshow")
+@include('auth.modal.disableasdosregis')
+<script>
+    $(document).ready(function() {$('#disableregis').modal({backdrop: 'static', keyboard: false, show:true, focus: true});
+    });
+      
+
+    function gotoHome(){
+        var url = "{{route('rumah')}}";
+        window.location = url;
+    }
+ 
+</script>
+@endif
 
 <body>
     <div id="app">

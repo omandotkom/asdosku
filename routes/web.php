@@ -29,7 +29,7 @@ Route::get('/dashboard/index/view/asdos/{type}/{activity?}/{gender?}/{semester?}
 
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan')->middleware('auth','hrd');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan')->middleware('auth','hrd');
-Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow')->middleware('guest');
+Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow')->middleware('guest')->name('registerasdosshow');
 Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->name('registerasdos');
 Route::get('/registerasdos/statusakun','UserActivationController@show')->name('notactive')->middleware('auth','active');
 Route::get('/dashboard/index/asdos','DashboardIndexController@indexasdos')->name('indexasdos')->middleware('auth','asdos');

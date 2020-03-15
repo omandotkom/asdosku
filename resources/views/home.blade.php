@@ -33,6 +33,21 @@
     }
   </script>
   @endauth
+  @guest
+  <script type="text/javascript">
+    function gotoRegisterDosen() {
+      window.location = "{{ url('/register') }}";
+    }
+
+    function gotoRegisterAsdos() {
+      window.location = "{{ url('/registerasdos') }}";
+    }
+
+    function gotoLogin() {
+      window.location = "{{ url('/login') }}";
+    }
+  </script>
+  @endguest
 </head>
 
 <body>
