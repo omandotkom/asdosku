@@ -29,9 +29,13 @@ Route::get('/dashboard/index/view/asdos/{type}/{activity?}/{gender?}/{semester?}
 
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan')->middleware('auth','hrd');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/persetujuan/reject/{id?}','PersetujuanController@reject')->name('rejectpersetujuan')->middleware('auth','hrd');
 Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow')->middleware('guest')->name('registerasdosshow');
 Route::post('/registerasdos/kirim', 'Auth\RegisterController@registerasdos')->name('registerasdos');
 Route::get('/registerasdos/statusakun','UserActivationController@show')->name('notactive')->middleware('auth','active');
+Route::get('/registerasdos/pengumuman',function(){
+    return view('auth.rejected');
+})->name('rejected')->middleware('auth');
 Route::get('/dashboard/index/asdos','DashboardIndexController@indexasdos')->name('indexasdos')->middleware('auth','asdos');
 
 Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->name('profileAsdos')->middleware('auth','asdos');
