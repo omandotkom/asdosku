@@ -44,14 +44,18 @@
         @php
         $num++;
         @endphp
-        
+
         <tr>
           <td>{{$num}}</td>
           <td>{{$cost->keterangan}}</td>
           <td>{{$cost->nominal}}</td>
+          @if (isset($cost->filepath))
           <td><a href="{{asset('storage/'.$cost->filepath)}}" class="badge badge-primary">Lihat</a></td>
+          @else
+          <td>-</td>
+          @endif
           <td>{{$cost->updated_at}}</td>
-        </tr>
+          </tr>
         @endforeach
         <tr>
           <td colspan="4"><a href="{{ URL::previous() }}" class="badge badge-secondary">Kembali</a></td>
