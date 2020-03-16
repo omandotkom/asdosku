@@ -323,224 +323,67 @@
       </div>
     </section><!-- #call-to-action -->
 
-    <!--==========================
-      Portfolio Section
-    ============================-->
-    {{-- <section id="portfolio">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title">Portfolio</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container wow fadeIn">
+        <div class="section-header pt-2">
+          <h3 class="section-title">Galeri Asdosku</h3>
+          <p class="section-description">Berikut Beberapa Foto Kegiatan Kami</p>
         </div>
         <div class="row">
-
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-logo">Logo</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row" id="portfolio-wrapper">
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app1.jpg" alt="">
-              <div class="details">
-                <h4>App 1</h4>
-                <span>Alored dono par</span>
+          <div id="carouselExampleCaptions" class="carousel slide mx-auto" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{asset('storage/gallery/1.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Proses Seleksi Asdos</h5>
+                  <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
+                </div>
               </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web2.jpg" alt="">
-              <div class="details">
-                <h4>Web 2</h4>
-                <span>Alored dono par</span>
+              <div class="carousel-item">
+              <img src="{{asset('storage/gallery/2.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Proses Seleksi Asdos</h5>
+                  <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
+                </div>
               </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app3.jpg" alt="">
-              <div class="details">
-                <h4>App 3</h4>
-                <span>Alored dono par</span>
+              <div class="carousel-item">
+                <img src="{{asset('storage/gallery/3.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Proses Seleksi Asdos</h5>
+                  <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
+                </div>
               </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card1.jpg" alt="">
-              <div class="details">
-                <h4>Card 1</h4>
-                <span>Alored dono par</span>
+              <div class="carousel-item">
+                <img src="{{asset('storage/gallery/4.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Proses Seleksi Asdos</h5>
+                  <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
+                </div>
               </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card2.jpg" alt="">
-              <div class="details">
-                <h4>Card 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web3.jpg" alt="">
-              <div class="details">
-                <h4>Web 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card3.jpg" alt="">
-              <div class="details">
-                <h4>Card 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app2.jpg" alt="">
-              <div class="details">
-                <h4>App 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo1.jpg" alt="">
-              <div class="details">
-                <h4>Logo 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo3.jpg" alt="">
-              <div class="details">
-                <h4>Logo 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web1.jpg" alt="">
-              <div class="details">
-                <h4>Web 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo2.jpg" alt="">
-              <div class="details">
-                <h4>Logo 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #portfolio --> --}}
-
-    <!--==========================
-      Team Section
-    ============================-->
-    {{-- <section id="team">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title">Team</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="img/team-1.jpg" alt=""></div>
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
+              <div class="carousel-item">
+                <img src="{{asset('storage/gallery/5.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Proses Seleksi Asdos</h5>
+                  <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="img/team-2.jpg" alt=""></div>
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="img/team-3.jpg" alt=""></div>
-              <h4>William Anderson</h4>
-              <span>CTO</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="img/team-4.jpg" alt=""></div>
-              <h4>Amanda Jepson</h4>
-              <span>Accountant</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
+            
           </div>
         </div>
 
       </div>
-    </section><!-- #team --> --}}
-
+    </section><!-- #services -->
+    <!-- /// end of gallery -->
     <!--==========================
       Contact Section
     ============================-->
