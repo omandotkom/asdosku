@@ -70,6 +70,7 @@
           <li class="menu-active"><a href="#hero">Home</a></li>
           <li><a href="#about">Tentang</a></li>
           <li><a href="#services">Layanan</a></li>
+          <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
           <li><a href="#blog">Blog</a></li>
           @auth
@@ -342,42 +343,42 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{asset('storage/gallery/1.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <img src="{{asset('storage/gallery/1.JPG')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Proses Seleksi Asdos</h5>
                   <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
                 </div>
               </div>
               <div class="carousel-item">
-              <img src="{{asset('storage/gallery/2.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <img src="{{asset('storage/gallery/2.JPG')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Proses Seleksi Asdos</h5>
                   <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="{{asset('storage/gallery/3.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <img src="{{asset('storage/gallery/3.JPG')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Proses Seleksi Asdos</h5>
+                  <h5>Proses Seleksi Asdos</h5>
                   <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="{{asset('storage/gallery/4.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <img src="{{asset('storage/gallery/4.JPG')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Proses Seleksi Asdos</h5>
+                  <h5>Proses Seleksi Asdos</h5>
                   <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="{{asset('storage/gallery/5.jpg')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
+                <img src="{{asset('storage/gallery/5.JPG')}}" class="d-block w-100 img-fluid" alt="Proses Seleksi Asdos">
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Proses Seleksi Asdos</h5>
+                  <h5>Proses Seleksi Asdos</h5>
                   <p>Tahap interview dalam urutan acara seleksi asdos batch 3.</p>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
 
