@@ -1,5 +1,12 @@
 <div class="container">
-  <div class="row">
+  @handheld
+  <script>
+    $(document).ready(function() {
+      $('#warningmodal').modal({backdrop: 'static', keyboard: false, show:true, focus: true});
+    });
+  </script>
+  @endhandheld
+  <div class="row d-flex justify-content-center">
     <div class="col-sm-6">
       <div class="card shadow p-3 mb-5 bg-white rounded">
 
@@ -9,83 +16,47 @@
           <div class="text-center">
             <img src="{{$asdos->archive->image_name}}" class="img-thumbnail img-fluid shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
           </div>
-          <div class="table-responsive-sm mt-1">
-            <table class="table table-sm">
-              <tr class="table-success">
-                <th>Jenis Kegiatan</th>
-                <td id="jenisKegiatan"><b>{{$activity->service->name}}</b></td>
-              </tr>
-              <tr>
-                <th>Kegiatan</th>
-                <td id="kegiatan">{{$activity->name}}</td>
-              </tr>
-              <tr>
-                @php
-                function convert($val){
-                $val = "Rp " . number_format($val,2,',','.');
-                return $val;
-                }
-                @endphp
-                <th>Biaya Satuan</th>
-                <td id="detilBiaya">{{convert($activity->harga)}} / {{$activity->satuan}}</td>
+          <dl class="row">
 
-              </tr>
-              <tr>
-                <th>Keterangan</th>
-                <td id="detilJurusan">{{$activity->keterangan}}</td>
-              </tr>
-              <tr class="table-success">
-                <th>Nama Asdos</th>
-                <td id="detilNama"><b>{{$asdos->name}}</b></td>
-              </tr>
-              <tr>
-                <th>Rating</th>
-                <td id="detilRating">@if(isset($rating)) {{$rating->rating}} @else - @endif</td>
-              </tr>
-              <tr>
-                <th>Gender</th>
-                <td id="detilKampus">{{$asdos->detail->gender}}</td>
-              </tr>
-              <tr>
-                <th>Kampus</th>
-                <td id="detilJurusan">{{$kampus->kampus}}</td>
-              </tr>
-              <tr>
-                <th>Jurusan</th>
-                <td id="detilJurusan">{{$asdos->detail->jurusan->name}}</td>
-              </tr>
-              <tr>
-                <th>Semester</th>
-                <td id="detilJurusan">{{$asdos->detail->semester}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pemesanan</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Apakah semua informasi sudah benar ?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Periksa Lagi</button>
-              <button type="button" onclick="document.orderForm.submit();" class="btn btn-primary">Ya, Lanjutkan</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card shadow p-3 mb-5 bg-white rounded">
+            <dt class="col-sm-3 border-top">Jenis Kegiatan </dt>
+            <dd class="col-sm-9 border-top" id="jenisKegiatan"><b>{{$activity->service->name}}</b></dd>
 
-        <div class="card-body">
+            <dt class="col-sm-3 border-top">Kegiatan</dt>
+            <dd class="col-sm-9 border-top" id="kegiatan">{{$activity->name}}</dd>
+            @php
+            function convert($val){
+            $val = "Rp " . number_format($val,2,',','.');
+            return $val;
+            }
+            @endphp
+
+            <dt class="col-sm-3 border-top">Biaya Satuan</dt>
+            <dd class="col-sm-9 border-top" id="detilBiaya">{{convert($activity->harga)}} / {{$activity->satuan}}</dd>
+
+            <dt class="col-sm-3 border-top">Keterangan</dt>
+            <dd class="col-sm-9 border-top">{{$activity->keterangan}}</dd>
+
+            <dt class="col-sm-3 border-top">Nama Asdos</dt>
+            <dd class="col-sm-9 border-top">{{$asdos->name}}</dd>
+
+            <dt class="col-sm-3 border-top">Rating</dt>
+            <dd class="col-sm-9 border-top">@if(isset($rating)) {{$rating->rating}} @else - @endif</dd>
+
+            <dt class="col-sm-3 border-top">Gender</dt>
+            <dd class="col-sm-9 border-top">{{$asdos->detail->gender}}</dd>
+
+            <dt class="col-sm-3 border-top">Kampus</dt>
+            <dd class="col-sm-9 border-top">{{$kampus->kampus}}</dd>
+
+            <dt class="col-sm-3 border-top">Jurusan</dt>
+            <dd class="col-sm-9 border-top">{{$asdos->detail->jurusan->name}}</dd>
+
+
+            <dt class="col-sm-3 border-top">Semester</dt>
+            <dd class="col-sm-9 border-top">{{$asdos->detail->semester}}</dd>
+
+          </dl>
+
           <h5 class="card-title text-center">Rincian Pemesanan</h5>
           <form method="POST" name="orderForm" action="{{route('storeTransaction',['activity' => $activity->id,'asdos' => $asdos->id])}}">
             @csrf
@@ -120,10 +91,10 @@
                 });
                 $("#orderqty").keyup(function() {
                   //alert($(this).val());
-                  if(isNormalInteger($(this).val())){
+                  if (isNormalInteger($(this).val())) {
                     calculateTotal($(this).val());
                   }
-                  
+
                 });
               });
             </script>
@@ -188,6 +159,44 @@
             <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary btn-lg btn-block">Lanjutkan Pemesanan</button>
         </div>
         </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pemesanan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah semua informasi sudah benar ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Periksa Lagi</button>
+          <button type="button" onclick="document.orderForm.submit();" class="btn btn-primary">Ya, Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="warningmodaltitle">Informasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Anda mengakses halaman ini melalui perangkat smartphone/tablet. Jika ada teks terpotong, rotasikan gadget Anda menjadi <b>landscape</b> untuk hasil yang lebih optimal.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
       </div>
     </div>
   </div>
