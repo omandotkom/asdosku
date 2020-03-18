@@ -51,7 +51,8 @@ class DashboardIndexController extends Controller
     {
         $berjalan = Transaction::where('status', 'Berjalan')->where('asdos', Auth::user()->id)->count();
         $selesai = Transaction::where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
-        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan,'selesai' => $selesai]);
+        $request = Transaction::where('status','Menunggu Konfirmasi Asdos')->where('asdos',Auth::user()->id)->count();
+        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan,'selesai' => $selesai,'request' => $request]);
     }
     public function indexmarketing(){
         $campuses = Campus::all();

@@ -159,7 +159,7 @@
                             <th>Kegiatan</th>
                             <td id="kegiatan"></td>
                         </tr>
-                        <tr class="text-left">
+                        <tr class="text-left text-white bg-info">
                             <th class="text-left">Rincian Pemesanan</th>
                             <td class="text-left" id="rincianpemesanan"></td>
                         </tr>
@@ -219,9 +219,9 @@
                                 <th>Kode Transaksi</th>
                                 <td>{{$transaction->id}}</td>
                             </tr>
-                            <tr>
+                            <tr class="bg-info text-white">
                                 <th>Nama Dosen</th>
-                                <td>{{$transaction->dosen}}</td>
+                                <td>{{$transaction->dosen}} <b>({{$transaction->kampus}})</b></td>
                             </tr>
                             <tr>
                                 <th>WA Dosen</th>
@@ -238,9 +238,11 @@
                         </table>
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
+                    @if(Auth::user()->role=="operational")
                     @if($transaction->status == "Menunggu Konfirmasi Asdos")
                     <button type="button" onclick="generateURLUpdate('{{$transaction->id}}');"  class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
+                    @endif
                     @endif
                 </div>
             </div>

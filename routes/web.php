@@ -44,6 +44,7 @@ Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->na
 Route::post('/dashboard/index/asdos/profile/uploadprofilepic','UploadProfileImageController@upload')->name('uploadProfileAsdos')->middleware('auth','asdos');
 Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updatePreferAsdos')->name('updatePreferAsdos')->middleware('auth','asdos');
 Route::get('/dashboard/index/asdos/currentransaction/view/{status}','TransactionController@viewtransactionasdosbystatus')->name('viewpesananasdosbystatus')->middleware('auth','asdos');
+Route::get('/dashboard/index/asdos/requestorder/view','TransactionController@pendingtransactionbyasdos')->name('asdosrequestorder')->middleware('auth','asdos');
 Route::get('/dashboard/index/asdos/commentrating/{user_id?}','CommentController@viewasdoscomments')->name('viewcommentratingbyuser')->middleware('auth');
 
 Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts')->name('showallpayout')->middleware('auth','dosen');

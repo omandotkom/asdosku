@@ -34,6 +34,11 @@
             <span>Rating & Komentar</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('asdosrequestorder')}}">
+            <i class="fas fa-fw fa-money-check-alt"></i>
+            <span>Permohonan Asistensi</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('viewpesananasdosbystatus','Berjalan')}}">
             <i class="fas fa-fw fa-money-bill-wave"></i>
             <span>Asistensi Berjalan</span></a>

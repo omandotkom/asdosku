@@ -149,6 +149,9 @@
           @case('servicelist')
           @include('layouts.dosen.semualayanan')
           @break
+          @case('pesananasdoslist')
+          @include('layouts.operational.pendinglist')
+          @break
           @case('profile')
           @include('layouts.asdos.profile2')
           @break

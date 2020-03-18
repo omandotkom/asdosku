@@ -178,12 +178,32 @@ class TransactionController extends Controller
                 'transactions.*',
                 'users.name as dosen',
                 'details.wa as wa',
+                'details.kampus_dosen as kampus',
                 'activities.name as kegiatan'
             )
             ->join('users', 'transactions.dosen', 'users.id')
             ->join('activities', 'transactions.activity_id', 'activities.id')
             ->join('details', 'users.id', 'details.user_id')
             ->orderBy('transactions.updated_at')->simplePaginate(10);
+        //return $transaction;
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
+    }
+    public function pendingtransactionbyasdos()
+    {
+
+        $transaction = Transaction::where('transactions.status', 'Menunggu Konfirmasi Asdos')
+            ->select(
+                'transactions.*',
+                'users.name as dosen',
+                'details.kampus_dosen as kampus',
+                'details.wa as wa',
+                'activities.name as kegiatan'
+            )
+            ->join('users', 'transactions.dosen', 'users.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('details', 'users.id', 'details.user_id')
+            ->orderBy('transactions.updated_at')
+            ->where('transactions.asdos',Auth::user()->id)->simplePaginate(10);
         //return $transaction;
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }
