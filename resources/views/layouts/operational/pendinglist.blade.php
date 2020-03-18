@@ -217,7 +217,7 @@
                         <table class="table">
                             <tr>
                                 <th>Kode Transaksi</th>
-                                <td>{{$transaction->id}}</td>
+                                <td>{{$transaction->id}} <div class="bg-warning text-dark">(transaksi ini masih menunggu persetujuan operasional)</div></td>
                             </tr>
                             <tr class="bg-info text-white">
                                 <th>Nama Dosen</th>
