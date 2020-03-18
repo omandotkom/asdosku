@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserVerified;
+use Illuminate\Support\Carbon;
 use App\Jurusans;
 use Illuminate\Support\Facades\Response;
 
@@ -79,7 +80,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'kampus' => ['required', 'string', 'min:3'],
-            'nik' => ['required', 'min:5']
+            'nik' => ['required', 'min:5'],
+            //this is optinal, so dosen always verified
+            
         ]);
 
         if ($validator->fails()) {
@@ -91,6 +94,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'status' => 'aktif',
             'role' => 'dosen',
+            'email_verified_at' =>  Carbon::now()->toDateTimeString()
         ]);
         $details = Detail::create([
             'user_id' => $user->id,
