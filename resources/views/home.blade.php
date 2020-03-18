@@ -70,6 +70,7 @@
           <li class="menu-active"><a href="#hero">Home</a></li>
           <li><a href="#about">Tentang</a></li>
           <li><a href="#services">Layanan</a></li>
+          <li><a href="#alur">Cara Pesan</a></li>
           <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
           <li><a href="#blog">Blog</a></li>
@@ -267,7 +268,7 @@
     </section><!-- #services -->
 
     <!-- alur -->
-    <section id="services">
+    <section id="alur">
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Alur Penggunaan</h3>
