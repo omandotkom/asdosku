@@ -11,6 +11,7 @@ use App\Events\OrderWaitingPayment;
 use App\Events\OrderWasApproved;
 use App\Events\OrderWasCreated;
 use App\Events\OrderWasDeleted;
+use App\Events\RequestEndTransaction;
 use App\Jobs\EmailJob;
 use App\Notifications\EmailNotification;
 use App\Rate as USERRATE;
@@ -40,6 +41,18 @@ class TransactionController extends Controller
             event(new OrderWasApproved($dosen, $transaction));
         }
         return $transaction;
+    }
+    public function requestSelesai($id)
+    {
+        $transaction = DB::table('transactions')->select('transactions.*', 'users.name')->join('users', 'transactions.dosen', 'users.id')
+            ->where('transactions.id', $id)->first();
+        //return response()->json($transaction);
+        //event(new RequestEndTransaction($transaction));
+    //TODO : SEDANG BINGING
+        //return back()->with('success','Be')
+        $s = "request selesai layanan untuk kode transaksi ".$transaction->id." atas nama ".$transaction->name.", terimakasih.";
+        $url = "https://wa.me/6285643715830?text=".rawurlencode($s);
+        return redirect($url);
     }
     public function showcosthistory($id)
     {
@@ -87,7 +100,7 @@ class TransactionController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        
+
         $transaction = new Transaction;
         $transaction->asdos = $asdos;
         $transaction->dosen = Auth::user()->id;
@@ -95,24 +108,24 @@ class TransactionController extends Controller
         $transaction->dari = $request->dateDari;
         $transaction->sampai = $request->dateSampai;
         $transaction->keterangan = $request->keterangan;
-      //  $transaction->biaya = $request->biaya;
+        //  $transaction->biaya = $request->biaya;
         $transaction->status = 'Menunggu Konfirmasi Asdos';
-       
-        $totalBiaya = Activity::where("id",$activity)->first();
+
+        $totalBiaya = Activity::where("id", $activity)->first();
         $satuan = $totalBiaya->satuan;
-        $totalBiaya = $totalBiaya->harga; 
-        
-        if (isset($request->orderqty)){
+        $totalBiaya = $totalBiaya->harga;
+
+        if (isset($request->orderqty)) {
             $totalBiaya = $totalBiaya * $request->orderqty;
             $transaction->keterangan = $transaction->keterangan . " (" . $request->orderqty . " " . $satuan . ")";
         }
-        if ($request->discountcode != "0"){
+        if ($request->discountcode != "0") {
             //jika ada kode diskon
             $transaction->discount_id = $request->discountcode;
-            $d = Discount::where('id',$request->discountcode)->first();
+            $d = Discount::where('id', $request->discountcode)->first();
             $d = $d->discount;
-            
-            $transaction->total_discount = $totalBiaya * $d; 
+
+            $transaction->total_discount = $totalBiaya * $d;
             //$totalBiaya = $totalBiaya - $d;
         }
         $transaction->biaya = $totalBiaya;
@@ -203,7 +216,7 @@ class TransactionController extends Controller
             ->join('activities', 'transactions.activity_id', 'activities.id')
             ->join('details', 'users.id', 'details.user_id')
             ->orderBy('transactions.updated_at')
-            ->where('transactions.asdos',Auth::user()->id)->simplePaginate(10);
+            ->where('transactions.asdos', Auth::user()->id)->simplePaginate(10);
         //return $transaction;
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }

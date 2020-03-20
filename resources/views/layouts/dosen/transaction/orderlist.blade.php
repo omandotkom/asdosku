@@ -4,14 +4,17 @@
 
     function generateSelesaiURL(id) {
         selectedID = id;
-        selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
-
+        //selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
+        selesaiURL = "{{route('requestselesai')}}";
+        selesaiURL = selesaiURL.concat("/").concat(selectedID);
     }
 
     function gotoHistoris(url) {
         window.location = url;
     }
-
+    function selesaiLayananNew(){
+        window.location = selesaiURL;
+    }
     function selesailayanan() {
         axios.get(selesaiURL)
             .then(function(response) {
@@ -110,13 +113,12 @@
             </div>
             <div class="modal-body">
                 <ul>
-                    <li>Layanan akan dianggap selesai oleh sistem.</li>
-                    <li>Setelah layanan di selesaikan, sistem akan memberikan tagihan.</li>
+                    <li>Yakin ingin melakukan permintaan selesai layanan ?</li>
                 </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="selesailayanan();" data-dismiss="modal" class="btn btn-success">Selesaikan Pesanan</button>
+                <button type="button" onclick="selesaiLayananNew();" data-dismiss="modal" class="btn btn-success">Selesaikan Pesanan</button>
             </div>
         </div>
     </div>
@@ -319,7 +321,9 @@
                     @endif
                     @break
                     @case('Berjalan')
-                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Selesaikan Layanan</button>
+                    {{--<button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Request Selesaikan Layanan</button> --}}
+                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Request Selesaikan Layanan</button>
+                    
                     @break
                     @endswitch
                 </div>

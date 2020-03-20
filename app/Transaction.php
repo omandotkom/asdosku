@@ -19,4 +19,7 @@ class Transaction extends Model
     public function activity(){
         return $this->hasOne('App\Activity','id','activity_id');
     }
+    public function dosen(){
+        return $this->hasOne('App\User','id','dosen');
+    }
 }
