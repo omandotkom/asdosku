@@ -1,4 +1,3 @@
-
 <script>
     var updateUrl;
     var selectedID;
@@ -72,16 +71,16 @@
             })
             .then(function() {
                 axios.get("{{route('sendnotification')}}")
-            .then(function(response) {
-                // handle success
-            })
-            .catch(function(error) {
-                // handle error
+                    .then(function(response) {
+                        // handle success
+                    })
+                    .catch(function(error) {
+                        // handle error
 
-            })
-            .then(function() {
-                // always executed
-            });
+                    })
+                    .then(function() {
+                        // always executed
+                    });
             });
     }
 
@@ -92,14 +91,16 @@
         selectedID = id;
         update();
     }
+
     function generateURLDelete(id) {
         var url = "{{url('/dashboard/index/dosen/order/list/delete')}}";
         url = url.concat('/').concat(id);
         deleteUrl = url;
         return url;
     }
+
     function deleteTransaction() {
-       //console.log(deleteUrl);
+        //console.log(deleteUrl);
         window.location = deleteUrl;
     }
 </script>
@@ -122,7 +123,7 @@
                     <li>Asdos yang dipilih sedang berhalangan.</li>
                     <li>Masa pencarian Asdos dirasa terlalu lama.</li>
                     <li>Pastikan sudah konfirmasi ke dosennya terlebih dahulu sebelum membatalkan.</li>
-                </ul>  
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -217,7 +218,9 @@
                         <table class="table">
                             <tr>
                                 <th>Kode Transaksi</th>
-                                <td>{{$transaction->id}} <div class="bg-warning text-dark">(transaksi ini masih menunggu persetujuan operasional)</div></td>
+                                <td>{{$transaction->id}}
+                                    <div class="bg-warning text-dark">(transaksi ini masih menunggu persetujuan operasional)</div>
+                                </td>
                             </tr>
                             <tr class="bg-info text-white">
                                 <th>Nama Dosen</th>
@@ -235,12 +238,22 @@
                                 <th>Periode</th>
                                 <td>{{$transaction->dari}} <b> sampai </b> {{$transaction->sampai}}</td>
                             </tr>
+                            @if(Auth::user()->role == "asdos")
+                            <tr>
+                                @php
+                                $s = "saya sudah melihat rincian pesanan dan bersedia melaksanakan asistensi dengan kode transaksi ".$transaction->id;
+                                $url = "https://wa.me/6285643715830?text=".rawurlencode($s);
+                                @endphp
+                                <th>Aksi</th>
+                                <td><a href="{{$url}}" class="badge badge-success"><i class="fab fa-whatsapp text-white"> Kabari Admin Saya Menyetujui</i></a></td>
+                            </tr>
+                            @endif
                         </table>
                     </div>
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @if(Auth::user()->role=="operational")
                     @if($transaction->status == "Menunggu Konfirmasi Asdos")
-                    <button type="button" onclick="generateURLUpdate('{{$transaction->id}}');"  class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
+                    <button type="button" onclick="generateURLUpdate('{{$transaction->id}}');" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
                     <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @endif
                     @endif
