@@ -210,7 +210,9 @@
         <div class="card shadow mb-4">
 
             <!-- Card Body -->
-            <div class="card-body"><i class="far fa-edit float-sm-right"></i>
+            <div class="card-body">
+            <a href="{{route('changetransaction',$transaction->id)}}"><i class="far fa-edit float-sm-right"><small> ubah</small></i></a>
+            
                 <div class="mt-4 small">
 
                     <div class="table-responsive-sm">
