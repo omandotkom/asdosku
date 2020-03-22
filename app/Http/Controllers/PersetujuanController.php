@@ -15,6 +15,11 @@ class PersetujuanController extends Controller
         return view('maindashboard.index', ['belum_disetujui' => $belum_disetujui, 'content' => 'persetujuanlist', 'title' => 'Persetujuan Pendaftaran']);
     }
 
+    public function viewbyfirstname($name)
+    {
+        $belum_disetujui = User::where('status', 'belum_aktif')->where('name','like',"%{$name}%")->whereNotNull('email_verified_at')->simplePaginate(20);
+        return view('maindashboard.index', ['belum_disetujui' => $belum_disetujui, 'content' => 'persetujuanlist', 'title' => 'Persetujuan Pendaftaran']);
+    }
     public function update($id)
     {
         //$belum_disetujui = User::where('status','belum_aktif')->simplePaginate(10);
@@ -22,7 +27,7 @@ class PersetujuanController extends Controller
         $user->status = "aktif";
         $user->save();
         event(new UserWasActivated($user));
-        return back();
+        return redirect()->route('viewpersetujuan');
     }
     public function reject($id){
         $user = User::where('id', $id)->first();

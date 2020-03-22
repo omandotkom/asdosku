@@ -28,6 +28,7 @@ Route::post('/dashboard/index/view/asdos/bimbel','AsdosController@viewAsdosBimbe
 Route::get('/dashboard/index/view/asdos/{type}/{activity?}/{gender?}/{semester?}/{kampus?}/','AsdosController@viewFilteredAsdos')->name('filteredAsdos')->middleware('auth','dosen');
 
 Route::get('/dashboard/index/hrd/persetujuan/view', 'PersetujuanController@view')->name('viewpersetujuan')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/persetujuan/view/search/{name?}','PersetujuanController@viewbyfirstname')->name('viewpersetujuanbyname')->middleware('auth','hrd');
 Route::get('/dashboard/index/hrd/persetujuan/update/{id}', 'PersetujuanController@update')->name('updatepersetujuan')->middleware('auth','hrd');
 Route::get('/dashboard/index/hrd/persetujuan/reject/{id?}','PersetujuanController@reject')->name('rejectpersetujuan')->middleware('auth','hrd');
 Route::get('/registerasdos', 'Auth\RegisterController@registerasdosShow')->middleware('guest')->name('registerasdosshow');

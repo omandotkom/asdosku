@@ -32,7 +32,7 @@
       </div>
       <div class="modal-body">
 
-      Konfirmasi bahwa asdos ini tidak disetujui sebagai Anggota asdos di Asdosku ?
+        Konfirmasi bahwa asdos ini tidak disetujui sebagai Anggota asdos di Asdosku ?
       </div>
       <div class="modal-footer">
 
@@ -40,6 +40,15 @@
         <button type="button" onclick="rejectStatus();" class="btn btn-danger">Tolak</button>
 
       </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="input-group mb-3">
+    <input type="text" id="namesearch" class="form-control" placeholder="Nama Depan" name="name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-success" id="cari" type="button">Cari</button>
+      <button class="btn btn-primary" onclick="gotoPersetujuanView();" type="button">Semua</button>
     </div>
   </div>
 </div>
@@ -106,6 +115,20 @@
       url = url.concat("/");
       url = url.concat(selectedID);
       window.location = url;
+    }
+
+    $(document).ready(function() {
+      $("#cari").click(function() {
+        var keyword = $("#namesearch").val();
+        var searchurl = "{{route('viewpersetujuanbyname')}}";
+        searchurl = searchurl.concat("/").concat(keyword);
+        window.location = searchurl;
+
+      });
+    });
+
+    function gotoPersetujuanView() {
+      window.location = "{{ route('viewpersetujuan') }}";
     }
   </script>
 </div>

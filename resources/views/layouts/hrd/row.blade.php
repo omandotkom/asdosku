@@ -22,7 +22,8 @@
   </div>
 
   <script>
-document.getElementById("judulHalaman").innerHTML = "Beranda";
+    document.getElementById("judulHalaman").innerHTML = "Beranda";
+
     function gotoPersetujuanView() {
       window.location = "{{ route('viewpersetujuan') }}";
     }
