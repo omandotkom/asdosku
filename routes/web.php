@@ -51,7 +51,7 @@ Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts'
 Route::post('/dashboard/index/dosen/payout/store/{transaction_id}','PayoutController@store')->name('storepayout')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/payout/download/{payout_id}','PayoutController@downloadpayment')->name('downloadpayout');
 Route::get('/dashboard/index/dosen/payout/{transaction_id}/','PayoutController@viewpage')->name('showPayoutPage')->middleware('auth');
-Route::get('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@show')->name('showOrderPage')->middleware('auth','dosen');
+Route::get('/dashboard/index/dosen/order/{activity}/{asdos}/{url?}','TransactionController@show')->name('showOrderPage')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder')->middleware('auth');
 Route::get('/dashboard/index/dosen/order/list/request/{id?}','TransactionController@requestSelesai')->name('requestselesai')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/services/list','ServiceActivitiesController@show')->name('viewservices')->middleware('auth');
@@ -59,6 +59,7 @@ Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionContro
 Route::get('/dashboard/index/dosen/order/list/delete/{id}','TransactionController@delete')->name('deleteTransaction')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/currentransaction/view','TransactionController@currenttransaction')->name('viewpesananberjalan')->middleware('auth');
+Route::get('/dashboard/index/operational/payoutransaction/view','TransactionController@payouttransaction')->name('viewpesananpayout')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@showconfirpayouts')->name('viewpendingpayout')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory')->middleware('auth');
 

@@ -25,39 +25,42 @@ class DashboardIndexController extends Controller
         //return Auth::user();
         $pending = Transaction::where('status', 'Menunggu Konfirmasi Asdos')->count();
         $berjalan = Transaction::where('status', 'Berjalan')->count();
+        $payout = Transaction::where('status','Menunggu Pembayaran')->count();
         $tagihan = Payout::where('status', 'Menunggu Konfirmasi Pembayaran')->count();
-        return view('maindashboard.index', ['pending' => $pending, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
+        return view('maindashboard.index', ['pending' => $pending,'payout'=>$payout, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
     }
     public function indexDosen()
     {
         $bimbelActivity = Activity::select('id', 'name')->where('service_id', 'asbimbinganbelajar')->get();
         $matakuliahActivity = Activity::select('id', 'name')->where('service_id', 'asmatakuliah')->get();
-        $praktikumActivity = Activity::select('id','name')->where('service_id','aspraktikum')->get();
+        $praktikumActivity = Activity::select('id', 'name')->where('service_id', 'aspraktikum')->get();
         $penelitianActivity = Activity::select('id', 'name')->where('service_id', 'aspenelitian')->get();
         $proyekActivity = Activity::select('id', 'name')->where('service_id', 'asproyek')->get();
-    $admActivity = Activity::select('id', 'name')->where('service_id', 'asadm')->get();
+        $admActivity = Activity::select('id', 'name')->where('service_id', 'asadm')->get();
         $karyaActivity = Activity::select('id', 'name')->where('service_id', 'askarya')->get();
         $desainerActivity = Activity::select('id', 'name')->where('service_id', 'asdesainer')->get();
         $campuses = Campus::all();
         $jurusans = Jurusans::all();
-        return view('maindashboard.index', ['campuses' => $campuses,
-         'jurusans' => $jurusans,'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity,
-         'praktikumactivity' => $praktikumActivity,
-          'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity,
-           'admactivity' => $admActivity, 'proyekactivity' => $proyekActivity,
-            'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity]);
+        return view('maindashboard.index', [
+            'campuses' => $campuses,
+            'jurusans' => $jurusans, 'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity,
+            'praktikumactivity' => $praktikumActivity,
+            'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity,
+            'admactivity' => $admActivity, 'proyekactivity' => $proyekActivity,
+            'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity
+        ]);
     }
     public function indexAsdos()
     {
         $berjalan = Transaction::where('status', 'Berjalan')->where('asdos', Auth::user()->id)->count();
         $selesai = Transaction::where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
-        $request = Transaction::where('status','Menunggu Konfirmasi Asdos')->where('asdos',Auth::user()->id)->count();
-        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan,'selesai' => $selesai,'request' => $request]);
+        $request = Transaction::where('status', 'Menunggu Konfirmasi Asdos')->where('asdos', Auth::user()->id)->count();
+        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan, 'selesai' => $selesai, 'request' => $request]);
     }
-    public function indexmarketing(){
+    public function indexmarketing()
+    {
         $campuses = Campus::all();
-  
+
         return view('maindashboard.index', ['title' => 'List Asdos', 'campuses' => $campuses]);
-        
     }
 }

@@ -12,6 +12,7 @@ use App\Events\OrderWasApproved;
 use App\Events\OrderWasCreated;
 use App\Events\OrderWasDeleted;
 use App\Events\RequestEndTransaction;
+use App\Filter;
 use App\Jobs\EmailJob;
 use App\Notifications\EmailNotification;
 use App\Rate as USERRATE;
@@ -91,6 +92,7 @@ class TransactionController extends Controller
     }
     public function store(Request $request, $activity, $asdos)
     {
+        
         $validator = Validator::make($request->all(), [
             'dateDari' => ['required', 'date', 'max:255'],
             'dateSampai' => ['required', 'date', 'max:255'],
@@ -130,8 +132,13 @@ class TransactionController extends Controller
         }
         $transaction->biaya = $totalBiaya;
         $transaction->save();
-
-        event(new OrderWasCreated(Auth::user()));
+        if (isset($request->currenturl)){
+            $filter = new Filter;
+            $filter->transaction_id = $transaction->id;
+            $filter->url = $request->currenturl;
+            $filter->save();
+        }
+        event(new OrderWasCreated(Auth::user(), $transaction->asdos));
         return redirect()->route('showUserOrder');
     }
     public function showUserOrder()
@@ -183,6 +190,22 @@ class TransactionController extends Controller
             ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Asistensi Berjalan', 'content' => 'berjalanlist']);
     }
+    public function payouttransaction(){
+        $transaction = Transaction::where('transactions.status', 'Menunggu Pembayaran')
+            ->select(
+                'transactions.*',
+                'users.name as dosen',
+                'details.wa as wa',
+                'activities.name as kegiatan'
+            )
+            ->join('users', 'transactions.dosen', 'users.id')
+            ->join('activities', 'transactions.activity_id', 'activities.id')
+            ->join('details', 'users.id', 'details.user_id')
+            ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
+        //return $transaction;
+        return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pesanan yang Menunggu Pembayaran', 'content' => 'berjalanlist']);
+   
+    }
     public function pendingtransaction()
     {
 
@@ -220,7 +243,7 @@ class TransactionController extends Controller
         //return $transaction;
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }
-    public function show($activity, $asdos)
+    public function show($activity, $asdos, $url = "#")
     {
         $asdos = User::with('archive', 'detail')->where('users.id', $asdos)->orderBy('created_at', 'desc')->first();
         if (isset($asdos->archive->image_name)) {
@@ -240,7 +263,8 @@ class TransactionController extends Controller
                 'asdos' => $asdos,
                 'kampus' => $kampus,
                 'activity' => $activity,
-                'content' => 'order'
+                'content' => 'order',
+                'currenturl' => $url
             ]
         );
     }

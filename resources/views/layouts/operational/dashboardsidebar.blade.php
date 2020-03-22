@@ -38,6 +38,11 @@
             <span>Pesanan Berjalan</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('viewpesananpayout')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Sedang Ditagih</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('viewpendingpayout')}}">
             <i class="fas fa-fw fa-dot-circle"></i>
             <span>Konfirmasi Pembayaran</span></a>
