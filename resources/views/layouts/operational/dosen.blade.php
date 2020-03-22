@@ -20,7 +20,7 @@
         <tr>
           <td>{{ $user->id}}</td>
           <td>{{ $user->name}}</td> 
-          <td>{{ $user->detail->kampus }}</td>
+          <td>{{ $user->detail->kampus_dosen }}</td>
           <td>{{ $user->detail->wa }}</td>
           <td>{{ $user->detail->nik }}</td>
           <td>{{ $user->email }}</td>
