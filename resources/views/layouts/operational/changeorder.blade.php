@@ -2,7 +2,12 @@
   @handheld
   <script>
     $(document).ready(function() {
-      $('#warningmodal').modal({backdrop: 'static', keyboard: false, show:true, focus: true});
+      $('#warningmodal').modal({
+        backdrop: 'static',
+        keyboard: false,
+        show: true,
+        focus: true
+      });
     });
   </script>
   @endhandheld
@@ -11,24 +16,26 @@
       <div class="card shadow p-3 mb-5 bg-white rounded">
 
         <div class="card-body">
-          <h5 class="card-title text-center">Rincian Kegiatan dan Asdos</h5>
-
-          <div class="text-center">
-            <img src="{{$asdos->archive->image_name}}" class="img-thumbnail img-fluid shadow p-3 mb-5 bg-white rounded" alt="Foto Asdos">
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
           </div>
+          @endif
+          <h5 class="card-title text-center">Ubah Pesanan #<b>{{$transaction->id}}</b> milik ({{$dosen->name}})</h5>
           <dl class="row">
+            <dt class="col-sm-3 border-top">Kontak Dosen</dt>
+            <dd class="col-sm-9 border-top" id="kontakdosen">{{$dosen->wa}}</dd>
 
-            <dt class="col-sm-3 border-top">Jenis Kegiatan </dt>
-            <dd class="col-sm-9 border-top" id="jenisKegiatan"><b>{{$activity->service->name}}</b></dd>
-
-            <dt class="col-sm-3 border-top">Kegiatan</dt>
-            <dd class="col-sm-9 border-top" id="kegiatan">{{$activity->name}}</dd>
+            <dt class="col-sm-3 border-top">Jenis Kegiatan</dt>
+            <dd class="col-sm-9 border-top" id="jenisKegiatan"><b>{{$activity->service->name}} ({{$activity->name}})</b></dd>
             @php
             function convert($val){
             $val = "Rp " . number_format($val,2,',','.');
             return $val;
             }
             @endphp
+
 
             <dt class="col-sm-3 border-top">Biaya Satuan</dt>
             <dd class="col-sm-9 border-top" id="detilBiaya">{{convert($activity->harga)}} / {{$activity->satuan}}</dd>
@@ -39,9 +46,6 @@
             <dt class="col-sm-3 border-top">Nama Asdos</dt>
             <dd class="col-sm-9 border-top">{{$asdos->name}}</dd>
 
-            <dt class="col-sm-3 border-top">Rating</dt>
-            <dd class="col-sm-9 border-top">@if(isset($rating)) {{$rating->rating}} @else - @endif</dd>
-
             <dt class="col-sm-3 border-top">Gender</dt>
             <dd class="col-sm-9 border-top">{{$asdos->detail->gender}}</dd>
 
@@ -51,84 +55,61 @@
             <dt class="col-sm-3 border-top">Jurusan</dt>
             <dd class="col-sm-9 border-top">{{$asdos->detail->jurusan->name}}</dd>
 
-
             <dt class="col-sm-3 border-top">Semester</dt>
             <dd class="col-sm-9 border-top">{{$asdos->detail->semester}}</dd>
 
           </dl>
 
           <h5 class="card-title text-center">Rincian Pemesanan</h5>
-          <form method="POST" name="orderForm" action="{{route('storeTransaction',['activity' => $activity->id,'asdos' => $asdos->id])}}">
+          <form method="POST" name="orderForm" action="{{route('savechangedtransaction')}}">
             @csrf
-            <script>
-              function update(total, discount) {
-
-                var result = total - discount;
-
-                $("#biayacontent").text(result);
-              }
-            </script>
-            @if(strtolower($activity->satuan) != "orang")
-
-            <script>
-              $(document).ready(function() {
-                function calculateTotal(qty) {
-                  var result = qty * "{{$activity->harga}}";
-
-                  $("#biayacontent").text(result);
-                }
-
-                function isNormalInteger(str) {
-                  var n = Math.floor(Number(str));
-                  return n !== Infinity && String(n) === str && n >= 0;
-                }
-
-                $("#orderqty").val("1");
-                calculateTotal($("#orderqty").val());
-                $("#orderqty").change(function() {
-                  //alert($(this).val());
-                  calculateTotal($(this).val());
-                });
-                $("#orderqty").keyup(function() {
-                  //alert($(this).val());
-                  if (isNormalInteger($(this).val())) {
-                    calculateTotal($(this).val());
-                  }
-
-                });
-              });
-            </script>
-            <label for="orderqty">Jumlah {{$activity->satuan}}</label>
-            <div class="input-group mb-3">
-              <input required type="number" placeholder="Misal : 3" min="1" value="1" class="form-control" id="orderqty" aria-describedby="orderqtyhelp" name="orderqty">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="orderqty">{{$activity->satuan}}</label>
-              </div>
-            </div>
-            @endif
             <div class="form-group">
-              <label for="dateDari">Tanggal Tugas</label>
-              <input required type="date" class="form-control @error('dateDari') is-invalid @enderror" id="dateDari" aria-describedby="dateDariHelp" name="dateDari">
-              @error('dateDari')
+              <label for="kodeasdos">Kode Asdos</label>
+              <input required type="text" value="{{$transaction->asdos}}" class="form-control @error('kodeasdos') is-invalid @enderror" id="kodeasdos" aria-describedby="kodeasdoshelp" name="kodeasdos">
+              @error('kodeasdos')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
               </span>
               @enderror
-              <small id="dateDariHelp" class="form-text text-muted">Tanggal perkiraan asisten yang dipilih mulai bertugas.</small>
+              <small id="kodeasdoshelp" class="form-text text-muted">Masukan kode Asdos berupa angka.<br>
+                @if(isset($filter->url))
+                <div class="row ml-1">
+                  <a href="{{$filter->url}}"><i class="far fa-edit float-sm-left"></i> Cari Dengan Kriteria</a>
+                </div>
+                @endif
+                <div class="row ml-1"><a href="{{route('filterbyactivity',$transaction->activity_id)}}"><i class="far fa-edit float-sm-left"></i> Cari Berdasarkan Kegiatan.</a>
+                </div>
+                <div class="row ml-1"><a href="{{route('changetransaction',$transaction->id)}}"><i class="far fa-edit float-sm-left"></i> Lihat Seluruh Asdos</a>
+                </div>
+              </small>
             </div>
+
+
             <div class="form-group">
-              <label for="dateSampai">Tanggal Selesai</label>
-              <input required type="date" class="form-control @error('dateSampai') is-invalid @enderror" id="dateSampai" aria-describedby="dateSelesaiHelp" name="dateSampai">
-              @error('dateSampai')
+              <label for="biaya">Biaya</label>
+              <input required type="text" value="{{$transaction->biaya}}" class="form-control @error('biaya') is-invalid @enderror" id="biaya" aria-describedby="biayahelp" name="biaya">
+              @error('biaya')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
               </span>
               @enderror
-              <small id="dateSelesaiHelp" class="form-text text-muted">Tanggal perkiraan asisten yang dipilih selesai bertugas.</small>
+              <small id="biayahelp" class="form-text text-muted">Total biaya (belum dikurangi diskon)</small>
             </div>
+
+            <div class="form-group">
+              <label for="diskon">Diskon</label>
+              <input required type="text" value="{{$transaction->total_discount}}" class="form-control @error('diskon') is-invalid @enderror" id="diskon" aria-describedby="diskonhelp" name="diskon">
+              @error('diskon')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+              <small id="diskonhelp" class="form-text text-muted">Besaran yang akan mengurangi total biaya.</small>
+            </div>
+
             <div class="form-group">
               <label for="keterangan">Rincian Tugas yang Akan Dikerjakan</label>
-              <textarea required aria-describedby="keteranganHelp" placeholder="mis : Asisten nantinya akan membantu pemerisakaan nilai mahasiswa, dsb " name="keterangan" class="form-control @error('dateSampai') is-invalid @enderror" id="keterangan" rows="5"></textarea>
+              <textarea required aria-describedby="keteranganHelp" placeholder="mis : Asisten nantinya akan membantu pemerisakaan nilai mahasiswa, dsb " name="keterangan" class="form-control @error('dateSampai') is-invalid @enderror" id="keterangan" rows="5">{{$transaction->keterangan}}</textarea>
               @error('keterangan')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -136,27 +117,8 @@
               @enderror
               <small id="keteranganHelp" class="form-text text-muted">Keterangan harap ditulis selengkap mungkin.</small>
             </div>
-            <input type="hidden" value="{{$currenturl}}" name="currenturl"/>
-            <div class="form-group">
-              <div hidden id="discountsuccess" class="alert alert-success" role="alert">
-              </div>
-              <input type="hidden" id="discountcode" name="discountcode" value="0">
-
-              <button type="button" id="discountbtnbasic" data-toggle="modal" data-target="#discountdialog" class="btn btn-sm btn-success">Punya Kode Diskon ?</button>
-              <small id="discounthelp" class="form-text text-muted">Klik tombol di atas apabila Punya kode diskon.</small>
-            </div>
-
-
-            <div class="form-group">
-              <label for="biaya">Perkiraan Biaya</label>
-              @if(strtolower($activity->satuan)!= "orang")
-              <label aria-describedby="biayahelp" id="biaya">Rp. <label id="biayacontent"></label></label>
-              @else
-              <label aria-describedby="biayahelp" id="biaya">Rp. <label id="biayacontent">{{$activity->harga}}</label></label>
-              @endif
-              <small id="biayahelp" class="form-text text-muted">*Biaya tersebut adalah biaya dasar belum termasuk biaya tambahan seperti print, beli pulpen, dll (jika ada).</small>
-            </div>
-            <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary btn-lg btn-block">Lanjutkan Pemesanan</button>
+            <input type="hidden" name="id" value="{{$transaction->id}}">
+            <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary btn-lg btn-block">Simpan Perubahan</button>
         </div>
         </form>
       </div>
@@ -181,7 +143,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

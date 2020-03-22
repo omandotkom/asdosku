@@ -94,6 +94,15 @@
           @case('pendingpayout')
           @include('layouts.operational.pendingpayoutlist')
           @break
+          @case('dosenlist')
+          @include('layouts.operational.dosen')
+          @break
+          @case('viewAsdoswithFilter')
+          @include('layouts.dosen.rowasdos')
+          @break
+          @case('changetransaction')
+          @include('layouts.operational.changeorder')
+          @break
           @case('pesananasdoslist')
           @include('layouts.operational.pendinglist')
           @break

@@ -43,5 +43,15 @@ class OrderWasCreatedListener
             ]);
             //EmailJob::dispatchNow($t, new EmailNotification($mailContent));
         }
+        $asdos = User::where('id',$event->asdos)->first();
+        Pemberitahuan::create([
+            'to' => $asdos->email,
+            'subject' => 'Notifikasi Asdosku',
+            'judul' => "Kak ".$asdos->name." , ada orderan baru nih, cek ke website kita ya untuk segera disetujui. Jangan lupa lihat rinciannya dulu kak",
+            'isi' => "Lihat Pesanan Pending",
+            'url' => route('login'),
+            'status' => 'unsent'
+        ]);
+        
     }
 }

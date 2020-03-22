@@ -12,23 +12,23 @@
                 document.getElementById("detilSemester").innerHTML = response.data.semester;
                 document.getElementById("detilKomentar").innerHTML = response.data.commentcount;
                 $("#detilKomentar").attr("href", response.data.commentlink);
-                if (response.data.cv_path != "#"){
+                if (response.data.cv_path != "#") {
                     $("#detilCV").attr("href", response.data.cv_path);
                     $("#rowcv").show();
-                }else{
+                } else {
                     $("#rowcv").hide();
                 }
-                if (response.data.another_file_path != "#"){
+                if (response.data.another_file_path != "#") {
                     $("#detilNilai").attr("href", response.data.cv_path);
                     $("#rownilai").show();
-                }else{
+                } else {
                     $("#rownilai").hide();
                 }
-                
+
                 document.getElementById("detilGender").innerHTML = response.data.gender;
                 document.getElementById("detilCreated").innerHTML = response.data.created_at;
                 document.getElementById("detilFoto").src = response.data.image_name;
-                
+
             })
             .catch(function(error) {
                 // handle error
@@ -50,9 +50,8 @@
     function order(activity, user) {
         var url = "{{url('/dashboard/index/dosen/order')}}";
         url = url.concat("/");
-        url = url.concat(activity).concat("/").concat(user);
+        url = url.concat(activity).concat("/").concat(user).concat("/{{$currenturl}}");
         window.open(url, '_blank');
-        console.log(url);
     }
 </script>
 <div class="modal fade" id="detilDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -130,6 +129,12 @@
                     <!--<p class="h3 mt-2">{{$asdos->name}}</p>-->
                     <div class="table-responsive-sm">
                         <table class="table">
+                            @if(Auth::user()->role =="operational")
+                            <tr>
+                                <th>Kode Asdos</th>
+                                <td>{{$asdos->id}}</td>
+                            </tr>
+                            @endif
                             <tr>
                                 <th>Nama</th>
                                 <td>{{$asdos->name}}</td>
@@ -150,8 +155,9 @@
                     </div>
 
                     <button type="button" onclick="userDetil(generateURL('{{$asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Lihat Rincian</button>
-
+                    @if(Auth::user()->role == "dosen")
                     <button type="button" onclick="order('{{$activity}}','{{$asdos->id}}');" class="btn btn-outline-primary btn-block btn-sm mt-2">Pilih</button>
+                    @endif
                 </div>
             </div>
         </div>

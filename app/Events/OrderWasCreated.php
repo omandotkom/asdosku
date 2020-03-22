@@ -20,9 +20,11 @@ class OrderWasCreated
      * @return void
      */
     public $dosen;
-    public function __construct(User $dosen)
+    public $asdos;
+    public function __construct(User $dosen, $asdos)
     {
         $this->dosen = $dosen;
+        $this->asdos = $asdos;
     }
 
     /**

@@ -62,10 +62,14 @@ Route::get('/dashboard/index/operational/currentransaction/view','TransactionCon
 Route::get('/dashboard/index/operational/payoutransaction/view','TransactionController@payouttransaction')->name('viewpesananpayout')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@showconfirpayouts')->name('viewpendingpayout')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory')->middleware('auth');
+Route::get('/dashboard/index/operational/transaction/change/{id?}','TransactionController@changetransaction')->name('changetransaction')->middleware('auth','operational');
+Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}','FilterAsdosController@filterbyactivity')->name('filterbyactivity')->middleware('auth','operational');
+Route::post('/dashboard/index/operational/transaction/change/save','TransactionController@savechangedtransaction')->name('savechangedtransaction')->middleware('auth','operational');
+Route::get('/dashboard/index/operational/view/dosen','DosenController@view')->name('viewdosen')->middleware('auth','operational');
 
-Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth','dosen');
-Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth','dosen');
-Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth','dosen');
+Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
+Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');
+Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
 Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
 

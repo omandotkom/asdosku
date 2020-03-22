@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\URL;
 class FilterAsdosController extends Controller
 {
     public function bimbinganbelajarview($activity, $gender)
@@ -22,7 +23,8 @@ class FilterAsdosController extends Controller
             ->join('activities', 'prefers.activity_id', 'activities.id')
             ->where('prefers.activity_id', $activity)->where('users.status', 'aktif')
             ->whereRaw($strWhere)->simplePaginate();
-        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+            $url = base64_encode(URL::current());
+            return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender)
     {
@@ -58,7 +60,8 @@ class FilterAsdosController extends Controller
             ->whereRaw($strJurusan)
             ->whereRaw($strGender)->where('users.status', 'aktif')
             ->simplePaginate();
-        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+            $url = base64_encode(URL::current());
+            return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function generalView($activity,$kampus,$jurusan)
     {
@@ -83,7 +86,20 @@ class FilterAsdosController extends Controller
             ->whereRaw($strKampus)
             ->whereRaw($strJurusan)->where('users.status', 'aktif')
             ->simplePaginate();
-        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+            $url = base64_encode(URL::current());
+            return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
+    }
+    public function filterbyactivity($activity){
+        $activity = Activity::find($activity);
+        $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+        ->join('details', 'prefers.user_id', 'details.user_id')
+        ->join('kampus', 'details.kampus_id', 'kampus.id')
+        ->join('activities', 'prefers.activity_id', 'activities.id')
+        ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
+        ->where('prefers.activity_id', $activity->id)->where('users.status', 'aktif')
+        ->simplePaginate();
+        $url= "#";
+        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen '.$activity->name, 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function filterbycampus($kampus_id){
         //for marketing only
@@ -94,8 +110,7 @@ class FilterAsdosController extends Controller
      ->where('details.kampus_id',$kampus_id)
      ->where('users.status','aktif')
      ->simplePaginate(20);
-     
-     return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
-     
+     $url = base64_encode(URL::current());
+     return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
      }
 }

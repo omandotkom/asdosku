@@ -49,10 +49,10 @@ class TransactionController extends Controller
             ->where('transactions.id', $id)->first();
         //return response()->json($transaction);
         //event(new RequestEndTransaction($transaction));
-    //TODO : SEDANG BINGING
+        //TODO : SEDANG BINGING
         //return back()->with('success','Be')
-        $s = "request selesai layanan untuk kode transaksi ".$transaction->id." atas nama ".$transaction->name.", terimakasih.";
-        $url = "https://wa.me/6285643715830?text=".rawurlencode($s);
+        $s = "request selesai layanan untuk kode transaksi " . $transaction->id . " atas nama " . $transaction->name . ", terimakasih.";
+        $url = "https://wa.me/6285643715830?text=" . rawurlencode($s);
         return redirect($url);
     }
     public function showcosthistory($id)
@@ -92,7 +92,7 @@ class TransactionController extends Controller
     }
     public function store(Request $request, $activity, $asdos)
     {
-        
+
         $validator = Validator::make($request->all(), [
             'dateDari' => ['required', 'date', 'max:255'],
             'dateSampai' => ['required', 'date', 'max:255'],
@@ -132,7 +132,7 @@ class TransactionController extends Controller
         }
         $transaction->biaya = $totalBiaya;
         $transaction->save();
-        if (isset($request->currenturl)){
+        if (isset($request->currenturl)) {
             $filter = new Filter;
             $filter->transaction_id = $transaction->id;
             $filter->url = $request->currenturl;
@@ -190,7 +190,8 @@ class TransactionController extends Controller
             ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Asistensi Berjalan', 'content' => 'berjalanlist']);
     }
-    public function payouttransaction(){
+    public function payouttransaction()
+    {
         $transaction = Transaction::where('transactions.status', 'Menunggu Pembayaran')
             ->select(
                 'transactions.*',
@@ -204,7 +205,6 @@ class TransactionController extends Controller
             ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
         //return $transaction;
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pesanan yang Menunggu Pembayaran', 'content' => 'berjalanlist']);
-   
     }
     public function pendingtransaction()
     {
@@ -265,6 +265,52 @@ class TransactionController extends Controller
                 'activity' => $activity,
                 'content' => 'order',
                 'currenturl' => $url
+            ]
+        );
+    }
+    public function savechangedtransaction(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric', 'max:255'],
+            'kodeasdos' => ['required', 'numeric', 'max:255'],
+            'biaya' => ['required','numeric'],
+            'diskon' => ['required','numeric'],
+            'keterangan' => ['required', 'string', 'min:10'],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $transaction = Transaction::find($request->id);
+        $transaction->asdos = $request->kodeasdos;
+        $transaction->biaya = $request->biaya;
+        $transaction->total_discount = $request->diskon;
+        $transaction->keterangan = $request->keterangan;
+        $transaction->save();
+        return back()->with(['success' => 'Berhasil memperbarui informasi transaksi dengan kode '.$transaction->id]);
+    }
+    public function changetransaction($id){
+        $transaction = Transaction::find($id);
+        $dosen = DB::table('users')->select('users.*','details.*')->join('details','details.user_id','users.id')->where('users.id',$transaction->dosen)->first();
+        $asdos = User::with('archive', 'detail')->where('users.id', $transaction->asdos)->first();
+        $kampus = Campus::select('name as kampus')->where('id', $asdos->detail->kampus_id)->first();
+        $activity = Activity::with('service')->where('id', $transaction->activity_id)->first();
+        
+        $filter = Filter::where('transaction_id',$transaction->id)->first();
+        if (isset($filter))
+            $filter->url = base64_decode($filter->url);
+        
+            return view(
+            'maindashboard.index',
+            [
+                'title' => 'Ubah Pesanan',
+                'asdos' => $asdos,
+                'kampus' => $kampus,
+                'activity' => $activity,
+                'dosen' => $dosen,
+                'filter' => $filter,
+                'transaction' => $transaction,
+                'content' => 'changetransaction',
+                
             ]
         );
     }

@@ -314,7 +314,7 @@
 
             <!-- Card Body -->
             <div class="card-body">
-
+            <a href="{{route('changetransaction',$transaction->id)}}"><i class="far fa-edit float-sm-right"><small> ubah</small></i></a>
                 <div class="mt-4 small">
 
                     <div class="table-responsive-sm">
