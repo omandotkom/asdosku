@@ -74,6 +74,8 @@ Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}',
 Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
 Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
-
+Route::get('/pass/{p?}',function($p){
+    return Hash::make($p);
+});
 
 
