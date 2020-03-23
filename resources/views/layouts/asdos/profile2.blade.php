@@ -23,7 +23,7 @@ $picname = basename($path, ".png");
 
   }).showToast();
 </script>
-@endif>
+@endif
 <div class="container">
   <div class="row">
 
