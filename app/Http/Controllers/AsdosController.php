@@ -40,8 +40,21 @@ class AsdosController extends Controller
         //$campuses = Campus::all();
         //$jurusans = Jurusans::orderBy('name', 'asc')->get();
         $bank = Bank::where('user_id', Auth::user()->id)->first();
+        $services = Service::with('activities')->get();
+        $campuses = Campus::all();
+        $jurusans = Jurusans::orderBy('name', 'asc')->get();
 
-        return view('maindashboard.index', ['content' => 'profile', 'bank' => $bank, 'prefer' => $preferArr, 'imageurl' => $image_url, 'archive' => $archive, 'services' => $services, 'title' => 'Kegiatan dan Foto Profile']);
+        return view('maindashboard.index', [
+            'content' => 'profile',
+            'bank' => $bank,
+            'prefer' => $preferArr,
+            'imageurl' => $image_url,
+            'archive' => $archive,
+            'services' => $services,
+            'campuses' => $campuses,
+            'jurusans' => $jurusans,
+            'title' => 'Kegiatan dan Foto Profile '.Auth::user()->id,
+        ]);
     }
 
     public function updatePreferAsdos(Request $request)
@@ -103,7 +116,7 @@ class AsdosController extends Controller
     }
     public function profile($id)
     {
-        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'archives.cv_path','archives.another_file_path', 'jurusans.name as jurusan', 'kampus.name as kampus')
+        $user = DB::table('users')->select('users.name', 'details.*', 'rates.rating', 'archives.image_name', 'archives.cv_path', 'archives.another_file_path', 'jurusans.name as jurusan', 'kampus.name as kampus')
             ->selectRaw('now() as commentcount')
             ->selectRaw("null as commentlink")
             ->join('details', 'users.id', 'details.user_id')
@@ -127,9 +140,9 @@ class AsdosController extends Controller
             $user->cv_path = "#";
         }
 
-        if (isset($user->another_file_path)){
-            $user->another_file_path = asset('storage/'.$user->another_file_path);
-        }else{
+        if (isset($user->another_file_path)) {
+            $user->another_file_path = asset('storage/' . $user->another_file_path);
+        } else {
             $user->another_file_path = "#";
         }
         //filter rating biar ga null

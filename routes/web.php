@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Artisan;
 //Route::get('/', 'HomeController@index');
 
 Auth::routes(['verify' => true]);
+Route::get('/forgot',function(){
+    return view('auth.forgot');
+})->name('forget')->middleware('guest');
+Route::post('/forgot/send','Auth\ForgotPasswordController@forgot')->name('forgotpasswordsend')->middleware('guest');
 Route::get('/', function () {
     return view('home');
 })->middleware('guest')->name('rumah');
@@ -74,7 +78,7 @@ Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}',
 Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
 Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
-Route::get('/pass/{p?}',function($p){
+Route::post('/pass/{p?}',function($p){
     return Hash::make($p);
 });
 

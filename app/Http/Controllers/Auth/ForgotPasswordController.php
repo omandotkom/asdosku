@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
@@ -17,6 +18,12 @@ class ForgotPasswordController extends Controller
     | your application to your users. Feel free to explore this trait.
     |
     */
+    public function forgot(Request $request)
+    {
 
-    use SendsPasswordResetEmails;
+        $s = "#LupaPassword untuk email: ".$request->email;
+        $url = "https://wa.me/6287719357776?text=" . rawurlencode($s);
+        return redirect($url);
+    }
+    //use SendsPasswordResetEmails;
 }

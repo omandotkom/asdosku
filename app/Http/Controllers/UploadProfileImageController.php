@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 use App\Archive;
 use App\Bank;
+use App\Detail;
+use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
@@ -26,6 +28,16 @@ class UploadProfileImageController extends Controller
     }
     public function upload(Request $request)
     {
+        User::where('id',Auth::user()->id)->update(['name' => $request->accountname]);
+            
+        Detail::where('user_id',Auth::user()->id)->update([
+           'kampus_id' => $request->kampus,
+           'wa' => $request->wa,
+           'semester' => $request->semester,
+           'jurusan_id' => $request->jurusan,
+           'alamat' => $request->alamat,
+           'gender' => $request->gender
+       ]);
         $bank = Bank::where('user_id', Auth::user()->id)->first();
         $archive = Archive::where('user_id', Auth::user()->id)->first();
         if ($request->hasFile('cv')) {
@@ -114,8 +126,9 @@ class UploadProfileImageController extends Controller
         $image_url = $image_url . "/" . $archive->image_name;
 
         //return $image_url;
+        //update nama lengkap
+       
 
-        //update data bank
         return redirect()->back()->with(['success' => 'Berhasil memperbarui biodata.', 'imgurl' => $image_url, 'bank' => $bank,'archive' => $archive]);
     }
 }
