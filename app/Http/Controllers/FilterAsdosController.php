@@ -101,6 +101,17 @@ class FilterAsdosController extends Controller
         $url= "#";
         return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen '.$activity->name, 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
+    public function showAll(){
+        $asdosList = DB::table('users')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender")
+        ->join('details', 'users.id', 'details.user_id')
+        ->join('kampus', 'details.kampus_id', 'kampus.id')
+        ->leftJoin('rates', 'users.id', 'rates.user_id')
+        ->where('users.status', 'aktif')
+        ->simplePaginate();
+        $url= "#";
+        return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten Dosen ', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
+        
+    }
     public function filterbycampus($kampus_id){
         //for marketing only
      $asdosList = DB::table("users")->select("users.*","details.kampus_id", "details.wa","details.gender","details.semester", "details.alamat","details.jurusan_id","kampus.name as kampus","jurusans.name as jurusan")

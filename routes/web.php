@@ -45,7 +45,7 @@ Route::get('/dashboard/index/asdos/profile', 'AsdosController@profileAsdos')->na
 Route::post('/dashboard/index/asdos/profile/uploadprofilepic','UploadProfileImageController@upload')->name('uploadProfileAsdos')->middleware('auth','asdos');
 Route::post('/dashboard/index/asdos/profile/updateprefer','AsdosController@updatePreferAsdos')->name('updatePreferAsdos')->middleware('auth','asdos');
 Route::get('/dashboard/index/asdos/currentransaction/view/{status}','TransactionController@viewtransactionasdosbystatus')->name('viewpesananasdosbystatus')->middleware('auth','asdos');
-Route::get('/dashboard/index/asdos/requestorder/view','TransactionController@pendingtransactionbyasdos')->name('asdosrequestorder')->middleware('auth','asdos');
+Route::get('/dashboard/index/asdos/requestorder/view','TransactionController@pendingtransactionbyasdos')->name('asdosrequestorder')->middleware('auth');
 Route::get('/dashboard/index/asdos/commentrating/{user_id?}','CommentController@viewasdoscomments')->name('viewcommentratingbyuser')->middleware('auth');
 
 Route::get('/dasbboard/index/dosen/payout/all','PayoutController@viewallpayouts')->name('showallpayout')->middleware('auth','dosen');
@@ -67,6 +67,7 @@ Route::get('/dashboard/index/operational/transaction/change/{id?}','TransactionC
 Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}','FilterAsdosController@filterbyactivity')->name('filterbyactivity')->middleware('auth','operational');
 Route::post('/dashboard/index/operational/transaction/change/save','TransactionController@savechangedtransaction')->name('savechangedtransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/view/dosen','DosenController@view')->name('viewdosen')->middleware('auth','operational');
+Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAll')->name('viewasdos')->middleware('auth','operational');
 
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');

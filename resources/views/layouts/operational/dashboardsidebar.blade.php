@@ -28,6 +28,16 @@
         Layanan
     </div>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('viewasdos')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>List Asdos</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('viewdosen')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>List Dosen</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('viewpendingtransaction')}}">
             <i class="fas fa-fw fa-dot-circle"></i>
             <span>Pesanan Pending</span></a>

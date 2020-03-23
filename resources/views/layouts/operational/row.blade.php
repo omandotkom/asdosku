@@ -4,7 +4,7 @@
     <div class="card shadow mb-4">
 
       <div class="card-header" id="persetujuan">
-        <button type="button" onclick='gotoPendingPesananView();' class="btn float-right btn-sm btn-light">
+        <button type="button" onclick='gotoAsdosView();' class="btn float-right btn-sm btn-light">
           Lihat Asdos <span class="badge badge-primary">{{ $asdos }}</span>
         </button>
       </div>
@@ -15,7 +15,7 @@
         <div class="mt-4 text-center small">
           <i class="fas fa-fw fa-hands-helping fa-7x"></i>
           <p class="h3 mt-2">Lihat Asdos</p>
-          <button type="button" onclick='gotoPendingPesananView();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+          <button type="button" onclick='gotoAsdosView();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
         </div>
       </div>
 
@@ -150,5 +150,8 @@
     }
     function gotoDosenView(){
       window.location = "{{route('viewdosen')}}";
+    }
+    function gotoAsdosView(){
+      window.location = "{{route('viewasdos')}}";
     }
   </script>

@@ -13,7 +13,7 @@ class SampleUserDetailTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i = 1; $i < 6; $i++) {
+        for ($i = 1; $i < 100; $i++) {
             $user =  App\User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,

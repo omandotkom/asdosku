@@ -94,6 +94,9 @@
           @case('pendingpayout')
           @include('layouts.operational.pendingpayoutlist')
           @break
+          @case('viewcomments')
+          @include('layouts.asdos.commentrating')
+          @break
           @case('dosenlist')
           @include('layouts.operational.dosen')
           @break

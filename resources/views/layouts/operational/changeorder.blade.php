@@ -79,7 +79,7 @@
                 @endif
                 <div class="row ml-1"><a href="{{route('filterbyactivity',$transaction->activity_id)}}"><i class="far fa-edit float-sm-left"></i> Cari Berdasarkan Kegiatan.</a>
                 </div>
-                <div class="row ml-1"><a href="{{route('changetransaction',$transaction->id)}}"><i class="far fa-edit float-sm-left"></i> Lihat Seluruh Asdos</a>
+                <div class="row ml-1"><a href="{{route('viewasdos')}}"><i class="far fa-edit float-sm-left"></i> Lihat Seluruh Asdos</a>
                 </div>
               </small>
             </div>
