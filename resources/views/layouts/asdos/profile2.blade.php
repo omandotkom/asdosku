@@ -52,8 +52,8 @@ $picname = basename($path, ".png");
               </div>
             </div>
         </div>
-        <h5 class="card-title">Rekening</h5>
-        <div class="w-50">
+        <h4 class="card-title text-center">Rekening</h5>
+        <div class="w-100">
           <div class="form-group">
             <label for="nama">Atas nama Rekening</label>
             <input required type="text" aria-describedby="namahelp" placeholder="Agus Hendra" class="form-control" id="nama" name="nama" value="@if(isset($bank->nama)) {{$bank->nama}} @endif">
@@ -75,7 +75,8 @@ $picname = basename($path, ".png");
               Isi dengan nomor rekening, untuk e-money isi dengan nomor akun.
             </small>
           </div>
-
+          <h4 class="card-title text-center">Biodata</h5>
+        
           <div class="form-group">
             <label for="accountname">{{ __('Nama') }}</label>
 
