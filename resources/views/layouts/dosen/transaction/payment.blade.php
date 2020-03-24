@@ -7,9 +7,39 @@ $totalbiaya = 0;
 
 
 <div class="container">
+  @handheld
+  <script>
+    $(document).ready(function() {
+      $('#warningmodal').modal({
+        backdrop: 'static',
+        keyboard: false,
+        show: true,
+        focus: true
+      });
+    });
+  </script>
+  <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="warningmodaltitle">Informasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Anda mengakses halaman ini melalui perangkat smartphone/tablet. Jika ada teks terpotong, rotasikan gadget Anda menjadi <b>landscape</b> untuk hasil yang lebih optimal.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endhandheld
   <div class="row">
 
-    <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card shadow mx-auto p-1 mb-5 bg-white rounded">
 
       <div class="card-body">
         <h5 class="card-title text-center">Pembayaran</h5>
@@ -102,6 +132,31 @@ $totalbiaya = 0;
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
           </div>
+          <label>Penilaian Situs Asdosku</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="webscore" id="puas" value="puas" checked>
+            <label class="form-check-label" for="puas">
+              Puas
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="webscore" id="cukuppuas" value="cukup_puas">
+            <label class="form-check-label" for="cukuppas">
+              Cukup Puas
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="webscore" id="cukupburuk" value="cukup_buruk">
+            <label class="form-check-label" for="cukupburuk">
+              Cukup Buruk
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="webscore" id="buruk" value="buruk">
+            <label class="form-check-label" for="buruk">
+              Buruk
+            </label>
+          </div>
           <input type="hidden" name="transaction_id">
 
           <h5 class="card-title text-center mt-1">Metode Pembayaran</h5>
@@ -135,7 +190,7 @@ $totalbiaya = 0;
               </tr>
             </tbody>
           </table>
-        <h5 class="card-title text-center mt-1">Cara Membayar</h5>
+          <h5 class="card-title text-center mt-1">Cara Membayar</h5>
           <ol>
             <li>Pilih salah satu metode pembayaran yang tertera di atas.</li>
             <li>Nominal yang harus di transfer adalah <b>Rp. {{$totalbiaya}}.</b></li>

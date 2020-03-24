@@ -43,8 +43,9 @@ class TransactionController extends Controller
         }
         return $transaction;
     }
-    public function requestSelesai($id)
+    public function requestdone($id)
     {
+        return "akhrnya disini";
         $transaction = DB::table('transactions')->select('transactions.*', 'users.name')->join('users', 'transactions.dosen', 'users.id')
             ->where('transactions.id', $id)->first();
         //return response()->json($transaction);

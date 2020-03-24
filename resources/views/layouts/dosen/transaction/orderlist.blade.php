@@ -1,49 +1,18 @@
 <script>
     var deleteUrl;
     var selectedID;
-
-    function generateSelesaiURL(id) {
-        selectedID = id;
-        //selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
-        selesaiURL = "{{route('requestselesai')}}";
-        selesaiURL = selesaiURL.concat("/").concat(selectedID);
+    var selesaiURL;
+    
+    function generateSelesaiURLNew(link){
+         selesaiURL = link;
     }
 
     function gotoHistoris(url) {
         window.location = url;
     }
     function selesaiLayananNew(){
+        console.log("Menuju lokasi ".concat(selesaiURL));
         window.location = selesaiURL;
-    }
-    function selesailayanan() {
-        axios.get(selesaiURL)
-            .then(function(response) {
-                // handle success
-                Toastify({
-                    backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
-
-                    text: "Berhasil merubah status transaksi menjadi ".concat(response.data.status),
-
-                    duration: 3000
-
-                }).showToast();
-                location.reload(true);
-
-
-            })
-            .catch(function(error) {
-                // handle error
-                Toastify({
-                    backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
-                    text: error,
-
-                    duration: 3000
-
-                }).showToast();
-            })
-            .then(function() {
-                // always executed
-            });
     }
 
     function userDetil(url) {
@@ -321,8 +290,11 @@
                     @endif
                     @break
                     @case('Berjalan')
-                    {{--<button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Request Selesaikan Layanan</button> --}}
-                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Request Selesaikan Layanan</button>
+                    @php
+                    $text = "request selesai layanan untuk kode transaksi " . $transaction->id . " atas nama " . Auth::user()->name . ", terimakasih.";
+                    $url = "https://wa.me/6285643715830?text=" . rawurlencode($text);
+                    @endphp
+                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURLNew('{{$url}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Request Selesaikan Layanan</button>
                     
                     @break
                     @endswitch

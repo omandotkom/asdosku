@@ -1,5 +1,24 @@
 <div class="container">
   @handheld
+  
+  <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="warningmodaltitle">Informasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Anda mengakses halaman ini melalui perangkat smartphone/tablet. Jika ada teks terpotong, rotasikan gadget Anda menjadi <b>landscape</b> untuk hasil yang lebih optimal.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
     $(document).ready(function() {
       $('#warningmodal').modal({backdrop: 'static', keyboard: false, show:true, focus: true});
@@ -7,8 +26,7 @@
   </script>
   @endhandheld
   <div class="row d-flex justify-content-center">
-    <div class="col-sm-6">
-      <div class="card shadow p-3 mb-5 bg-white rounded">
+      <div class="card shadow p-1 mb-5 bg-white rounded">
 
         <div class="card-body">
           <h5 class="card-title text-center">Rincian Kegiatan dan Asdos</h5>
@@ -160,7 +178,10 @@
         </div>
         </form>
       </div>
-    </div>
+  
+  
+  
+  
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -182,24 +203,6 @@
     </div>
   </div>
   
-  <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="warningmodaltitle">Informasi</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Anda mengakses halaman ini melalui perangkat smartphone/tablet. Jika ada teks terpotong, rotasikan gadget Anda menjadi <b>landscape</b> untuk hasil yang lebih optimal.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 </div>

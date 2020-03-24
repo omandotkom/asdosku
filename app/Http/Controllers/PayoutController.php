@@ -15,6 +15,7 @@ use App\Cost;
 use App\Events\OrderWaitingPaymentConfirmation;
 use App\Events\PaymentWaitingConfirmation;
 use App\Rate;
+use App\Webscore;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -98,6 +99,10 @@ class PayoutController extends Controller
         
         //   return asset("storage/".$path); 
         //return Storage::download($path);
+        $webscore = new Webscore;
+        $webscore->user_id = Auth::user()->id;
+        $webscore->level = $request->webscore;
+        $webscore->save();
         event(new OrderWaitingPaymentConfirmation(Auth::user(),$payout));
         return redirect()->route('showUserOrder')->with(['success' => 'Pembayaran Anda berhasil masuk ke sistem dan sedang dalam antrian pemeriksaan oleh team Asdosku :)']);
     }
