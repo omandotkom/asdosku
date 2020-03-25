@@ -211,8 +211,9 @@
 
             <!-- Card Body -->
         <div class="card-body">
+            @if(Auth::user()->role == "operational")
             <a href="{{route('changetransaction',$transaction->id)}}"><i class="far fa-edit float-sm-right"><small> ubah</small></i></a>
-            
+            @endif
                 <div class="mt-4 small">
 
                     <div class="table-responsive-sm">
@@ -224,11 +225,12 @@
                                 </td>
                             </tr>
                             <tr class="bg-info text-white">
-                                <th>Nama Dosen</th>
+                                
+                                <th>Nama Pelanggan</th>
                                 <td>{{$transaction->dosen}} <b>({{$transaction->kampus}})</b></td>
                             </tr>
                             <tr>
-                                <th>WA Dosen</th>
+                                <th>WA Pelanggan</th>
                                 <td>{{$transaction->wa}}</td>
                             </tr>
                             <tr>

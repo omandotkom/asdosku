@@ -112,7 +112,7 @@ class AsdosController extends Controller
                     ->simplePaginate();
                 break;
         }
-        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten Dosen', 'content' => 'viewAsdoswithFilter']);
+        return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter']);
     }
     public function profile($id)
     {

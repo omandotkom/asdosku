@@ -43,6 +43,9 @@
       window.location = "{{ url('/registerasdos') }}";
     }
 
+    function gotoRegisterMahasiswa(){
+      window.location = "{{ url('/register/mahasiswa') }}";   
+    }
     function gotoLogin() {
       window.location = "{{ url('/login') }}";
     }

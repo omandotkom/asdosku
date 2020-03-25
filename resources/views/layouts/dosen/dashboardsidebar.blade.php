@@ -25,7 +25,13 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
+        @if(Auth::user()->subrole == "mahasiswa")
+        <div class="sidebar-brand-text mx-3">Mahasiswa</div>
+        
+        @else
         <div class="sidebar-brand-text mx-3">Dosen</div>
+        
+        @endif
     </a>
 
     <!-- Divider -->

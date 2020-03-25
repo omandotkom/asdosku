@@ -7,7 +7,7 @@ FAQ <b>--Dimohon Membaca FAQ--</b>
     <dt class="col-sm-3 border-top">Bagaimana mengatasi Error 403 This action is unauthorized ?</dt>
     <dd class="col-sm-9 border-top">Ini biasanya <b>terjadi jika Anda membuka link verifikasi akun melalui browser bawaan aplikasi Gmail atau melalui browser yang berbeda dengan yang dipakai login </b>. Solusinya adalah copy link verifikasi dan paste di kolom URL browser yang dipakai untuk login.</dd>
 
-    <dt class="col-sm-3 border-top">Bagaimana alur registrasi akun bagi Dosen / Pengelola Kampus ?</dt>
+    <dt class="col-sm-3 border-top">Bagaimana alur registrasi akun bagi Dosen / Pengelola Kampus / Mahasiswa ?</dt>
     <dd class="col-sm-9 border-top">Pertama, melakukan registrasi di halaman pendaftaran, setelah itu verifikasi email di halaman ini.</dd>
 
     <dt class="col-sm-3 border-top">Bagaimana alur registrasi akun bagi Asdos ?</dt>

@@ -107,6 +107,42 @@ class RegisterController extends Controller
             return redirect('/dashboard');
         }
     }
+
+    protected function registerasmahasiswa(Request $data)
+    {
+        $validator = Validator::make($data->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'kampus' => ['required', 'string', 'min:3'],
+            'nik' => ['required', 'min:5'],
+            //this is optinal, so dosen always verified
+            
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $user =  User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'status' => 'aktif',
+            'role' => 'dosen',
+            'subrole' => 'mahasiswa',
+           // 'email_verified_at' =>  Carbon::now()->toDateTimeString()
+        ]);
+        $details = Detail::create([
+            'user_id' => $user->id,
+            'kampus_dosen' => $data['kampus'],
+            'wa' => $data['wa'],
+            'nik' => $data['nik'],
+        ]);
+
+        if ($details->exists) {
+            return redirect('/dashboard');
+        }
+    }
     protected function registerasdosShow()
     {
         $services = Service::with('activities')->get();

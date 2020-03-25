@@ -10,7 +10,8 @@
             <div class="modal-body">
                 Bergabung Sebagai
                 <button type="button" onclick='gotoRegisterDosen();' class="btn btn-primary mt-1 btn-sm btn-block">Dosen / Pengelola</button>
-                <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-primary btn-sm btn-block">Asdos</button>
+                <button type="button" onclick='gotoRegisterMahasiswa();' class="btn btn-primary mt-1 btn-sm btn-block">Mahasiswa <label class="bg-warning text-dark">(baru!)</label></button>
+                <button type="button" onclick='gotoRegisterAsdos();' class="btn btn-success btn-sm btn-block">Asdos</button>
             </div>
         </div>
     </div>

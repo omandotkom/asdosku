@@ -37,6 +37,10 @@
             window.location = "{{ url('/registerasdos') }}";
         }
 
+        function gotoRegisterMahasiswa() {
+            window.location = "{{ url('/register/mahasiswa') }}";
+        }
+
         function gotoLogin() {
             window.location = "{{ url('/login') }}";
         }
@@ -94,15 +98,20 @@
 @if(Route::currentRouteName()=="registerasdosshow")
 @include('auth.modal.disableasdosregis')
 <script>
-    $(document).ready(function() {$('#disableregis').modal({backdrop: 'static', keyboard: false, show:true, focus: true});
+    $(document).ready(function() {
+        $('#disableregis').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true,
+            focus: true
+        });
     });
-      
 
-    function gotoHome(){
+
+    function gotoHome() {
         var url = "{{route('rumah')}}";
         window.location = url;
     }
- 
 </script>
 @endif
 

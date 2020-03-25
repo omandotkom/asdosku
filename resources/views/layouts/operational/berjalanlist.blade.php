@@ -324,11 +324,11 @@
                                 <td>{{$transaction->id}}</td>
                             </tr>
                             <tr>
-                                <th>Nama Dosen</th>
+                                <th>Nama Pelanggan</th>
                                 <td>{{$transaction->dosen}}</td>
                             </tr>
                             <tr>
-                                <th>WA Dosen</th>
+                                <th>WA Pelanggan</th>
                                 <td>{{$transaction->wa}}</td>
                             </tr>
                             <tr>
