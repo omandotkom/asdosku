@@ -188,32 +188,38 @@
                             <h5 class="mb-1">Menunggu Konfirmasi Asdos</h5>
 
                         </div>
-                        <p class="mb-1">Permintaan bapak/ibu sudah diketahui oleh team Asdosku. Team Asdosku sedang mengonfirmasikan permintaan asistensi ke calon Asdos terkait.</p>
+                        <p class="mb-1">Permintaan Pengguna sudah diketahui oleh team Asdosku. Team Asdosku sedang mengonfirmasikan permintaan asistensi ke calon Asdos terkait.</p>
                     </div>
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Berjalan</h5>
                         </div>
-                        <p class="mb-1">Asdos sedang menjadi asisten Bapak/Ibu dosen.</p>
+                        <p class="mb-1">Asdos sedang menjadi asisten Pengguna.</p>
                     </div>
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Menunggu Pembayaran</h5>
                         </div>
-                        <p class="mb-1">Pihak Asdosku menunggu pembayaran dari bapak/ibu dosen atau sedang proses verifikasi pembayaran.</p>
+                        <p class="mb-1">Pihak Asdosku menunggu pembayaran dari Pengguna atau sedang proses verifikasi pembayaran.</p>
+                    </div>
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Menunggu Konfirmasi Pembayaran</h5>
+                        </div>
+                        <p class="mb-1">Pembayaran sedang di verifikasi oleh team Asdosku.</p>
                     </div>
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Selesai</h5>
                         </div>
-                        <p class="mb-1">Masa kerja Asdos terhadap Bapak/Ibu dosen telah selesai serta Bapak/Ibu sudah membayar tagihan.</p>
+                        <p class="mb-1">Masa kerja Asdos terhadap Pengguna telah selesai serta pembayaran Pengguna sudah diverifikasi.</p>
                     </div>
 
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Dibatalkan</h5>
                         </div>
-                        <p class="mb-1">Bapak/Ibu dosen melakukan pembatalan pemesanan ketika proses pencarian asdos karena ingin mengganti pesanan atau karena alasan lainnya.</p>
+                        <p class="mb-1">Pengguna melakukan pembatalan pemesanan ketika proses pencarian asdos karena ingin mengganti pesanan atau karena alasan lainnya.</p>
                     </div>
                 </div>
             </div>

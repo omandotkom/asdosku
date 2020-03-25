@@ -226,11 +226,11 @@
                             </tr>
                             <tr class="bg-info text-white">
                                 
-                                <th>Nama Pelanggan</th>
+                                <th>Nama Pengguna</th>
                                 <td>{{$transaction->dosen}} <b>({{$transaction->kampus}})</b></td>
                             </tr>
                             <tr>
-                                <th>WA Pelanggan</th>
+                                <th>WA Pengguna</th>
                                 <td>{{$transaction->wa}}</td>
                             </tr>
                             <tr>
