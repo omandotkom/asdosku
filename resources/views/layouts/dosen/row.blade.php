@@ -116,7 +116,6 @@
         </div>
     </div>
     @endif
-    @if(Auth::user()->subrole != "mahasiswa")
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
@@ -126,15 +125,18 @@
                 <div class="mt-4 text-center small">
 
                     <i class="fas fa-fw fa-pencil-alt fa-7x"></i>
+                    @if(Auth::user()->subrole != "mahasiswa")
                     <p class="h3 mt-2">Asisten Karya</p>
+                    @else
+                    <p class="h3 mt-2">Teman Karya</p>
+                    
+                    @endif
                     @include('layouts.dosen.dashboardmodal.karyamodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#karyaModal">Cari</button>
                 </div>
             </div>
         </div>
     </div>
-
-    @endif
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
