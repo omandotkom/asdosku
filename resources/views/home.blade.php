@@ -26,6 +26,19 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935140-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-161935140-1');
+  </script>
+
   @auth
   <script type="text/javascript">
     function gotoCariAsisten() {
@@ -43,9 +56,10 @@
       window.location = "{{ url('/registerasdos') }}";
     }
 
-    function gotoRegisterMahasiswa(){
-      window.location = "{{ url('/register/mahasiswa') }}";   
+    function gotoRegisterMahasiswa() {
+      window.location = "{{ url('/register/mahasiswa') }}";
     }
+
     function gotoLogin() {
       window.location = "{{ url('/login') }}";
     }
@@ -278,7 +292,7 @@
           <p class="section-description">Bagi Dosen / Pengelola Kampus Maupun Bagi Asdos</p>
         </div>
         <div class="row">
-        <img src="{{asset('storage/gallery/alur.png')}}" class="rounded img-fluid mx-auto d-block" alt="...">
+          <img src="{{asset('storage/gallery/alur.png')}}" class="rounded img-fluid mx-auto d-block" alt="...">
         </div>
 
       </div>

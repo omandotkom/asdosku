@@ -27,6 +27,19 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <!-- Custom styles for this template-->
   <link href="{{ asset('sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935140-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-161935140-1');
+  </script>
+
   <script>
     axios.get("{{route('sendnotification')}}")
       .then(function(response) {
@@ -43,8 +56,9 @@
   @handheld
   <script>
     $(document).ready(function() {
-      if ($("#sidebarToggleTop").length){
-      $("#sidebarToggleTop").click();}
+      if ($("#sidebarToggleTop").length) {
+        $("#sidebarToggleTop").click();
+      }
     });
   </script>
   @endhandheld
