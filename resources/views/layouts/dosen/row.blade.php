@@ -8,7 +8,11 @@
                 <div class="mt-4 text-center small">
 
                     <i class="fas fa-fw fa-child fa-7x"></i>
+                    @if(Auth::user()->subrole != "mahasiswa")
                     <p class="h3 mt-2">Asisten Bimbel</p>
+                    @else
+                    <p class="h3 mt-2">Teman Bimbel</p>
+                    @endif
                     @include('layouts.dosen.dashboardmodal.bimbelmodal')
                     <button type="button" data-toggle="modal" data-target="#bimbelModal" class="btn btn-outline-primary btn-block btn-lg mt-2">Cari</button>
                 </div>
@@ -62,7 +66,11 @@
                 <div class="mt-4 text-center small">
 
                     <i class="fas fa-fw fa-book fa-7x"></i>
+                    @if(Auth::user()->subrole != "mahasiswa")
                     <p class="h3 mt-2">Asisten Penelitian</p>
+                    @else
+                    <p class="h3 mt-2">Teman Penelitian</p>
+                    @endif
                     @include('layouts.dosen.dashboardmodal.penelitianmodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#penelitianModal">Cari</button>
                 </div>
@@ -136,7 +144,12 @@
                 <div class="mt-4 text-center small">
 
                     <i class="fas fa-paint-brush fa-7x"></i>
+                    @if(Auth::user()->subrole != "mahasiswa")
                     <p class="h3 mt-2">Asisten Designer</p>
+                    @else
+                    <p class="h3 mt-2">Teman Designer</p>s
+                    @endif
+                    
                     @include('layouts.dosen.dashboardmodal.desainermodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#desainerModal">Cari</button>
                 </div>
