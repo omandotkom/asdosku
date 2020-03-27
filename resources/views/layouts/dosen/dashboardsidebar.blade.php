@@ -39,7 +39,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('viewservices')}}">
             <i class="fas fa-fw fa-hand-holding"></i>
-            <span>Layanan Kami</span></a>
+            <span>Layanan Kami </span><span class="badge badge-warning">?</span></a>
     </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">

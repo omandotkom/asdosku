@@ -90,7 +90,7 @@
           <li><a href="#alur">Cara Pesan</a></li>
           <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="https://blog.asdosku.com" target="_blank">Blog</a></li>
           @auth
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -52,7 +52,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('viewservices')}}">
             <i class="fas fa-fw fa-hand-holding"></i>
-            <span>List Asistensi</span></a>
+            <span>List Asistensi </span><span class="badge badge-warning">?</span></a>
     </li>
     <li class="nav-item" onclick="$('#questionmodal').modal('show');" >
         <a class="nav-link" href="#">
