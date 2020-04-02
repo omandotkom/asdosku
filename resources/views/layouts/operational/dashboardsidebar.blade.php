@@ -57,6 +57,11 @@
             <i class="fas fa-fw fa-dot-circle"></i>
             <span>Konfirmasi Pembayaran</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('viewfinishedpayoutbymonth')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Pembayaran Selesai</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

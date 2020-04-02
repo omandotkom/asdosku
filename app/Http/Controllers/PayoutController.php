@@ -18,7 +18,7 @@ use App\Rate;
 use App\Webscore;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 class PayoutController extends Controller
 {
 
@@ -124,5 +124,9 @@ class PayoutController extends Controller
         $transaction->save();
         event(new PaymentWaitingConfirmation($payout));
         return response('Transaksi berhasil dikonfirmasi.',200);
+    }
+    public function viewbymonth(){
+        $payouts = Payout::where('status','=','Selesai')->orderBy('updated_at','desc')->simplePaginate(10);
+        return view('maindashboard.index', ['payouts' => $payouts, 'title' => 'Pembayaran Selesai', 'content' => 'finishedpayout']);
     }
 }

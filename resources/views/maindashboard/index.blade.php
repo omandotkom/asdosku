@@ -111,6 +111,9 @@
           @case('viewcomments')
           @include('layouts.asdos.commentrating')
           @break
+          @case("finishedpayout")
+          @include('layouts.operational.finishedpayoutlist')
+          @break
           @case('dosenlist')
           @include('layouts.operational.dosen')
           @break

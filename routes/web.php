@@ -69,6 +69,7 @@ Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionCo
 Route::get('/dashboard/index/operational/currentransaction/view','TransactionController@currenttransaction')->name('viewpesananberjalan')->middleware('auth');
 Route::get('/dashboard/index/operational/payoutransaction/view','TransactionController@payouttransaction')->name('viewpesananpayout')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@showconfirpayouts')->name('viewpendingpayout')->middleware('auth','operational');
+Route::get('/dashboard/index/operational/finishedpayout/view','PayoutController@viewbymonth')->name('viewfinishedpayoutbymonth')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory')->middleware('auth');
 Route::get('/dashboard/index/operational/transaction/change/{id?}','TransactionController@changetransaction')->name('changetransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}','FilterAsdosController@filterbyactivity')->name('filterbyactivity')->middleware('auth','operational');

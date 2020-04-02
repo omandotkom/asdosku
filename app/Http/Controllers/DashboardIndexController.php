@@ -29,7 +29,8 @@ class DashboardIndexController extends Controller
         $tagihan = Payout::where('status', 'Menunggu Konfirmasi Pembayaran')->count();
         $asdos = User::where('role','asdos')->where('status','aktif')->count();
         $dosen = User::where('role','dosen')->count();
-        return view('maindashboard.index', ['pending' => $pending,'dosen' => $dosen,'asdos' => $asdos,'payout'=>$payout, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
+        $finishedpayout = Payout::where('status','Selesai')->count();
+        return view('maindashboard.index', ['pending' => $pending,'finishedpayout'=>$finishedpayout,'dosen' => $dosen,'asdos' => $asdos,'payout'=>$payout, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
     }
     public function indexDosen()
     {

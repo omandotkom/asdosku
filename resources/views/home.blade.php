@@ -289,7 +289,7 @@
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Alur Penggunaan</h3>
-          <p class="section-description">Bagi Dosen / Pengelola Kampus Maupun Bagi Asdos</p>
+          <p class="section-description">Bagi Dosen, Mahasiswa, Pengelola Kampus Maupun Bagi Asdos</p>
         </div>
         <div class="row">
           <img src="{{asset('storage/gallery/alur.png')}}" class="rounded img-fluid mx-auto d-block" alt="...">

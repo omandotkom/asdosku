@@ -187,7 +187,6 @@ class TransactionController extends Controller
             ->join('users', 'transactions.dosen', 'users.id')
             ->join('activities', 'transactions.activity_id', 'activities.id')
             ->join('details', 'users.id', 'details.user_id')
-
             ->orderBy('transactions.updated_at', 'asc')->simplePaginate(10);
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Asistensi Berjalan', 'content' => 'berjalanlist']);
     }
