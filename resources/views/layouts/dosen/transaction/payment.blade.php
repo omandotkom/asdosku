@@ -127,7 +127,7 @@ $totalbiaya = 0;
           </div>
           <div class="form-group">
             <label for="komentar">Komentar untuk Asdos</label>
-            <textarea required placeholder="mis : Asisten cukup responsif" name="komentar" class="form-control @error('komentar') is-invalid @enderror" id="komentar" rows="5"></textarea>
+            <textarea required name="komentar" class="form-control @error('komentar') is-invalid @enderror" id="komentar" rows="5"></textarea>
             @error('komentar')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
