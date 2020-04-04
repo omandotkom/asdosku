@@ -41,10 +41,14 @@
     }
 
     function update() {
-
+        $("#setujui".concat(selectedID)).prop( "disabled", true );
+        $("#cancel".concat(selectedID)).prop( "disabled", true );
+        
         // Make a request for a user with a given ID
         axios.get(updateUrl)
             .then(function(response) {
+                $("#setujui".concat(selectedID)).prop( "disabled", false );
+                $("#cancel".concat(selectedID)).prop( "disabled", false );
                 // handle success
                 const myNode = document.getElementById(selectedID);
                 Toastify({
@@ -60,6 +64,8 @@
                 }
             })
             .catch(function(error) {
+                $("#setujui".concat(selectedID)).prop( "disabled", false );
+                $("#cancel".concat(selectedID)).prop( "disabled", false );
                 // handle error
                 Toastify({
                     backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
@@ -256,8 +262,8 @@
                     <button data-toggle="modal" data-target="#detilDialog" type="button" onclick="userDetil(generateURL('{{$transaction->id}}'));" class="btn mx-auto btn-primary btn-block btn-sm">Informasi Lengkap</button>
                     @if(Auth::user()->role=="operational")
                     @if($transaction->status == "Menunggu Konfirmasi Asdos")
-                    <button type="button" onclick="generateURLUpdate('{{$transaction->id}}');" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
-                    <button type="button" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
+                    <button type="button" id="setujui{{$transaction->id}}" onclick="generateURLUpdate('{{$transaction->id}}');" class="btn mx-auto btn-success btn-block btn-sm">Setujui</button>
+                    <button type="button" id="cancel{{$transaction->id}}" onclick="generateURLDelete('{{$transaction->id}}');" data-target="#deleteModal" data-toggle="modal" class="btn mx-auto btn-danger btn-block btn-sm">Batalkan</button>
                     @endif
                     @endif
                 </div>

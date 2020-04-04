@@ -292,7 +292,7 @@
                     @php
                     $urlpayment = route('showPayoutPage',$transaction->id);
                     @endphp
-                    <button type="button" onclick="window.location = '{{$urlpayment}}';" class="btn mx-auto btn-primary btn-block btn-sm">Bayar Pesanan</button>
+                    <button type="button" onclick="window.location = '{{$urlpayment}}';" class="btn mx-auto btn-outline-primary btn-block btn-sm">Bayar Pesanan</button>
                     @endif
                     @break
                     @case('Berjalan')

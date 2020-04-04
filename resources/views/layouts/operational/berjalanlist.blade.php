@@ -37,9 +37,12 @@
     }
 
         function selesailayanan() {
+            $( "#selesai".concat(selectedID) ).prop("disabled", true );
             axios.get(selesaiURL)
                 .then(function(response) {
-                    // handle success
+                    // handle success 
+                    $( "#selesai".concat(selectedID) ).prop("disabled", false );
+           
                     Toastify({
                         backgroundColor: "linear-gradient(to right, #56ab2f, #a8e063)",
 
@@ -54,6 +57,8 @@
                     }
                 })
                 .catch(function(error) {
+                    $( "#selesai".concat(selectedID) ).prop("disabled", false );
+           
                     // handle error
                     Toastify({
                         backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
@@ -159,7 +164,7 @@
         function generateSelesaiURL(id) {
             selectedID = id;
             selesaiURL = "{{url('api/transaction/update')}}".concat("/").concat(id).concat("/").concat("MP");
-            console.log(url);
+          
         }
 </script>
 
@@ -355,7 +360,7 @@
                     @if(Auth::user()->role == "operational") <button data-toggle="modal" data-target="#costDialog" onclick="generateCostUrl('{{$transaction->id}}');" type="button" class="btn mx-auto btn-primary btn-block btn-sm">Tambah Biaya</button>@endif
                     <button type="button" onclick="gotoHistoris('{{$historisurl}}');" class="btn mx-auto btn-primary btn-block btn-sm">Historis Biaya</button>
                     @if($transaction->status == "Berjalan" and Auth::user()->role == "operational")
-                    <button type="button" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Layanan Selesai</button>
+                    <button type="button" id ="selesai{{$transaction->id}}" data-target="#selesaimodal" onclick="generateSelesaiURL('{{$transaction->id}}');" data-toggle="modal" class="btn mx-auto btn-dark btn-block btn-sm">Layanan Selesai</button>
                     @endif
                 </div>
             </div>
