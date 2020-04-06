@@ -165,11 +165,11 @@
               <li>Dosen dan pengelola kampus (pejabat, TU, dls) yang membutuhkan bantuan untuk melaksanakan Tri Dharma Perguruan Tinggi.</li>
               <li>Dosen dan pengelola kampus (pejabat, TU, dll) yang membutuhkan bantuan untuk mengelola bisnisnya.</li>
               <li>Dosen yang membutuhkan asisten untuk melaksanakan proses belajar mengajar.</li>
-              <li>Dosen yang membutuhkan tim untuk mengerjakan proyek kampus dan luar kampus</li>
-              <li>Dosen yang membutuhkan bantuan untuk melaksanakan Beban Kerja Dosen</li>
-              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan penelitian dan karya lainnya</li>
-              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan proyek</li>
-              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan belajar bersama</li>
+              <li>Dosen yang membutuhkan tim untuk mengerjakan proyek kampus dan luar kampus.</li>
+              <li>Dosen yang membutuhkan bantuan untuk melaksanakan Beban Kerja Dosen.</li>
+              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan penelitian dan karya lainnya.</li>
+              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan proyek.</li>
+              <li>Mahasiswa yang membutuhkan teman untuk belajar bersama.</li>
             </ul>
             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
           </div>
