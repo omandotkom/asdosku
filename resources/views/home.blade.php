@@ -129,9 +129,9 @@
       <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
       <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
         @auth
-        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesan Layanan</button>
-        <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
-        <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
+        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesan Layanan</button>
+        <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
+        <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
         @endauth
         @guest
         @include('auth.modal.authmodal')
