@@ -99,7 +99,7 @@
     }
 
     function generateURLDelete(id) {
-        var url = "{{url('/dashboard/index/dosen/order/list/delete')}}";
+        var url = "{{route('bataltransaksi')}}";
         url = url.concat('/').concat(id);
         deleteUrl = url;
         return url;

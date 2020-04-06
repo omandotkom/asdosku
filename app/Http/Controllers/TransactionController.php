@@ -147,17 +147,18 @@ class TransactionController extends Controller
         $transaction = Transaction::where('dosen', Auth::user()->id)->orderBy('created_at', 'desc')->withTrashed()->get();
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Daftar Pemesanan Anda', 'content' => 'orderlist']);
     }
-    public function delete($id)
-    {
-        $transaction = Transaction::where('id', $id)->first();
-        if (isset($transaction)) {
-            $transaction->status = "Dibatalkan";
-            $transaction->save();
-            $transaction->delete();
-            event(new OrderWasDeleted(Auth::user(), $transaction));
-        }
-        return redirect()->route('showUserOrder');
+    public function batal($id){
+     $transaction = Transaction::where('id', $id)->first();
+    if (isset($transaction)) {
+        $transaction->status = "Dibatalkan";
+        $transaction->save();
+        $transaction->delete();
+        event(new OrderWasDeleted(Auth::user(), $transaction));
     }
+    //return redirect()->route('showUserOrder');  
+return back();   
+}
+    
     public function currenttransaction()
     {
         $transaction = Transaction::where('transactions.status', 'Berjalan')

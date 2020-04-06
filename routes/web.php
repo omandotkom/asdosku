@@ -63,8 +63,9 @@ Route::get('/dashboard/index/dosen/payout/{transaction_id}/','PayoutController@v
 Route::get('/dashboard/index/dosen/order/{activity}/{asdos}/{url?}','TransactionController@show')->name('showOrderPage')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/order/list','TransactionController@showUserOrder')->name('showUserOrder')->middleware('auth');
 Route::get('/dashboard/index/dosen/services/list','ServiceActivitiesController@show')->name('viewservices')->middleware('auth');
+Route::get('/dashboard/index/dosen/order/bid','BidController@show')->name('showbidpage');
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction')->middleware('auth','dosen');
-Route::get('/dashboard/index/dosen/order/list/delete/{id}','TransactionController@delete')->name('deleteTransaction')->middleware('auth');
+Route::get('/dashboard/index/dosen/order/cancel/{id?}','TransactionController@cancel')->name('deleteTransaction')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/currentransaction/view','TransactionController@currenttransaction')->name('viewpesananberjalan')->middleware('auth');
 Route::get('/dashboard/index/operational/payoutransaction/view','TransactionController@payouttransaction')->name('viewpesananpayout')->middleware('auth');
@@ -76,7 +77,7 @@ Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}
 Route::post('/dashboard/index/operational/transaction/change/save','TransactionController@savechangedtransaction')->name('savechangedtransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/view/dosen','DosenController@view')->name('viewdosen')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAll')->name('viewasdos')->middleware('auth','operational');
-
+Route::get('/dashboard/cancel/{id?}','TransactionController@batal')->name('bataltransaksi');
 Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');
 Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
