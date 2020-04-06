@@ -44,6 +44,12 @@
     function gotoCariAsisten() {
       window.location = "{{ route('indexdosen') }}";
     }
+    function gotoPesananSaya(){
+      window.location = "{{route('showUserOrder')}}";
+    }
+    function gotoTagihanSaya(){
+      window.location = "{{route('showallpayout')}}";
+    }
   </script>
   @endauth
   @guest
@@ -121,9 +127,11 @@
     <div class="hero-container">
       <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
       <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
-      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
         @auth
-        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn btn-outline-warning btn-lg rounded animated jackInTheBox slow">Pesan Layanan Kami</button>
+        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesan Layanan</button>
+        <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
+        <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn m-2 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
         @endauth
         @guest
         @include('auth.modal.authmodal')
@@ -152,6 +160,17 @@
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa dan freshgraduate yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai asisten</b>.
             </p>
+            <h2 class="title text-center">UNTUK SIAPA ASDOSKU ?</h2>
+            <ul class="animated fadeInUp slow">
+              <li>Dosen dan pengelola kampus (pejabat, TU, dls) yang membutuhkan bantuan untuk melaksanakan Tri Dharma Perguruan Tinggi.</li>
+              <li>Dosen dan pengelola kampus (pejabat, TU, dll) yang membutuhkan bantuan untuk mengelola bisnisnya.</li>
+              <li>Dosen yang membutuhkan asisten untuk melaksanakan proses belajar mengajar.</li>
+              <li>Dosen yang membutuhkan tim untuk mengerjakan proyek kampus dan luar kampus</li>
+              <li>Dosen yang membutuhkan bantuan untuk melaksanakan Beban Kerja Dosen</li>
+              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan penelitian dan karya lainnya</li>
+              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan proyek</li>
+              <li>Mahasiswa yang membutuhkan teman untuk mengerjakan belajar bersama</li>
+            </ul>
             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
           </div>
 
