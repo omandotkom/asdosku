@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-
+  <script src="{{ asset('sbadmin/vendor/jquery/jquery.min.js') }}"></script>
   <link href="{{ asset('asset/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <!-- Libraries CSS Files -->
@@ -74,7 +74,7 @@
 </head>
 
 <body>
-
+@include('layouts.dosen.dashboardmodal.news')
   <!--==========================
   Header
   ============================-->
