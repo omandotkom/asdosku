@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Bid;
 use App\Campus;
 use Illuminate\Support\Facades\Validator;
 use App\Cost;
@@ -93,7 +94,7 @@ class TransactionController extends Controller
     }
     public function store(Request $request, $activity, $asdos)
     {
-
+    
         $validator = Validator::make($request->all(), [
             'dateDari' => ['required', 'date', 'max:255'],
             'dateSampai' => ['required', 'date', 'max:255'],
@@ -117,7 +118,12 @@ class TransactionController extends Controller
         $totalBiaya = Activity::where("id", $activity)->first();
         $satuan = $totalBiaya->satuan;
         $totalBiaya = $totalBiaya->harga;
-
+        if (isset($request->bid) && $request->bid > 0){
+            $bid = Bid::where('id',$request->bid)->first();
+            $bid->status = "deactive";
+            $bid->save();
+        }
+       
         if (isset($request->orderqty)) {
             $totalBiaya = $totalBiaya * $request->orderqty;
             $transaction->keterangan = $transaction->keterangan . " (" . $request->orderqty . " " . $satuan . ")";
@@ -139,6 +145,13 @@ class TransactionController extends Controller
             $filter->url = $request->currenturl;
             $filter->save();
         }
+        if ($request->bid > 0){
+            $bid = Bid::where('id',$request->bid)->first();
+            $bid->transaction_id = $transaction->id;
+            $bid->status = "deactive";
+            $bid->save();
+        }
+        
         event(new OrderWasCreated(Auth::user(), $transaction->asdos));
         return redirect()->route('showUserOrder');
     }
@@ -244,8 +257,9 @@ return back();
         //return $transaction;
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }
-    public function show($activity, $asdos, $url = "#")
+    public function show($activity, $asdos,$bid=0, $url = "#")
     {
+        
         $asdos = User::with('archive', 'detail')->where('users.id', $asdos)->orderBy('created_at', 'desc')->first();
         if (isset($asdos->archive->image_name)) {
             $asdos->archive->image_name = asset('storage/images/245/' . $asdos->archive->image_name);
@@ -262,6 +276,7 @@ return back();
                 'title' => 'Pemesanan',
                 'rating' => $rating,
                 'asdos' => $asdos,
+                'bid' => $bid,
                 'kampus' => $kampus,
                 'activity' => $activity,
                 'content' => 'order',

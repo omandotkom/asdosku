@@ -41,6 +41,17 @@
             <i class="fas fa-fw fa-hand-holding"></i>
             <span>Layanan Kami </span><span class="badge badge-warning">?</span></a>
     </li>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showbidpage')}}">
+            <i class="fas fa-fw fa-hand-holding"></i>
+            <span>Tawarkan Pekerjaan </span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showmybids')}}">
+            <i class="fas fa-fw fa-hand-holding"></i>
+            <span>Tawaran Saya </span></a>
+    </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('indexdosen')}}">
@@ -74,5 +85,5 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
+@include('layouts.dosen.dashboardmodal.bidmodal')
 </ul>

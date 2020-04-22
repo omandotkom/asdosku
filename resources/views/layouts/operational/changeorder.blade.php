@@ -12,7 +12,7 @@
   </script>
   @endhandheld
   <div class="row d-flex justify-content-center">
-    <div class="col-sm-6">
+    
       <div class="card shadow p-3 mb-5 bg-white rounded">
 
         <div class="card-body">
@@ -72,7 +72,8 @@
               </span>
               @enderror
               <small id="kodeasdoshelp" class="form-text text-muted">Masukan kode Asdos berupa angka.<br>
-                @if(isset($filter->url))
+              
+                @if(isset($filter->url) and $filter->url != null)
                 <div class="row ml-1">
                   <a href="{{$filter->url}}"><i class="far fa-edit float-sm-left"></i> Cari Dengan Kriteria</a>
                 </div>
@@ -122,7 +123,7 @@
         </div>
         </form>
       </div>
-    </div>
+    
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -169,11 +169,11 @@ $totalbiaya = 0;
             </thead>
             <tbody>
               <tr>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/dana.png')}}" alt="DANA App"></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/payment/dana.png')}}" alt="DANA App"></td>
                 <td><b>081393558430</b> a.n <b>Khalid Abdurrahman</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
+                <td><image class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
                 <td>a.n DNID 081393558430<br>Virtual Account : <b>3901081393558430</b></td>
               </tr>
               <tr>

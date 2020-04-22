@@ -43,6 +43,26 @@
 
     </div>
   </div>
+  <div class="col-xl-3 col-lg-5">
+    <div class="card shadow mb-4">
+    <div class="card-header" id="persetujuan">
+        <button type="button" onclick='gotoLowonganPekerjaan();' class="btn float-right btn-sm btn-light">
+          Terbuka <span class="badge badge-danger">{{ $activebids }}</span> Ditutup <span class="badge badge-secondary">{{ $deactivebids }}</span>
+        </button>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body">
+
+        <div class="mt-4 text-center small">
+          <i class="fas fa-fw fa-hand-holding fa-7x"></i> 
+          <p class="h3 mt-2">Tawaran Pekerjaan</p>
+          <button type="button" onclick='gotoLowonganPekerjaan();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 <div class="col-xl-3 col-lg-5">
     <div class="card shadow mb-4">
 
@@ -178,4 +198,7 @@
     function gotoAsdosView(){
       window.location = "{{route('viewasdos')}}";
     }
+    function gotoLowonganPekerjaan(){
+    window.location = "{{route('showbids')}}";
+  }
   </script>

@@ -108,6 +108,9 @@
           @case('pendingpayout')
           @include('layouts.operational.pendingpayoutlist')
           @break
+          @case('showbidlist')
+          @include('layouts.dosen.transaction.bidlist')
+          @break
           @case('viewcomments')
           @include('layouts.asdos.commentrating')
           @break
@@ -116,6 +119,9 @@
           @break
           @case('dosenlist')
           @include('layouts.operational.dosen')
+          @break
+          @case('bidsapplicants')
+          @include('layouts.dosen.applicantlist')
           @break
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
@@ -140,6 +146,15 @@
           @switch($content ?? '')
           @case('historisbiaya')
           @include('layouts.operational.costhistory')
+          @break
+          @case('showbidpage')
+          @include('layouts.dosen.transaction.bidorder')
+          @break
+          @case('showbidlist')
+          @include('layouts.dosen.transaction.bidlist')
+          @break
+          @case('bidsapplicants')
+          @include('layouts.dosen.applicantlist')
           @break
           @case('servicelist')
           @include('layouts.dosen.semualayanan')
@@ -177,6 +192,12 @@
           @switch($content ?? '')
           @case('servicelist')
           @include('layouts.dosen.semualayanan')
+          @break
+          @case('bidsapplicants')
+          @include('layouts.dosen.applicantlist')
+          @break
+          @case('showbidlist')
+          @include('layouts.dosen.transaction.bidlist')
           @break
           @case('pesananasdoslist')
           @include('layouts.operational.pendinglist')

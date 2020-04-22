@@ -1,6 +1,5 @@
 <div class="container">
   @handheld
-  
   <div class="modal fade" id="warningmodal" tabindex="-1" role="dialog" aria-labelledby="warningmodaltitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -86,7 +85,7 @@
                 $("#biayacontent").text(result);
               }
             </script>
-            @if(strtolower($activity->satuan) != "orang")
+            @if($activity->multiquantity)
 
             <script>
               $(document).ready(function() {
@@ -124,6 +123,12 @@
               </div>
             </div>
             @endif
+            @if(isset($bid))
+            <div hidden class="form-group">
+              <label for="bid">Kode Tawaran Pekerjaan</label>
+              <input required type="text" class="form-control" value="{{$bid}}" id="bid" name="bid">
+            </div>
+            @endif
             <div class="form-group">
               <label for="dateDari">Tanggal Tugas</label>
               <input required type="date" class="form-control @error('dateDari') is-invalid @enderror" id="dateDari" aria-describedby="dateDariHelp" name="dateDari">
@@ -155,6 +160,7 @@
               <small id="keteranganHelp" class="form-text text-muted">Keterangan harap ditulis selengkap mungkin.</small>
             </div>
             <input type="hidden" value="{{$currenturl}}" name="currenturl"/>
+            
             <div class="form-group">
               <div hidden id="discountsuccess" class="alert alert-success" role="alert">
               </div>

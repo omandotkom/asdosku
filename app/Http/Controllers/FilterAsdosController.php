@@ -23,7 +23,7 @@ class FilterAsdosController extends Controller
             ->join('activities', 'prefers.activity_id', 'activities.id')
             ->where('prefers.activity_id', $activity)->where('users.status', 'aktif')
             ->whereRaw($strWhere)->simplePaginate();
-            $url = base64_encode(URL::current());
+            $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender)
@@ -60,7 +60,7 @@ class FilterAsdosController extends Controller
             ->whereRaw($strJurusan)
             ->whereRaw($strGender)->where('users.status', 'aktif')
             ->simplePaginate();
-            $url = base64_encode(URL::current());
+            $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function generalView($activity,$kampus,$jurusan)
@@ -86,7 +86,7 @@ class FilterAsdosController extends Controller
             ->whereRaw($strKampus)
             ->whereRaw($strJurusan)->where('users.status', 'aktif')
             ->simplePaginate();
-            $url = base64_encode(URL::current());
+            $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function filterbyactivity($activity){
@@ -121,7 +121,7 @@ class FilterAsdosController extends Controller
      ->where('details.kampus_id',$kampus_id)
      ->where('users.status','aktif')
      ->simplePaginate(20);
-     $url = base64_encode(URL::current());
+     $url = base64_encode(URL::full());
      return view('maindashboard.index', ['asdoslist' => $asdosList, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
      }
 }

@@ -16,6 +16,9 @@
   function gotoPermohonanAsistensi(){
     window.location = "{{route('asdosrequestorder')}}"
   }
+  function gotoLowonganPekerjaan(){
+    window.location = "{{route('showbids')}}";
+  }
 </script>
 <div class="row">
 
@@ -29,6 +32,27 @@
           <i class="fas fa-fw fa-user fa-7x"></i>
           <p class="h3 mt-2">Profile Preferensi</p>
           <button type="button" onclick='gotoProfileView();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-5">
+    <div class="card shadow mb-4">
+    <div class="card-header" id="persetujuan">
+        <button type="button" onclick='gotoLowonganPekerjaan();' class="btn float-right btn-sm btn-light">
+          Tawaran Terbuka <span class="badge badge-danger">{{ $bids }}</span>
+        </button>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body">
+
+        <div class="mt-4 text-center small">
+          <i class="fas fa-fw fa-hand-holding fa-7x"></i> 
+          <p class="h3 mt-2">Tawaran Pekerjaan</p>
+          <button type="button" onclick='gotoLowonganPekerjaan();' class="btn btn-outline-primary btn-block btn-lg mt-2">Lihat</button>
         </div>
       </div>
 

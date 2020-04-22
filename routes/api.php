@@ -30,6 +30,8 @@ Route::post('/basicnotification','BasicNotification@view')->name('basicnotificat
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/transaction/order/bid/showactivities/{serviceid?}','BidController@activitiesbyservice')->name('showactivitiesbyservice');
+Route::get('/transaction/order/bid/showactivity/{id?}','BidController@activitybyid')->name('showactivitybyid');
 Route::get('/discount/{id?}','DiscountController@checkdiscount')->name("discount");
 Route::post('/guestquestion','ContactController@store')->name('guestquestion');
 

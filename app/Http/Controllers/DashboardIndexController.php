@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Bid;
 use App\User;
 use App\Campus;
 use App\Jurusans;
@@ -27,10 +28,12 @@ class DashboardIndexController extends Controller
         $berjalan = Transaction::where('status', 'Berjalan')->count();
         $payout = Transaction::where('status','Menunggu Pembayaran')->count();
         $tagihan = Payout::where('status', 'Menunggu Konfirmasi Pembayaran')->count();
-        $asdos = User::where('role','asdos')->where('status','aktif')->count();
-        $dosen = User::where('role','dosen')->count();
+        $asdos = User::select('id')->where('role','asdos')->where('status','aktif')->count();
+        $dosen = User::select('id')->where('role','dosen')->count();
         $finishedpayout = Payout::where('status','Selesai')->count();
-        return view('maindashboard.index', ['pending' => $pending,'finishedpayout'=>$finishedpayout,'dosen' => $dosen,'asdos' => $asdos,'payout'=>$payout, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
+        $active_bids = Bid::select('id')->where('status','active')->count();
+        $deactive_bids = Bid::select('id')->where('status','deactive')->count();
+        return view('maindashboard.index', ['pending' => $pending,'activebids' => $active_bids,'deactivebids'=>$deactive_bids,'finishedpayout'=>$finishedpayout,'dosen' => $dosen,'asdos' => $asdos,'payout'=>$payout, 'berjalan' => $berjalan, 'tagihan' => $tagihan, 'title' => "Dashboard"]);
     }
     public function indexDosen()
     {
@@ -55,10 +58,11 @@ class DashboardIndexController extends Controller
     }
     public function indexAsdos()
     {
-        $berjalan = Transaction::where('status', 'Berjalan')->where('asdos', Auth::user()->id)->count();
-        $selesai = Transaction::where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
-        $request = Transaction::where('status', 'Menunggu Konfirmasi Asdos')->where('asdos', Auth::user()->id)->count();
-        return view('maindashboard.index', ['title' => 'Dashboard', 'berjalan' => $berjalan, 'selesai' => $selesai, 'request' => $request]);
+        $berjalan = Transaction::select('id')->where('status', 'Berjalan')->where('asdos', Auth::user()->id)->count();
+        $selesai = Transaction::select('id')->where('status', 'Selesai')->where('asdos', Auth::user()->id)->count();
+        $request = Transaction::select('id')->where('status', 'Menunggu Konfirmasi Asdos')->where('asdos', Auth::user()->id)->count();
+        $bids = Bid::select('id')->where('status','active')->get()->count();
+        return view('maindashboard.index', ['title' => 'Dashboard','bids' =>$bids ,'berjalan' => $berjalan, 'selesai' => $selesai, 'request' => $request]);
     }
     public function indexmarketing()
     {

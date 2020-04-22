@@ -47,12 +47,6 @@
         return url;
     }
 
-    function order(activity, user) {
-        var url = "{{url('/dashboard/index/dosen/order')}}";
-        url = url.concat("/");
-        url = url.concat(activity).concat("/").concat(user).concat("/{{$currenturl}}");
-        window.open(url, '_blank');
-    }
 </script>
 <div class="modal fade" id="detilDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -116,56 +110,36 @@
     </div>
 </div>
 <div class="row">
-    @foreach($asdoslist as $asdos)
+    @foreach($asdoslist as $a)
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
             <!-- Card Body -->
             <div class="card-body">
-
-                <div class="mt-4 text-center small">
-
-                    <i class="fas fa-fw fa-user fa-5x"></i>
-                    <!--<p class="h3 mt-2">{{$asdos->name}}</p>-->
-                    <div class="table-responsive-sm">
-                        <table class="table">
-                            @if(Auth::user()->role =="operational")
-                            <tr>
-                                <th>Kode Asdos</th>
-                                <td>{{$asdos->id}}</td>
-                            </tr>
-                            @endif
-                            <tr>
-                                <th>Nama</th>
-                                <td>{{$asdos->name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Rating</th>
-                                <td>@if(isset($asdos->rating)) {{$asdos->rating}} / 5 @else - @endif</td>
-                            </tr>
-                            <tr>
-                                <th>Kampus</th>
-                                <td>{{$asdos->kampus}}</td>
-                            </tr>
-                            <tr>
-                                <th>Gender</th>
-                                <td>{{$asdos->gender}}</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <button type="button" onclick="userDetil(generateURL('{{$asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Biodata Lengkap</button>
-                    @if(Auth::user()->role == "dosen")
-                    @php
-                    $url = route('showOrderPage',['activity' => $activity, 'asdos' => $asdos->id,'bid'=>0,'url'=>base64_encode(URL::full())]);
-                    @endphp
-                    <button type="button" onclick="window.location='{{$url}}';" class="btn btn-outline-primary btn-block btn-sm mt-2">Pilih</button>
-                    @endif
+                <div class = "small">
+                    <dl class="row">
+                        <dt class="col-sm-5">Nama</dt>
+                        <dd class="col-sm-9">{{$a->asdos->name}}</dd>
+                        <dt class="col-sm-5">Rating</dt>
+                        <dd class="col-sm-9">@if(isset($a->asdos->rating)) {{$a->asdos->rating}} / 5 @else - @endif</dd>
+                        <dt class="col-sm-5">Kampus</dt>
+                        <dd class="col-sm-9">{{$a->asdos->detail->kampus->name}}</dd>
+                        <dt class="col-sm-5">Gender</dt>
+                        <dd class="col-sm-9">{{$a->asdos->detail->gender}}</dd>
+                    </dl>
                 </div>
+                <button type="button" onclick="userDetil(generateURL('{{$a->asdos->id}}'));" data-toggle="modal" data-target="#detilDialog" class="btn btn-outline-primary btn-block btn-sm mt-2">Biodata Lengkap</button>
+                @if(Auth::user()->role == "dosen")
+                @php
+                $url = route('showOrderPage',['activity' => $a->bid->activity_id, 'asdos' => $a->asdos->id,'bid'=>$a->bid_id,'url'=>"#"]);
+                @endphp
+                <button type="button" onclick="window.location='{{$url}}'" class="btn btn-primary btn-block btn-sm mt-2">Pilih</button>
+                @endif
             </div>
         </div>
     </div>
-    @endforeach
+
+@endforeach
 </div>
 
 {{$asdoslist->links()}}
