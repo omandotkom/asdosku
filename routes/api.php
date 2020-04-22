@@ -32,8 +32,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/transaction/order/bid/showactivities/{serviceid?}','BidController@activitiesbyservice')->name('showactivitiesbyservice');
 Route::get('/transaction/order/bid/showactivity/{id?}','BidController@activitybyid')->name('showactivitybyid');
-Route::get('/discount/{id?}','DiscountController@checkdiscount')->name("discount");
+Route::post('/discount','DiscountController@checkdiscount')->name("discount");
 Route::post('/guestquestion','ContactController@store')->name('guestquestion');
-
-
 Route::get('/user','SampleController@ApiUser')->middleware('auth:api');
