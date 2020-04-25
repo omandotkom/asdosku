@@ -19,7 +19,7 @@
                     $("#rowcv").hide();
                 }
                 if (response.data.another_file_path != "#") {
-                    $("#detilNilai").attr("href", response.data.cv_path);
+                    $("#detilNilai").attr("href", response.data.another_file_path);
                     $("#rownilai").show();
                 } else {
                     $("#rownilai").hide();
