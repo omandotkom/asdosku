@@ -70,9 +70,9 @@ return number_format($val,2,',','.');
 </script>
 
 </script>
-<div class="card bg-white mx-auto w-25 text-center">
+<div class="card bg-white mx-auto w-100 text-center">
     <div class="card-body">
-        <label class="card-title">Filter</label>
+        <h5 class="card-title text-wrap">Filter Tawaran Pekerjaan</h5>
         <div class="row">
             <div class="form-group mx-auto">
                 <select name="services" id="services" aria-describedby="serviceshelp" required class="custom-select custom-select-sm">
@@ -88,8 +88,8 @@ return number_format($val,2,',','.');
         <div class="row">
             <br><small class="mx-auto">atau</small>
         </div>
-        <div class="row">
-            <a href="{{route('showbids')}}" class="badge badge-primary mx-auto">Semua Lowongan</a>
+        <div class="row text-wrap">
+            <a href="{{route('showbids')}}" class="badge badge-primary mx-auto text-wrap">Semua Lowongan</a>
         </div>
     </div>
 </div>
