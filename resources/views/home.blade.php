@@ -141,7 +141,7 @@
         {{-- <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-warning btn-lg rounded">Pilih Layanan</button> --}}
         {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
         <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Layanan</button>
-        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Liha Layanan</a>
+        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Layanan</a>
         @endguest
       </div>
 
