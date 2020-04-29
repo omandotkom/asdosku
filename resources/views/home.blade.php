@@ -96,7 +96,10 @@
           <li><a href="#alur">Cara Pesan</a></li>
           <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
-          <li class="badge-pill badge-warning"><a href="https://blog.asdosku.com" class="text-dark" target="_blank">Blog</a></li>
+          <li><button type="button" onclick="window.location='https://blog.asdosku.com';" class="btn badge-pill badge-warning btn-sm rounded">Blog</button></li>
+           @guest
+          <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Daftar</button></li>
+          @endguest          
           @auth
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -138,7 +141,7 @@
         {{-- <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-warning btn-lg rounded">Pilih Layanan</button> --}}
         {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
         <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Layanan</button>
-        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Liha Layanant</a>
+        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Liha Layanan</a>
         @endguest
       </div>
 
