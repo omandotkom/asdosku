@@ -135,7 +135,7 @@
         @endauth
         @guest
         @include('auth.modal.authmodal')
-        <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-outline-warning btn-lg rounded">Daftar</button>
+        <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-outline-warning btn-lg rounded">Pesan Layanan</button>
         <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary text-white mt-2 btn-lg rounded">Masuk</button>
 
         @endguest
