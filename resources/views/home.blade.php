@@ -135,9 +135,10 @@
         @endauth
         @guest
         @include('auth.modal.authmodal')
-        <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-outline-warning btn-lg rounded">Pesan Layanan</button>
-        <button type="button" onclick='gotoLogin();' class="btn btn-outline-primary text-white mt-2 btn-lg rounded">Masuk</button>
-
+        {{-- <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-warning btn-lg rounded">Pilih Layanan</button> --}}
+        {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
+        <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Layanan</button>
+        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Liha Layanant</a>
         @endguest
       </div>
 
@@ -299,7 +300,10 @@
             </div>
           </div>
         </div>
-
+        <div class="row">
+        <button type="button" onclick='gotoLogin();' class="btn btn-warning mx-auto btn-lg rounded">Pesan Layanan</button>
+       
+        </div>
       </div>
     </section><!-- #services -->
 
