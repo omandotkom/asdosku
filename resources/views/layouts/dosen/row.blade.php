@@ -150,7 +150,7 @@
                     @if(Auth::user()->subrole != "mahasiswa")
                     <p class="h3 mt-2">Asisten Designer</p>
                     @else
-                    <p class="h3 mt-2">Teman Designer</p>s
+                    <p class="h3 mt-2">Teman Designer</p>
                     @endif
                     
                     @include('layouts.dosen.dashboardmodal.desainermodal')

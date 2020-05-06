@@ -11,7 +11,7 @@
         
           @if(isset($asmahasiswa))
           <form method="POST" name="formregistrasi" action="{{ route('registerasmahasiswa') }}">
-            @else'
+            @else
 
             <form method="POST" name="formregistrasi" action="{{ route('register') }}">
 
