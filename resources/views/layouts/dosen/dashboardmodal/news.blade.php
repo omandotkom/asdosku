@@ -14,8 +14,8 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-               <a href="https://blog.asdosku.com/bukaasdosku/" target="_blank"> <img src="{{asset('storage/gallery/main.png')}}" class="d-block rounded mx-auto img-fluid" alt="News"></a>
-               <a href="https://blog.asdosku.com/bukaasdosku/" target="_blank" class="badge badge-info mt-2">baca lebih lengkap</a>
+               <a href="https://blog.asdosku.com/bukaasdosku/" target="_blank"> <img src="{{asset('storage/gallery/pop_up_break.png')}}" class="d-block rounded mx-auto img-fluid" alt="News"></a>
+               {{--<a href="https://blog.asdosku.com/bukaasdosku/" target="_blank" class="badge badge-info mt-2">baca lebih lengkap</a>--}}
                 
             </div>
             <div class="modal-footer">
