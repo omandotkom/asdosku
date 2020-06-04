@@ -226,7 +226,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" id="tombolregistrasi" disabled class="btn btn-outline-primary">
+                                <button type="submit" id="tombolregistrasi"  class="btn btn-outline-primary">
                                     {{ __('Daftar') }}
                                 </button>
                             </div>

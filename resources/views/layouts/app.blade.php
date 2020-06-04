@@ -109,7 +109,6 @@
 </head>
 
 @if(Route::currentRouteName()=="registerasdosshow")
-@include('auth.modal.disableasdosregis')
 <script>
     $(document).ready(function() {
         $('#disableregis').modal({
