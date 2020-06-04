@@ -74,8 +74,8 @@
 </head>
 
 <body>
-@include('layouts.dosen.dashboardmodal.news')
-  <!--==========================
+
+<!--==========================
   Header
   ============================-->
   <header id="header">
