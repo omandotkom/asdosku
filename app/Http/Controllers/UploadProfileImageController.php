@@ -66,6 +66,32 @@ class UploadProfileImageController extends Controller
             Archive::where('user_id',Auth::user()->id)->update(['another_file_path' => $cv_path]);
             //$archive->cv_path = $cv_path;
         }
+        if ($request->hasFile('ktm')) {
+            $validator = Validator::make($request->all(), [
+                'ktm' => 'file|mimes:pdf|max:10000',
+            ]);
+            if ($validator->fails()) {
+
+                $error = $validator->errors()->first();
+                return redirect()->back()->with(['error' => $error]);
+            }
+            $ktm = $request->file('ktm')->store('ktm/' . Auth::user()->id, 'public');
+            Archive::where('user_id',Auth::user()->id)->update(['ktm' => $ktm]);
+            //$archive->cv_path = $cv_path;
+        }
+        if ($request->hasFile('identity')) {
+            $validator = Validator::make($request->all(), [
+                'identity' => 'file|mimes:pdf|max:10000',
+            ]);
+            if ($validator->fails()) {
+
+                $error = $validator->errors()->first();
+                return redirect()->back()->with(['error' => $error]);
+            }
+            $identity = $request->file('identity')->store('identity/' . Auth::user()->id, 'public');
+            Archive::where('user_id',Auth::user()->id)->update(['identity' => $identity]);
+            //$archive->cv_path = $cv_path;
+        }
         if ($bank != null) {
             $bank->delete();
         }
