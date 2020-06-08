@@ -17,7 +17,7 @@ class PersetujuanController extends Controller
 
     public function viewbyfirstname($name)
     {
-        $belum_disetujui = User::where('status', 'belum_aktif')->where('name','like',"%{$name}%")->whereNotNull('email_verified_at')->simplePaginate(20);
+        $belum_disetujui = User::where('status', 'belum_aktif')->where('name','like','%'.$name.'%')->whereNotNull('email_verified_at')->simplePaginate(20);
         return view('maindashboard.index', ['belum_disetujui' => $belum_disetujui, 'content' => 'persetujuanlist', 'title' => 'Persetujuan Pendaftaran']);
     }
     public function update($id)

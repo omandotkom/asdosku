@@ -1,3 +1,8 @@
+@php
+function convertGender($gender){
+return substr($gender,0,1);
+}
+@endphp
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -60,10 +65,10 @@
 
           <th scope="col">Nama</th>
           <th scope="col">Kontak</th>
-          <th scope="col">Gender</th>
           <th scope="col">Kampus</th>
           <th scope="col">Jurusan</th>
           <th scope="col">Semester</th>
+          <th scope="col">Dokumen</th>
           <th scope="col">Prefer</th>
           <th scope="col">Aksi</th>
         </tr>
@@ -71,17 +76,25 @@
       <tbody>
         @foreach($belum_disetujui as $user)
         <tr>
-          <td>{{ $user->name}}</td>
+          <td>{{ $user->name}} ({{ convertGender($user->detail->gender)}})</td>
           <td>
             <ul>
               <li>{{$user->email}}</li>
               <li>{{$user->detail->wa}}</li>
             </ul>
           </td>
-          <td>{{ $user->detail->gender}}</td>
           <td>{{ $user->detail->kampus->name }}</td>
           <td>{{ $user->detail->jurusan->name }}</td>
           <td>{{ $user->detail->semester }}</td>
+          <td>
+            <ul>
+              @if(!is_null($user->archive->ktm))<li> <a href="{{asset('storage/'.$user->archive->ktm)}}" class="badge badge-primary">KTM</a></li> @endif
+              @if(!is_null($user->archive->another_file_path)) <li><a href="{{asset('storage/'.$user->archive->another_file_path)}}" class="badge badge-primary">Nilai</a></li> @endif
+              @if(!is_null($user->archive->identity))<li> <a href="{{asset('storage/'.$user->archive->identity)}}" class="badge badge-primary">Identitas</a></li> @endif
+              @if(!is_null($user->archive->cv_path)) <li><a href="{{asset('storage/'.$user->archive->cv_path)}}" class="badge badge-primary">CV</a> </li>@endif
+              
+            </ul>
+          </td>
           <td>{{ $user->detail->prefer }}</td>
 
           <td>

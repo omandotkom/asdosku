@@ -194,7 +194,7 @@ class RegisterController extends Controller
                 'prefer' => $preferensi,
                 'gender' => $data['gender'],
             ]);
-            Archive::create(['user_id' => $user->id, 'image_name' => 'default.png']);
+            Archive::create(['user_id' => $user->id, 'image_name' => 'default.png','complete'=>false]);
             if ($details->exists) {
                 return redirect('/dashboard');
             }

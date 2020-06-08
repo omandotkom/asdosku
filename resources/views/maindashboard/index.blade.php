@@ -190,6 +190,9 @@
           @endswitch
           @elseif (Auth::user()->role == "asdos")
           @switch($content ?? '')
+          @case('documentprofile')
+          @include('layouts.asdos.uploaddocument')
+          @break
           @case('servicelist')
           @include('layouts.dosen.semualayanan')
           @break

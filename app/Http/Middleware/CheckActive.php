@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-
+use Symfony\Component\HttpFoundation\Response;
 class CheckActive
 {
     /**
@@ -17,6 +17,9 @@ class CheckActive
     public function handle($request, Closure $next)
     {
         if (Auth::user()->status == 'belum_aktif') {
+            if (Auth::user()->archive->complete == false){
+                return redirect()->route("profileAsdos");
+            }
             return redirect()->route('notactive');
         } else if (Auth::user()->status == "gagal") {
            // return redirect()->route('gagal');

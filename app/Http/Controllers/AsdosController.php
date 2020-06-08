@@ -22,39 +22,47 @@ class AsdosController extends Controller
     public function profileAsdos()
     {
         $archive = Archive::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->first();
-        $services = Service::all();
-        $image_url = "";
-        if (!$archive == null) {
-            $image_url = asset('storage/images/300');
-            $image_url = $image_url . "/" . $archive->image_name;
-        } else {
-            //get random pic over the internet
-            $image_url = "https://picsum.photos/200";
-        }
-        $prefer1 = DB::table('prefers')->selectRaw('concat(activity_id,"check") as arr')->where('user_id', Auth::user()->id)->get();
-        $preferArr = array();
-        foreach ($prefer1 as $pre) {
-            array_push($preferArr, $pre->arr);
-        }
-        //$services = Service::with('activities')->get();
-        //$campuses = Campus::all();
-        //$jurusans = Jurusans::orderBy('name', 'asc')->get();
-        $bank = Bank::where('user_id', Auth::user()->id)->first();
-        $services = Service::with('activities')->get();
-        $campuses = Campus::all();
-        $jurusans = Jurusans::orderBy('name', 'asc')->get();
+        if ($archive->complete) {
+            $services = Service::all();
+            $image_url = "";
+            if (!$archive == null) {
+                $image_url = asset('storage/images/300');
+                $image_url = $image_url . "/" . $archive->image_name;
+            } else {
+                //get random pic over the internet
+                $image_url = "https://picsum.photos/200";
+            }
+            $prefer1 = DB::table('prefers')->selectRaw('concat(activity_id,"check") as arr')->where('user_id', Auth::user()->id)->get();
+            $preferArr = array();
+            foreach ($prefer1 as $pre) {
+                array_push($preferArr, $pre->arr);
+            }
+            //$services = Service::with('activities')->get();
+            //$campuses = Campus::all();
+            //$jurusans = Jurusans::orderBy('name', 'asc')->get();
+            $bank = Bank::where('user_id', Auth::user()->id)->first();
+            $services = Service::with('activities')->get();
+            $campuses = Campus::all();
+            $jurusans = Jurusans::orderBy('name', 'asc')->get();
 
-        return view('maindashboard.index', [
-            'content' => 'profile',
-            'bank' => $bank,
-            'prefer' => $preferArr,
-            'imageurl' => $image_url,
-            'archive' => $archive,
-            'services' => $services,
-            'campuses' => $campuses,
-            'jurusans' => $jurusans,
-            'title' => 'Kegiatan dan Foto Profile '.Auth::user()->id,
-        ]);
+            return view('maindashboard.index', [
+                'content' => 'profile',
+                'bank' => $bank,
+                'prefer' => $preferArr,
+                'imageurl' => $image_url,
+                'archive' => $archive,
+                'services' => $services,
+                'campuses' => $campuses,
+                'jurusans' => $jurusans,
+                'title' => 'Kegiatan dan Foto Profile ' . Auth::user()->id,
+            ]);
+        } else {
+            return view('maindashboard.index', [
+                'content' => 'documentprofile',
+                'archive' => $archive,
+                'title' => 'Unggah dokumen ' . Auth::user()->id,
+            ]);
+         }
     }
 
     public function updatePreferAsdos(Request $request)
