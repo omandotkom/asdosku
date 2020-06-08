@@ -9,7 +9,7 @@ class CommentController extends Controller
 {
     public function viewasdoscomments($user_id){
         $user = User::find($user_id);
-        $comments = Comment::where('user_id',$user_id)->simplePaginate(30)
+        $comments = Comment::where('user_id',$user_id)->simplePaginate(30);
         
         
         
