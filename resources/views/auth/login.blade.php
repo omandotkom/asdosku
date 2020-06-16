@@ -9,7 +9,7 @@
                 <figcaption class="figure-caption">No.1 di Indonesia untuk Dosen Tercinta</figcaption>
             </figure>
             <div class="card animated slideInUp slow">
-                <div class="card-header">{{ __('Login') }} | Belum punya akun ? <a href="{{route('register')}}">Daftar</a></div>
+                <div class="card-header">{{ __('Login') }} | Belum punya akun ? <a href="{{route('register')}}">Daftar Sebagai Dosen</a> | <a href="{{route('registerasdosshow')}}">Daftar Sebagai Asdos</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
