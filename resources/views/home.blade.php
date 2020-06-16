@@ -142,6 +142,10 @@
         {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
         <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Layanan</button>
         <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Layanan</a>
+        <div class="mx-auto">
+          atau<br>
+          <a class="mx-auto btn btn-info mt-1 text-white" href="{{route('registerasdosshow')}}" role="button"><i class="fa fa-user"></i> Daftar Sebagai Asdos</a>
+        </div>
         @endguest
       </div>
 
