@@ -1,5 +1,4 @@
 <div class="row">
-@include('layouts.dosen.dashboardmodal.news')
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
