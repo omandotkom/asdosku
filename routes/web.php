@@ -95,4 +95,9 @@ Route::get('/pass/{p?}',function($p){
     return Hash::make($p);
 });
 
+Route::get('/lupapassword','ResetPasswordController@show')->name('resetpass');
+Route::post('/lupapasswod','ResetPasswordController@send')->name('resetpasssend');
+Route::get('/lupapassword/resetpage/{email?}/{token?}','ResetPasswordController@resetpage')->name("resetpage");
+Route::post('/savereset','ResetPasswordController@savereset')->name('savereset');
+
 

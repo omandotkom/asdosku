@@ -8,13 +8,9 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @if(!@isset($message))
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('resetpasssend') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -24,9 +20,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -34,11 +30,20 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('Kirim Link Reset Password') }}
                                 </button>
                             </div>
                         </div>
                     </form>
+                    @else
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Berhasil!</h4>
+                        <p>Halo {{$user->name}}, email berisi link ubah password telah berhasil di kirim ke alamat email <strong>{{$user->email}}</strong> dengan subjek <strong>Reset Pasword | Asdosku</strong>.</p>
+                        <hr>
+                        <p class="mb-0">Mohon untuk menunggu beberapa saat (terkadang butuh beberapa menit) sampai email masuk. Jika sudah sampai 20 menit belum ada email, mohon periksa tab spam ya.</p>
+                        <br>Mengalami masalah ? <a target="_blank" href="https://api.whatsapp.com/send?phone=6287719357776&text=Saya%20mengalami%20kendala%20lupa%20password">Minta Bantuan</a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

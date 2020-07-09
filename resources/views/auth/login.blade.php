@@ -63,7 +63,7 @@
                             </div> 
                         </div>
                         <div class="form-group float-right mb-0">
-                        <a href="{{route('forget')}}">Lupa Sandi</a>
+                        <a href="{{route('resetpass')}}">Lupa Sandi</a>
                                
                         </div> 
                     </form>
