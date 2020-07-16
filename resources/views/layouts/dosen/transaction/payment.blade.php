@@ -39,7 +39,7 @@ $totalbiaya = 0;
   @endhandheld
   <div class="row">
 
-    <div class="card shadow mx-auto p-1 mb-5 bg-white rounded">
+    <div class="card shadow mx-auto p-1 mb-5 w-100 bg-white rounded">
 
       <div class="card-body">
         <h5 class="card-title text-center">Pembayaran</h5>
@@ -158,7 +158,7 @@ $totalbiaya = 0;
             </label>
           </div>
           <input type="hidden" name="transaction_id">
-
+    <hr></hr>
           <h5 class="card-title text-center mt-1">Metode Pembayaran</h5>
           <table class="table table-sm table-responsive-sm table-borderless">
             <thead>
@@ -170,23 +170,23 @@ $totalbiaya = 0;
             <tbody>
               <tr>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/dana.png')}}" alt="DANA App"></td>
-                <td><b>081393558430</b> a.n <b>Khalid Abdurrahman</b></td>
+                <td><b>0838 2146 5018</b> a.n <b>Rahmi Hilmayani</b></td>
               </tr>
               <tr>
                 <td><image class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
-                <td>a.n DNID 081393558430<br>Virtual Account : <b>3901081393558430</b></td>
+                <td>a.n DNID 083821465018<br>Virtual Account : <b>3901083821465018</b></td>
               </tr>
               <tr>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bni.png')}}" alt="BNI"></td>
-                <td>a.n DNID 081393558430<br>Virtual Account : <b>8810081393558430</b></td>
+                <td>a.n DNID 083821465018<br>Virtual Account : <b>8810083821465018</b></td>
               </tr>
               <tr>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/mandiri.png')}}" alt="MANDIRI"></td>
-                <td>a.n DNID 081393558430<br>Virtual Account : <b>89508081393558430</b></td>
+                <td>a.n DNID 083821465018<br>Virtual Account : <b>89508083821465018</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/btn.png')}}" alt="BTN"></td>
-                <td>a.n DNID 081393558430<br>Virtual Account : <b>8528081393558430</b></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bri.png')}}" alt="BRI"></td>
+                <td>a.n DNID 083821465018<br>Virtual Account : <b>88810083821465018</b></td>
               </tr>
             </tbody>
           </table>
