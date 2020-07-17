@@ -98,6 +98,12 @@ class BidController extends Controller
         $url = "#";
         return view('maindashboard.index', ['asdoslist' => $asdoslist, 'bid' => $id, 'title' => 'Daftar Asisten ', 'content' => 'bidsapplicants', 'currenturl' => $url]);
     }
+    public function cancelbid($id){
+        $bid = Bid::findOrFail($id);
+        $bid->status="deactive";
+        $bid->save();
+        return back();
+    }
     public function showBidsByActivity($id)
     {
         if ($id == 0) {

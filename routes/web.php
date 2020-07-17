@@ -71,6 +71,7 @@ Route::get('/dashboard/index/bid/apply/{id?}','BidController@apply')->name('appl
 Route::get('/dashboard/index/bid/cancelapply/{id?}','BidController@cancel')->name('cancelapply');
 Route::get('/dashboard/index/bid/applicants/view/{id?}','BidController@viewapplicants')->name('viewapplicants');
 Route::get('/dashboard/index/bid/all/filter/activity/{id?}','BidController@showBidsByActivity')->name('showbidsbyactivity');
+Route::get('/dashboard/index/bid/cancel/{id}','BidController@cancelbid')->name("cancelbid");
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/order/cancel/{id?}','TransactionController@cancel')->name('deleteTransaction')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction')->middleware('auth','operational');
