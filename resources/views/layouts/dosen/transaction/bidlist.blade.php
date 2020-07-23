@@ -132,9 +132,20 @@ return number_format($val,2,',','.');
         @if($bid->status == "active")
         <div class="btn-group btn-group-sm float-right m-1" role="group" aria-label="Basic example">
             <a role="button" href="{{route('viewapplicants',$bid->id)}}" class="btn btn-sm btn-success m-1">Lihat Applicant</a>
-            <button type="button" class="btn btn-sm btn-danger m-1">Hapus</button>
+            
+            <a role="button" href="{{route('cancelbid',$bid->id)}}" class="btn btn-sm btn-secondary m-1">Batalkan</a>
+            
         </div>
         @endif
+        @break
+        @case("operational")
+        @if($bid->status == "active")
+        <div class="btn-group btn-group-sm float-right m-1" role="group" aria-label="Basic example">
+            <a role="button" href="{{route('viewapplicants',$bid->id)}}" class="btn btn-sm btn-success m-1">Lihat Applicant</a>
+            <a role="button" href="{{route('cancelbid',$bid->id)}}" class="btn btn-sm btn-secondary m-1">Batalkan</a>
+        </div>
+        @endif
+        
         @break
         @case('asdos')
         @if ($bid->applicants->where('user_id',Auth::user()->id)->count() < 1)

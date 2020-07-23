@@ -76,6 +76,7 @@ Route::get('/dashboard/index/bid/apply/{id?}','BidController@apply')->name('appl
 Route::get('/dashboard/index/bid/cancelapply/{id?}','BidController@cancel')->name('cancelapply');
 Route::get('/dashboard/index/bid/applicants/view/{id?}','BidController@viewapplicants')->name('viewapplicants');
 Route::get('/dashboard/index/bid/all/filter/activity/{id?}','BidController@showBidsByActivity')->name('showbidsbyactivity');
+Route::get('/dashboard/index/bid/cancel/{id}','BidController@cancelbid')->name("cancelbid");
 Route::post('/dashboard/index/dosen/order/{activity}/{asdos}','TransactionController@store')->name('storeTransaction')->middleware('auth','dosen');
 Route::get('/dashboard/index/dosen/order/cancel/{id?}','TransactionController@cancel')->name('deleteTransaction')->middleware('auth');
 Route::get('/dashboard/index/operational/pendingtransaction/view','TransactionController@pendingtransaction')->name('viewpendingtransaction')->middleware('auth','operational');
@@ -96,10 +97,6 @@ Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@ge
 Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
 Route::post('/archive/save','ArchiveController@save')->name('savedocuments');
-Route::get('/pass/{p?}',function($p){
-    return Hash::make($p);
-});
-
 Route::get('/lupapassword','ResetPasswordController@show')->name('resetpass');
 Route::post('/lupapasswod','ResetPasswordController@send')->name('resetpasssend');
 Route::get('/lupapassword/resetpage/{email?}/{token?}','ResetPasswordController@resetpage')->name("resetpage");

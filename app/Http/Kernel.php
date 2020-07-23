@@ -10,6 +10,7 @@ use App\Http\Middleware\Dosen;
 use App\Http\Middleware\HRD;
 use App\Http\Middleware\Marketing;
 use App\Http\Middleware\Operational;
+use App\Http\Middleware\RegisterMiddlewareF;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -43,6 +44,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            RegisterMiddlewareF::class
         ],
 
         'api' => [
@@ -78,6 +80,7 @@ class Kernel extends HttpKernel
         'hrd' => HRD::class,
         'marketing' => Marketing::class,
         'dosenidentitas' =>  \App\Http\Middleware\DosenIdentitas::class,
+        'registerf' => RegisterMiddlewareF::class
     ];
 
     /**

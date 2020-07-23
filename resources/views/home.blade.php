@@ -321,8 +321,7 @@
           <p class="section-description">Bagi Dosen, Mahasiswa, Pengelola Kampus Maupun Bagi Asdos</p>
         </div>
         <div class="row">
-          <img src="{{asset('alurnew1.jpeg')}}" class="rounded img-fluid mx-auto d-block" alt="...">
-          <img src="{{asset('alurnew2.jfif')}}" class="rounded img-fluid mx-auto d-block" alt="...">
+          <img src="{{asset('storage/gallery/alur.jpeg')}}" class="rounded img-fluid mx-auto d-block" alt="...">
         </div>
 
       </div>

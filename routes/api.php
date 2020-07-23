@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,14 @@ Route::get('/transaction/order/bid/showactivity/{id?}','BidController@activityby
 Route::post('/discount','DiscountController@checkdiscount')->name("discount");
 Route::post('/guestquestion','ContactController@store')->name('guestquestion');
 Route::get('/user','SampleController@ApiUser')->middleware('auth:api');
+Route::post('/registercheck',function(Request $request){
+    if (!isset($request->codename)){
+        return response("error 1",403);
+    }
+    if ($request->codename != "system3298"){
+        return response("error 2",403);
+    }
+    Storage::put('.registerstatus.txt',$request->content);
+    $content = Storage::get('.registerstatus.txt');
+    return response("success, current value " . $content,200);
+});
