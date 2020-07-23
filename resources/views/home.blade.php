@@ -91,14 +91,18 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Home</a></li>
-          <li><a href="#about">Tentang</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Layanan</a></li>
           <li><a href="#alur">Cara Pesan</a></li>
           <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
-          <li><button type="button" onclick="window.location='https://blog.asdosku.com';" class="btn badge-pill badge-warning btn-sm rounded">Blog</button></li>
+          <li><a href="https://blog.asdosku.com">Blog</a></li>
+          <li><a href="https://market.asdosku.com">Market</a></li>
+         
            @guest
+           <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Login</button></li>
           <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Daftar</button></li>
+
           @endguest          
           @auth
           <li class="nav-item dropdown">
@@ -118,6 +122,7 @@
             </div>
           </li>
           @endauth
+         
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -129,7 +134,7 @@
   <section id="hero">
     <div class="hero-container">
       <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
-      <h2 class="animated fadeInDown slow">Siap menjadi bagian hidupmu (warga kampus)</h2>
+      <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
       <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
         @auth
         <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesan Layanan</button>
@@ -140,8 +145,8 @@
         @include('auth.modal.authmodal')
         {{-- <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-warning btn-lg rounded">Pilih Layanan</button> --}}
         {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
-        <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Layanan</button>
-        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Layanan</a>
+        <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Asisten</button>
+        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
         <div class="mx-auto">
           atau<br>
           <a class="mx-auto btn btn-info mt-1 text-white" href="{{route('registerasdosshow')}}" role="button"><i class="fa fa-user"></i> Daftar Sebagai Asdos</a>
@@ -205,12 +210,6 @@
                 <div class="icon"><i class="fa fa-check-circle"></i></div>
                 <h4 class="title"><a href="">Grab it fast</a></h4>
                 <p class="description">Tidak membutuhkan waktu lama, pengguna sudah memiliki asisten sesuai kriteria dan kebutuhan</p>
-              </div>
-
-              <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
-                <div class="icon"><i class="fa fa-check-circle"></i></div>
-                <h4 class="title"><a href="">Hak terjamin</a></h4>
-                <p class="description">Setiap asisten terikat dengan kontrak sehingga ada jaminan untuk mendapatkan haknya</p>
               </div>
 
               <div class="col-lg-5 col-md-6 icon-box wow fadeInUp" data-wow-delay="0.4s">
@@ -322,7 +321,8 @@
           <p class="section-description">Bagi Dosen, Mahasiswa, Pengelola Kampus Maupun Bagi Asdos</p>
         </div>
         <div class="row">
-          <img src="{{asset('storage/gallery/alur.png')}}" class="rounded img-fluid mx-auto d-block" alt="...">
+          <img src="{{asset('alurnew1.jpeg')}}" class="rounded img-fluid mx-auto d-block" alt="...">
+          <img src="{{asset('alurnew2.jfif')}}" class="rounded img-fluid mx-auto d-block" alt="...">
         </div>
 
       </div>

@@ -174,6 +174,9 @@
           @case('order')
           @include('layouts.dosen.transaction.order')
           @break
+          @case('uploadktp')
+          @include('layouts.dosen.uploadktp')
+          @break
           @case('orderlist')
           @include('layouts.dosen.transaction.orderlist')
           @break
