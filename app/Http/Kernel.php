@@ -79,6 +79,7 @@ class Kernel extends HttpKernel
         'asdos' => Asdos::class,
         'hrd' => HRD::class,
         'marketing' => Marketing::class,
+        'dosenidentitas' =>  \App\Http\Middleware\DosenIdentitas::class,
         'registerf' => RegisterMiddlewareF::class
     ];
 
