@@ -147,7 +147,15 @@
           @auth
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }} <span class="caret"></span>
+              <?php 
+                $nama = Auth::user()->name; 
+                $nama = explode(" ", $nama);
+
+
+              ?>
+
+
+              {{ $nama[0]}} <span class="caret"></span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -210,7 +218,7 @@
           <div class="content order-lg-1 order-2">
             <h2 class="title text-center">APA ITU ASDOSKU ?</h2>
             <p class="text-center wow fadeInUp">
-              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas Tri Dharma Perguruan Tinggi dan bisnis sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya.
+              <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas Tri Dharma Perguruan Tinggi dan bisnis sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya. <br>Di kelola dan dikembangkan oleh perusahaan bernama <b> CV. Asdosku Bakti Nusantara.</b>
             </p>
             <p class="text-center wow fadeInUp">Demi kenyamanan dan kemudahan warga kampus yang akan memakai layanan asdosku diharuskan <b>mendaftar terlebih dahulu sebagai pengguna </b>. Sedangkan bagi mahasiswa dan freshgraduate yang ingin berkontribusi untuk pendidikan tinggi di Indonesia dapat <b>mendaftarkan diri sebagai asisten</b>.
             </p>
@@ -554,6 +562,8 @@
 
     <div class="container">
       <div class="copyright">
+        CV. Asdosku Bakti Nusantara
+        <br>
         &copy; Copyright <strong>ASDOSKU</strong>. All Rights Reserved
       </div>
       <div class="credits">
