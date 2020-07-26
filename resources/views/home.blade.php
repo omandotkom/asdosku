@@ -26,6 +26,42 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
+  {{-- untuk floatin --}}
+  <link rel="stylesheet" href="{{asset('asset/lib/floatingbutton/floating-wpp.css')}}">
+  <script type="text/javascript" src="{{asset('asset/lib/floatingbutton/floating-wpp.js')}}"></script>
+  <style type="text/css">
+    .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index:100;
+  }
+  .float:active{
+    color:#fff;
+  }
+  .float:focus{
+    color:#fff;
+  }
+  .float:link{
+    color:#fff;
+  }
+  .float:hover{
+    color:#fff;
+  }
+
+  .my-float{
+    margin-top:16px;
+  }
+  </style>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935140-1"></script>
   <script>
@@ -50,6 +86,9 @@
     function gotoTagihanSaya(){
       window.location = "{{route('showallpayout')}}";
     }
+     function gotoTawarkanProyek(){
+      window.location = "{{ route('showbidpage') }}";
+    }
   </script>
   @endauth
   @guest
@@ -69,6 +108,7 @@
     function gotoLogin() {
       window.location = "{{ url('/login') }}";
     }
+
   </script>
   @endguest
 </head>
@@ -137,9 +177,10 @@
       <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
       <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
         @auth
-        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesan Layanan</button>
+        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Cari Asisten</button>
         <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
         <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
+        <button type="button" data-toggle="modal" onclick="gotoTawarkanProyek();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tawarkan Proyek</button>
         @endauth
         @guest
         @include('auth.modal.authmodal')
@@ -192,7 +233,10 @@
 
     <!--==========================
       Benefit Section
+
     ============================-->
+       {{-- unutk membuat tombol wa --}}
+    <div id="WAButton"></div>  
     <section id="benefit">
       <div class="container">
         <div class="row benefit-container">
@@ -493,9 +537,11 @@
 
       </div>
     </section><!-- #contact -->
-
+ 
   </main>
-
+  <a href="https://api.whatsapp.com/send?phone=6285643715830&text=Halo%20Asdosku%20Mau%20Tanya%20Nih." class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
   <!--==========================
     Footer
   ============================-->
@@ -573,6 +619,7 @@
         });
     }
   </script>
+ 
   <!-- Template Main Javascript File -->
   <script src="{{ asset('asset/js/main.js') }}"></script>
 

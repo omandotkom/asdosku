@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-//Route::get('/', 'HomeController@index');
+Route::get('/coba', function(){
+	return view('coba');
+});
 
 Auth::routes(['verify' => true]);
 Route::get('/forgot',function(){
