@@ -33,7 +33,7 @@ class OrderWaitingPaymentListener
         Pemberitahuan::create([
             'to' => $event->dosen->email,
             'subject' => 'Notifikasi Asdosku',
-            'judul' => "Layanan dengan kode transaksi ".$event->transaction->id." telah selesai. Anda memiliki tagihan yang harus dibayar, silahkan login ke Asdosku untuk mengunggah bukti pembayaran",
+            'judul' => "Layanan dengan kode transaksi ".$event->transaction->id." telah selesai. Anda memiliki tagihan yang harus dibayar sebesar Rp.".number_format($event->transaction->biaya,2).", silahkan login ke Asdosku untuk mengunggah bukti pembayaran",
             'isi' => "Lihat Tagihan Anda",
             'url' => route('login'),
             'status' => 'unsent'
