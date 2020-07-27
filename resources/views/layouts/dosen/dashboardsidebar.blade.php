@@ -45,7 +45,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('showbidpage')}}">
             <i class="fas fa-fw fa-hand-holding"></i>
-            <span>Tawarkan Pekerjaan </span></a>
+            <span>Tawarkan Proyek </span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('showmybids')}}">

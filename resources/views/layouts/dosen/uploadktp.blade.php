@@ -3,7 +3,7 @@
   <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Lengkapi Profil <br>  
-                      <span class="text-danger">Anda diwajibkan upload KTP untuk menjamin serta melindungi hak dan kewajiban pengguna dan mitra asdosku</span>
+                      <span class="text-danger">Perhatian! Demi kelancara bertransaksi Anda diwajibkan mengunggah scan/foto KTP atau SK dosen. Kemananan data privasi anda terjamin. Hanya pengelola yang dapat melihat data pribadi Anda.</span>
                   </h6>
                 </div>
                 <div class="card-body">
