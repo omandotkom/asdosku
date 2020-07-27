@@ -1,6 +1,7 @@
 <div class="row">
 
   <div class="accordion" id="accordionServices">
+    
     @foreach($services as $s)
     <div class="card">
       <div class="card-header" id="headingcollapse{{$s->id}}">

@@ -46,15 +46,23 @@ class DashboardIndexController extends Controller
         $admActivity = Activity::select('id', 'name')->where('service_id', 'asadm')->get();
         $karyaActivity = Activity::select('id', 'name')->where('service_id', 'askarya')->get();
         $desainerActivity = Activity::select('id', 'name')->where('service_id', 'asdesainer')->get();
+        $asdoskuakademy = Activity::select('id', 'name')->where('service_id', 'asdoskuakademy')->get();
+        // dd($asdoskuakademy);
         $campuses = Campus::all();
         $jurusans = Jurusans::all();
         return view('maindashboard.index', [
             'campuses' => $campuses,
-            'jurusans' => $jurusans, 'title' => 'Layanan', 'matakuliahactivity' => $matakuliahActivity,
+            'jurusans' => $jurusans, 
+            'title' => 'Layanan', 
+            'matakuliahactivity' => $matakuliahActivity,
             'praktikumactivity' => $praktikumActivity,
-            'karyaactivity' => $karyaActivity, 'desaineractivity' => $desainerActivity,
-            'admactivity' => $admActivity, 'proyekactivity' => $proyekActivity,
-            'bimbelactivity' => $bimbelActivity, 'penelitianactivity' => $penelitianActivity
+            'karyaactivity' => $karyaActivity, 
+            'desaineractivity' => $desainerActivity,
+            'admactivity' => $admActivity, 
+            'proyekactivity' => $proyekActivity,
+            'bimbelactivity' => $bimbelActivity, 
+            'penelitianactivity' => $penelitianActivity,
+            'asdoskuakademy' => $asdoskuakademy
         ]);
     }
     public function indexAsdos()
