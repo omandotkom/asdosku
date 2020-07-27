@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-//Route::get('/', 'HomeController@index');
+
 
 Auth::routes(['verify' => true]);
 Route::get('/forgot',function(){

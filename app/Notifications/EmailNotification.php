@@ -19,6 +19,7 @@ class EmailNotification extends Notification
     public $emailContent;
     public function __construct(MailContent $emailContent)
     {
+        // dd($emailContent);
         $this->emailContent = $emailContent;
     }
 

@@ -77,7 +77,8 @@ class FilterAsdosController extends Controller
             $strKampus = "details.kampus_id != 0";
         }
 
-        $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+        $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')
+            ->join('users', 'prefers.user_id', 'users.id')
             ->join('details', 'prefers.user_id', 'details.user_id')
             ->join('kampus', 'details.kampus_id', 'kampus.id')
             ->join('activities', 'prefers.activity_id', 'activities.id')

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
-
+{{-- untuk daftar layanan --}}
             <!-- Card Body -->
             <div class="card-body">
 
@@ -154,6 +154,30 @@
                     
                     @include('layouts.dosen.dashboardmodal.desainermodal')
                     <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#desainerModal">Cari</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="col-xl-3 col-lg-5">
+        <div class="card shadow mb-4">
+
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <div class="mt-4 text-center small">
+
+                    
+                    <span class="text-primary"><i class="fa fa-graduation-cap fa-7x"></i></span>
+
+                    @if(Auth::user()->subrole != "mahasiswa")
+                    <p class="h3 mt-2">Asdosku Akademy</p>
+                    @else
+                    <p class="h3 mt-2">Teman Akademy</p>
+                    @endif
+                    
+                    @include('layouts.dosen.dashboardmodal.asdoskuakademymodal')
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#asdoskuakademy">Cari</button>
                 </div>
             </div>
         </div>
