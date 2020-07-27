@@ -3,7 +3,7 @@
   <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Lengkapi Profil <br>  
-                      <span class="text-danger">Perhatian untuk mengantisipasi tindak apa aku bingung anda di wajibkan mengupload foto KTP</span>
+                      <span class="text-danger">Perhatian! Demi kelancara bertransaksi Anda diwajibkan mengunggah scan/foto KTP atau SK dosen. Kemananan data privasi anda terjamin. Hanya pengelola yang dapat melihat data pribadi Anda.</span>
                   </h6>
                 </div>
                 <div class="card-body">
