@@ -9,6 +9,9 @@
           <th scope="col">Biaya</th>
           <th scope="col">Bukti</th>
           <th scope="col">Tanggal</th>
+          @if(Auth::user()->role == "operational")
+          <th scope="col">Aksi</th>
+          @endif
         </tr>
       </thead>
       <tbody>
@@ -55,6 +58,9 @@
           <td>-</td>
           @endif
           <td>{{$cost->updated_at}}</td>
+          @if(Auth::user()->role == "operational")
+          <td><a class="btn btn-danger btn-sm" href="{{route('deletecost',$cost->id)}}" role="button">Hapus</a></td>
+          @endif
           </tr>
         @endforeach
         <tr>
