@@ -26,42 +26,7 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
-  {{-- untuk floatin --}}
-  <link rel="stylesheet" href="{{asset('asset/lib/floatingbutton/floating-wpp.css')}}">
-  <script type="text/javascript" src="{{asset('asset/lib/floatingbutton/floating-wpp.js')}}"></script>
-  <style type="text/css">
-    .float{
-    position:fixed;
-    width:60px;
-    height:60px;
-    bottom:40px;
-    right:40px;
-    background-color:#25d366;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    font-size:30px;
-    box-shadow: 2px 2px 3px #999;
-    z-index:100;
-  }
-  .float:active{
-    color:#fff;
-  }
-  .float:focus{
-    color:#fff;
-  }
-  .float:link{
-    color:#fff;
-  }
-  .float:hover{
-    color:#fff;
-  }
-
-  .my-float{
-    margin-top:16px;
-  }
-  </style>
-
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935140-1"></script>
   <script>
@@ -124,8 +89,6 @@
       <div id="logo" class="pull-left fadeInUp">
         <a href="{{route('rumah')}}"><img src="{{ asset('asset/img/logo.png') }}" alt="" title="" /></img></a>
         <p class="text-white">No. 1 di Indonesia Untuk Dosen Tercinta</p>
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!--<h1><a href="#hero">Regna</a></h1>-->
       </div>
 
       <nav id="nav-menu-container">
@@ -140,7 +103,7 @@
           <li><a href="https://market.asdosku.com">Market</a></li>
          
            @guest
-           <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Login</button></li>
+           <li><button type="button"  onclick='gotoLogin();'  class="btn badge-pill badge-warning btn-sm rounded">Login</button></li>
           <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Daftar</button></li>
 
           @endguest          
@@ -181,7 +144,7 @@
   ============================-->
   <section id="hero">
     <div class="hero-container">
-      <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
+       <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
       <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
       <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
         @auth
@@ -355,6 +318,13 @@
               <div class="icon"><a href=""><i class="fa fa-flask"></i></a></div>
               <h4 class="title"><a href="">Asisten Praktikum</a></h4>
               <p class="description">Asistensi yang membantu dosen melaksanakan kegiatan belajar mengajar dengan metode praktik di laboratorium, di lapangan maupun dikelas</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+            <div class="box">
+              <div class="icon"><a href=""><i class="fa fa-graduation-cap"></i></a></div>
+              <h4 class="title"><a href="">Asdosku Akademy</a></h4>
+              <p class="description">Belajar keahlian baru bersama praktisi terbaik Asdosku. Segera Hadir.</p>
             </div>
           </div>
         </div>

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 
-
 Auth::routes(['verify' => true]);
 Route::get('/forgot',function(){
     return view('auth.forgot');
