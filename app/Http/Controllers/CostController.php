@@ -43,5 +43,10 @@ class CostController extends Controller
         $cost = Cost::where('transaction_id',$id)->sum('nominal');
         return $cost;
     }
+    public function delete($id){
+        $cost = Cost::findOrFail($id);
+        $cost->delete();
+        return back();
+    }
 }
 

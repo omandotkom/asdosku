@@ -84,6 +84,7 @@ Route::get('/dashboard/index/operational/payoutransaction/view','TransactionCont
 Route::get('/dashboard/index/operational/pendingpayouts/view','PayoutController@showconfirpayouts')->name('viewpendingpayout')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/finishedpayout/view','PayoutController@viewbymonth')->name('viewfinishedpayoutbymonth')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/cost/{id}','TransactionController@showcosthistory')->name('showcosthistory')->middleware('auth');
+Route::get('/dashboard/index/operational/transaction/cost/delete/{id}','CostController@delete')->name("deletecost")->middleware("auth","operational");
 Route::get('/dashboard/index/operational/transaction/change/{id?}','TransactionController@changetransaction')->name('changetransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}','FilterAsdosController@filterbyactivity')->name('filterbyactivity')->middleware('auth','operational');
 Route::post('/dashboard/index/operational/transaction/change/save','TransactionController@savechangedtransaction')->name('savechangedtransaction')->middleware('auth','operational');
@@ -102,3 +103,4 @@ Route::get('/lupapassword/resetpage/{email?}/{token?}','ResetPasswordController@
 Route::post('/savereset','ResetPasswordController@savereset')->name('savereset');
 
 
+Route::resource('spend','SpendController');
