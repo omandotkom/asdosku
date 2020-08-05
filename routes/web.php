@@ -91,9 +91,9 @@ Route::post('/dashboard/index/operational/transaction/change/save','TransactionC
 Route::get('/dashboard/index/operational/view/dosen','DosenController@view')->name('viewdosen')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAll')->name('viewasdos')->middleware('auth','operational');
 Route::get('/dashboard/cancel/{id?}','TransactionController@batal')->name('bataltransaksi');
-Route::get('/bimbinganbelajar/{activity?}/{gender?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
-Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');
-Route::get('/general/{activity?}/{kampus?}/{jurusan?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
+Route::get('/bimbinganbelajar/{activity?}/{gender?}/{domisili?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
+Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}/{domisili?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');
+Route::get('/general/{activity?}/{kampus?}/{jurusan?}/{domisili?}','FilterAsdosController@generalview')->name('viewgeneral')->middleware('auth');
 Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosController@filterbycampus')->name('filterasdosmarketing')->middleware('auth','marketing');
 
 Route::post('/archive/save','ArchiveController@save')->name('savedocuments');

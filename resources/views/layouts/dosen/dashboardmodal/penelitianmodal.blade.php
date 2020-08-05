@@ -3,7 +3,7 @@
     function generatePenelitianURL(){
         var penelitianURL = "{{route('viewgeneral')}}";
         penelitianURL = penelitianURL.concat("/").concat($("#penelitianactivity").val());
-        penelitianURL = penelitianURL.concat("/").concat($("#kampuspenelitian").val()).concat("/").concat($("#jurusanpenelitian").val());
+        penelitianURL = penelitianURL.concat("/").concat($("#kampuspenelitian").val()).concat("/").concat($("#jurusanpenelitian").val()).concat("/").concat($("#domisili_penelitian").val());
         window.location = penelitianURL;
     }
 </script>
@@ -48,6 +48,14 @@
                         <option value="{{$jurusan->id}}">{{$jurusan->name}}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                        <label for="domisili" class="col-form-label float-left">Domisili</label>
+                        <select name="domisili" id="domisili_penelitian" required class="custom-select custom-select-sm">
+                            <option value="purwokerto">Purwokerto</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                        <small>Pilih Domisili yang terdekat dari pilihan</small>
                 </div>
               </div>
             <div class="modal-footer">

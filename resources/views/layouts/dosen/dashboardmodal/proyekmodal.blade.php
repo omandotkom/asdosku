@@ -3,7 +3,7 @@
     function generateProyekURL(){
         var proyekURL = "{{route('viewgeneral')}}";
         proyekURL = proyekURL.concat("/").concat($("#proyekactivity").val());
-        proyekURL = proyekURL.concat("/").concat($("#kampusproyek").val()).concat("/").concat($("#jurusanproyek").val());
+        proyekURL = proyekURL.concat("/").concat($("#kampusproyek").val()).concat("/").concat($("#jurusanproyek").val()).concat("/").concat($("#domisili_proyek").val());
         window.location = proyekURL;
     }
     </script>
@@ -50,6 +50,14 @@
                         @endforeach
                     </select>
                 </div>
+                  <div class="form-group">
+                        <label for="domisili" class="col-form-label float-left">Domisili</label>
+                        <select name="domisili" id="domisili_proyek" required class="custom-select custom-select-sm">
+                            <option value="purwokerto">Purwokerto</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                        <small>Pilih Domisili yang terdekat dari pilihan</small>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 class FilterAsdosController extends Controller
 {
-    public function bimbinganbelajarview($activity, $gender)
+    public function bimbinganbelajarview($activity, $gender, $domisili)
     {
         $gender = strtolower($gender);
         if ($gender == "bebas") {
@@ -16,17 +16,27 @@ class FilterAsdosController extends Controller
         } else {
             $strWhere = "details.gender = '" . $gender . "'";
         }
-        $asdosList = DB::table('prefers')->select("users.id", "users.name", 'rates.rating', "kampus.name as kampus", "details.gender", 'activities.harga')->join('users', 'prefers.user_id', 'users.id')
+        if($domisili=="bebas"){
+            $domisili="";
+        }
+
+        $asdosList = DB::table('prefers')->select("users.id", "users.name", 'rates.rating', "kampus.name as kampus",'details.domisili', "details.gender", 'activities.harga')
+            ->join('users', 'prefers.user_id', 'users.id')
             ->join('details', 'prefers.user_id', 'details.user_id')
             ->join('kampus', 'details.kampus_id', 'kampus.id')
             ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
             ->join('activities', 'prefers.activity_id', 'activities.id')
-            ->where('prefers.activity_id', $activity)->where('users.status', 'aktif')
+            ->where('prefers.activity_id', $activity)
+            ->where('details.status','aktif')
+            ->where('users.status', 'aktif')
+            ->where('details.domisili',$domisili)
+
             ->whereRaw($strWhere)->simplePaginate();
+           
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
-    public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender)
+    public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender,$domisili)
     {
     
         if ($jurusan != "Bebas"){
@@ -58,13 +68,17 @@ class FilterAsdosController extends Controller
             ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
             ->where('prefers.activity_id', $activity)->whereRaw($strSemester)->whereRaw($strKampus)
             ->whereRaw($strJurusan)
-            ->whereRaw($strGender)->where('users.status', 'aktif')
+            ->whereRaw($strGender)
+            ->where('users.status', 'aktif')
+            ->where('details.status','aktif')
+            ->where('details.domisili',$domisili)
             ->simplePaginate();
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
-    public function generalView($activity,$kampus,$jurusan)
+    public function generalView($activity,$kampus,$jurusan,$domisili)
     {
+        // dd($domisili);
         if ($jurusan != "Bebas"){
             $strJurusan = "details.jurusan_id=".$jurusan;
         }else{
@@ -85,7 +99,10 @@ class FilterAsdosController extends Controller
             ->leftJoin('rates', 'prefers.user_id', 'rates.user_id')
             ->where('prefers.activity_id', $activity)
             ->whereRaw($strKampus)
-            ->whereRaw($strJurusan)->where('users.status', 'aktif')
+            ->whereRaw($strJurusan)
+            ->where('users.status', 'aktif')
+            ->where('details.status','aktif')
+            ->where('details.domisili',$domisili)
             ->simplePaginate();
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);

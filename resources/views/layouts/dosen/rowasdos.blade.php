@@ -116,7 +116,7 @@
     </div>
 </div>
 <div class="row">
-    @foreach($asdoslist as $asdos)
+    @forelse($asdoslist as $asdos)
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
@@ -165,7 +165,11 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+    <div class="container">
+    <h3>Maaf, kami belum menemukan asdos yang cocok dengan yang anda pilih</h3>
+    </div>
+    @endforelse
 </div>
 
 {{$asdoslist->links()}}

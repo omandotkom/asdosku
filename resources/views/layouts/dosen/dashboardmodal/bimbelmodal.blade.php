@@ -12,7 +12,7 @@
                 <script>
                     function generateBimbelURL(){
                         var url = "{{route('viewbimbinganbelajar')}}";
-                        url = url.concat("/").concat($("#activitybimbel").val()).concat("/").concat($("#bimbelgender").val())
+                        url = url.concat("/").concat($("#activitybimbel").val()).concat("/").concat($("#bimbelgender").val()).concat("/").concat($("#domisili_bimbel").val());
                         window.location = url;
                     }
                 </script>
@@ -38,6 +38,17 @@
                             <option value="Wanita">Wanita</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+
+                        <label for="domisili" class="col-form-label float-left">Domisili</label>
+                        <select name="domisili" id="domisili_bimbel" required class="custom-select custom-select-sm">
+                            <option value="purwokerto">Purwokerto</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                        <small>Pilih Domisili yang terdekat dari pilihan</small>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
