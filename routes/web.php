@@ -106,3 +106,6 @@ Route::post('/kirim-email','SendMessageController@kirimEmail')->name('kirim-emai
 
 
 Route::resource('spend','SpendController');
+
+Route::get('/dashboard/index/keuangan','DashboardIndexController@indexkeuangan')->name('indexkeuangan');
+Route::get('/spend/delete/{id}','SpendController@destroy')->name('spenddelete');
