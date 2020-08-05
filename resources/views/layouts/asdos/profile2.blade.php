@@ -183,16 +183,22 @@ $picname = basename($path, ".png");
               </div>
               <div class="form-group">
                 <label for="gender">{{ __('Gender') }}</label>
-
-
                 <select class="form-control" name="gender" id="gender">
                   <option>Pria</option>
                   <option>Wanita</option>
-
                 </select>
-
-
               </div>
+              {{-- {{dd(Auth::user()->detail->domisili)}} --}}
+               <div class="form-group">
+                <label for="Domisili">Domisili</label>
+                <select class="form-control" name="domisili" id="Domisili">
+
+                  <option value="purwokerto" @if(Auth::user()->detail->domisili == 'purwokerto') selected @endif>Purwokerto</option>
+                  <option value="yogyakarta" @if(Auth::user()->detail->domisili == 'yogyakarta') selected @endif>Yogyakarta</option>
+                </select>
+                <small>Pilih domisili anda sekarang</small>
+              </div>
+
 
               <div id="cvfrm" class="form-group">
                 <label for="cv">CV (wajib berformat pdf)</label>
@@ -284,6 +290,18 @@ $picname = basename($path, ".png");
             @endforeach
             @endforeach
           </div>
+
+         <div class="form-group">
+            <label for="Status">Status</label>
+            <select class="form-control" name="status" id="Status">
+              <option value="aktif"  @if(Auth::user()->detail->status == 'aktif') selected @endif>Aktif</option>
+              <option value="nonaktif" @if(Auth::user()->detail->status == 'nonaktif') selected @endif>Nonaktif</option>
+            </select>
+            <small>Jika anda memilih nonaktif maka anda mendapatkan tugas asistensi</small>
+          </div>
+
+
+
           <div class="form-group mt-3">
             <button type="submit" class="btn btn-success btn-sm">Perbarui</button>
           </div>

@@ -175,7 +175,14 @@
             <small id="discounthelp" class="form-text text-muted">Klik tombol di atas apabila Punya kode diskon.</small>
           </div>
 
+          
+         
+         @if($activity->service_id == 'asdoskuakademy')
+          <div class="form-group">
+            <label for="biaya">Perkiraan Biaya Rp {{ number_format($activity->harga,2)}}</label>
+          </div>
 
+         @else
           <div class="form-group">
             <label for="biaya">Perkiraan Biaya</label>
             @if(strtolower($activity->satuan)!= "orang")
@@ -185,6 +192,9 @@
             @endif
             <small id="biayahelp" class="form-text text-muted">*Biaya tersebut adalah biaya dasar belum termasuk biaya tambahan seperti print, beli pulpen, dll (jika ada).</small>
           </div>
+          @endif
+
+
           <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary btn-lg btn-block">Lanjutkan Pemesanan</button>
       </div>
       </form>

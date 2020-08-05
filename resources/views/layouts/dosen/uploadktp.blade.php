@@ -32,7 +32,7 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="nama">Upload Foto KTP : </label>
+                      <label for="nama">Upload Foto KTP/SK Dosen : </label>
                       <input type="file" class="form-control" name="identitas" id="identitas" aria-describedby="emailHelp" required>
                       @error('identitas')
                           <div class="alert alert-danger">{{ $message }}</div>

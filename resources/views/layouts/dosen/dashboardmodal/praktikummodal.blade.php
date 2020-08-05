@@ -4,7 +4,7 @@
         var matakuliahURL = "{{route('viewmatakuliah')}}";
         matakuliahURL = matakuliahURL.concat("/").concat($("#activitymatakuliah").val()).concat("/")
             .concat($("#kampuspraktikum").val()).concat("/").concat($("#jurusanpraktikum").val()).concat("/")
-            .concat($("#semesterpraktikum").val()).concat("/").concat($("#genderpraktikum").val());
+            .concat($("#semesterpraktikum").val()).concat("/").concat($("#genderpraktikum").val()).concat("/").concat($("#domisili_praktikum").val());
         window.location = matakuliahURL;
     }
 </script>
@@ -71,6 +71,14 @@
                         <option value="Wanita">Wanita</option>
                     </select>
                 </div>
+                 <div class="form-group">
+                        <label for="domisili" class="col-form-label float-left">Domisili</label>
+                        <select name="domisili" id="domisili_praktikum" required class="custom-select custom-select-sm">
+                            <option value="purwokerto">Purwokerto</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                        <small>Pilih Domisili yang terdekat dari pilihan</small>
+                 </div>
 
             </div>
             <div class="modal-footer">

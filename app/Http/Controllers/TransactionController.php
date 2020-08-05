@@ -258,7 +258,8 @@ return back();
         return view('maindashboard.index', ['transactions' => $transaction, 'title' => 'Pesanan Asdos Menunggu Persetujuan', 'content' => 'pesananasdoslist']);
     }
     public function show($activity, $asdos,$bid=0, $url = "#")
-    {
+    {   
+        
         
         $asdos = User::with('archive', 'detail')->where('users.id', $asdos)->orderBy('created_at', 'desc')->first();
         if (isset($asdos->archive->image_name)) {

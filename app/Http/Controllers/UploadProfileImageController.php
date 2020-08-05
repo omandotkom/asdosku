@@ -28,6 +28,7 @@ class UploadProfileImageController extends Controller
     }
     public function upload(Request $request)
     {
+        // dd($request->all());
         User::where('id',Auth::user()->id)->update(['name' => $request->accountname]);
             
         Detail::where('user_id',Auth::user()->id)->update([
@@ -36,7 +37,8 @@ class UploadProfileImageController extends Controller
            'semester' => $request->semester,
            'jurusan_id' => $request->jurusan,
            'alamat' => $request->alamat,
-           'gender' => $request->gender
+           'gender' => $request->gender,
+           'domisili' => $request->domisili
        ]);
         $bank = Bank::where('user_id', Auth::user()->id)->first();
         $archive = Archive::where('user_id', Auth::user()->id)->first();

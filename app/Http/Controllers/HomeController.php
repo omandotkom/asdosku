@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
@@ -29,5 +30,18 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    // public function cobadelete($id)
+    // {
+    //     $activiti = Activity::findOrFail($id);
+        
+    //     if(!$activiti->trashed()){
+    //       $activiti->delete();
+    //       echo "sudah di happus";
+    //     }else{
+    //          $activiti->restore();
+    //         echo "sudah di restore";
+    //     }
+
+    // }
    
 }

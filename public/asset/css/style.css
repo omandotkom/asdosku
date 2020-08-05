@@ -1071,3 +1071,40 @@ body.mobile-nav-active #mobile-nav-toggle {
     padding-top: 15px;
   }
 }
+
+  .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index:100;
+  }
+  .float:active{
+    color:#fff;
+  }
+  .float:focus{
+    color:#fff;
+  }
+  .float:link{
+    color:#fff;
+  }
+  .float:hover{
+    color:#fff;
+  }
+
+  .my-float{
+    margin-top:16px;
+  }
+  .new_landing{
+    color: #fff;
+    font-size: 2.5em;
+    margin-top: 7%;
+  }
+  

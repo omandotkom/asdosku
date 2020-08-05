@@ -3,7 +3,7 @@
     function generateDesainerURL(){
         var akademiURL = "{{route('viewgeneral')}}";
         akademiURL = akademiURL.concat("/").concat($("#akademiaktiviti").val());
-        akademiURL = akademiURL.concat("/").concat($("#kampuspilihan").val()).concat("/").concat($("#jurusanakademi").val());
+        akademiURL = akademiURL.concat("/").concat($("#kampuspilihan").val()).concat("/").concat($("#jurusanakademi").val()).concat("/").concat($("#domisili_akademy").val());
         
         window.location = akademiURL;
     }
@@ -50,6 +50,14 @@
                         @endforeach
                     </select>
                 </div>
+                    <div class="form-group">
+                        <label for="domisili" class="col-form-label float-left">Domisili</label>
+                        <select name="domisili" id="domisili_akademy" required class="custom-select custom-select-sm">
+                            <option value="purwokerto">Purwokerto</option>
+                            <option value="yogyakarta">Yogyakarta</option>
+                        </select>
+                        <small>Pilih Domisili yang terdekat dari pilihan</small>
+                    </div>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

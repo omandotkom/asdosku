@@ -67,6 +67,7 @@ class AsdosController extends Controller
 
     public function updatePreferAsdos(Request $request)
     {
+        // dd($request->all());
 
         $archive = Archive::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->first();
 
@@ -97,6 +98,10 @@ class AsdosController extends Controller
             $user->second_register = true;
             $user->save();
         }
+
+        DB::table('details')->where('user_id',Auth::user()->id)->update([
+            'status' => $request->status
+        ]);
         //return $prefer;
         // return view('maindashboard.index', ['content' => 'profile', 'imageurl' =>$image_url, 'archive'=> $archive, 'services' => $services, 'title' => 'Daftar Ulang Lengkapi Profile']);
         return redirect()->route('profileAsdos')->with('successprefer', 'Berhasil memperbarui preferensi.');
