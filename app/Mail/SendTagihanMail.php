@@ -28,7 +28,7 @@ class SendTagihanMail extends Mailable
      */
     public function build()
     {
-        return $this->from('asdosku@gmail.com')
+        return $this->from('notification@asdosku.com')
                     ->subject('Konfirmasi Pembayaran')
                     ->view('mail.tagihanpembayaran');
     }
