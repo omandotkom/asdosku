@@ -7,7 +7,7 @@
 
       <div class="card-header" id="persetujuan">
         <button type="button" onclick='gotoPengeluaran();' class="btn float-right btn-sm btn-light">
-          Sedang Ditagih <span class="badge badge-danger"></span>
+          Pengeluaran Team Asdosku <span class="badge badge-danger"></span>
         </button>
       </div>
 
