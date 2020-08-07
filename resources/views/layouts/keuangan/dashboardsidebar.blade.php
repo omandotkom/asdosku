@@ -21,12 +21,18 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    <!-- Heading --><li class="nav-item">
+        <a class="nav-link" href="{{route('spend.index')}}">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Pengeluaran</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('externalincome.index')}}">
+            <i class="fas fa-fw fa-plus"></i>
+            <span>Pemasukan</span></a>
+    </li>
+    
     <!-- Heading -->
-   
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Layanan
-    </div>
     
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

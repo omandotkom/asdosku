@@ -240,6 +240,9 @@
           @case('pengeluaran')
           @include('layouts.keuangan.spend')
           @break
+          @case('pemasukantambahan')
+          @include('layouts.keuangan.extincome')          
+          @break
           @default
           @include('layouts.keuangan.row')
           @endswitch
