@@ -142,7 +142,7 @@
   <!--==========================
     Hero Section
   ============================-->
-  <section id="hero">
+ {{--  <section id="hero">
     <div class="hero-container">
        <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
       <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
@@ -155,8 +155,6 @@
         @endauth
         @guest
         @include('auth.modal.authmodal')
-        {{-- <button type="button" data-toggle="modal" data-target="#authmodal" class="btn btn-warning btn-lg rounded">Pilih Layanan</button> --}}
-        {{--<button type="button" onclick='gotoLogin();' class="btn btn-primary text-white mt-2 btn-lg rounded">Masuk</button>--}}
         <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Asisten</button>
         <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
         <div class="mx-auto">
@@ -167,7 +165,45 @@
       </div>
 
     </div>
-  </section><!-- #hero -->
+  </section> --}}
+  <!-- #hero -->
+  {{-- new hero --}}
+  <section id="hero">
+      <div class="container">
+      <div class="row justify-content-center ">
+          <div class="col-lg-8 col-md-12 kata-kata">
+            <div class="container">
+            <p class="hero1">Merekrut Asisten untuk berbagai tugas kampus maupun proyek pribadi secara profesional.</p>
+            <p class="hero2">Membantu anda mewujudkan kinerja terbaik, temukan asisten terbaik disini.</p>
+             @guest
+              @include('auth.modal.authmodal')
+              <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded mr-2">Pilih Asisten</button>
+                <a class="mx-auto btn btn-info btn-lg text-white" href="{{route('registerasdosshow')}}" role="button"><i class="fa fa-user"></i> Daftar Sebagai Asdos</a>
+                <br>
+                <br>
+                 <a href="#services" class="mx-auto  text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
+              @endguest
+               @auth
+                <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Cari Asisten</button>
+                <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
+                <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
+                <button type="button" data-toggle="modal" onclick="gotoTawarkanProyek();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tawarkan Proyek</button>
+                @endauth
+                
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 kata-gambar">
+            <img src="{{ asset('asset/img/landing_page.png') }}" class="img-fluid image-hero animated jackInTheBox slow">
+          </div>
+        </div>
+        </div>
+   
+  </section>
+
+  {{-- end new hero --}}
+
+
+  
 
   <main id="main">
 
