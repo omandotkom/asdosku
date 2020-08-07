@@ -67,7 +67,7 @@ class UsersPengurusSeeder extends Seeder
         ]);*/
         $user =  User::create([
             'name' => 'Bag. Keuangan',
-            'email' => 'Sibus.project@gmail.com',
+            'email' => 'asdosku2020@gmail.com',
             'password' => bcrypt('asdosku2020bismillah'),
             'role' => 'keuangan',
             'status' => 'aktif',
