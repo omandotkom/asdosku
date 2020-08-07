@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardIndexController extends Controller
 {
+    public function indexkeuangan(){
+        return view('maindashboard.index',[ 'title' => "Dashboard"]);
+  
+    }
     public function indexhrd()
     {
         $belum_aktif = User::where('status', 'belum_aktif')->whereNotNull('email_verified_at')->count();

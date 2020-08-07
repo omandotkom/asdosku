@@ -201,4 +201,5 @@
     function gotoLowonganPekerjaan(){
     window.location = "{{route('showbids')}}";
   }
+ 
   </script>

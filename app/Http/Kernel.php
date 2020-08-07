@@ -8,6 +8,7 @@ use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\Dosen;
 use App\Http\Middleware\HRD;
+use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Marketing;
 use App\Http\Middleware\Operational;
 use App\Http\Middleware\RegisterMiddlewareF;
@@ -78,6 +79,7 @@ class Kernel extends HttpKernel
         'operational' => Operational::class,
         'asdos' => Asdos::class,
         'hrd' => HRD::class,
+        'keuangan'=> Keuangan::class,
         'marketing' => Marketing::class,
         'dosenidentitas' =>  \App\Http\Middleware\DosenIdentitas::class,
         'registerf' => RegisterMiddlewareF::class

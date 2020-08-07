@@ -80,6 +80,9 @@
     @include('layouts.asdos.dashboardsidebar')
     @elseif (Auth::user()->role == "marketing")
     @include('layouts.marketing.dashboardsidebar')
+    @elseif (Auth::user()->role == "keuangan")
+    @include('layouts.keuangan.dashboardsidebar')
+    
     @endif
 
     <!--Sidebar ada di sini -->
@@ -231,6 +234,14 @@
           @break
           @default
           @include('layouts.marketing.row')
+          @endswitch
+          @elseif(Auth::user()->role == "keuangan")
+          @switch($content ?? '')
+          @case('pengeluaran')
+          @include('layouts.keuangan.spend')
+          @break
+          @default
+          @include('layouts.keuangan.row')
           @endswitch
           @endif
 
