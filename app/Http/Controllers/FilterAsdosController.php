@@ -91,6 +91,14 @@ class FilterAsdosController extends Controller
             $strKampus = "details.kampus_id != 0";
         }
 
+        if ($domisili != "bebas") {
+            $strdomisili = "details.domisili=". '"'.$domisili.'"';
+        } else {
+            //bebas
+            $strdomisili = "details.domisili != 'null'";
+        }
+        // dd($strdomisili);
+
         $asdosList = DB::table('prefers')->select("users.id", "users.name", "rates.rating", "kampus.name as kampus", "details.kampus_id", "details.gender", 'activities.harga')
             ->join('users', 'prefers.user_id', 'users.id')
             ->join('details', 'prefers.user_id', 'details.user_id')
@@ -102,7 +110,7 @@ class FilterAsdosController extends Controller
             ->whereRaw($strJurusan)
             ->where('users.status', 'aktif')
             ->where('details.status','aktif')
-            ->where('details.domisili',$domisili)
+            ->whereRaw($strdomisili)
             ->simplePaginate();
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);

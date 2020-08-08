@@ -16,11 +16,13 @@ class DiscountController extends Controller
     }
     public function checkdiscount(Request $request)
     {
+        // dd($request->all());
         //check if specified discount exists
         $validator = Validator::make($request->all(), [
             'val' => 'required|numeric',
             'id' => 'required',
         ]);
+        // dd($validator);
 
         if ($validator->fails()) {
             return response("Kode diskon tidak bisa digunakan.", 406);
@@ -28,6 +30,7 @@ class DiscountController extends Controller
 
 
         $discount = Discount::where('id', $request->id)->where('status', 'aktif')->first();
+     
 
         if ($discount === null) {
             return response("Kode diskon tidak bisa digunakan.", 406);
