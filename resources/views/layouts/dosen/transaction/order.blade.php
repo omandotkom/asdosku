@@ -179,7 +179,7 @@
          
          @if($activity->service_id == 'asdoskuakademy')
           <div class="form-group">
-            <label for="biaya">Perkiraan Biaya Rp {{ number_format($activity->harga,2)}}</label>
+            <label for="biaya">Perkiraan Biaya Rp <label id="biayacontent">{{ $activity->harga}}</label> </label>
           </div>
 
          @else

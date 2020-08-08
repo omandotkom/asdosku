@@ -3,7 +3,7 @@
     function generatePengabdianURL(){
         var pengabdianURL = "{{route('viewgeneral')}}";
         pengabdianURL = pengabdianURL.concat("/").concat($("#pengabdianactivity").val());
-        pengabdianURL = pengabdianURL.concat("/").concat($("#kampusadministrasi").val()).concat("/").concat($("#jurusanadministrasi").val());
+        pengabdianURL = pengabdianURL.concat("/").concat($("#kampusadministrasi").val()).concat("/").concat($("#jurusanadministrasi").val()).concat("/bebas");
         
         window.location = pengabdianURL;
     }
