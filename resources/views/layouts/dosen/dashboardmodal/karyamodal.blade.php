@@ -2,7 +2,7 @@
     function generateKaryaURL() {
         var karyaURL = "{{route('viewgeneral')}}";
         karyaURL = karyaURL.concat("/").concat($("#karyaactivity").val());
-        karyaURL = karyaURL.concat("/").concat($("#kampuskarya").val()).concat("/").concat($("#jurusankarya").val());
+        karyaURL = karyaURL.concat("/").concat($("#kampuskarya").val()).concat("/").concat($("#jurusankarya").val()).concat("/bebas");
         window.location = karyaURL;
     }
 </script>
