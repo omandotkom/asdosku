@@ -1,9 +1,11 @@
 <!-- Modal -->
 <script>
-    function generateDesainerURL(){
+    function generateLinkDesainer(){
         var desainerURL = "{{route('viewgeneral')}}";
-        desainerURL = desainerURL.concat("/").concat($("#desaineractivity").val());
-        desainerURL = desainerURL.concat("/").concat($("#kampusdesainer").val()).concat("/").concat($("#jurusandesainer").val());
+        desainerURL = desainerURL.concat("/").concat($("#desaineractivity").val()).concat("/")
+                                             .concat($("#kampusdesainer").val()).concat("/")
+                                             .concat($("#jurusandesainer").val())
+                                             .concat("/bebas");
         
         window.location = desainerURL;
     }
@@ -53,7 +55,7 @@
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" onclick="generateDesainerURL();" class="btn btn-primary">Lanjutkan</button>
+                <button type="button" onclick="generateLinkDesainer();" class="btn btn-primary">Lanjutkan</button>
                 </script>
             </div>
         </div>
