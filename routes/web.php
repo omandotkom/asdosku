@@ -99,6 +99,7 @@ Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosCon
 Route::post('/archive/save','ArchiveController@save')->name('savedocuments');
 Route::get('/lupapassword','ResetPasswordController@show')->name('resetpass');
 Route::post('/lupapasswod','ResetPasswordController@send')->name('resetpasssend');
+Route::get('/iniuntukresetpasswordhard/{id}','ResetPasswordController@resetPasswordVandy')->name('reset-password');
 Route::get('/lupapassword/resetpage/{email?}/{token?}','ResetPasswordController@resetpage')->name("resetpage");
 Route::post('/savereset','ResetPasswordController@savereset')->name('savereset');
 

@@ -17,6 +17,11 @@
             <i class="fas fa-fw fa-dot-circle"></i>
             <span>Beranda</span></a>
     </li>
+     <li class="nav-item active">
+        <a class="nav-link" href="{{route('view-all-asdos')}}">
+            <i class="fas fa-fw fa-dot-circle"></i>
+            <span>Daftar Semua Asdos</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
