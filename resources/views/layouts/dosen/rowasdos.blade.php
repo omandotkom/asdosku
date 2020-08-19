@@ -117,6 +117,7 @@
 </div>
 <div class="row">
     @forelse($asdoslist as $asdos)
+  
     <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
 
