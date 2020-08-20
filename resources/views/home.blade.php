@@ -184,6 +184,7 @@
                  <a href="#services" class="mx-auto  text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
               @endguest
                @auth
+               
                 <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Cari Asisten</button>
                 <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
                 <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-2 mr02 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>

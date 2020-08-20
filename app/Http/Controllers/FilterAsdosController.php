@@ -10,6 +10,7 @@ class FilterAsdosController extends Controller
 {
     public function bimbinganbelajarview($activity, $gender, $domisili)
     {
+        // dd($domisili);
         $gender = strtolower($gender);
         if ($gender == "bebas") {
             $strWhere = "details.gender != 'Bebas'";
@@ -31,9 +32,13 @@ class FilterAsdosController extends Controller
             ->where('users.status', 'aktif')
             ->where('details.domisili',$domisili)
 
-            ->whereRaw($strWhere)->simplePaginate();
-           
+            ->whereRaw($strWhere)
+            ->inRandomOrder()
+            ->paginate(8);
+        
             $url = base64_encode(URL::full());
+            // dd($url);
+            // dd($asdosList);
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
     public function matakuliahview($activity, $kampus, $jurusan,$semester, $gender,$domisili)
@@ -72,7 +77,8 @@ class FilterAsdosController extends Controller
             ->where('users.status', 'aktif')
             ->where('details.status','aktif')
             ->where('details.domisili',$domisili)
-            ->simplePaginate();
+            ->inRandomOrder()
+            ->paginate(8);
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }
@@ -111,7 +117,8 @@ class FilterAsdosController extends Controller
             ->where('users.status', 'aktif')
             ->where('details.status','aktif')
             ->whereRaw($strdomisili)
-            ->simplePaginate();
+            ->inRandomOrder()
+            ->paginate(8);
             $url = base64_encode(URL::full());
             return view('maindashboard.index', ['asdoslist' => $asdosList, 'activity' => $activity, 'title' => 'Daftar Asisten', 'content' => 'viewAsdoswithFilter','currenturl'=>$url]);
     }

@@ -191,6 +191,12 @@
           @case('persetujuanlist')
           @include('layouts.hrd.persetujuan')
           @break
+          @case('asdoshrdlist')
+          @include('layouts.hrd.daftar_asdos')
+          @break
+          @case('asdosdetailview')
+          @include('layouts.hrd.detail_asdos')
+          @break
           @default
           @include('layouts.hrd.row')
           @endswitch
