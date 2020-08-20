@@ -28,6 +28,9 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'home')->name('dashboard')->middleware('auth','verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/all-asdos', 'HrdAsdosController@index')->name('view-all-asdos')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/all-asdos/{id}', 'HrdAsdosController@detail')->name('view-asdos-detail')->middleware('auth','hrd');
+
 Route::get('/dashboard/index/operational','DashboardIndexController@indexoperational')->middleware('auth','verified','operational')->name('indexoperational');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('auth','verified', 'checkactive','dosen','dosenidentitas')->name('indexdosen');
 Route::get('/dashboard/index/marketing','DashboardIndexController@indexmarketing')->name('indexmarketing')->middleware('auth','verified','marketing');
@@ -99,6 +102,7 @@ Route::get('/dashboard/index/marketing/filterasdos/{kampus_id?}','FilterAsdosCon
 Route::post('/archive/save','ArchiveController@save')->name('savedocuments');
 Route::get('/lupapassword','ResetPasswordController@show')->name('resetpass');
 Route::post('/lupapasswod','ResetPasswordController@send')->name('resetpasssend');
+Route::get('/iniuntukresetpasswordhard/{id}','ResetPasswordController@resetPasswordVandy')->name('reset-password');
 Route::get('/lupapassword/resetpage/{email?}/{token?}','ResetPasswordController@resetpage')->name("resetpage");
 Route::post('/savereset','ResetPasswordController@savereset')->name('savereset');
 

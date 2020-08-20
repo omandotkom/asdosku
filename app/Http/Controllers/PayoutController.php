@@ -86,7 +86,7 @@ class PayoutController extends Controller
             ++$person;
             $rating->person = $person;
             $oldrating = $rating->rating;
-            $oldrating = ($oldrating + $request->rating) / $person;
+            $oldrating = ($oldrating + $request->rating) / 2;
             $rating->rating = $oldrating;
             $rating->save();
         } else {
