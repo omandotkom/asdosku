@@ -19,7 +19,7 @@
     </li>
      <li class="nav-item active">
         <a class="nav-link" href="{{route('view-all-asdos')}}">
-            <i class="fas fa-fw fa-dot-circle"></i>
+            <i class="fas fa-users"></i>
             <span>Daftar Semua Asdos</span></a>
     </li>
 

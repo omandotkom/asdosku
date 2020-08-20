@@ -28,6 +28,9 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'home')->name('dashboard')->middleware('auth','verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/all-asdos', 'HrdAsdosController@index')->name('view-all-asdos')->middleware('auth','hrd');
+Route::get('/dashboard/index/hrd/all-asdos/{id}', 'HrdAsdosController@detail')->name('view-asdos-detail')->middleware('auth','hrd');
+
 Route::get('/dashboard/index/operational','DashboardIndexController@indexoperational')->middleware('auth','verified','operational')->name('indexoperational');
 Route::get('/dashboard/index/dosen', 'DashboardIndexController@indexDosen')->middleware('auth','verified', 'checkactive','dosen','dosenidentitas')->name('indexdosen');
 Route::get('/dashboard/index/marketing','DashboardIndexController@indexmarketing')->name('indexmarketing')->middleware('auth','verified','marketing');

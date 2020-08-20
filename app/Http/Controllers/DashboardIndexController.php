@@ -22,7 +22,6 @@ class DashboardIndexController extends Controller
     public function indexhrd()
     {
         $belum_aktif = User::where('status', 'belum_aktif')->whereNotNull('email_verified_at')->count();
-        // $user = User::all();
         return view('maindashboard.index', ['belum_aktif' => $belum_aktif, 'title' => "Dashboard"]);
     }
 
