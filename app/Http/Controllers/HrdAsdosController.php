@@ -44,4 +44,18 @@ class HrdAsdosController extends Controller
     				->paginate(10);
         return view('maindashboard.index', ['users' => $users, 'content' => 'asdoshrdlist','title' => "Daftar Asdos"]);
     }
+    public function detail($id)
+    {
+    		$user =  DB::table('users as u')
+    				->join('details as d','u.id','d.user_id')
+    				->join('kampus as k','d.kampus_id','k.id')
+    				->join('jurusans as j','d.jurusan_id','j.id')
+    				->join('bankaccounts as ba', 'ba.user_id','u.id')
+    				->join('archives as ar','ar.user_id','u.id')
+    				->select('u.id as user_id','u.name','u.email','u.status','k.name as kampus','j.name as jurusan','d.*','ba.nama as nama_rekening','ba.payment as nama_bank','ba.nomor as nomer_rekening','ar.*')
+    				->where('u.id','=',$id)
+    				->first();
+    				// dd($user);
+    		return view('maindashboard.index', ['user' => $user, 'content' => 'asdosdetailview','title' => "Detail Asdos"]);
+    }
 }

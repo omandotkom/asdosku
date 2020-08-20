@@ -21,11 +21,11 @@
               </select>
 
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                <button class="btn btn-primary" type="submit">Cari</button>
               </div>
               </form>
             
-              <a href="{{route('view-all-asdos')}}" class="btn btn-primary ml-2">Tampilkan Semua</a>
+              <a href="{{route('view-all-asdos')}}" class="btn btn-secondary ml-2">Tampilkan Semua</a>
             </div>
             <small>Khusus untuk status pencariannya berupa <b>Aktif</b> / <b>Belum Aktif</b> / <b>Gagal</b> </small>
 
@@ -61,7 +61,11 @@
                   <td>{{$user->domisili}}</td>
                   <td>{{$user->status}}</td>
                   <td>
+                    @if($user->status == 'aktif')
                     <a href="{{route('view-asdos-detail',$user->id)}}" class="btn btn-primary">Detail</a>
+                    @else
+                    -
+                    @endif
                   </td>
                 </tr>
                 @endforeach
