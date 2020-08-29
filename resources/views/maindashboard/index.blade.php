@@ -126,9 +126,18 @@
           @case('bidsapplicants')
           @include('layouts.dosen.applicantlist')
           @break
+          {{-- list asdos lama --}}
           @case('viewAsdoswithFilter')
           @include('layouts.dosen.rowasdos')
           @break
+          {{-- list asdos baru --}}
+          @case('viewAsdoswithFilterNew')
+          @include('layouts.operational.listasdos')
+          @break
+          @case('asdosdetailview')
+          @include('layouts.operational.detailasdos')
+          @break
+          {{-- end list asdos baru --}}
           @case('changetransaction')
           @include('layouts.operational.changeorder')
           @break

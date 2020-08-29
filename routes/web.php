@@ -25,6 +25,9 @@ Route::post('/forgot/send','Auth\ForgotPasswordController@forgot')->name('forgot
 Route::get('/', function () {
     return view('home');
 })->middleware('guest')->name('rumah');
+
+Route::get('/home/{layanan}', 'DetailLayananController@index')->name('detail-layanan');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/dashboard', 'home')->name('dashboard')->middleware('auth','verified', 'checkactive', 'checkrole');
 Route::get('/dashboard/index/hrd', 'DashboardIndexController@indexhrd')->name('indexhrd')->middleware('auth','hrd');
@@ -92,7 +95,14 @@ Route::get('/dashboard/index/operational/transaction/change/{id?}','TransactionC
 Route::get('/dashboard/index/operational/transaction/change/asdos/by/{activity?}','FilterAsdosController@filterbyactivity')->name('filterbyactivity')->middleware('auth','operational');
 Route::post('/dashboard/index/operational/transaction/change/save','TransactionController@savechangedtransaction')->name('savechangedtransaction')->middleware('auth','operational');
 Route::get('/dashboard/index/operational/view/dosen','DosenController@view')->name('viewdosen')->middleware('auth','operational');
-Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAll')->name('viewasdos')->middleware('auth','operational');
+// list asdos old
+// Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAll')->name('viewasdos')->middleware('auth','operational');
+// list adsos new
+Route::get('/dashboard/index/operational/view/asdps','FilterAsdosController@showAllNew')->name('viewasdos')->middleware('auth','operational');
+Route::get('/dashboard/index/operational/view/asdp/{id}','FilterAsdosController@showDetailAsdos')->name('detail-asdos-operational')->middleware('auth','operational');
+
+
+
 Route::get('/dashboard/cancel/{id?}','TransactionController@batal')->name('bataltransaksi');
 Route::get('/bimbinganbelajar/{activity?}/{gender?}/{domisili?}','FilterAsdosController@bimbinganbelajarview')->name('viewbimbinganbelajar')->middleware('auth');
 Route::get('/matakuliah/{activity?}/{kampus?}/{jurusan?}/{semester?}/{gender?}/{domisili?}','FilterAsdosController@matakuliahview')->name('viewmatakuliah')->middleware('auth');

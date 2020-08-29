@@ -302,66 +302,75 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-child"></i></a></div>
-              <h4 class="title"><a href="">Asisten Bimbel</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asbimbinganbelajar')}}"><i class="fa fa-child"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asbimbinganbelajar')}}">Asisten Bimbel</a></h4>
               <p class="description">Asistensi untuk membantu belajar siswa/i untuk belajar tambahan secara private bagi putra dan putri dari dosen atau pejabat perguruan tinggi.</p>
+               <a href="{{route('detail-layanan','asbimbinganbelajar')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-file-text"></i></a></div>
-              <h4 class="title"><a href="">Asisten Mata Kuliah</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asmatakuliah')}}"><i class="fa fa-file-text"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asmatakuliah')}}">Asisten Mata Kuliah</a></h4>
               <p class="description">Asistensi untuk membantu melaksanakan tugas mengajar atau kegiatan mata kuliah tertentu. Dosen dapat memilih asisten sesuai dengan kualifikasi mata kuliah yang diampu dan kriteria khusus lainnya</p>
+               <a href="{{route('detail-layanan','asmatakuliah')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-book"></i></a></div>
-              <h4 class="title"><a href="">Asisten Penelitian</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','aspenelitian')}}"><i class="fa fa-book"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','aspenelitian')}}">Asisten Penelitian</a></h4>
               <p class="description">Asistensi yang dilakukan untuk membantu tugas/proyek penelitian pengguna. Asisten membantu segala keperluan penelitian baik penyusunan kerangka proposal, pencarian data ataupun penyusunan kerangka laporan hasil penelitian</p>
+               <a href="{{route('detail-layanan','aspenelitian')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-leanpub"></i></a></div>
-              <h4 class="title"><a href="">Asisten Proyek</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asproyek')}}"><i class="fa fa-leanpub"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asproyek')}}">Asisten Proyek</a></h4>
               <p class="description">Asistensi yang dilakukan sesuai dengan proyek yang sedang atau akan dikerjakan oleh pengguna. Baik itu bersifat kepentingan kampus maupun kepentingan pribadi. Pengguna tinggal memilih asisten sesuai dengan kriteria dan kebutuhan proyek</p>
+               <a href="{{route('detail-layanan','asproyek')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-list-ol"></i></a></div>
-              <h4 class="title"><a href="">Asisten Administrasi</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asadm')}}"><i class="fa fa-list-ol"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asadm')}}">Asisten Administrasi</a></h4>
               <p class="description">Asistensi untuk membantu pembuatan berbagai macam administrasi yang diperlukan baik keperluan kampus, pribadi ataupun bisnis</p>
+               <a href="{{route('detail-layanan','asadm')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-pencil"></i></a></div>
-              <h4 class="title"><a href="">Asisten Karya</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','askarya')}}"><i class="fa fa-pencil"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','askarya')}}">Asisten Karya</a></h4>
               <p class="description">Asistensi yang membantu penulis, pengarang, pembuat karya tulis dan sebagainya untuk menyempurnakan karyanya. Pengguna hanya perlu memilih kebutuhan dan kriteria asisten yang sesuai</p>
+               <a href="{{route('detail-layanan','askarya')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-paint-brush"></i></a></div>
-              <h4 class="title"><a href="">Asisten Desainer</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asdesainer')}}"><i class="fa fa-paint-brush"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asdesainer')}}">Asisten Desainer</a></h4>
               <p class="description">Asistensi yang membantu pengguna (dosen atau pengelola Perguruan tinggi) untuk membuat desain grafis dan web desain yang dibutuhkan untuk keperluan kegiatan belajar mengajar, pemasaran, bisnis, legalitas, brand dan lain sebagainya</p>
+               <a href="{{route('detail-layanan','asdesainer')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-flask"></i></a></div>
-              <h4 class="title"><a href="">Asisten Praktikum</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','aspraktikum')}}"><i class="fa fa-flask"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','aspraktikum')}}">Asisten Praktikum</a></h4>
               <p class="description">Asistensi yang membantu dosen melaksanakan kegiatan belajar mengajar dengan metode praktik di laboratorium, di lapangan maupun dikelas</p>
+               <a href="{{route('detail-layanan','aspraktikum')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-graduation-cap"></i></a></div>
-              <h4 class="title"><a href="">Asdosku Akademy</a></h4>
+              <div class="icon"><a href="{{route('detail-layanan','asdoskuakademy')}}"><i class="fa fa-graduation-cap"></i></a></div>
+              <h4 class="title"><a href="{{route('detail-layanan','asdoskuakademy')}}">Asdosku Akademy</a></h4>
               <p class="description">Belajar keahlian baru bersama praktisi terbaik Asdosku. Segera Hadir.</p>
+               <a href="{{route('detail-layanan','asdoskuakademy')}}" class="btn btn-primary">Lihat Detail Layanan</a>
             </div>
           </div>
         </div>

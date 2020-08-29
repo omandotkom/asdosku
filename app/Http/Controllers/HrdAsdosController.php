@@ -46,16 +46,12 @@ class HrdAsdosController extends Controller
     }
     public function detail($id)
     {
-    		$user =  DB::table('users as u')
-    				->join('details as d','u.id','d.user_id')
-    				->join('kampus as k','d.kampus_id','k.id')
-    				->join('jurusans as j','d.jurusan_id','j.id')
-    				->join('bankaccounts as ba', 'ba.user_id','u.id')
-    				->join('archives as ar','ar.user_id','u.id')
-    				->select('u.id as user_id','u.name','u.email','u.status','k.name as kampus','j.name as jurusan','d.*','ba.nama as nama_rekening','ba.payment as nama_bank','ba.nomor as nomer_rekening','ar.*')
-    				->where('u.id','=',$id)
-    				->first();
-    				// dd($user);
-    		return view('maindashboard.index', ['user' => $user, 'content' => 'asdosdetailview','title' => "Detail Asdos"]);
+    		$user =  DB::table('users as u')->where('u.id','=',$id)->first();
+            $detail = DB::table('details')->where('user_id',$id)->first();
+            $jurusan = DB::table('jurusans')->where('id',$detail->jurusan_id)->first();
+            $kampus = DB::table('kampus')->where('id',$detail->kampus_id)->first();
+            $data = DB::table('archives')->where('user_id',$id)->first();
+             // dd($kampus);
+    		return view('maindashboard.index', ['user' => $user, 'detail'=>$detail,'jurusan'=>$jurusan, 'kampus'=>$kampus, 'data'=>$data, 'content' => 'asdosdetailview','title' => "Detail Asdos"]);
     }
 }
