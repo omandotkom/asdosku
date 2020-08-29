@@ -76,15 +76,15 @@ class ResetPasswordController extends Controller
         return view('auth.passwords.reset',['user'=>$user,'message'=>'success']);
    
     }
-    public function resetPasswordVandy(Request $request, $id)
-    {
-        if($request->token!="l9q7Wd9aSCpR3nmvMSe3NFQGKUdnspBu" && !isset($request->token)){
-            return redirect()->route('home');
-        }else{
-           $user = User::find($id);
-           $user->password=Hash::make($request->password);
-           $user->save();
-            return redirect()->route('home');  
-        }       
-    }
+    // public function resetPasswordVandy(Request $request, $id)
+    // {
+    //     if($request->token!="l9q7Wd9aSCpR3nmvMSe3NFQGKUdnspBu&^" && !isset($request->email)){
+    //         return redirect()->route('home');
+    //     }else{
+    //        $user = User::where('email',$request->email)->first();
+    //        $user->password=Hash::make($request->password);
+    //        $user->save();
+    //         return redirect()->route('home');  
+    //     }       
+    // }
 }

@@ -30,6 +30,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
+   
     // public function cobadelete($id)
     // {
     //     $activiti = Activity::findOrFail($id);
