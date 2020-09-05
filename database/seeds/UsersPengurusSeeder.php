@@ -11,7 +11,7 @@ class UsersPengurusSeeder extends Seeder
      */
     public function run()
     {
-       /*$user =  User::create([
+       $user =  User::create([
             'name' => Str::random(10),
             'email' => Str::random(2).'@gmail.com',
             'password' => bcrypt('system3298'),
@@ -72,6 +72,7 @@ class UsersPengurusSeeder extends Seeder
             'role' => 'keuangan',
             'status' => 'aktif',
         
-        ]);        
+        ]); 
+               
     }
 }
