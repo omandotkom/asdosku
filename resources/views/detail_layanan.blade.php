@@ -231,7 +231,7 @@
   <!--==========================
     Footer
   ============================-->
-  <div style="position: absolute;
+  {{--<div style="position: absolute;
   bottom: 0;
   width: 100%;
   background-color: #333;
@@ -259,7 +259,7 @@
         </div>
       </div>
     </footer><!-- #footer -->
-  </div>
+  </div>--}}
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
