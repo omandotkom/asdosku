@@ -26,7 +26,7 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Main Stylesheet File -->
   <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
-  
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935140-1"></script>
   <script>
@@ -45,13 +45,16 @@
     function gotoCariAsisten() {
       window.location = "{{ route('indexdosen') }}";
     }
-    function gotoPesananSaya(){
+
+    function gotoPesananSaya() {
       window.location = "{{route('showUserOrder')}}";
     }
-    function gotoTagihanSaya(){
+
+    function gotoTagihanSaya() {
       window.location = "{{route('showallpayout')}}";
     }
-     function gotoTawarkanProyek(){
+
+    function gotoTawarkanProyek() {
       window.location = "{{ route('showbidpage') }}";
     }
   </script>
@@ -73,14 +76,13 @@
     function gotoLogin() {
       window.location = "{{ url('/login') }}";
     }
-
   </script>
   @endguest
 </head>
 
 <body>
 
-<!--==========================
+  <!--==========================
   Header
   ============================-->
   <header id="header" style="background-color: rgba(52, 59, 64, 0.9);">
@@ -101,18 +103,18 @@
           <li><a href="#contact">Kontak</a></li>
           <li><a href="https://blog.asdosku.com">Blog</a></li>
           <li><a href="https://market.asdosku.com">Market</a></li>
-         
-           @guest
-           <li><button type="button"  onclick='gotoLogin();'  class="btn badge-pill badge-warning btn-sm rounded">Login</button></li>
+
+          @guest
+          <li><button type="button" onclick='gotoLogin();' class="btn badge-pill badge-warning btn-sm rounded">Login</button></li>
           <li><button type="button" data-toggle="modal" data-target="#authmodal" class="btn badge-pill badge-warning btn-sm rounded">Daftar</button></li>
 
-          @endguest          
+          @endguest
           @auth
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              <?php 
-                $nama = Auth::user()->name; 
-                $nama = explode(" ", $nama);
+              <?php
+              $nama = Auth::user()->name;
+              $nama = explode(" ", $nama);
 
 
               ?>
@@ -133,7 +135,7 @@
             </div>
           </li>
           @endauth
-         
+
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -142,37 +144,37 @@
   <!--==========================
     Hero Section
   ============================-->
- {{--  <section id="hero">
+  {{-- <section id="hero">
     <div class="hero-container">
        <img src="{{ asset('asset/img/big-logo.png') }}" class="w-50 h-auto text-center mb-2 animated jackInTheBox slow" alt="Responsive image">
-      <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
-      <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
-        @auth
-        <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Cari Asisten</button>
-        <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
-        <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
-        <button type="button" data-toggle="modal" onclick="gotoTawarkanProyek();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tawarkan Proyek</button>
-        @endauth
-        @guest
-        @include('auth.modal.authmodal')
-        <button type="button"  onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Asisten</button>
-        <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
-        <div class="mx-auto">
-          atau<br>
-          <a class="mx-auto btn btn-info mt-1 text-white" href="{{route('registerasdosshow')}}" role="button"><i class="fa fa-user"></i> Daftar Sebagai Asdos</a>
-        </div>
-        @endguest
-      </div>
-
+  <h2 class="animated fadeInDown slow">Temukan Asisten Terbaik Disini</h2>
+  <div class="btn-group-vertical btn-group-lg" role="group" aria-label="Basic example">
+    @auth
+    <button type="button" data-toggle="modal" onclick="gotoCariAsisten();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Cari Asisten</button>
+    <button type="button" data-toggle="modal" onclick="gotoPesananSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Pesanan Saya</button>
+    <button type="button" data-toggle="modal" onclick="gotoTagihanSaya();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tagihan Saya</button>
+    <button type="button" data-toggle="modal" onclick="gotoTawarkanProyek();" class="btn mb-3 btn-outline-warning btn-lg rounded animated fadeInUp slow">Tawarkan Proyek</button>
+    @endauth
+    @guest
+    @include('auth.modal.authmodal')
+    <button type="button" onclick='gotoLogin();' class="btn btn-warning btn-lg rounded">Pilih Asisten</button>
+    <a href="#services" class="mx-auto mt-1 text-white"><i class="fa fa-arrow-down"></i> Lihat Kategori Asisten</a>
+    <div class="mx-auto">
+      atau<br>
+      <a class="mx-auto btn btn-info mt-1 text-white" href="{{route('registerasdosshow')}}" role="button"><i class="fa fa-user"></i> Daftar Sebagai Asdos</a>
     </div>
+    @endguest
+  </div>
+
+  </div>
   </section> --}}
   <!-- #hero -->
   {{-- new hero --}}
- 
+
   {{-- end new hero --}}
 
 
-  
+
 
   <main id="main" style="margin-top: 50px;">
 
@@ -205,54 +207,59 @@
                       <td>Rp. {{ number_format($item->harga) }}</td>
                     </tr>
                     @endforeach
-                    
+
                   </tbody>
                 </table>
               </div>
-            </div>  
+            </div>
             <p class="text-center wow fadeInUp">
               <b>ASDOSKU</b> merupakan platform berupa website dan aplikasi mobile yang membantu dosen, pengelola kampus dan mahasiswa dalam aktivitas Tri Dharma Perguruan Tinggi dan bisnis sehingga dapat meningkat produktifikas dalam belajar, bekerja dan berkarya. <br>Di kelola dan dikembangkan oleh perusahaan bernama <b> CV. Asdosku Bakti Nusantara.</b>
             </p>
-           
-           
+
+
             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
           </div>
 
         </div>
     </section><!-- #about -->
 
- 
+
   </main>
   <a href="https://api.whatsapp.com/send?phone=6285643715830&text=Halo%20Asdosku%20Mau%20Tanya%20Nih." class="float" target="_blank">
-<i class="fa fa-whatsapp my-float"></i>
-</a>
+    <i class="fa fa-whatsapp my-float"></i>
+  </a>
   <!--==========================
     Footer
   ============================-->
-  <footer id="footer">
-    <div class="footer-top">
+  {{--<div style="position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color:#fff;">
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+
+        </div>
+      </div>
+
       <div class="container">
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        CV. Asdosku Bakti Nusantara
-        <br>
-        &copy; Copyright <strong>ASDOSKU</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!--
+        <div class="copyright">
+          CV. Asdosku Bakti Nusantara
+          <br>
+          &copy; Copyright <strong>ASDOSKU</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!--
           All the links in the footer should remain intact.
           You can delete the links only if you purchased the pro version.
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
         -->
+        </div>
       </div>
-    </div>
-  </footer><!-- #footer -->
-
+    </footer><!-- #footer -->
+  </div>--}}
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
@@ -305,7 +312,7 @@
         });
     }
   </script>
- 
+
   <!-- Template Main Javascript File -->
   <script src="{{ asset('asset/js/main.js') }}"></script>
 
