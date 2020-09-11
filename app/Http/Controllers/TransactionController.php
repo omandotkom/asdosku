@@ -288,7 +288,7 @@ return back();
     public function savechangedtransaction(Request $request){
         $validator = Validator::make($request->all(), [
             'id' => ['required', 'numeric', 'max:255'],
-            'kodeasdos' => ['required', 'numeric', 'max:255'],
+            'kodeasdos' => ['required', 'numeric'],
             'biaya' => ['required','numeric'],
             'diskon' => ['required','numeric'],
             'keterangan' => ['required', 'string', 'min:10'],
