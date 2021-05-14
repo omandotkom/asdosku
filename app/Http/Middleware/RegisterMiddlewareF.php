@@ -18,7 +18,7 @@ class RegisterMiddlewareF
     {
         $content = Storage::get('.registerstatus.txt');
         if ($content == "off"){
-            return abort(403, 'This site has been locked for some time, please come back later');
+            return abort(403, 'Failed to open the site, please come back later. If you are currently viewing this page please contact the admin.');
         }
         return $next($request);
     }
