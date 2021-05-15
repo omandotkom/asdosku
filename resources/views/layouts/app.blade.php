@@ -78,7 +78,7 @@
                 })
                 .then(function(response) {
                     Toastify({
-                        text: response.data,
+                        text: response.data.message,
                         duration: 3000,
                         newWindow: true,
                         close: true,
@@ -89,7 +89,18 @@
                     }).showToast();
                     $('#newjurusanmodal').modal('hide')
                     setTimeout(function() {
-                        location.reload(true);
+                        //location.reload(true);
+                        if ($('#jurusan').length > 0 ){
+                            $('#jurusan')
+                                    .empty();
+                                    for (i = 0; i < response.data.listjurusan.length; i++) {
+                                        var optionString = "<option value='".concat(response.data.listjurusan[i]["id"]).concat("'>").concat(response.data.listjurusan[i]["name"]).concat("</option");
+                                        
+                                        $('#jurusan')
+                                         .append(optionString);
+                                        }
+                                    }
+                         
                     }, 2000);
                 })
                 .catch(function(error) {

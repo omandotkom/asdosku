@@ -214,8 +214,13 @@ class RegisterController extends Controller
         }
 
         $jurusan = Jurusans::firstOrCreate(['name' => $request->namajurusanbaru]);
+        $listJurusan = Jurusans::orderBy('name','asc')->get();
         if ($jurusan) {
-            return response("Berhasil menambahkan " . $jurusan->name . " sebagai jurusan", 200);
+            return response()->json([
+                'message' => "Berhasil menambahkan " . $jurusan->name . " sebagai jurusan",
+                'listjurusan' => $listJurusan
+            ]);
+            //return response("Berhasil menambahkan " . $jurusan->name . " sebagai jurusan", 200);
             // return back()->with(["success" => "Berhasil menambahkan " . $request->name . " sebagai jurusan baru di Asdosu."]);
         }
     }

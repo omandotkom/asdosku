@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card animated slideInLeft slow">
-                <div class="card-header">{{ __('Pendaftaran Asdos') }}</div>
+                <div class="card-header">{{ __('Pendaftaran Mahasiswa') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('registerasdos') }}">

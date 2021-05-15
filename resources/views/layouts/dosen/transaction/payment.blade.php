@@ -169,35 +169,20 @@ $totalbiaya = 0;
             </thead>
             <tbody>
               <tr>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/dana.png')}}" alt="DANA App"></td>
-                <td><b>0838 2146 5018</b> a.n <b>Rahmi Hilmayani</b></td>
-              </tr>
-              <tr>
-                <td><image class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bca.png')}}" alt="BCA"></td>
-                <td>a.n DNID 083821465018<br>Virtual Account : <b>3901083821465018</b></td>
-              </tr>
-              <tr>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bni.png')}}" alt="BNI"></td>
-                <td>a.n DNID 083821465018<br>Virtual Account : <b>8810083821465018</b></td>
+                <td>A/n Yustitia Septri Saputra<br><b>0691863822</b></td>
               </tr>
               <tr>
-                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/mandiri.png')}}" alt="MANDIRI"></td>
-                <td>a.n DNID 083821465018<br>Virtual Account : <b>89508083821465018</b></td>
+                <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bms.png')}}" alt="MANDIRI SYARIAH"></td>
+                <td>A/n Yustitia Septri Saputra<br><b>7147663287</b></td>
               </tr>
               <tr>
                 <td><img class="img-thumbnail img-fluid" src="{{asset('asset/img/payment/bri.png')}}" alt="BRI"></td>
-                <td>a.n DNID 083821465018<br>Virtual Account : <b>88810083821465018</b></td>
+                <td>A/n Yustitia Septri Saputra<br><b>179201006331500</b></td>
               </tr>
             </tbody>
           </table>
-          <h5 class="card-title text-center mt-1">Cara Membayar</h5>
-          <ol>
-            <li>Pilih salah satu metode pembayaran yang tertera di atas.</li>
-            <li>Nominal yang harus di transfer adalah <b>Rp. {{$totalbiaya}}.</b></li>
-            <li>Pastikan nominal yang ditransfer tepat.</li>
-            <li>Screenshoot (jika dengan m-banking) atau foto bukti pembayaran (jika dari atm).</li>
-            <li>Unggah bukti pembayaran di kolom <b>Bukti Pembayaran</b>
-          </ol>
+          
           <button onclick="document.paymentform.submit();" class="btn btn-primary btn-lg btn-block">Unggah Bukti Pembayaran dan Penilaian</button>
       </div>
       </form>
