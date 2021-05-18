@@ -19,7 +19,7 @@ Route::get('/forgot',function(){
 })->name('forget')->middleware('guest');
 Route::get('/register/mahasiswa',function(){
     return view('auth.register',['asmahasiswa' => true]);
-});
+})->name('registerasmahasiswa');
 Route::post('/register/mahasiswa/send','Auth\RegisterController@registerasmahasiswa')->name('registerasmahasiswa')->middleware('guest');
 Route::post('/forgot/send','Auth\ForgotPasswordController@forgot')->name('forgotpasswordsend')->middleware('guest');
 Route::get('/', function () {
