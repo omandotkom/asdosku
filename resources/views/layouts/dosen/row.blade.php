@@ -177,7 +177,7 @@
                     @endif
                     
                     @include('layouts.dosen.dashboardmodal.asdoskuakademymodal')
-                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" data-toggle="modal" data-target="#asdoskuakademy">Cari</button>
+                    <button type="button" class="btn btn-outline-primary btn-block btn-lg mt-2" id="myButton">Cari</button>
                 </div>
             </div>
         </div>
@@ -185,3 +185,8 @@
 
 </div>
 </div>
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "http://www.akademi.asdosku.com";
+    };
+</script>
