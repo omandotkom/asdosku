@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 Route::get('/forgot',function(){
     return view('auth.forgot');
 })->name('forget')->middleware('guest');
@@ -23,7 +23,7 @@ Route::get('/register/mahasiswa',function(){
 Route::post('/register/mahasiswa/send','Auth\RegisterController@registerasmahasiswa')->name('registerasmahasiswa')->middleware('guest');
 Route::post('/forgot/send','Auth\ForgotPasswordController@forgot')->name('forgotpasswordsend')->middleware('guest');
 Route::get('/', function () {
-    return view('home');
+    return view('maintance');
 })->middleware('guest')->name('rumah');
 
 Route::get('/home/{layanan}', 'DetailLayananController@index')->name('detail-layanan');
