@@ -23,7 +23,7 @@ Route::get('/register/mahasiswa',function(){
 Route::post('/register/mahasiswa/send','Auth\RegisterController@registerasmahasiswa')->name('registerasmahasiswa')->middleware('guest');
 Route::post('/forgot/send','Auth\ForgotPasswordController@forgot')->name('forgotpasswordsend')->middleware('guest');
 Route::get('/', function () {
-    return view('maintance');
+    return view('newhome');
 })->middleware('guest')->name('rumah');
 
 Route::get('/home/{layanan}', 'DetailLayananController@index')->name('detail-layanan');
